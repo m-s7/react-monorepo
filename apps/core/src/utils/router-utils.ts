@@ -7,7 +7,7 @@ import { getAppsConfigs } from '@/utils/apps-utils'
 export const getBaseUrlForModule = (config: AppConfig): string => {
     const value = getConfigValue(config.key, config.url)
 
-    return (value ? normalizeUrl(value) : '')
+    return (value ?? '')
 }
 
 export const getPathnameFromUrl = (url: string): string => new URL(url).pathname

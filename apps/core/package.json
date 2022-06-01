@@ -32,7 +32,8 @@
     "sass": "^1.51.0",
     "sockjs-client": "^1.6.0",
     "styled-components": "^5.3.5",
-    "webstomp-client": "^1.2.6"
+    "webstomp-client": "^1.2.6",
+    "@ms7/breadcrumbs": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",

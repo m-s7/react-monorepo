@@ -1,7 +1,7 @@
 import { logging } from '@/business/log-manager'
 import StompClient from '@/lib/websocket/lib/clients/stomp-client'
 import { Headers, Callback, StompProtocolClient } from '@/lib/websocket/lib/websocket-client'
-import EventBus from "@/lib/event-bus";
+import EventBus from '@/lib/event-bus'
 
 export default class WebsocketClient extends StompClient {
     private logger = logging.getLogger('websocket')

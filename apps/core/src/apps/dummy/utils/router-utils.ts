@@ -5,5 +5,5 @@ import { getBaseUrlForModule, normalizeUrl } from '@/utils/router-utils'
 export const getBaseUrl = (path?: string): string => {
     if(isEmpty(path)) path = ''
 
-    return normalizeUrl(`${getBaseUrlForModule(getConfig())}/${path}`)
+    return `${getBaseUrlForModule(getConfig())}/${path}`
 }

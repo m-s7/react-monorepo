@@ -1,7 +1,7 @@
 import { ElementType } from 'react'
 import { Role } from '@/constants/role'
 import { PageTitleComponentType } from '@/lib/page-title'
-import { BreadcrumbComponentType } from '@/lib/breadcrumbs'
+import { BreadcrumbComponentType } from '@ms7/breadcrumbs'
 
 export interface RouterConfig {
     readonly entrypoint?: RouteEntrypointConfig,

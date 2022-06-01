@@ -1,7 +1,7 @@
 {
   "private": true,
   "workspaces": [
-    "packages/*",
+    "packages/*/**",
     "apps/*"
   ],
   "scripts": {
@@ -9,7 +9,6 @@
     "dev": "turbo run dev --no-cache --parallel --continue",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.{js,jsx,ts,tsx,md}\"",
     "changeset-create": "changeset",
     "changeset-apply": "changeset version",
     "release": "turbo run build && changeset publish"

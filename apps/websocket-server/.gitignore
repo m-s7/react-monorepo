@@ -8,6 +8,7 @@ target
 ../build/
 ../.gradle
 .mvn
+.turbo
 
 # Eclipse Project Files #
 .classpath
