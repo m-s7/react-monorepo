@@ -1,6 +1,6 @@
 {
-  "name": "@ms7/breadcrumbs",
-  "description": "A hook for generating breadcrumbs for react router",
+  "name": "@ms7/page-title",
+  "description": "A hook for generating page title for react router",
   "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

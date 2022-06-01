@@ -1,5 +1,5 @@
+import * as React from 'react'
 import { matchPath, Params, PathPattern, RouteObject, useLocation } from 'react-router'
-import React, { createElement } from 'react'
 
 type Location = ReturnType<typeof useLocation>
 
@@ -26,20 +26,20 @@ interface PageTitleComponentProps<K extends string = string> {
     location: Location,
 }
 
-export interface PageTitleRoute<K extends string = string> extends RouteObject {
-    title?: PageTitleComponentType<K> | string,
-    props?: { [x: string]: unknown },
-}
-
 export interface PageTitleData<K extends string = string> {
     match: PageTitleMatch<K>,
     location: Location,
     title: React.ReactNode | string,
 }
 
+export interface PageTitleRoute<K extends string = string> extends RouteObject {
+    title?: PageTitleComponentType<K> | string,
+    props?: { [x: string]: unknown },
+}
+
 export type PageTitleComponentType<K extends string = string> = React.FunctionComponent<PageTitleComponentProps<K>>
 
-const useRouterPageTitle = (routes?: PageTitleRoute[], options?: Options) => getPageTitle(routes || [], useLocation(), options)
+export const useRouterPageTitle = (routes?: PageTitleRoute[], options?: Options) => getPageTitle(routes || [], useLocation(), options)
 
 const getPageTitle = (routes: PageTitleRoute[], location: Location, options?: Options): PageTitleData | undefined => {
     for(const route of routes) {
@@ -70,7 +70,7 @@ const render = (title: PageTitleComponentType | string, match: PageTitleMatch, l
     return {
         ...componentProps,
         title:
-            typeof title === 'string' ? (stringReturn ? humanize(title) : (createElement('span', {}, title))) : (<Component {...componentProps} />),
+            typeof title === 'string' ? (stringReturn ? humanize(title) : (React.createElement('span', {}, title))) : (<Component {...componentProps} />),
     }
 } 
 
@@ -78,5 +78,3 @@ const humanize = (str: string): string => str
     .replace(/^[\s_]+|[\s_]+$/g, '')
     .replace(/[-_\s]+/g, ' ')
     .replace(/^[a-z]/, m => m.toUpperCase())
-
-export default useRouterPageTitle

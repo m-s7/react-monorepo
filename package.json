@@ -11,7 +11,7 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "changeset-create": "changeset",
     "changeset-apply": "changeset version",
-    "release": "turbo run build && changeset publish"
+    "release": "turbo run build && changeset publish",
   },
   "devDependencies": {
     "@changesets/cli": "^2.22.0",

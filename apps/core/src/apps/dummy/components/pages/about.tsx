@@ -6,7 +6,7 @@ import { getUsers, getUser, postUser, putUser, patchUser, removeUser } from 'Dum
 import { AxiosError } from 'axios'
 import { User } from 'Dummy/business/models/user/user'
 import Card from '@/components/ui/card/card'
-import {getBaseUrl} from "Dummy/utils/router-utils";
+import { getBaseUrl } from 'Dummy/utils/router-utils'
 
 type UserItemData = User | User[]
 

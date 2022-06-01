@@ -1,3 +1,4 @@
 export { useRouterBreadcrumbs } from './breadcrumbs'
-export { BreadcrumbRoute } from './breadcrumbs'
-export { BreadcrumbComponentType } from './breadcrumbs'
+export type { BreadcrumbRoute } from './breadcrumbs'
+export type { BreadcrumbData } from './breadcrumbs'
+export type { BreadcrumbComponentType } from './breadcrumbs'

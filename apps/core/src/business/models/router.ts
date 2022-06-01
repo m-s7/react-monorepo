@@ -1,6 +1,6 @@
 import { ElementType } from 'react'
 import { Role } from '@/constants/role'
-import { PageTitleComponentType } from '@/lib/page-title'
+import { PageTitleComponentType } from '@ms7/page-title'
 import { BreadcrumbComponentType } from '@ms7/breadcrumbs'
 
 export interface RouterConfig {

@@ -22,7 +22,7 @@ interface BreadcrumbComponentProps<K extends string = string> {
     location: Location,
 }
 
-interface BreadcrumbData<K extends string = string> {
+export interface BreadcrumbData<K extends string = string> {
     match: BreadcrumbMatch<K>,
     location: Location,
     key: string,
