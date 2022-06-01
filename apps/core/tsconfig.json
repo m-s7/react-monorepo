@@ -1,0 +1,20 @@
+{
+  "extends": "ts-config-react",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@": ["src/"],
+      "@/*": ["src/*"],
+      "Dummy": ["src/apps/dummy"],
+      "Dummy/*": ["src/apps/dummy/*"],
+      "Map": ["src/apps/map"],
+      "Map/*": ["src/apps/map/*"]
+    },
+    "types": [
+      "node",
+      "webpack-env",
+      "@types/jest"
+    ]
+  },
+  "include": ["src"]
+}

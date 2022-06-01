@@ -1,0 +1,13 @@
+keycloak:
+  enabled: ${REACT_APP_KEYCLOAK_ENABLED}
+  url: ${REACT_APP_KEYCLOAK_URL}
+  realm: ${REACT_APP_KEYCLOAK_REALM}
+  clientid: ${REACT_APP_KEYCLOAK_CLIENTID}
+dummy:
+  active: ${REACT_APP_DUMMY}
+  url: ${REACT_APP_DUMMY_SERVER_URL}
+  wsurl: ${REACT_APP_DUMMY_WEBSOCKET_URL}
+map:
+  active: ${REACT_APP_MAP}
+  url: ${REACT_APP_MAP_SERVER_URL}
+  wsurl: ${REACT_APP_MAP_WEBSOCKET_URL}

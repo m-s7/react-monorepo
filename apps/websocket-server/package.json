@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "websocket-server",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "exec java -jar build/libs/messaging-stomp-websocket-0.0.1-SNAPSHOT.jar",
+    "build": "exec ./gradlew build"
+  },
+  "dependencies": {
+    "ws": "^8.5.0"
+  }
+}

@@ -1,0 +1,69 @@
+import React, { useContext, useEffect, useState } from 'react'
+import getConfig from 'Dummy/configs/app'
+import { getConfigValue } from '@/business/config-manager'
+import FatalError from '@/business/models/errors/fatal-error'
+import DummyWebsocketClient from 'Dummy/business/websocket-client'
+import { setClient } from 'Dummy/store/reducers/websocket-reducer'
+import WebsocketClient from '@/lib/websocket/lib/websocket-client'
+import { AuthProviderContext } from '@/components/providers/auth-provider'
+import { useAppDispatch } from '@/hooks/use-app-dispatch'
+import CriticalError from '@/components/critical-error'
+import FullPageLoader from '@/components/full-page-loader'
+import { WebsocketProviderComponentProps } from '@/lib/websocket/provider'
+
+const DummyWebsocketProvider = (props: WebsocketProviderComponentProps) => {
+    let websocketClient: WebsocketClient | undefined
+
+    const dispatch = useAppDispatch()
+    const authContext = useContext(AuthProviderContext)
+    const [error, setError] = useState<FatalError>()
+    const [showLoader, setShowLoader] = useState(true)
+    const [isConnected, setIsConnected] = useState(false)
+
+    useEffect(() => {
+        if(websocketClient) return
+
+        const { key, websocket } = getConfig()
+        if(websocket) {
+            const { url, name, headers } = websocket
+            const wsUrl = (getConfigValue(key, url) as string)
+            if(!wsUrl)
+                setError(new FatalError(name, 'Invalid ws url syntax'))
+
+            const token = authContext?.getToken()
+            const callback = (isConnected: boolean): void => { setIsConnected(isConnected) }
+
+            websocketClient = new DummyWebsocketClient(callback, token, name, wsUrl, headers)
+            websocketClient.connect()
+
+            dispatch(setClient(websocketClient))
+
+            props.onLoad(websocketClient)
+        }
+
+        setShowLoader(false)
+    }, [])
+
+    useEffect(() => () => {
+        websocketClient?.disconnect()
+        websocketClient = undefined
+    }, [])
+
+    if(error)
+        return (
+            <CriticalError
+                error={error}
+                allowNavigation={true} />
+        )
+
+    if(showLoader || !isConnected)
+        return (<FullPageLoader />)
+
+    return (
+        <React.Fragment>
+            {props.children}
+        </React.Fragment>
+    )
+}
+
+export default DummyWebsocketProvider
