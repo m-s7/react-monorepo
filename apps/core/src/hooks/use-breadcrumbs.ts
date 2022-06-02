@@ -1,5 +1,5 @@
 import { getFlatRoutes, getRoutes } from '@/utils/router-utils'
-import { useRouterBreadcrumbs, BreadcrumbRoute } from '@ms7/breadcrumbs'
+import useRouterBreadcrumbs, { BreadcrumbRoute } from '@ms7/breadcrumbs'
 import { useLocation } from 'react-router-dom'
 import { useLayoutEffect, useState } from 'react'
 

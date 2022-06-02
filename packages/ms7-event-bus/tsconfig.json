@@ -1,5 +1,5 @@
 {
-  "extends": "ts-config-lib/tsconfig.json",
+  "extends": "ts-config/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
     "jsx": "react"

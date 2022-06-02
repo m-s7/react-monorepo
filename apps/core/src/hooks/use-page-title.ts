@@ -1,5 +1,5 @@
 import { getFlatRoutes, getRoutes } from '@/utils/router-utils'
-import { useRouterPageTitle, PageTitleRoute } from '@ms7/page-title'
+import useRouterPageTitle, { PageTitleRoute } from '@ms7/page-title'
 import { useLayoutEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 

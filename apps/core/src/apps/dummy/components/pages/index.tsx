@@ -7,7 +7,7 @@ import TestProps from 'Dummy/components/test-props'
 import Card from '@/components/ui/card/card'
 import { useAppDispatch } from '@/hooks/use-app-dispatch'
 import { useAppSelector } from '@/hooks/use-app-selector'
-import EventBus from '@/lib/event-bus'
+import EventBus from '@ms7/event-bus'
 
 const Dummy = () => {
     const state1 = useAppSelector(selectState1)

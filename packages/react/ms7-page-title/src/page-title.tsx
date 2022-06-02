@@ -39,7 +39,7 @@ export interface PageTitleRoute<K extends string = string> extends RouteObject {
 
 export type PageTitleComponentType<K extends string = string> = React.FunctionComponent<PageTitleComponentProps<K>>
 
-export const useRouterPageTitle = (routes?: PageTitleRoute[], options?: Options) => getPageTitle(routes || [], useLocation(), options)
+const useRouterPageTitle = (routes?: PageTitleRoute[], options?: Options) => getPageTitle(routes || [], useLocation(), options)
 
 const getPageTitle = (routes: PageTitleRoute[], location: Location, options?: Options): PageTitleData | undefined => {
     for(const route of routes) {
@@ -78,3 +78,6 @@ const humanize = (str: string): string => str
     .replace(/^[\s_]+|[\s_]+$/g, '')
     .replace(/[-_\s]+/g, ' ')
     .replace(/^[a-z]/, m => m.toUpperCase())
+
+
+export default useRouterPageTitle

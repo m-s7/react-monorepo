@@ -2,6 +2,7 @@
   "private": true,
   "name": "websocket-server",
   "version": "0.0.1",
+  "description": "Simple websocket server with auto response",
   "scripts": {
     "dev": "exec java -jar build/libs/messaging-stomp-websocket-0.0.1-SNAPSHOT.jar",
     "build": "exec ./gradlew build"

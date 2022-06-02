@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "react default",
+  "display": "default",
   "compilerOptions": {
     "strict": true,
     "allowJs": true,
@@ -16,7 +16,6 @@
     "inlineSources": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "jsx": "react",
     "moduleResolution": "node"
   },
   "exclude": ["node_modules"],

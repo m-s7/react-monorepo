@@ -38,7 +38,7 @@ export type BreadcrumbComponentType<K extends string = string> = React.FunctionC
 
 const NO_BREADCRUMB = Symbol('NO_BREADCRUMB')
 
-export const useRouterBreadcrumbs = (routes?: BreadcrumbRoute[], options?: Options): BreadcrumbData[] => getBreadcrumbs(routes || [], useLocation(), options)
+const useRouterBreadcrumbs = (routes?: BreadcrumbRoute[], options?: Options): BreadcrumbData[] => getBreadcrumbs(routes || [], useLocation(), options)
 
 const getBreadcrumbs = (routes: BreadcrumbRoute[], location: Location, options?: Options): BreadcrumbData[] => {
     const { pathname } = location
@@ -142,3 +142,4 @@ const humanize = (str: string): string => str
     .replace(/[-_\s]+/g, ' ')
     .replace(/^[a-z]/, m => m.toUpperCase())
 
+export default useRouterBreadcrumbs

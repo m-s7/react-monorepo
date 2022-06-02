@@ -1,8 +1,8 @@
 import { remove, findLastIndex } from 'lodash'
 import { Subject, Subscription } from 'rxjs'
 
-interface EventBusMessage { [x: string]: unknown }
-interface EventBusListener {
+export interface EventBusMessage { [x: string]: unknown }
+export interface EventBusListener {
     channel: string,
     subscription: Subscription,
     limit?: number,
@@ -81,4 +81,3 @@ const EventBus = {
 }
 
 export default EventBus
-    

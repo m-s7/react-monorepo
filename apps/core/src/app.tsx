@@ -11,7 +11,7 @@ import { getFlatRoutes, getRoutes } from '@/utils/router-utils'
 import AppRouter from '@/app-router'
 import AuthProvider from '@/components/providers/auth-provider'
 import KeycloakAuthProvider from '@/components/providers/auth/keycloak-auth-provider'
-import EventBus from '@/lib/event-bus'
+import EventBus from '@ms7/event-bus'
 
 const App = () => {
     const logger = logging.getLogger('core')
@@ -29,6 +29,7 @@ const App = () => {
     }, [])
 
     useEffect(() => () => {
+
         EventBus.unsubscribe('test-channel')
         EventBus.unregister('test-channel')
     }, [])

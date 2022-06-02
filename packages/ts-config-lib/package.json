@@ -1,9 +1,9 @@
 {
   "private": true,
   "version": "0.0.1",
-  "name": "ts-config-react-lib",
+  "name": "ts-config-lib",
   "files": ["tsconfig.json"],
   "devDependencies": {
-    "ts-config-react": "*"
+    "ts-config": "*"
   }
 }

@@ -6,7 +6,7 @@ import { reset as resetCounterReducer } from 'Dummy/store/reducers/counter-reduc
 import { reset as resetWebsocketReducer } from 'Dummy/store/reducers/websocket-reducer'
 import WebsocketProvider from '@/lib/websocket/provider'
 import DummyWebsocketProvider from 'Dummy/components/providers/dummy-websocket-provider'
-import EventBus from '@/lib/event-bus'
+import EventBus from '@ms7/event-bus'
 
 const App = () => {
     const dispatch = useAppDispatch()

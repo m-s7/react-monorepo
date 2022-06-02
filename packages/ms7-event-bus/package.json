@@ -1,6 +1,6 @@
 {
-  "name": "@ms7/breadcrumbs",
-  "description": "A hook for generating breadcrumbs for react router",
+  "name": "@ms7/event-bus",
+  "description": "Event bus for JavaScript",
   "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -22,7 +22,10 @@
     "@types/react": "^18.0.7",
     "@types/react-dom": "^18.0.0",
     "react-router": "^6.3.0",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "lodash": "^4.17.21",
+    "@types/lodash": "^4.14.182",
+    "rxjs": "^7.5.5"
   },
   "devDependencies": {
     "ts-config-lib": "*"

@@ -3,7 +3,7 @@ import Layout from '@/layouts/layout'
 import BaseLink from '@/components/router/nav/base-link'
 import Card from '@/components/ui/card/card'
 import Button from '@/components/ui/button'
-import EventBus from '@/lib/event-bus'
+import EventBus from '@ms7/event-bus'
 import { uniqueId } from 'lodash'
 
 const About = () => {

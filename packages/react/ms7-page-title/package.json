@@ -25,7 +25,7 @@
     "typescript": "^4.6.3"
   },
   "devDependencies": {
-    "ts-config-react-lib": "*"
+    "ts-config-lib": "*"
   },
   "publishConfig": {
     "access": "public"
