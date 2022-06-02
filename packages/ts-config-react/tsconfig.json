@@ -1,13 +1,10 @@
 {
-  "$schema": "",
+  "$schema": "https://json.schemastore.org/tsconfig",
   "display": "react default",
   "compilerOptions": {
-    "noEmit": true,
     "strict": true,
     "allowJs": true,
-    "declaration": true,
     "skipLibCheck": true,
-    "declarationMap": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -19,7 +16,7 @@
     "inlineSources": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "moduleResolution": "node"
   },
   "exclude": ["node_modules"],
