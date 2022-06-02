@@ -1,1 +1,0 @@
-export const f = (fnc: unknown) => (fnc as jest.Mock)

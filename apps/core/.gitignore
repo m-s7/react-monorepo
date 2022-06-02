@@ -88,5 +88,6 @@ typings/
 # Webpack
 .webpack/
 
-# Distributions
+# Distributions & Builds
 dist/
+build/

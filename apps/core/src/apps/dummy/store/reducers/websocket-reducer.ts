@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '@/store/store'
+import { RootState } from 'Dummy/store/store'
 import { WebsocketClient } from '@ms7/websocket-client'
-import AppState from 'Dummy/business/models/store/app-state'
 
 export interface WebsocketState {
     client: WebsocketClient | undefined,
@@ -24,6 +23,6 @@ export const websocketReducer = createSlice({
 
 export const { setClient, reset } = websocketReducer.actions
 
-export const selectClient = (state: RootState) => (state.apps as AppState).dummyWebsocket.client
+export const selectClient = (state: RootState) => state.dummyWebsocket.client
 
 export default websocketReducer.reducer

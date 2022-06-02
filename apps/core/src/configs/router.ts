@@ -7,9 +7,10 @@ import Account from '@/pages/user/account'
 import About from '@/pages/about'
 import AboutChild from '@/pages/about-child'
 import AboutOther from '@/pages/about-other'
+import { Optional } from '@/business/models/common'
 
 const { GUEST, USER, ADMIN } = Role
-const getConfig = (): RouterConfig => ({
+const getConfig = (): Optional<RouterConfig, 'entrypoint'> => ({
     routes: [
         { path: '/', component: Dashboard, title: 'Dashboard', breadcrumb: 'Dashboard' },
         { path: '/about', component: About, title: 'About', breadcrumb: 'About' },

@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState, AppThunk } from '@/store/store'
+import { RootState, AppThunk } from 'Dummy/store/store'
 import { fetchCount } from 'Dummy/api/counter-api'
-import AppState from 'Dummy/business/models/store/app-state'
 
 export interface CounterState {
     aaa: number,
@@ -71,7 +70,7 @@ export const { increment, decrement, incrementByAmount, setValue, reset } = coun
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 
-export const selectCount = (state: RootState) => (state.apps as AppState).dummyCounter.aaa
+export const selectCount = (state: RootState) => state.dummyCounter.aaa
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '@/store/store'
-import AppState from 'Dummy/business/models/store/app-state'
+import { RootState } from 'Dummy/store/store'
 
 export interface PersonState {
     state1: number,
@@ -40,10 +39,10 @@ export const personReducer = createSlice({
 export const { setState1, setState2, setName, setType, setAge, reset } = personReducer.actions
 
 // @ts-ignore
-export const selectState1 = (state: RootState) => (state.apps as AppState).dummyPerson.state1
+export const selectState1 = (state: RootState) => state.dummyPerson.state1
 // @ts-ignore
-export const selectState2 = (state: RootState) => (state.apps as AppState).dummyPerson.state2
+export const selectState2 = (state: RootState) => state.dummyPerson.state2
 // @ts-ignore
-export const selectState3 = (state: RootState) => (state.apps as AppState).dummyPerson.state3
+export const selectState3 = (state: RootState) => state.dummyPerson.state3
 
 export default personReducer.reducer

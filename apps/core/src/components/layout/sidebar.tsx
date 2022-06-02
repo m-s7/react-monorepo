@@ -13,11 +13,11 @@ const Sidebar = () => {
     const location = useLocation()
     const authContext = useContext(AuthProviderContext)
     const [menu, setMenu] = useState<MenuConfig[]>()
-    
+
     useLayoutEffect(() => {
-        setMenu(getMenu())    
+        setMenu(getMenu())
     }, [location.pathname])
-    
+
     return (
         <div className={`d-flex flex-column flex-shrink-0 p-3 text-white ${styles.sidebar}`}>
             <Link
@@ -58,11 +58,12 @@ const Sidebar = () => {
                     <li>
                         <hr className={'dropdown-divider'} />
                     </li>
-                    <FooterDropdownItem
-                        path={'#'}
-                        onClick={() => { authContext?.logout() }}>
-                        {'Sign out'}
-                    </FooterDropdownItem>
+                    {authContext &&
+                        <FooterDropdownItem
+                            path={'#'}
+                            onClick={() => { authContext?.logout() }}>
+                            {'Sign out'}
+                        </FooterDropdownItem>}
                 </ul>
             </div>
         </div>

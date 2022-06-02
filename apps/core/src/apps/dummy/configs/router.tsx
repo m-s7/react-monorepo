@@ -3,12 +3,12 @@ import About from 'Dummy/pages/about'
 import Counter from 'Dummy/pages/counter'
 import Static from 'Dummy/pages/static'
 import { RouterConfig } from '@/business/models/router'
-import App from 'Dummy/app'
+import IndexEntrypoint from 'Dummy/index'
 
 const getConfig = (): RouterConfig => ({
     entrypoint: {
         baseUrl: '/dummy/*',
-        component: App,
+        component: IndexEntrypoint,
     },
     routes: [
         { path: '/', component: Index, title: 'Dummy', breadcrumb: 'Dummy' },

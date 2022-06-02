@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SmallLoader from '@/components/ui/small-loader'
-import { selectStatus } from '@/store/reducers/rest-reducer'
-import { useAppSelector } from '@/hooks/use-app-selector'
+import { CoreStoreContext } from '@/index'
 
 const Navbar = () => {
-    const restStatus = useAppSelector(selectStatus)
-    const isRestLoading = (): boolean => restStatus === 'loading'
+    const { store } = useContext(CoreStoreContext)
+    const isRestLoading = (): boolean => store.getState().rest.status === 'loading'
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">

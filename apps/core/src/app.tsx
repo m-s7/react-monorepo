@@ -12,12 +12,6 @@ import AppRouter from '@/app-router'
 import AuthProvider from '@/components/providers/auth-provider'
 import KeycloakAuthProvider from '@/components/providers/auth/keycloak-auth-provider'
 import EventBus from '@ms7/event-bus'
-import { StompClient } from '@ms7/websocket-client'
-import { Provider as WebsocketProvider } from '@ms7/websocket-client'
-import { WebsocketClient } from '@ms7/websocket-client'
-import { WebsocketProviderComponentProps } from '@ms7/websocket-client'
-import { Headers, Callback, StompProtocolClient } from '@ms7/websocket-client'
-
 
 const App = () => {
     const logger = logging.getLogger('core')

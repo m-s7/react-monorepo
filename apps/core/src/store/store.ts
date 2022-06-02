@@ -1,13 +1,13 @@
 import { restLogger } from '@/store/middleware/rest-logger'
 import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import getConfig from '@/configs/app'
-import { Reducers } from '@/business/models/store'
+import restReducer from '@/store/reducers/rest-reducer'
 
 const store = configureStore({
-    reducer: (getConfig().store.reducers as Reducers),
+    reducer: { rest: restReducer },
     middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(restLogger),
 })
 
+// @ts-ignore
 export const getModuleState = <T>(): T => (store.getState().apps as T)
 
 export type AppDispatch = typeof store.dispatch

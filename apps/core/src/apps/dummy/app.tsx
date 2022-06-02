@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import AppRouter from 'Dummy/app-router'
-import { useAppDispatch } from '@/hooks/use-app-dispatch'
+import { useAppDispatch } from 'Dummy/hooks/use-app-dispatch'
 import { reset as resetPersonReducer } from 'Dummy/store/reducers/person-reducer'
 import { reset as resetCounterReducer } from 'Dummy/store/reducers/counter-reducer'
 import { reset as resetWebsocketReducer } from 'Dummy/store/reducers/websocket-reducer'

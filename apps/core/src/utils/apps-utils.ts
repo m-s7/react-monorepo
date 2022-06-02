@@ -1,8 +1,19 @@
 import { AppConfig } from '@/business/models/app'
 import { getConfigFiles, requireApp } from '@/utils/webpack-utils'
 import { getConfigValue } from '@/business/config-manager'
-import { ReducerDictionary } from '@/business/models/common'
-import { RouteEntrypointConfig } from '@/business/models/router'
+import { Necessary, ReducerDictionary } from '@/business/models/common'
+import { RouteEntrypointConfig, RouterConfig } from '@/business/models/router'
+import mapConfig from 'Map/configs/app'
+import dummyConfig from 'Dummy/configs/app'
+
+const getAppsConfigsNew = (): AppConfig[] => [mapConfig(), dummyConfig()]
+export const getAppsRouterConfigs = (): RouterConfig[] => getAppsConfigsNew().map(({ router }) => router)
+export const getAppsEntrypointsConfigs = (): RouteEntrypointConfig[] => 
+    getAppsRouterConfigs()
+        .filter(({ entrypoint }) => entrypoint !== undefined)
+        .map(({ entrypoint }) => (entrypoint as Necessary<RouteEntrypointConfig, 'baseUrl' | 'component'>))
+
+
 
 export const getAppsConfigs = (): AppConfig[] => {
     const apps: AppConfig[] = []

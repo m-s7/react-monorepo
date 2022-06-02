@@ -1,11 +1,11 @@
 import Index from 'Map/pages'
 import { RouterConfig } from '@/business/models/router'
-import App from 'Map/app'
+import IndexEntrypoint from 'Map/index'
 
 const getConfig = (): RouterConfig => ({
     entrypoint: {
         baseUrl: '/map/*',
-        component: App,
+        component: IndexEntrypoint,
     },
     routes: [
         { path: '/', component: Index, title: 'Map', breadcrumb: 'Map' },
