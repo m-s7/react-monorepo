@@ -1,9 +1,9 @@
 import SockJS, { CloseEvent } from 'sockjs-client'
 import Stomp from 'webstomp-client'
-import WebsocketClient from '@/lib/websocket/lib/websocket-client'
-import { Headers, Callback, StompProtocolClient } from '@/lib/websocket/lib/websocket-client'
+import { WebsocketClient } from '../websocket-client'
+import { Headers, Callback, StompProtocolClient } from '../websocket-client'
 
-export default abstract class StompClient extends WebsocketClient {
+export abstract class StompClient extends WebsocketClient {
     private socket: WebSocket | undefined
     private stompClient: StompProtocolClient
 

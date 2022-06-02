@@ -1,16 +1,17 @@
 {
-  "name": "@ms7/breadcrumbs",
-  "description": "A hook for generating breadcrumbs for react router",
+  "name": "@ms7/websocket-client",
+  "description": "Websocket client with multiple protocol support and react integration",
   "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist/**"
+    "dist/**",
+    "node_modules"
   ],
   "scripts": {
-    "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts --external react",
+    "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts --external react,process,process/browser",
     "dev": "node_modules/.bin/tsup src/index.ts --format esm,cjs --watch --dts --external react",
     "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
@@ -22,7 +23,13 @@
     "@types/react": "^18.0.7",
     "@types/react-dom": "^18.0.0",
     "react-router": "^6.3.0",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "lodash": "^4.17.21",
+    "@types/lodash": "^4.14.182",
+    "rxjs": "^7.5.5",
+    "sockjs-client": "^1.6.0",
+    "@types/sockjs-client": "^1.5.1",
+    "webstomp-client": "^1.2.6"
   },
   "devDependencies": {
     "ts-config-lib": "*"

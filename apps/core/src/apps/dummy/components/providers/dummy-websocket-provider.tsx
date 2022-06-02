@@ -4,12 +4,12 @@ import { getConfigValue } from '@/business/config-manager'
 import FatalError from '@/business/models/errors/fatal-error'
 import DummyWebsocketClient from 'Dummy/business/websocket-client'
 import { setClient } from 'Dummy/store/reducers/websocket-reducer'
-import WebsocketClient from '@/lib/websocket/lib/websocket-client'
+import { WebsocketClient } from '@ms7/websocket-client'
 import { AuthProviderContext } from '@/components/providers/auth-provider'
 import { useAppDispatch } from '@/hooks/use-app-dispatch'
 import CriticalError from '@/components/critical-error'
 import FullPageLoader from '@/components/full-page-loader'
-import { WebsocketProviderComponentProps } from '@/lib/websocket/provider'
+import { WebsocketProviderComponentProps } from '@ms7/websocket-client'
 
 const DummyWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     let websocketClient: WebsocketClient | undefined

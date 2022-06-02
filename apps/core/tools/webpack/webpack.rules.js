@@ -9,6 +9,14 @@ module.exports = [
         use: ['ts-loader'],
     },
     {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+        resolve: {
+            fullySpecified: false,
+        },
+    },
+    {
         // CSS Loader
         test: /\.css$/,
         use: [

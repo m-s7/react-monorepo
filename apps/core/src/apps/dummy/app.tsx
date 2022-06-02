@@ -4,7 +4,7 @@ import { useAppDispatch } from '@/hooks/use-app-dispatch'
 import { reset as resetPersonReducer } from 'Dummy/store/reducers/person-reducer'
 import { reset as resetCounterReducer } from 'Dummy/store/reducers/counter-reducer'
 import { reset as resetWebsocketReducer } from 'Dummy/store/reducers/websocket-reducer'
-import WebsocketProvider from '@/lib/websocket/provider'
+import { Provider as WebsocketProvider } from '@ms7/websocket-client'
 import DummyWebsocketProvider from 'Dummy/components/providers/dummy-websocket-provider'
 import EventBus from '@ms7/event-bus'
 

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "eslint-config-react-ts",
+  "name": "eslint-config-ts",
   "version": "0.0.1",
   "main": "index.js",
   "devDependencies": {

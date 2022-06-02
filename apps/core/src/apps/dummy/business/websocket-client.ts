@@ -1,6 +1,6 @@
 import { logging } from '@/business/log-manager'
-import StompClient from '@/lib/websocket/lib/clients/stomp-client'
-import { Headers, Callback, StompProtocolClient } from '@/lib/websocket/lib/websocket-client'
+import { StompClient } from '@ms7/websocket-client'
+import { Headers, Callback, StompProtocolClient } from '@ms7/websocket-client'
 import EventBus from '@ms7/event-bus'
 
 export default class WebsocketClient extends StompClient {

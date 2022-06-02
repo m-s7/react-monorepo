@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '@/store/store'
-import WebsocketClient from '@/lib/websocket/lib/websocket-client'
+import { WebsocketClient } from '@ms7/websocket-client'
 import AppState from 'Dummy/business/models/store/app-state'
 
 export interface WebsocketState {

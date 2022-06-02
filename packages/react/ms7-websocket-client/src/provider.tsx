@@ -5,7 +5,7 @@ interface Props {
     children: React.ReactNode | React.ReactNode[],
 }
 
-export interface Websocket {
+interface Websocket {
     connect(): void,
     disconnect(): void,
 }
@@ -20,7 +20,7 @@ type WebsocketProviderComponentType = React.ComponentType<WebsocketProviderCompo
 
 export const WebsocketProviderContext = createContext<Websocket | undefined>(undefined)
 
-const Provider = (props: Props) => {
+export const Provider = (props: Props) => {
     const [providerWebsocketInstance, setProviderWebsocketInstance] = useState<Websocket>()
 
     const onLoad = (websocketInstance: Websocket) => {
@@ -42,5 +42,3 @@ const Provider = (props: Props) => {
         </React.Fragment>
     )
 }
-
-export default Provider

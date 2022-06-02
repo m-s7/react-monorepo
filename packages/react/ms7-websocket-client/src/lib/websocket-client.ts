@@ -21,7 +21,7 @@ export type Callback = (isConnected: boolean) => void
 
 export type StompProtocolClient = Client | undefined
 
-export default abstract class WebsocketClient implements Websocket {
+export abstract class WebsocketClient implements Websocket {
     private _username: string | undefined
     private _sessionId: string | undefined
     private readonly _url: string
