@@ -12,7 +12,8 @@ export default {
         '^Dummy/(.*)$': '<rootDir>/src/modules/dummy/$1',
     },
     transform: {
-        '^.+\\.tsx?$': 'ts-jest',
+        // "\\.[jt]sx?$": "babel-jest",
+        '^.+\\.[jt]sx?$': 'ts-jest',
     },
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
     setupFilesAfterEnv: [

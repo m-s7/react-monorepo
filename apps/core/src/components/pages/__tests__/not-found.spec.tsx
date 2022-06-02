@@ -1,24 +1,18 @@
 import React from 'react'
 import NotFound from '@/components/pages/not-found'
 import { MemoryRouter } from 'react-router-dom'
-import { screen, RenderResult } from '@testing-library/react'
-import { renderWithProvider } from '@/tests/utils/wrapper-utils'
+import { cleanup,  render, RenderResult } from '@testing-library/react'
 
-let wrapper: RenderResult
-let container: Element
-beforeEach(() => {
-    wrapper = renderWithProvider(<NotFound />, { wrapper: MemoryRouter })
-    container = wrapper.container
-})
+afterEach(cleanup)
 
 describe('<NotFound>', () => {
-    describe('should render', () => {
-        it('correct text', () => {
-            expect(screen.getByText('404 - Not Found')).toBeInTheDocument()
-        })
+    it('should render correct data', () => {
+        const component: RenderResult = render(
+            <MemoryRouter>
+                <NotFound />
+            </MemoryRouter>)
 
-        it('correct path', () => {
-            expect(container.querySelector('[href="/"]')).toHaveTextContent('Dashboard')
-        })
+        expect(component.queryByText('404 - Not Found')).toBeTruthy()
+        expect(component.container.querySelector('[href="/"]')).toHaveTextContent('Dashboard')
     })
 })

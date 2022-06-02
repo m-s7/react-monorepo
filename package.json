@@ -19,6 +19,6 @@
     "eslint": "^8.16.0",
     "eslint-config-react-ts": "*",
     "ts-config-react": "*",
-    "turbo": "^1.2.14"
+    "turbo": "^1.2.15"
   }
 }
