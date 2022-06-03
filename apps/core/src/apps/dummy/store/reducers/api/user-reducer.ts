@@ -1,7 +1,7 @@
 export {}
 // import { get, post, put, patch, remove } from '@/services/api-service'
 // import { createAsyncThunk } from '@reduxjs/toolkit'
-// import getConfig from 'Dummy/configs/module'
+// import conf from 'Dummy/configs/module'
 // import { getBaseUrlForModule } from '@/utils/router-utils'
 // import { User, UserBody } from 'Dummy/models/user/User'
 // import { AxiosResponse } from 'axios'

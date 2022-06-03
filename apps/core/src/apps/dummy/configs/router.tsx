@@ -5,7 +5,7 @@ import Static from 'Dummy/pages/static'
 import { RouterConfig } from '@/business/models/router'
 import IndexEntrypoint from 'Dummy/index'
 
-const getConfig = (): RouterConfig => ({
+const config: RouterConfig = {
     entrypoint: {
         baseUrl: '/dummy/*',
         component: IndexEntrypoint,
@@ -16,6 +16,6 @@ const getConfig = (): RouterConfig => ({
         { path: '/counter', component: Counter, title: 'Counter', breadcrumb: 'Counter' },
         { path: '/static', component: Static, title: 'Static', breadcrumb: 'Static' },
     ],
-})
+}
 
-export default getConfig
+export default config

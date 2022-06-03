@@ -1,9 +1,9 @@
 import { WebsocketConfig } from '@/business/models/app'
 import env from '@/env'
 
-const getConfig = (): WebsocketConfig => ({
+const config: WebsocketConfig = {
     name: 'dummy',
     url: env.REACT_APP_DUMMY_WEBSOCKET_URL,
-})
+}
 
-export default getConfig
+export default config

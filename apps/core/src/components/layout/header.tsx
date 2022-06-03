@@ -5,7 +5,7 @@ import styles from '@/components/layout/header.module.css'
 
 const Header = () => (
     <div className={styles.container}>
-        <PageTitle />
+        {/*<PageTitle />*/}
         <Breadcrumbs />
     </div>
 )

@@ -26,21 +26,21 @@ export const normalizeUrl = (url: string): string => {
 }
 
 export const getRoutes = (includeAppsRoutes = true): RouteConfig[] => {
-    const routes: RouteConfig[] = [...getConfigRouter().routes]
+    const appsRoutes: RouteConfig[] = [...getConfigRouter().routes]
     const appsRoutersConfigs: RouterConfig[] = (includeAppsRoutes ? getAppsRoutersConfigs() : [])
 
     appsRoutersConfigs.forEach(( { routes, entrypoint }) => {
         let relativeRoutes: RouteConfig[] = []
         if(entrypoint) {
             relativeRoutes = getRoutesWithRelativePaths(routes, entrypoint.baseUrl)
-            routes.push(...relativeRoutes)
+            appsRoutes.push(...relativeRoutes)
         }
         else
-            routes.push(...routes)
+            appsRoutes.push(...routes)
 
     })
 
-    return routes
+    return appsRoutes
 }
 
 export const getFlatRoutes = (routes: RouteConfig[], relativePaths?: boolean, parentPath?: string): RouteConfig[] => {

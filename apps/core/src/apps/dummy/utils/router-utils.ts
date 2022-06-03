@@ -1,9 +1,9 @@
-import getConfig from 'Dummy/configs/app'
+import config from 'Dummy/configs/app'
 import { isEmpty } from 'lodash'
-import { getBaseUrlForModule, normalizeUrl } from '@/utils/router-utils'
+import { getBaseUrlForModule } from '@/utils/router-utils'
 
 export const getBaseUrl = (path?: string): string => {
     if(isEmpty(path)) path = ''
 
-    return `${getBaseUrlForModule(getConfig())}/${path}`
+    return `${getBaseUrlForModule(config)}/${path}`
 }

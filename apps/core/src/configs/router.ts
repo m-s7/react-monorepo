@@ -10,7 +10,7 @@ import AboutOther from '@/pages/about-other'
 import { Optional } from '@/business/models/common'
 
 const { GUEST, USER, ADMIN } = Role
-const getConfig = (): Optional<RouterConfig, 'entrypoint'> => ({
+const config: Optional<RouterConfig, 'entrypoint'> = {
     routes: [
         { path: '/', component: Dashboard, title: 'Dashboard', breadcrumb: 'Dashboard' },
         { path: '/about', component: About, title: 'About', breadcrumb: 'About' },
@@ -42,6 +42,6 @@ const getConfig = (): Optional<RouterConfig, 'entrypoint'> => ({
             ],
         },
     ],
-})
+}
 
-export default getConfig
+export default config

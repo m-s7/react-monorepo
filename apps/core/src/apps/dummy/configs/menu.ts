@@ -1,6 +1,6 @@
 import { MenuConfig } from '@/business/models/menu'
 
-const getConfig = (): MenuConfig[] => [
+const config: MenuConfig[] = [
     { path: '#', name: 'Module1', icon: 'home',
         children: [
             { path: '/dummy', name: 'Dummy', icon: 'home' },
@@ -11,4 +11,4 @@ const getConfig = (): MenuConfig[] => [
     },
 ]
 
-export default getConfig
+export default config

@@ -2,7 +2,7 @@ import { MenuConfig } from '@/business/models/menu'
 import { Role } from '@/constants/role'
 
 const { GUEST, USER, ADMIN } = Role
-const getConfig = (): MenuConfig[] => [
+const config: MenuConfig[] = [
     { path: '/', name: 'Dashboard', icon: 'home' },
     { path: '#', name: 'User', icon: 'pizza-slice',
         children: [
@@ -34,4 +34,4 @@ const getConfig = (): MenuConfig[] => [
     },
 ]
 
-export default getConfig
+export default config
