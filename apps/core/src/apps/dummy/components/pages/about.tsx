@@ -3,10 +3,9 @@ import Layout from '@/layouts/layout'
 import BaseLink from '@/components/router/nav/base-link'
 import Button from '@/components/ui/button'
 import { getUsers, getUser, postUser, putUser, patchUser, removeUser } from 'Dummy/api/user-api'
-import { AxiosError } from 'axios'
+import { AxiosError } from '@ms7/restful-redux'
 import { User } from 'Dummy/business/models/user/user'
 import Card from '@/components/ui/card/card'
-import { getBaseUrl } from 'Dummy/utils/router-utils'
 
 type UserItemData = User | User[]
 
@@ -16,16 +15,14 @@ const About = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     const getData = async () => {
-        console.log('aaaa', getBaseUrl('users'))
-
         setIsLoading(true)
         setUsers(undefined)
         setError(undefined)
 
         await getUsers()
-            .then(data => setUsers(data))
-            .catch((error: AxiosError) => setError(error))
-            .finally(() => setIsLoading(false))
+            .then(data => { setUsers(data) })
+            .catch((error: AxiosError) => { setError(error) })
+            .finally(() => { setIsLoading(false) })
     }
 
     const getDataOne = async (id: number) => {
@@ -34,9 +31,9 @@ const About = () => {
         setError(undefined)
 
         await getUser(id)
-            .then(data => setUsers(data))
-            .catch((error: AxiosError) => setError(error))
-            .finally(() => setIsLoading(false))
+            .then(data => { setUsers(data) })
+            .catch((error: AxiosError) => { setError(error) })
+            .finally(() => { setIsLoading(false) })
     }
 
     const postData = async () => {
@@ -48,9 +45,9 @@ const About = () => {
             name: ['Avery', 'Grace', 'Chloe', 'Layla', 'Riley', 'Ellie', 'Alexa', 'Hazel', 'Sarah'][Math.floor(Math.random() * 9)],
             age: Math.floor(Math.random() * (100 - 1)) + 1,
         })
-            .then(data => setUsers(data))
-            .catch((error: AxiosError) => setError(error))
-            .finally(() => setIsLoading(false))
+            .then(data => { setUsers(data) })
+            .catch((error: AxiosError) => { setError(error) })
+            .finally(() => { setIsLoading(false) })
     }
 
     const putData = async (id: number) => {
@@ -62,9 +59,9 @@ const About = () => {
             name: ['Avery', 'Grace', 'Chloe', 'Layla', 'Riley', 'Ellie', 'Alexa', 'Hazel', 'Sarah'][Math.floor(Math.random() * 9)],
             age: Math.floor(Math.random() * (100 - 1)) + 1,
         })
-            .then(data => setUsers(data))
-            .catch((error: AxiosError) => setError(error))
-            .finally(() => setIsLoading(false))
+            .then(data => { setUsers(data) })
+            .catch((error: AxiosError) => { setError(error) })
+            .finally(() => { setIsLoading(false) })
     }
 
     const patchData = async (id: number) => {
@@ -75,9 +72,9 @@ const About = () => {
         await patchUser(id, {
             age: Math.floor(Math.random() * (10 - 1)) + 1,
         })
-            .then(data => setUsers(data))
-            .catch((error: AxiosError) => setError(error))
-            .finally(() => setIsLoading(false))
+            .then(data => { setUsers(data) })
+            .catch((error: AxiosError) => { setError(error) })
+            .finally(() => { setIsLoading(false) })
     }
 
     const removeData = async (id: number) => {
@@ -86,8 +83,8 @@ const About = () => {
         setError(undefined)
 
         await removeUser(id)
-            .catch((error: AxiosError) => setError(error))
-            .finally(() => setIsLoading(false))
+            .catch((error: AxiosError) => { setError(error) })
+            .finally(() => { setIsLoading(false) })
     }
 
     const getNormalizedUsers = (): User[] => {

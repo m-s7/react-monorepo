@@ -3,7 +3,8 @@ import KeycloakAuth from '@/business/auth/keycloak-auth'
 import { AuthProviderComponentProps } from '@/components/providers/auth-provider'
 import CriticalError from '@/components/critical-error'
 import FullPageLoader from '@/components/full-page-loader'
-import { setupApiServiceInterceptors } from '@/business/api-service'
+import ApiService from '@ms7/restful-redux'
+// import { setupApiServiceInterceptors } from '@/business/api-service'
 
 const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
     let keycloakAuth: KeycloakAuth
@@ -21,7 +22,7 @@ const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
                 const token = keycloakAuth.getToken()
 
                 if(token)
-                    setupApiServiceInterceptors(token, keycloakAuth.logout)
+                    ApiService.setupApiServiceInterceptors(token, keycloakAuth.logout)
             }
         })
 

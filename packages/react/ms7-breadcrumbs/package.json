@@ -1,7 +1,8 @@
 {
+  "private": true,
   "name": "@ms7/breadcrumbs",
-  "description": "A hook for generating breadcrumbs for react router",
   "version": "0.0.1",
+  "description": "A hook for generating breadcrumbs for react router",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",

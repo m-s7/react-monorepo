@@ -1,36 +1,42 @@
-# React Core
+# Core
 
-Minimal boilerplate for running modular react apps with redux, keycloak and websocket support.
+Core app created using react.
 
 ## Installation
-1. `git submodule update --init --recursive`
-2. `npm install`
-3. create `.env` file in project main directory (look at `.env.example` for required keys)
-4. run with `npm start`
 
-## Available Scripts
+Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install codebase.
 
-In the project directory, you can run:
+```bash
+yarn install
+```
 
-### `npm start`
+## Scripts
 
-Runs the app in the development mode.
+To run test suite:
+```bash
+yarn test
+```
 
-### `npm start-prod`
+To build apps and packages:
+```bash
+yarn build
+```
 
-Runs the app in the production mode.
+To start server in development mode:
+```bash
+yarn dev
+```
 
-### `npm run build`
+To start server in production mode:
+```bash
+yarn prod
+```
 
-Builds the app for production to the `dist` folder.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
+If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
 ## Injecting environmental variables
 
-After building static files you can inject env variables allowing for quick deploys with multiple configurations.
+After building static files you can inject env variables allowing for quick deployments with multiple configurations.
 
 Injects env variables.
 ```bash
@@ -41,3 +47,5 @@ Example
 ```bash
 REACT_APP_TITLE="injected env" REACT_APP_COLOR=green npm react-inject-env set
 ```
+
+If you need additional inject options check official docs [react-inject-env](https://github.com/codegowhere/react-inject-env).

@@ -27,11 +27,6 @@ To start server in development mode:
 yarn dev
 ```
 
-To start server in production mode:
-```bash
-yarn prod
-```
-
 If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
 ## Versioning

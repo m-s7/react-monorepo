@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '@/store/store'
-import ApiService from '@/business/api-service'
+import ApiService from './api-service'
 import { AxiosResponse } from 'axios'
 
 interface RestState {
@@ -21,7 +20,7 @@ export const getThunk = <R>() => createAsyncThunk(
     async (url: string): Promise<AxiosResponse<R>> => {
         await new Promise(r => setTimeout(r, 500))
 
-        return await ApiService.get<R>(url)
+        return await ApiService.service.get<R>(url)
     },
 )
 
@@ -31,7 +30,7 @@ export const postThunk = <R, D>() => createAsyncThunk(
         await new Promise(r => setTimeout(r, 500))
         const { url, body } = params
 
-        return await ApiService.post<R>(url, body)
+        return await ApiService.service.post<R>(url, body)
     },
 )
 
@@ -41,7 +40,7 @@ export const putThunk = <R, D>() => createAsyncThunk(
         await new Promise(r => setTimeout(r, 500))
         const { url, body } = params
 
-        return await ApiService.put<R>(url, body)
+        return await ApiService.service.put<R>(url, body)
     },
 )
 
@@ -51,7 +50,7 @@ export const patchThunk = <R, D>() => createAsyncThunk(
         await new Promise(r => setTimeout(r, 500))
         const { url, body } = params
 
-        return await ApiService.patch<R>(url, body)
+        return await ApiService.service.patch<R>(url, body)
     },
 )
 
@@ -60,11 +59,11 @@ export const removeThunk = () => createAsyncThunk(
     async (url: string): Promise<AxiosResponse> => {
         await new Promise(r => setTimeout(r, 500))
 
-        return await ApiService.delete(url)
+        return await ApiService.service.delete(url)
     },
 )
 
-export const restReducer = createSlice({
+export const restSlice = createSlice({
     name: 'rest',
     initialState,
     reducers: {
@@ -122,8 +121,8 @@ export const restReducer = createSlice({
     },
 })
 
-export const { setStatus } = restReducer.actions
+export const { setStatus } = restSlice.actions
 
-export const selectStatus = (state: RootState) => state.rest.status
+export const selectStatus = (state: any) => state.rest.status
 
-export default restReducer.reducer
+export const restReducer = restSlice.reducer

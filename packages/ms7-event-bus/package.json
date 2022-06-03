@@ -1,7 +1,8 @@
 {
+  "private": true,
   "name": "@ms7/event-bus",
-  "description": "Event bus for JavaScript",
   "version": "0.0.1",
+  "description": "Event bus for JavaScript",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
