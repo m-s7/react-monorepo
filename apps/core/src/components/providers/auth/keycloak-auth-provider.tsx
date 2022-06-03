@@ -13,7 +13,7 @@ const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
     useEffect(() => {
         if(keycloakAuth) return
 
-        keycloakAuth = new KeycloakAuth((isAuthenticated, error) : void => {
+        keycloakAuth = new KeycloakAuth(props.config,(isAuthenticated, error) : void => {
             setIsAuthenticated(isAuthenticated)
             setError(error)
 

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import CriticalError from '@/components/critical-error'
 import FullPageLoader from '@/components/full-page-loader'
 import FatalError from '@/business/models/errors/fatal-error'
-import ConfigManager from '@/business/config-manager'
 import { logging } from '@/business/log-manager'
 import { getFlatRoutes, getRoutes } from '@/utils/router-utils'
 import AppRouter from '@/app-router'
 import AuthProvider from '@/components/providers/auth-provider'
 import KeycloakAuthProvider from '@/components/providers/auth/keycloak-auth-provider'
 import EventBus from '@ms7/event-bus'
+import env from '@/env'
 
 const App = () => {
     const logger = logging.getLogger('core')
@@ -32,8 +32,6 @@ const App = () => {
     }, [])
 
     const initialize = async () => {
-        if(!await loadConfiguration()) return
-
         if(!validateRouter()) return
 
         // initializeLogger(appsConfigs)
@@ -41,20 +39,6 @@ const App = () => {
         setIsInitialized(true)
     }
 
-    const loadConfiguration = async (): Promise<boolean> =>
-        await new ConfigManager().loadConfig()
-            .then(config => {
-                logger.debug('Configuration file loaded', config)
-
-                return true
-            })
-            .catch(error => {
-                const message = 'Unable to load configuration file'
-                setError(new FatalError('Config', message))
-                logger.debug(message, error)
-
-                return false
-            })
     const validateRouter = () => {
         const routes = getFlatRoutes(getRoutes())
         for(const route of routes) {
@@ -127,7 +111,9 @@ const App = () => {
     }
 
     return (
-        <AuthProvider provider={KeycloakAuthProvider}>
+        <AuthProvider
+            provider={KeycloakAuthProvider}
+            config={{ url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID }}>
             <AppRouter />
         </AuthProvider>
     )

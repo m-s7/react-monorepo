@@ -1,40 +1,44 @@
-import Keycloak, { KeycloakConfig } from 'keycloak-js'
-import { getConfigValue } from '@/business/config-manager'
+import Keycloak from 'keycloak-js'
 import { isEmpty } from 'lodash'
 import { logging } from '@/business/log-manager'
 import FatalError from '@/business/models/errors/fatal-error'
 import { Auth } from '@/business/auth/auth'
 
-type KeycloakCallback = (isAuthenticated: boolean, error?: Error | undefined) => void
+interface KeycloakCallback {
+    (isAuthenticated: boolean, error?: Error | undefined): void,
+}
+
+export interface KeycloakConfig {
+    url: string,
+    realm: string,
+    clientId: string,
+}
 
 class KeycloakAuth implements Auth {
     private readonly logger = logging.getLogger('keycloak')
+    private readonly config: KeycloakConfig
     private readonly callback: KeycloakCallback
 
     private keycloak: Keycloak.KeycloakInstance | undefined = undefined
     private tokenRefreshRunner: number | undefined
     private _isAuthenticated = false
 
-    constructor(callback: KeycloakCallback) {
+    //TODO: singleton but require context???!!!
+    constructor(config: KeycloakConfig, callback: KeycloakCallback) {
+        this.config = config
         this.callback = callback
     }
 
     public async init(): Promise<void> {
-        const config: KeycloakConfig = {
-            'url': (getConfigValue('keycloak', 'url') || ''),
-            'realm': (getConfigValue('keycloak', 'realm') || ''),
-            'clientId': (getConfigValue('keycloak', 'clientid') || ''),
-        }
-
-        if(isEmpty(config.url) || isEmpty(config.realm) || isEmpty(config.clientId)) {
-            this.callback(false, new FatalError('Keycloak', KeycloakAuth.getConfigError(config)))
+        if(isEmpty(this.config.realm) || isEmpty(this.config.clientId)) {
+            this.callback(false, new FatalError('Keycloak', KeycloakAuth.getConfigError(this.config)))
             return
         }
 
-        this.keycloak = new Keycloak(config)
+        this.keycloak = new Keycloak(this.config)
         this.startEventWatcher()
 
-        this.logger.debug('Service started', config)
+        this.logger.debug('Service started', this.config)
 
         await this.keycloak
             .init({ onLoad: 'login-required' })
@@ -88,7 +92,7 @@ class KeycloakAuth implements Auth {
             window.clearInterval(this.tokenRefreshRunner)
 
         const baseUrl = window.location.origin
-        const keycloakBaseUrl = KeycloakAuth.getKeycloakBaseUrl()
+        const keycloakBaseUrl = this.getKeycloakBaseUrl()
 
         if(!baseUrl || !keycloakBaseUrl) return
 
@@ -144,11 +148,8 @@ class KeycloakAuth implements Auth {
         }
     }
 
-    private static getKeycloakBaseUrl(): string | undefined {
-        const url = getConfigValue('keycloak', 'url')
-        const realm = getConfigValue('keycloak', 'realm')
-
-        if(!url || !realm) return
+    private getKeycloakBaseUrl(): string | undefined {
+        const { url, realm } = this.config
 
         return `${url}/realms/${realm}/protocol/openid-connect`
     }

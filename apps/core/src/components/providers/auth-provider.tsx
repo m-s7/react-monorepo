@@ -1,6 +1,8 @@
+import { KeycloakConfig } from '@/business/auth/keycloak-auth'
 import React, { createContext, useState } from 'react'
 
 interface Props {
+    config: KeycloakConfig,
     provider: AuthProviderComponentType,
     children: React.ReactNode | React.ReactNode[],
 }
@@ -15,8 +17,9 @@ export interface Auth {
 }
 
 export interface AuthProviderComponentProps {
-    children: React.ReactNode | React.ReactNode[],
+    config: KeycloakConfig,
     onLoad: (authInstance: Auth) => void,
+    children: React.ReactNode | React.ReactNode[],
 }
 
 type AuthProviderComponentType = React.ComponentType<AuthProviderComponentProps>
@@ -36,6 +39,7 @@ const AuthProvider = (props: Props) => {
     return (
         <React.Fragment>
             <Provider
+                config={props.config}
                 onLoad={authInstance => onLoad(authInstance)}>
                 {providerAuthInstance &&
                     <AuthProviderContext.Provider value={providerAuthInstance}>

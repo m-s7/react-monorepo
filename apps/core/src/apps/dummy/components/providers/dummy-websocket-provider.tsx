@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import getConfig from 'Dummy/configs/app'
-import { getConfigValue } from '@/business/config-manager'
 import FatalError from '@/business/models/errors/fatal-error'
 import DummyWebsocketClient from 'Dummy/business/websocket-client'
 import { setClient } from 'Dummy/store/reducers/websocket-reducer'
@@ -23,17 +22,14 @@ const DummyWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     useEffect(() => {
         if(websocketClient) return
 
-        const { key, websocket } = getConfig()
+        const { websocket } = getConfig()
         if(websocket) {
             const { url, name, headers } = websocket
-            const wsUrl = (getConfigValue(key, url) as string)
-            if(!wsUrl)
-                setError(new FatalError(name, 'Invalid ws url syntax'))
 
             const token = authContext?.getToken()
             const callback = (isConnected: boolean): void => { setIsConnected(isConnected) }
 
-            websocketClient = new DummyWebsocketClient(callback, token, name, wsUrl, headers)
+            websocketClient = new DummyWebsocketClient(callback, token, name, url, headers)
             websocketClient.connect()
 
             dispatch(setClient(websocketClient))

@@ -13,11 +13,11 @@ type EnvType = {
     REACT_APP_KEYCLOAK_CLIENTID: string,
 
     REACT_APP_MAP: boolean,
-    REACT_APP_MAP_SERVER_URL: string,
+    REACT_APP_MAP_API_URL: string,
     REACT_APP_MAP_WEBSOCKET_URL: string,
 
     REACT_APP_DUMMY: boolean,
-    REACT_APP_DUMMY_SERVER_URL: string,
+    REACT_APP_DUMMY_API_URL: string,
     REACT_APP_DUMMY_WEBSOCKET_URL: string,
 }
 const env: EnvType = { ...process.env, ...window.env }

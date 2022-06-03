@@ -1,11 +1,10 @@
-import { getConfigValue } from '@/business/config-manager'
 import { AppConfig } from '@/business/models/app'
 import { getConfigRouter } from '@/configs/app'
 import { RouteConfig, RouterConfig } from '@/business/models/router'
 import { getAppsRoutersConfigs } from '@/utils/apps-utils'
 
 export const getBaseUrlForModule = (config: AppConfig): string => {
-    const value = getConfigValue(config.key, config.url)
+    const value = config.apiUrl
 
     return (value ?? '')
 }

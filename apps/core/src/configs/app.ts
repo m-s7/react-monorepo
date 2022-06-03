@@ -3,7 +3,7 @@ import getRouterConfig from '@/configs/router'
 import { AppConfig } from '@/business/models/app'
 import { Optional } from '@/business/models/common'
 
-const getConfig = (): Optional<AppConfig, 'key' | 'active' | 'title' | 'url' | 'log'> => ({
+const getConfig = (): Optional<AppConfig, 'key' | 'active' | 'title' | 'apiUrl' | 'log'> => ({
     menu: getMenuConfig(),
     router: getRouterConfig(),
 })

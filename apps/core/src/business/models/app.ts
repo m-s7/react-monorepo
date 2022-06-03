@@ -9,15 +9,15 @@ export interface StoreConfig {
 
 export interface WebsocketConfig {
     readonly name: string,
-    readonly url: 'wsurl',
+    readonly url: string,
     readonly headers?: Readonly<StringDictionary>,
 }
 
 export interface AppConfig {
     readonly key: string,
-    readonly active: 'active',
+    readonly active: boolean,
     readonly title: string,
-    readonly url: 'url',
+    readonly apiUrl?: string,
     readonly log: Readonly<{ name: string, min: LogLevel }>,
     readonly menu: MenuConfig[],
     readonly router: RouterConfig,
