@@ -27,3 +27,17 @@ Builds the app for production to the `dist` folder.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.
+
+## Injecting environmental variables
+
+After building static files you can inject env variables allowing for quick deploys with multiple configurations.
+
+Injects env variables.
+```bash
+[env variables] npx react-inject-env set
+```
+
+Example
+```bash
+REACT_APP_TITLE="injected env" REACT_APP_COLOR=green npm react-inject-env set
+```

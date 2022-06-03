@@ -5,6 +5,7 @@ import Card from '@/components/ui/card/card'
 import Button from '@/components/ui/button'
 import EventBus from '@ms7/event-bus'
 import { uniqueId } from 'lodash'
+import env from '@/env'
 
 const About = () => {
     useEffect(() => {
@@ -13,6 +14,8 @@ const About = () => {
         })
         EventBus.subscribe('test-channel', x => {
             console.log('MSG REC ABT1', x)
+            console.log(env)
+            console.log(env.REACT_APP_DUMMY_WEBSOCKET_URL)
         })
         EventBus.subscribeOnce('test-channel', x => {
             console.log('MSG REC ABT2', x)
