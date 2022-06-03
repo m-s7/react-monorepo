@@ -1,14 +1,13 @@
 import { MenuConfig } from '@/business/models/menu'
 import { getConfigMenu } from '@/configs/app'
 import { Location, matchPath } from 'react-router-dom'
-import { getAppsConfigs } from '@/utils/apps-utils'
+import { getAppsMenusConfigs } from '@/utils/apps-utils'
 
 export const getMenu = () => {
     const menu: MenuConfig[] = [...getConfigMenu()]
-    const appsConfigs = getAppsConfigs()
 
-    appsConfigs.forEach(moduleConfig => {
-        menu.push(...moduleConfig.menu)
+    getAppsMenusConfigs().forEach(appMenu => {
+        menu.push(...appMenu)
     })
 
     return menu

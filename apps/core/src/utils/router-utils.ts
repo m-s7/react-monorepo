@@ -1,8 +1,8 @@
 import { getConfigValue } from '@/business/config-manager'
 import { AppConfig } from '@/business/models/app'
 import { getConfigRouter } from '@/configs/app'
-import { RouteConfig } from '@/business/models/router'
-import { getAppsConfigs } from '@/utils/apps-utils'
+import { RouteConfig, RouterConfig } from '@/business/models/router'
+import { getAppsRoutersConfigs } from '@/utils/apps-utils'
 
 export const getBaseUrlForModule = (config: AppConfig): string => {
     const value = getConfigValue(config.key, config.url)
@@ -28,13 +28,12 @@ export const normalizeUrl = (url: string): string => {
 
 export const getRoutes = (includeAppsRoutes = true): RouteConfig[] => {
     const routes: RouteConfig[] = [...getConfigRouter().routes]
-    const appsConfigs = (includeAppsRoutes ? getAppsConfigs() : [])
-    
-    appsConfigs.forEach(appConfig => {
-        const { router } = appConfig
+    const appsRoutersConfigs: RouterConfig[] = (includeAppsRoutes ? getAppsRoutersConfigs() : [])
+
+    appsRoutersConfigs.forEach(( { routes, entrypoint }) => {
         let relativeRoutes: RouteConfig[] = []
-        if(router.entrypoint) {
-            relativeRoutes = getRoutesWithRelativePaths(router.routes, router.entrypoint.baseUrl)
+        if(entrypoint) {
+            relativeRoutes = getRoutesWithRelativePaths(routes, entrypoint.baseUrl)
             routes.push(...relativeRoutes)
         }
         else

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import CriticalError from '@/components/critical-error'
-import { getAppsConfigs } from '@/utils/apps-utils'
 import FullPageLoader from '@/components/full-page-loader'
 import FatalError from '@/business/models/errors/fatal-error'
 import ConfigManager from '@/business/config-manager'
@@ -37,12 +36,9 @@ const App = () => {
     const initialize = async () => {
         if(!await loadConfiguration()) return
 
-        const appsConfigs = loadAppsConfigs()
-        if(!appsConfigs) return
-
         if(!validateRouter()) return
 
-        initializeLogger(appsConfigs)
+        // initializeLogger(appsConfigs)
 
         setIsInitialized(true)
     }
@@ -61,20 +57,6 @@ const App = () => {
 
                 return false
             })
-    const loadAppsConfigs = (): AppConfig[] | undefined => {
-        try {
-            const appsConfigs = getAppsConfigs()
-
-            logger.debug('Apps configuration loaded', appsConfigs)
-
-            return appsConfigs
-        }
-        catch(error) {
-            const message = 'Unable to load apps configuration files'
-            setError(new FatalError('Config', message))
-            logger.debug(message, error)
-        }
-    }
     const validateRouter = () => {
         const routes = getFlatRoutes(getRoutes())
         for(const route of routes) {
@@ -135,11 +117,11 @@ const App = () => {
 
         return true
     }
-    const initializeLogger = (appsConfigs: AppConfig[]) => {
-        const loggerMinLevels: LogOptions = { minLevels: {}}
-        appsConfigs.forEach(appConfig => loggerMinLevels.minLevels[appConfig.log.name] = appConfig.log.min)
-        logging.addConfigurationOption(loggerMinLevels)
-    }
+    // const initializeLogger = (appsConfigs: AppConfig[]) => {
+    //     const loggerMinLevels: LogOptions = { minLevels: {}}
+    //     appsConfigs.forEach(appConfig => loggerMinLevels.minLevels[appConfig.log.name] = appConfig.log.min)
+    //     logging.addConfigurationOption(loggerMinLevels)
+    // }
 
     if(!isInitialized) {
         if(error) return (<CriticalError error={error} />)
