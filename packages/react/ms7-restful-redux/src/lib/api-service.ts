@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
-import { getThunk, postThunk, putThunk, patchThunk, removeThunk } from './rest-reducer'
+import { getThunk, postThunk, putThunk, patchThunk, removeThunk, restReducer, restSlice } from './rest-reducer'
+
 
 class ApiService {
     private store: any
@@ -10,7 +11,19 @@ class ApiService {
     }
 
     public setStore(store: any) {
-        this.store = store
+        if(!store || !store.getState())
+            throw new Error('Invalid store instance')
+
+        for(const key of Object.keys(store.getState())) {
+            const reducer = store.getState()[key]
+            if(JSON.stringify(Object.keys(reducer)) === JSON.stringify(Object.keys(restSlice.getInitialState()))) {
+                this.store = store
+
+                return
+            }
+        }
+
+        throw new Error('Invalid store instance, store must contain restReducer')
     }
 
     public setupApiServiceInterceptors(token: string, logout: () => void) {
