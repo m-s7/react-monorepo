@@ -1,4 +1,4 @@
-import { LogLevel } from '@/constants/logger'
+import { LogLevel } from '@ms7/logger'
 import { RouterConfig } from '@/business/models/router'
 import { ReducerDictionary, StringDictionary } from '@/business/models/common'
 import { MenuConfig } from '@/business/models/menu'

@@ -36,14 +36,14 @@ If you need more build options use [turbo](https://turborepo.org/docs/core-conce
 
 ## Injecting environmental variables
 
-After building static files you can inject env variables allowing for quick deployments with multiple configurations.
+After building static files you can inject env variables allowing for quick deployment with multiple configurations.
 
-Injects env variables.
+To inject env variables:
 ```bash
 [env variables] npx react-inject-env set
 ```
 
-Example
+Example:
 ```bash
 REACT_APP_TITLE="injected env" REACT_APP_COLOR=green npm react-inject-env set
 ```

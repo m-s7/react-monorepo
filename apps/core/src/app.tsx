@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CriticalError from '@/components/critical-error'
 import FullPageLoader from '@/components/full-page-loader'
 import FatalError from '@/business/models/errors/fatal-error'
-import { logging } from '@/business/log-manager'
+import { logging } from '@ms7/logger'
 import { getFlatRoutes, getRoutes } from '@/utils/router-utils'
 import AppRouter from '@/app-router'
 import AuthProvider from '@/components/providers/auth-provider'
@@ -26,7 +26,6 @@ const App = () => {
     }, [])
 
     useEffect(() => () => {
-
         EventBus.unsubscribe('test-channel')
         EventBus.unregister('test-channel')
     }, [])

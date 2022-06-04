@@ -17,6 +17,7 @@
     "@ms7/breadcrumbs": "*",
     "@ms7/page-title": "*",
     "@ms7/event-bus": "*",
+    "@ms7/logger": "*",
     "@ms7/websocket-client": "*",
     "@ms7/restful-redux": "*",
     "@reduxjs/toolkit": "^1.8.1",

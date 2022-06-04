@@ -1,6 +1,6 @@
 import Keycloak from 'keycloak-js'
 import { isEmpty } from 'lodash'
-import { logging } from '@/business/log-manager'
+import { logging } from '@ms7/logger'
 import FatalError from '@/business/models/errors/fatal-error'
 import { Auth } from '@/business/auth/auth'
 
