@@ -1,6 +1,21 @@
-import EventEmitter from 'events'
-import { LogLevel } from '@/constants/logger'
-import { LogEntry } from '@/business/models/logger'
+import { EventEmitter } from 'events'
+
+export enum LogLevel {
+    NONE = 'none',
+    TRACE = 'trace',
+    DEBUG = 'debug',
+    INFO = 'info',
+    WARN = 'warn',
+    ERROR = 'error',
+}
+
+export interface LogEntry {
+    level: LogLevel,
+    module: string,
+    location?: string,
+    message: string,
+    data: unknown[],
+}
 
 export class Logger {
     private readonly logManager: EventEmitter

@@ -1,4 +1,4 @@
-import { Logger } from '@/business/logger/logger'
+import { Logger } from '@ms7/logger'
 import { AnyAction } from '@reduxjs/toolkit'
 import { getPathnameFromUrl } from '@/utils/router-utils'
 

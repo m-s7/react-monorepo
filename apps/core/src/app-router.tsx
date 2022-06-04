@@ -9,8 +9,6 @@ const AppRouter = () => {
     const routes = getRoutes()
     const entrypoints = getAppsEntrypointsConfigs()
 
-    console.log('SO EASY', entrypoints)
-
     return (
         <Routes>
             {AppRouterGenerator(routes)}

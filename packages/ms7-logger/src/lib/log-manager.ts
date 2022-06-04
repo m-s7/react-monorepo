@@ -1,7 +1,9 @@
 import { EventEmitter } from 'events'
-import { Logger } from '@/business/logger/logger'
-import { LogLevel } from '@/constants/logger'
-import { LogEntry, LogOptions } from '@/business/models/logger'
+import { Logger, LogLevel, LogEntry } from './logger'
+
+interface LogOptions {
+    minLevels: { [x: string]: LogLevel },
+}
 
 export class LogManager extends EventEmitter {
     private options: LogOptions = {
