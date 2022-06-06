@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { Role } from '@/constants/role'
+import { Role } from '@ms7/auth-providers'
 
 export interface MenuConfig {
     readonly path: string,

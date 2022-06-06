@@ -12,7 +12,6 @@ import env from '@/env'
 
 const App = () => {
     const logger = logging.getLogger('core')
-    const CriticalError = (props: { error: Error }) => (<div>{props.error.message}</div>)
 
     const [error, setError] = useState<Error>()
     const [isInitialized, setIsInitialized] = useState(false)
@@ -33,8 +32,6 @@ const App = () => {
 
     const initialize = async () => {
         if(!validateRouter()) return
-
-        // initializeLogger(appsConfigs)
 
         setIsInitialized(true)
     }
@@ -99,11 +96,6 @@ const App = () => {
 
         return true
     }
-    // const initializeLogger = (appsConfigs: AppConfig[]) => {
-    //     const loggerMinLevels: LogOptions = { minLevels: {}}
-    //     appsConfigs.forEach(appConfig => loggerMinLevels.minLevels[appConfig.log.name] = appConfig.log.min)
-    //     logging.addConfigurationOption(loggerMinLevels)
-    // }
 
     if(!isInitialized) {
         if(error) return (<CriticalError error={error} />)

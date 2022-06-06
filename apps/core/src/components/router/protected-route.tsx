@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import NotFound from '@/pages/not-found'
 import { hasRoles } from '@/utils/app-utils'
-import { Role } from '@/constants/role'
+import { Role } from '@ms7/auth-providers'
 import { AuthProviderContext } from '@ms7/auth-providers'
 
 interface Props {

@@ -4,9 +4,9 @@ import BaseLink from '@/components/router/nav/base-link'
 import LayoutEmpty from '@/layouts/layout-empty'
 import CardCenterSmall from '@/components/ui/card/card-center-small'
 
-interface NotFoundProps { error: FatalError, allowNavigation?: boolean }
+interface Props { error: FatalError, allowNavigation?: boolean }
 
-const CriticalError = (props: NotFoundProps) => (
+const CriticalError = (props: Props) => (
     <LayoutEmpty>
         <CardCenterSmall>
             <h2>{`${props.error.name} - ${props.error.message}`}</h2>

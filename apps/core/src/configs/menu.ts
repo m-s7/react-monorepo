@@ -1,5 +1,5 @@
 import { MenuConfig } from '@/business/models/menu'
-import { Role } from '@/constants/role'
+import { Role } from '@ms7/auth-providers'
 
 const { GUEST, USER, ADMIN } = Role
 const config: MenuConfig[] = [

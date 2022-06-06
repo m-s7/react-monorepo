@@ -1,4 +1,4 @@
-import { Role } from '@/constants/role'
+import { Role } from '@ms7/auth-providers'
 import { AuthModel } from '@ms7/auth-providers'
 
 export const isDev = (): boolean => (process.env.NODE_ENV !== 'production')
