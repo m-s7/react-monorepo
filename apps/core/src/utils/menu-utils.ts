@@ -1,4 +1,4 @@
-import { MenuConfig } from '@/business/models/menu'
+import { MenuConfig } from '@ms7/common'
 import { getConfigMenu } from '@/configs/app'
 import { Location, matchPath } from 'react-router-dom'
 import { getAppsMenusConfigs } from '@/utils/apps-utils'

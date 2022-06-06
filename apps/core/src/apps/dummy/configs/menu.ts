@@ -1,4 +1,4 @@
-import { MenuConfig } from '@/business/models/menu'
+import { MenuConfig } from '@ms7/common'
 
 const config: MenuConfig[] = [
     { path: '#', name: 'Module1', icon: 'home',

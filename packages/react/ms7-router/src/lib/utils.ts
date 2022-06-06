@@ -1,4 +1,4 @@
-import { RouteConfig, RouterConfig } from './models'
+import { RouteConfig, RouterConfig } from './types'
 import { AuthModel, Role } from '@ms7/auth-providers'
 
 export const hasRoles = (roles: Role[], authContext?: AuthModel): boolean => {

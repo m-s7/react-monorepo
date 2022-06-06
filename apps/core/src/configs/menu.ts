@@ -1,4 +1,4 @@
-import { MenuConfig } from '@/business/models/menu'
+import { MenuConfig } from '@ms7/common'
 import { Role } from '@ms7/auth-providers'
 
 const { GUEST, USER, ADMIN } = Role

@@ -7,7 +7,7 @@ import Account from '@/pages/user/account'
 import About from '@/pages/about'
 import AboutChild from '@/pages/about-child'
 import AboutOther from '@/pages/about-other'
-import { Optional } from '@/business/models/common'
+import { Optional } from '@ms7/common'
 import LayoutRed from '@/layouts/layout-red'
 
 const { GUEST, USER, ADMIN } = Role

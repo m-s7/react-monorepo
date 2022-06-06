@@ -1,6 +1,6 @@
 import React, { ElementType } from 'react'
 import { Route } from 'react-router-dom'
-import { RouteConfig } from './models'
+import { RouteConfig } from './types'
 import ProtectedRoute from './protected-route'
 
 export const RouterGenerator = (routes: RouteConfig[], component404: ElementType, parentLayout?: ElementType): JSX.Element[] => routes.map(({ path, index, roles, component, layout, children }, idx) => {

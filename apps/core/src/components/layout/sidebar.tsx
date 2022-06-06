@@ -6,7 +6,7 @@ import Icon from '@/components/ui/icon'
 import { useLocation } from 'react-router-dom'
 import AppMenuGenerator from '@/components/generators/app-menu-generator'
 import { getMenu } from '@/utils/menu-utils'
-import { MenuConfig } from '@/business/models/menu'
+import { MenuConfig } from '@ms7/common'
 import { AuthProviderContext } from '@ms7/auth-providers'
 
 const Sidebar = () => {

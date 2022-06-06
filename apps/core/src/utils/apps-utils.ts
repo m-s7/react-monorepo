@@ -1,9 +1,9 @@
-import { AppConfig } from '@/business/models/app'
-import { Necessary } from '@/business/models/common'
+import { AppConfig } from '@ms7/common'
+import { Necessary } from '@ms7/common'
 import { RouteEntrypointConfig, RouterConfig } from '@ms7/router'
 import mapConfig from 'Map/configs/app'
 import dummyConfig from 'Dummy/configs/app'
-import { MenuConfig } from '@/business/models/menu'
+import { MenuConfig } from '@ms7/common'
 
 const getAppsConfigs = (): AppConfig[] => [dummyConfig, mapConfig].filter(config => config.active)
 export const getAppsMenusConfigs = (): MenuConfig[][] => getAppsConfigs().map(({ menu }) => menu)

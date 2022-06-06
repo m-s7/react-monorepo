@@ -1,10 +1,10 @@
 import menuConfig from 'Dummy/configs/menu'
 import routerConfig from 'Dummy/configs/router'
 import websocketConfig from 'Dummy/configs/websocket'
-import { AppConfig } from '@/business/models/app'
+import { AppConfig } from '@ms7/common'
 import { getLogLevelForEnv } from '@ms7/logger'
 import { RouterConfig } from '@ms7/router'
-import env from '@/env'
+import { env } from '@ms7/common'
 
 const config: AppConfig = {
     key: 'dummy',

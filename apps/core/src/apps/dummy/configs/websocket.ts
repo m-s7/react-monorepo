@@ -1,5 +1,5 @@
-import { WebsocketConfig } from '@/business/models/app'
-import env from '@/env'
+import { WebsocketConfig } from '@ms7/common'
+import { env } from '@ms7/common'
 
 const config: WebsocketConfig = {
     name: 'dummy',

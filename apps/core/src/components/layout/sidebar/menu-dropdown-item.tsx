@@ -4,7 +4,7 @@ import Icon from '@/components/ui/icon'
 import Link from '@/components/router/nav/link'
 import { getActiveMenuNode, getFlatMenu } from '@/utils/menu-utils'
 import { useLocation } from 'react-router-dom'
-import { MenuConfig } from '@/business/models/menu'
+import { MenuConfig } from '@ms7/common'
 import { Role } from '@ms7/auth-providers'
 
 interface MenuDropdownItemProps extends React.HTMLAttributes<HTMLElement> {

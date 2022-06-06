@@ -1,6 +1,6 @@
 import { has, isEmpty } from 'lodash'
 import { Map, LayerGroup, Marker } from 'leaflet'
-import { CustomTypeDictionary } from '@/business/models/common'
+import { CustomTypeDictionary } from '@ms7/common'
 
 interface MarkerManagerActions {
     addMarker(marker: Marker, layerGroup: string): LayerGroup,

@@ -4,7 +4,7 @@ import Card from '@/components/ui/card/card'
 import Button from '@/components/ui/button'
 import EventBus from '@ms7/event-bus'
 import { uniqueId } from 'lodash'
-import env from '@/env'
+import { env } from '@ms7/common'
 
 const About = () => {
     useEffect(() => {

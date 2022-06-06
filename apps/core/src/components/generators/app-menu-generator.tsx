@@ -1,4 +1,4 @@
-import { MenuConfig } from '@/business/models/menu'
+import { MenuConfig } from '@ms7/common'
 import React from 'react'
 import MenuItem from '@/components/layout/sidebar/menu-item'
 import MenuDropdownItem from '@/components/layout/sidebar/menu-dropdown-item'
