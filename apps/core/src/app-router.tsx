@@ -4,6 +4,7 @@ import AppRouterGenerator from '@/components/generators/app-router-generator'
 import NotFound from '@/pages/not-found'
 import { getRoutes } from '@/utils/router-utils'
 import { getAppsEntrypointsConfigs } from '@/utils/apps-utils'
+import Layout from '@/layouts/layout'
 
 const AppRouter = () => {
     const routes = getRoutes()
@@ -11,14 +12,14 @@ const AppRouter = () => {
 
     return (
         <Routes>
-            {AppRouterGenerator(routes)}
+            {AppRouterGenerator(routes, Layout)}
             {entrypoints.map(({ baseUrl, component }, index) => {
                 const Component = component
                 return (
                     <Route
                         key={`app-entrypoint-${index}`}
                         path={baseUrl}
-                        element={<Component />} />
+                        element={<Component parentLayout={Layout} />} />
                 )
             })}
             <Route

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { ElementType, useEffect } from 'react'
 import AppRouter from 'Dummy/app-router'
 import { useAppDispatch } from 'Dummy/hooks/use-app-dispatch'
 import { reset as resetPersonReducer } from 'Dummy/store/reducers/person-reducer'
@@ -8,7 +8,11 @@ import { Provider as WebsocketProvider } from '@ms7/websocket-client'
 import DummyWebsocketProvider from 'Dummy/components/providers/dummy-websocket-provider'
 import EventBus from '@ms7/event-bus'
 
-const App = () => {
+interface Props {
+    parentLayout?: React.ElementType,
+}
+
+const App = (props: Props) => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -24,7 +28,7 @@ const App = () => {
 
     return (
         <WebsocketProvider provider={DummyWebsocketProvider}>
-            <AppRouter />
+            <AppRouter {...props} />
         </WebsocketProvider>
     )
 }

@@ -8,13 +8,14 @@ import About from '@/pages/about'
 import AboutChild from '@/pages/about-child'
 import AboutOther from '@/pages/about-other'
 import { Optional } from '@/business/models/common'
+import LayoutRed from '@/layouts/layout-red'
 
 const { GUEST, USER, ADMIN } = Role
 const config: Optional<RouterConfig, 'entrypoint'> = {
     routes: [
         { path: '/', component: Dashboard, title: 'Dashboard', breadcrumb: 'Dashboard' },
-        { path: '/about', component: About, title: 'About', breadcrumb: 'About' },
-        { path: '/about/child', component: AboutChild, roles: [ADMIN], title: 'Child', breadcrumb: 'AboutChild' },
+        { path: '/about', component: About, title: 'About', breadcrumb: 'About', layout: LayoutRed },
+        { path: '/about/child', component: AboutChild, roles: [GUEST], title: 'Child', breadcrumb: 'AboutChild' },
         { path: '/about/other', component: AboutOther, title: 'Other', breadcrumb: 'AboutOther' },
         { path: '/about/:id/:name/:age', component: About, title: 'With Params', breadcrumb: 'With Params' },
         { path: '/about/deeper', component: AboutOther, title: 'Deeper', breadcrumb: 'Deeper' },

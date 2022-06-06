@@ -1,9 +1,13 @@
 import React from 'react'
 import AppRouter from 'Map/app-router'
 
-const App = () =>  (
+interface Props {
+    parentLayout?: React.ElementType,
+}
+
+const App = (props: Props) =>  (
     <React.Fragment>
-        <AppRouter />
+        <AppRouter {...props} />
     </React.Fragment>
 )
 

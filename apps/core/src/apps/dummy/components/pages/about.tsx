@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Layout from '@/layouts/layout'
 import BaseLink from '@/components/router/nav/base-link'
 import Button from '@/components/ui/button'
 import { getUsers, getUser, postUser, putUser, patchUser, removeUser } from 'Dummy/api/user-api'
@@ -95,62 +94,60 @@ const About = () => {
     }
 
     return (
-        <Layout>
-            <Card fillViewport={true}>
-                <h2>{'Dummy About!'}</h2>
-                <h5>{'Dashboard:'}</h5>
-                <BaseLink
-                    to='/'
-                    text='Dashboard' />
-                <h5>{'Dummy App:'}</h5>
-                <BaseLink
-                    to='/dummy'
-                    text='Dummy' />
-                <BaseLink
-                    to='/dummy/counter'
-                    text='Dummy Counter' />
-                <h5>{'Users:'}</h5>
-                <Button
-                    disabled={isLoading}
-                    onClick={() => getData()}>
-                    {'GET'}
-                </Button>
-                <Button
-                    disabled={isLoading}
-                    onClick={() => getDataOne(Math.floor(Math.random() * 10))}>
-                    {'GET1'}
-                </Button>
-                <Button
-                    disabled={isLoading}
-                    onClick={() => postData()}>
-                    {'POST'}
-                </Button>
-                <Button
-                    disabled={isLoading}
-                    onClick={() => putData(Math.floor(Math.random() * 10))}>
-                    {'PUT'}
-                </Button>
-                <Button
-                    disabled={isLoading}
-                    onClick={() => patchData(Math.floor(Math.random() * 10))}>
-                    {'PATCH'}
-                </Button>
-                <Button
-                    disabled={isLoading}
-                    onClick={() => removeData(Math.floor(Math.random() * 10))}>
-                    {'REMOVE'}
-                </Button>
-                <h5>{'Result:'}</h5>
-                {error && <div>{`ERROR: ${error.message}`}</div>}
-                <React.Fragment>
-                    {
-                        getNormalizedUsers().map(user => (
-                            <div key={user.id}>{`${user.id} - ${user.name} - ${user.age}`}</div>),
-                        )
-                    }
-                </React.Fragment>
-            </Card>
-        </Layout>
+        <Card fillViewport={true}>
+            <h2>{'Dummy About!'}</h2>
+            <h5>{'Dashboard:'}</h5>
+            <BaseLink
+                to='/'
+                text='Dashboard' />
+            <h5>{'Dummy App:'}</h5>
+            <BaseLink
+                to='/dummy'
+                text='Dummy' />
+            <BaseLink
+                to='/dummy/counter'
+                text='Dummy Counter' />
+            <h5>{'Users:'}</h5>
+            <Button
+                disabled={isLoading}
+                onClick={() => getData()}>
+                {'GET'}
+            </Button>
+            <Button
+                disabled={isLoading}
+                onClick={() => getDataOne(Math.floor(Math.random() * 10))}>
+                {'GET1'}
+            </Button>
+            <Button
+                disabled={isLoading}
+                onClick={() => postData()}>
+                {'POST'}
+            </Button>
+            <Button
+                disabled={isLoading}
+                onClick={() => putData(Math.floor(Math.random() * 10))}>
+                {'PUT'}
+            </Button>
+            <Button
+                disabled={isLoading}
+                onClick={() => patchData(Math.floor(Math.random() * 10))}>
+                {'PATCH'}
+            </Button>
+            <Button
+                disabled={isLoading}
+                onClick={() => removeData(Math.floor(Math.random() * 10))}>
+                {'REMOVE'}
+            </Button>
+            <h5>{'Result:'}</h5>
+            {error && <div>{`ERROR: ${error.message}`}</div>}
+            <React.Fragment>
+                {
+                    getNormalizedUsers().map(user => (
+                        <div key={user.id}>{`${user.id} - ${user.name} - ${user.age}`}</div>),
+                    )
+                }
+            </React.Fragment>
+        </Card>
     )
 }
 

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Layout from '@/layouts/layout'
 import BaseLink from '@/components/router/nav/base-link'
 import Card from '@/components/ui/card/card'
 import Button from '@/components/ui/button'
@@ -38,17 +37,15 @@ const About = () => {
     }
     
     return (
-        <Layout>
-            <Card fillViewport={true}>
-                <Button onClick={handleClick}>
-                    {'AAA'}
-                </Button>
-                <h2>{'About'}</h2>
-                <BaseLink
-                    to='/'
-                    text='Dashboard' />
-            </Card>
-        </Layout>
+        <Card fillViewport={true}>
+            <Button onClick={handleClick}>
+                {'AAA'}
+            </Button>
+            <h2>{'About'}</h2>
+            <BaseLink
+                to='/'
+                text='Dashboard' />
+        </Card>
     )
 }
 

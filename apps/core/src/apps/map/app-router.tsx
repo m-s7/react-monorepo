@@ -4,13 +4,16 @@ import { Route, Routes } from 'react-router-dom'
 import AppRouterGenerator from '@/components/generators/app-router-generator'
 import NotFound from '@/pages/not-found'
 
-const AppRouter = () => {
+interface Props {
+    parentLayout?: React.ElementType,
+}
+const AppRouter = (props: Props) => {
     const { routes } = getConfigRouter()
 
     return (
         <React.Fragment>
             <Routes>
-                {AppRouterGenerator(routes)}
+                {AppRouterGenerator(routes, props.parentLayout)}
                 <Route
                     path={'*'}
                     element={<NotFound />} />

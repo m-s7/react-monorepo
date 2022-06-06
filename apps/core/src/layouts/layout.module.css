@@ -5,6 +5,14 @@
     background-color: #454d55;
 }
 
+.columnRed {
+    display: flex;
+    height: 100%;
+    color: white;
+    background-color: red;
+}
+
+
 .left {
     width: 250px;
 }

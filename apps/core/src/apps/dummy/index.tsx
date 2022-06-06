@@ -6,9 +6,13 @@ import { logging, LogLevel } from '@ms7/logger'
 
 logging.addConfigurationOption({ minLevels: { 'websocket': LogLevel.ERROR }})
 
-const Index = () => (
+interface Props {
+    parentLayout?: React.ElementType,
+}
+
+const Index = (props: Props) => (
     <Provider store={store}>
-        <App />
+        <App {...props} />
     </Provider>
 )
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Layout from '@/layouts/layout'
 import BaseLink from '@/components/router/nav/base-link'
 import 'leaflet/dist/leaflet.css'
 import styles from 'Map/components/pages/index.module.css'
@@ -49,29 +48,27 @@ const Map = () => {
     }
 
     return (
-        <Layout>
-            <Card>
-                <p>{`MODE: ${mode}`}</p>
-                <Button
-                    onClick={() => setMode('single')}
-                    className={'alert-warning'}>
-                    {'single'}
-                </Button>
-                <Button onClick={() => setMode('group')}>
-                    {'group'}
-                </Button>
-                <Button
-                    onClick={() => setMode('group-alt')}>
-                    {'group-alt'}
-                </Button>
-                <div
-                    id="map"
-                    className={styles.container} />
-                <BaseLink
-                    to='/'
-                    text='Dashboard' />
-            </Card>
-        </Layout>
+        <Card>
+            <p>{`MODE: ${mode}`}</p>
+            <Button
+                onClick={() => setMode('single')}
+                className={'alert-warning'}>
+                {'single'}
+            </Button>
+            <Button onClick={() => setMode('group')}>
+                {'group'}
+            </Button>
+            <Button
+                onClick={() => setMode('group-alt')}>
+                {'group-alt'}
+            </Button>
+            <div
+                id="map"
+                className={styles.container} />
+            <BaseLink
+                to='/'
+                text='Dashboard' />
+        </Card>
     )
 }
 
