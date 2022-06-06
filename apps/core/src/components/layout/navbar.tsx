@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SmallLoader from '@/components/ui/small-loader'
-import { useAppSelector } from '@/hooks/use-app-selector'
+import { CoreStoreContext } from '@/index'
+import { Unsubscribe } from 'redux'
 
 const Navbar = () => {
-    const isRestLoading = useAppSelector(state => state.rest.status === 'loading')
+    const { store } = useContext(CoreStoreContext)
+    const [isRestLoading, setIsRestLoading] = useState(false)
+
+    let unsubscribe: Unsubscribe | undefined
+    useEffect(() => {
+        unsubscribe = store.subscribe(() => {
+            setIsRestLoading((store.getState().rest.status === 'loading'))
+        })
+    }, [])
+
+    
+    useEffect(() => () => {
+        if(unsubscribe) unsubscribe()
+    }, [])
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">

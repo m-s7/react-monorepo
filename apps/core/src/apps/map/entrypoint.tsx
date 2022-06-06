@@ -5,6 +5,8 @@ interface Props {
     parentLayout?: React.ElementType,
 }
 
-const Index = (props: Props) => (<App {...props} />)
+const Entrypoint = (props: Props) => (
+    <App {...props} />
+)
 
-export default Index
+export default Entrypoint

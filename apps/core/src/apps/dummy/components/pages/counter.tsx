@@ -3,8 +3,8 @@ import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd
 import styles from 'Dummy/components/pages/counter.module.css'
 import BaseLink from '@/components/router/nav/base-link'
 import Card from '@/components/ui/card/card'
-import { useAppDispatch } from '@/hooks/use-app-dispatch'
-import { useAppSelector } from '@/hooks/use-app-selector'
+import { useAppDispatch } from 'Dummy/hooks/use-app-dispatch'
+import { useAppSelector } from 'Dummy/hooks/use-app-selector'
 
 const Counter = () => {
     const dispatch = useAppDispatch()

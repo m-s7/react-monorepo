@@ -1,11 +1,11 @@
 import Index from 'Map/pages'
 import { RouterConfig } from '@ms7/router'
-import IndexEntrypoint from 'Map/index'
+import Entrypoint from 'Map/entrypoint'
 
 const config: RouterConfig = {
     entrypoint: {
         baseUrl: '/map/*',
-        component: IndexEntrypoint,
+        component: Entrypoint,
     },
     routes: [
         { path: '/', component: Index, title: 'Map', breadcrumb: 'Map' },

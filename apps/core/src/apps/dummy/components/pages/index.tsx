@@ -4,8 +4,8 @@ import { selectState1, selectState2, selectState3, setState1, setState2, setName
 import Button from '@/components/ui/button'
 import TestProps from 'Dummy/components/test-props'
 import Card from '@/components/ui/card/card'
-import { useAppDispatch } from '@/hooks/use-app-dispatch'
-import { useAppSelector } from '@/hooks/use-app-selector'
+import { useAppDispatch } from 'Dummy/hooks/use-app-dispatch'
+import { useAppSelector } from 'Dummy/hooks/use-app-selector'
 import EventBus from '@ms7/event-bus'
 
 const Dummy = () => {
