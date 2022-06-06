@@ -1,35 +1,20 @@
-import { AppConfig } from '@/business/models/app'
-import { getConfigRouter } from '@/configs/app'
-import { RouteConfig, RouterConfig } from '@/business/models/router'
-import { getAppsRoutersConfigs } from '@/utils/apps-utils'
+import { RouteConfig, RouterConfig } from './models'
+import { AuthModel, Role } from '@ms7/auth-providers'
 
-export const getBaseUrlForModule = (config: AppConfig): string => {
-    const value = config.apiUrl
+export const hasRoles = (roles: Role[], authContext?: AuthModel): boolean => {
+    if(authContext)
+        for(const role of roles)
+            if(!authContext.hasRole(Role[role].toLowerCase()))
+                return false
 
-    return (value ?? '')
+    return true
 }
 
-export const getPathnameFromUrl = (url: string): string => new URL(url).pathname
 
-export const getRoutePathname = (pathname: string): string => {
-    const [, module] = pathname.split('/')
+export const getRoutes = (routers: RouterConfig[]): RouteConfig[] => {
+    const appsRoutes: RouteConfig[] = []
 
-    return (module || '')
-}
-
-export const normalizeUrl = (url: string): string => {
-    while(url.endsWith('/')) url = url.substring(0, url.length - 1)
-    if(!url.startsWith('/')) url = `/${url}`
-    url = url.replaceAll('/*/', '/').replaceAll('/*', '/')
-
-    return url
-}
-
-export const getRoutes = (includeAppsRoutes = true): RouteConfig[] => {
-    const appsRoutes: RouteConfig[] = [...getConfigRouter().routes]
-    const appsRoutersConfigs: RouterConfig[] = (includeAppsRoutes ? getAppsRoutersConfigs() : [])
-
-    appsRoutersConfigs.forEach(( { routes, entrypoint }) => {
+    routers.forEach(( { routes, entrypoint }) => {
         let relativeRoutes: RouteConfig[] = []
         if(entrypoint) {
             relativeRoutes = getRoutesWithRelativePaths(routes, entrypoint.baseUrl)
@@ -121,4 +106,12 @@ const getRoutesWithRelativePaths = (routes: RouteConfig[], parentPath: string): 
     })
 
     return relativeRoutes
+}
+
+const normalizeUrl = (url: string): string => {
+    while(url.endsWith('/')) url = url.substring(0, url.length - 1)
+    if(!url.startsWith('/')) url = `/${url}`
+    url = url.replaceAll('/*/', '/').replaceAll('/*', '/')
+
+    return url
 }

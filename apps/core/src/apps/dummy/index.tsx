@@ -1,6 +1,4 @@
 import React from 'react'
-import store from 'Dummy/store/store'
-import { Provider } from 'react-redux'
 import App from 'Dummy/app'
 import { logging, LogLevel } from '@ms7/logger'
 
@@ -11,9 +9,7 @@ interface Props {
 }
 
 const Index = (props: Props) => (
-    <Provider store={store}>
-        <App {...props} />
-    </Provider>
+    <App {...props} />
 )
 
 export default Index

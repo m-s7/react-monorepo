@@ -1,12 +1,10 @@
-import storeConfig from 'Dummy/configs/store'
 import menuConfig from 'Dummy/configs/menu'
 import routerConfig from 'Dummy/configs/router'
 import websocketConfig from 'Dummy/configs/websocket'
-import { AppConfig, StoreConfig } from '@/business/models/app'
+import { AppConfig } from '@/business/models/app'
 import { getLogLevelForEnv } from '@ms7/logger'
-import { RouterConfig } from '@/business/models/router'
+import { RouterConfig } from '@ms7/router'
 import env from '@/env'
-import { isDev } from '@/utils/app-utils'
 
 const config: AppConfig = {
     key: 'dummy',
@@ -15,15 +13,13 @@ const config: AppConfig = {
     apiUrl: env.REACT_APP_DUMMY_API_URL,
     log: {
         name: 'dummy',
-        min: getLogLevelForEnv(isDev()),
+        min: getLogLevelForEnv((process.env.NODE_ENV === 'development')),
     },
-    store: storeConfig,
     menu: menuConfig,
     router: routerConfig,
     websocket: websocketConfig,
 }
 
-export const getConfigStore = (): StoreConfig => storeConfig
 export const getConfigRouter = (): RouterConfig => routerConfig
 
 export default config

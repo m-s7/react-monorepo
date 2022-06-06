@@ -3,9 +3,6 @@ import styles from '@/layouts/layout.module.css'
 import Sidebar from '@/components/layout/sidebar'
 import Navbar from '@/components/layout/navbar'
 import Header from '@/components/layout/header'
-import store from '@/store/store'
-import { CoreStoreContext } from '@'
-import { Provider } from 'react-redux'
 
 interface LayoutProps {
     children?: React.ReactNode | React.ReactNode[],
@@ -21,11 +18,7 @@ const Layout = (props: LayoutProps) => {
             </div>
             <div className={`${styles.right} ${styles.box}`}>
                 <div className={styles.navbar}>
-                    <Provider
-                        context={CoreStoreContext}
-                        store={store}>
-                        <Navbar />
-                    </Provider>
+                    <Navbar />
                 </div>
                 <Header />
                 <div className={styles.content}>

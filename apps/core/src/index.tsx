@@ -8,13 +8,10 @@ import { logging, assignLevelToLoggers, getLogLevelForEnv } from '@ms7/logger'
 import { loadFaIcons } from '@/utils/fa-utils'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/global.css'
-import { ReactReduxContextValue } from 'react-redux/src/components/Context'
 import { isDev } from '@/utils/app-utils'
 
 loadFaIcons()
 logging.configure({ minLevels: assignLevelToLoggers(['', 'core'], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
-
-export const CoreStoreContext = React.createContext<ReactReduxContextValue<RootState>>({} as any)
 
 const container = document.getElementById('root')
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -22,9 +19,7 @@ const root = createRoot(container!)
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Provider
-                context={CoreStoreContext}
-                store={store}>
+            <Provider store={store}>
                 <App />
             </Provider>
         </BrowserRouter>

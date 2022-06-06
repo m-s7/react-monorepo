@@ -3,7 +3,7 @@
   "display": "react library",
   "extends": "ts-config/tsconfig.json",
   "compilerOptions": {
-    "lib": ["dom", "ES2015"],
+    "lib": ["dom", "ES2015", "ES2021.String"],
     "module": "ESNext",
     "target": "ES6",
     "noEmit": true,

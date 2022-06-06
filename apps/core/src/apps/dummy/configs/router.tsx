@@ -2,7 +2,7 @@ import Index from 'Dummy/pages'
 import About from 'Dummy/pages/about'
 import Counter from 'Dummy/pages/counter'
 import Static from 'Dummy/pages/static'
-import { RouterConfig } from '@/business/models/router'
+import { RouterConfig } from '@ms7/router'
 import IndexEntrypoint from 'Dummy/index'
 
 const config: RouterConfig = {

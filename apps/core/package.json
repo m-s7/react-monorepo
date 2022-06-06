@@ -21,6 +21,7 @@
     "@ms7/websocket-client": "*",
     "@ms7/restful-redux": "*",
     "@ms7/auth-providers": "*",
+    "@ms7/router": "*",
     "@reduxjs/toolkit": "^1.8.1",
     "bootstrap": "^5.1.3",
     "dotenv": "^16.0.0",

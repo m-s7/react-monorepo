@@ -5,11 +5,7 @@ interface Props {
     parentLayout?: React.ElementType,
 }
 
-const App = (props: Props) =>  (
-    <React.Fragment>
-        <AppRouter {...props} />
-    </React.Fragment>
-)
+const App = (props: Props) =>  (<AppRouter {...props} />)
 
 
 export default App

@@ -1,13 +1,16 @@
 import React, { ElementType } from 'react'
-import { RouteConfig } from '@/business/models/router'
 import { Route } from 'react-router-dom'
-import ProtectedRoute from '@/components/router/protected-route'
+import { RouteConfig } from './models'
+import ProtectedRoute from './protected-route'
 
-const AppRouterGenerator = (routes: RouteConfig[], parentLayout?: ElementType): JSX.Element[] => routes.map(({ path, index, roles, component, layout, children }, idx) => {
+export const RouterGenerator = (routes: RouteConfig[], component404: ElementType, parentLayout?: ElementType): JSX.Element[] => routes.map(({ path, index, roles, component, layout, children }, idx) => {
     const Layout = layout || parentLayout || React.Fragment
     const Component = component
+    const Component404 = component404
     const Protected = (
-        <ProtectedRoute roles={roles}>
+        <ProtectedRoute
+            roles={roles}
+            component404={component404}>
             <Layout>
                 <Component />
             </Layout>
@@ -24,7 +27,7 @@ const AppRouterGenerator = (routes: RouteConfig[], parentLayout?: ElementType): 
                         <Component />
                     </Layout>
                 }>
-                {AppRouterGenerator(children)}
+                {RouterGenerator(children, component404)}
             </Route>
         )
     }
@@ -45,5 +48,3 @@ const AppRouterGenerator = (routes: RouteConfig[], parentLayout?: ElementType): 
             )
     }
 })
-
-export default AppRouterGenerator

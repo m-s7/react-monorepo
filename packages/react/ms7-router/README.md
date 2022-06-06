@@ -1,6 +1,6 @@
 # Restful Redux
 
-Set of auth providers for react.
+React router utils, helpers and types.
 
 ## Installation
 

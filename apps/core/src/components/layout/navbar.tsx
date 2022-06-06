@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import SmallLoader from '@/components/ui/small-loader'
-import { CoreStoreContext } from '@/index'
+import { useAppSelector } from '@/hooks/use-app-selector'
 
 const Navbar = () => {
-    const { store } = useContext(CoreStoreContext)
-    const isRestLoading = (): boolean => store.getState().rest.status === 'loading'
+    const isRestLoading = useAppSelector(state => state.rest.status === 'loading')
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -54,7 +53,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className="d-flex">
-                        {isRestLoading() && <SmallLoader />}
+                        {isRestLoading && <SmallLoader />}
                     </div>
                 </div>
             </div>

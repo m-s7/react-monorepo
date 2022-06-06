@@ -1,7 +1,7 @@
 import React from 'react'
 import { getConfigRouter } from 'Dummy/configs/app'
 import { Route, Routes } from 'react-router-dom'
-import AppRouterGenerator from '@/components/generators/app-router-generator'
+import { RouterGenerator } from '@ms7/router'
 import NotFound from '@/pages/not-found'
 
 interface Props {
@@ -14,7 +14,7 @@ const AppRouter = (props: Props) => {
     return (
         <React.Fragment>
             <Routes>
-                {AppRouterGenerator(routes, props.parentLayout)}
+                {RouterGenerator(routes, NotFound, props.parentLayout)}
                 <Route
                     path={'*'}
                     element={<NotFound />} />

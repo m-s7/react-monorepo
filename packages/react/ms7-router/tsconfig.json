@@ -1,0 +1,10 @@
+{
+  "extends": "ts-config-lib/tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2021.String"],
+    "outDir": "./dist",
+    "jsx": "react"
+  },
+  "exclude": ["**/__tests__/*", "dist", "build"],
+  "include": ["./"]
+}

@@ -1,5 +1,5 @@
 import Dashboard from '@/pages/dashboard'
-import { RouterConfig } from '@/business/models/router'
+import { RouterConfig } from '@ms7/router'
 import { Role } from '@ms7/auth-providers'
 import User from '@/pages/user'
 import Profile from '@/pages/user/profile'

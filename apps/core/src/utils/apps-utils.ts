@@ -1,6 +1,6 @@
 import { AppConfig } from '@/business/models/app'
 import { Necessary } from '@/business/models/common'
-import { RouteEntrypointConfig, RouterConfig } from '@/business/models/router'
+import { RouteEntrypointConfig, RouterConfig } from '@ms7/router'
 import mapConfig from 'Map/configs/app'
 import dummyConfig from 'Dummy/configs/app'
 import { MenuConfig } from '@/business/models/menu'

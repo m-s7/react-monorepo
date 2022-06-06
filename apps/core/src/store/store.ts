@@ -1,10 +1,10 @@
 import { restLogger } from '@/store/middleware/rest-logger'
 import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import ApiService from '@ms7/restful-redux'
-import { restReducer } from '@ms7/restful-redux'
+import ApiService, { restReducer } from '@ms7/restful-redux'
+import dummyReducers from 'Dummy/configs/reducers'
 
 const store = configureStore({
-    reducer: { rest: restReducer },
+    reducer: { rest: restReducer, ...dummyReducers },
     middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(restLogger),
 })
 

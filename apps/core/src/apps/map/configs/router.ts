@@ -1,5 +1,5 @@
 import Index from 'Map/pages'
-import { RouterConfig } from '@/business/models/router'
+import { RouterConfig } from '@ms7/router'
 import IndexEntrypoint from 'Map/index'
 
 const config: RouterConfig = {

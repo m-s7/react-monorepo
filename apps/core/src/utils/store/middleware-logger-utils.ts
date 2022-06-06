@@ -1,6 +1,5 @@
 import { Logger } from '@ms7/logger'
 import { AnyAction } from '@reduxjs/toolkit'
-import { getPathnameFromUrl } from '@/utils/router-utils'
 
 export const logRestAction = (logger: Logger, action: AnyAction): void => {
     switch(getActionType(action)) {
@@ -113,3 +112,5 @@ const getActionStatus = (action: AnyAction): string => {
 
     return (status || '')
 }
+
+const getPathnameFromUrl = (url: string): string => new URL(url).pathname

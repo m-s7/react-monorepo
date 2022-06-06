@@ -3,9 +3,8 @@ import routerConfig from 'Map/configs/router'
 import websocketConfig from 'Map/configs/websocket'
 import { AppConfig } from '@/business/models/app'
 import { getLogLevelForEnv } from '@ms7/logger'
-import { RouterConfig } from '@/business/models/router'
+import { RouterConfig } from '@ms7/router'
 import env from '@/env'
-import { isDev } from '@/utils/app-utils'
 
 const config: AppConfig = {
     key: 'map',
@@ -14,7 +13,7 @@ const config: AppConfig = {
     apiUrl: env.REACT_APP_MAP_API_URL,
     log: {
         name: 'map',
-        min: getLogLevelForEnv(isDev()),
+        min: getLogLevelForEnv((process.env.NODE_ENV === 'development')),
     },
     menu: menuConfig,
     router: routerConfig,
