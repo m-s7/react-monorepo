@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { AuthProviderContext } from '@/components/providers/auth-provider'
+import { AuthProviderContext } from '@ms7/auth-providers'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}

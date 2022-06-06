@@ -1,8 +1,7 @@
 import Keycloak from 'keycloak-js'
 import { isEmpty } from 'lodash'
 import { logging } from '@ms7/logger'
-import FatalError from '@/business/models/errors/fatal-error'
-import { Auth } from '@/business/auth/auth'
+import { AuthModel } from '../auth-provider'
 
 interface KeycloakCallback {
     (isAuthenticated: boolean, error?: Error | undefined): void,
@@ -14,24 +13,25 @@ export interface KeycloakConfig {
     clientId: string,
 }
 
-class KeycloakAuth implements Auth {
+class KeycloakAuth implements AuthModel {
     private readonly logger = logging.getLogger('keycloak')
     private readonly config: KeycloakConfig
     private readonly callback: KeycloakCallback
+    private readonly allowLogger: boolean
 
     private keycloak: Keycloak.KeycloakInstance | undefined = undefined
     private tokenRefreshRunner: number | undefined
     private _isAuthenticated = false
 
-    //TODO: singleton but require context???!!!
-    constructor(config: KeycloakConfig, callback: KeycloakCallback) {
+    constructor(config: KeycloakConfig, callback: KeycloakCallback, allowLogger = true) {
         this.config = config
         this.callback = callback
+        this.allowLogger = allowLogger
     }
 
     public async init(): Promise<void> {
         if(isEmpty(this.config.realm) || isEmpty(this.config.clientId)) {
-            this.callback(false, new FatalError('Keycloak', KeycloakAuth.getConfigError(this.config)))
+            this.callback(false, new Error(KeycloakAuth.getConfigError(this.config)))
             return
         }
 
@@ -50,7 +50,7 @@ class KeycloakAuth implements Auth {
                     this.startTokenRefreshRunner()
             })
             .catch(error => {
-                this.callback(false, new FatalError('Keycloak', 'Service offline'))
+                this.callback(false, new Error('Service offline'))
                 this.logger.error('Service offline', error)
             })
     }
@@ -117,7 +117,7 @@ class KeycloakAuth implements Auth {
     }
 
     private startEventWatcher(): void {
-        if(!this.keycloak) return
+        if(!this.keycloak || !this.allowLogger) return
 
         this.keycloak.onReady = isAuthenticated => {
             this.logger.debug('onReady event received', { isAuthenticated })

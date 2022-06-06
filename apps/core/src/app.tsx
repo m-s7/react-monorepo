@@ -5,13 +5,14 @@ import FatalError from '@/business/models/errors/fatal-error'
 import { logging } from '@ms7/logger'
 import { getFlatRoutes, getRoutes } from '@/utils/router-utils'
 import AppRouter from '@/app-router'
-import AuthProvider from '@/components/providers/auth-provider'
-import KeycloakAuthProvider from '@/components/providers/auth/keycloak-auth-provider'
+import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
+import ApiService from '@ms7/restful-redux'
 import EventBus from '@ms7/event-bus'
 import env from '@/env'
 
 const App = () => {
     const logger = logging.getLogger('core')
+    const CriticalError = (props: { error: Error }) => (<div>{props.error.message}</div>)
 
     const [error, setError] = useState<Error>()
     const [isInitialized, setIsInitialized] = useState(false)
@@ -110,9 +111,16 @@ const App = () => {
     }
 
     return (
-        <AuthProvider
+        <AuthProvider<KeycloakAuthProviderProps>
             provider={KeycloakAuthProvider}
-            config={{ url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID }}>
+            providerProps={{
+                config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
+                errorComponent: CriticalError,
+                suspenseComponent: FullPageLoader,
+                onAuthenticatedHandler: (token: string, logoutMethod: () => void) => {
+                    ApiService.setupApiServiceInterceptors(token, logoutMethod)
+                },
+            }}>
             <AppRouter />
         </AuthProvider>
     )

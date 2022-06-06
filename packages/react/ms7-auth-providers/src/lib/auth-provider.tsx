@@ -1,13 +1,21 @@
-import { KeycloakConfig } from '@/business/auth/keycloak-auth'
 import React, { createContext, useState } from 'react'
 
-interface Props {
-    config: KeycloakConfig,
+interface Props<T> {
+    providerProps: T,
     provider: AuthProviderComponentType,
     children: React.ReactNode | React.ReactNode[],
 }
 
-export interface Auth {
+export interface AuthProviderComponentProps {
+    providerProps: any,
+    onLoad: (authInstance: AuthModel) => void,
+    children: React.ReactNode | React.ReactNode[],
+}
+
+type AuthProviderComponentType = React.ComponentType<AuthProviderComponentProps>
+// type AuthProviderComponentType<K extends string = string> = React.ForwardRefExoticComponent<AuthProviderComponentProps<K> & React.RefAttributes<boolean>>
+
+export interface AuthModel {
     init(): void,
     validate(): void,
     logout(): void,
@@ -16,21 +24,12 @@ export interface Auth {
     isAuthenticated(): boolean,
 }
 
-export interface AuthProviderComponentProps {
-    config: KeycloakConfig,
-    onLoad: (authInstance: Auth) => void,
-    children: React.ReactNode | React.ReactNode[],
-}
+export const AuthProviderContext = createContext<AuthModel | undefined>(undefined)
 
-type AuthProviderComponentType = React.ComponentType<AuthProviderComponentProps>
-// type AuthProviderComponentType<K extends string = string> = React.ForwardRefExoticComponent<AuthProviderComponentProps<K> & React.RefAttributes<boolean>>
+export const AuthProvider = <T, >(props: Props<T>) => {
+    const [providerAuthInstance, setProviderAuthInstance] = useState<AuthModel>()
 
-export const AuthProviderContext = createContext<Auth | undefined>(undefined)
-
-const AuthProvider = (props: Props) => {
-    const [providerAuthInstance, setProviderAuthInstance] = useState<Auth>()
-
-    const onLoad = (authInstance: Auth) => {
+    const onLoad = (authInstance: AuthModel) => {
         if(!providerAuthInstance)
             setProviderAuthInstance(authInstance)
     }
@@ -39,7 +38,7 @@ const AuthProvider = (props: Props) => {
     return (
         <React.Fragment>
             <Provider
-                config={props.config}
+                providerProps={props.providerProps}
                 onLoad={authInstance => onLoad(authInstance)}>
                 {providerAuthInstance &&
                     <AuthProviderContext.Provider value={providerAuthInstance}>
@@ -50,5 +49,3 @@ const AuthProvider = (props: Props) => {
         </React.Fragment>
     )
 }
-
-export default AuthProvider

@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom'
 import AppMenuGenerator from '@/components/generators/app-menu-generator'
 import { getMenu } from '@/utils/menu-utils'
 import { MenuConfig } from '@/business/models/menu'
-import { AuthProviderContext } from '@/components/providers/auth-provider'
+import { AuthProviderContext } from '@ms7/auth-providers'
 
 const Sidebar = () => {
     const location = useLocation()
