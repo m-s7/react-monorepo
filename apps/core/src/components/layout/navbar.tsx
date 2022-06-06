@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import SmallLoader from '@/components/ui/small-loader'
+import { SmallLoader } from '@ms7/bui'
 import { CoreStoreContext } from '@/index'
 import { Unsubscribe } from 'redux'
 

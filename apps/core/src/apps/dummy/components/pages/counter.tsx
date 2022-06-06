@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from 'Dummy/store/reducers/counter-reducer'
 import styles from 'Dummy/components/pages/counter.module.css'
 import BaseLink from '@/components/router/nav/base-link'
-import Card from '@/components/ui/card/card'
+import { Card } from '@ms7/bui'
 import { useAppDispatch } from 'Dummy/hooks/use-app-dispatch'
 import { useAppSelector } from 'Dummy/hooks/use-app-selector'
 

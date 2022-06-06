@@ -5,8 +5,8 @@ import styles from 'Map/components/pages/index.module.css'
 import { createMarker, IconColor } from 'Map/utils/leaflet-utils'
 import { createMapManager, MapManager } from 'Map/business/map-manager'
 import { LeafletMouseEvent, map } from 'leaflet'
-import Button from '@/components/ui/button'
-import Card from '@/components/ui/card/card'
+import { Button } from '@ms7/bui'
+import { Card } from '@ms7/bui'
 
 type MapMode = 'single' | 'group' | 'group-alt'
 

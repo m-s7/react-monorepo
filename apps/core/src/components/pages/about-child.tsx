@@ -1,6 +1,6 @@
 import React from 'react'
 import BaseLink from '@/components/router/nav/base-link'
-import Card from '@/components/ui/card/card'
+import { Card } from '@ms7/bui'
 
 const AboutChild = () => (
     <Card fillViewport={true}>

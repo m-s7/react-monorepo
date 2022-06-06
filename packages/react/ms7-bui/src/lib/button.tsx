@@ -1,14 +1,13 @@
 import React from 'react'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, React.AriaAttributes {
-    variant?:
-    'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'light' | 'dark' | 'link' |
+    variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'light' | 'dark' | 'link' |
     'outline-primary' | 'outline-secondary' | 'outline-success' | 'outline-warning' |
     'outline-danger' | 'outline-info' | 'outline-light' | 'outline-dark',
     size?: 'sm' | 'lg',
 }
 
-const Button = (props: ButtonProps) => {
+export const Button = (props: ButtonProps) => {
     const { children, variant = 'primary', size = '', className, ...rest } = props
 
     return (
@@ -19,5 +18,3 @@ const Button = (props: ButtonProps) => {
         </button>
     )
 }
-
-export default Button

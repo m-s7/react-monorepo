@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import BaseLink from '@/components/router/nav/base-link'
-import Button from '@/components/ui/button'
+import { Button } from '@ms7/bui'
 import { getUsers, getUser, postUser, putUser, patchUser, removeUser } from 'Dummy/api/user-api'
 import { AxiosError } from '@ms7/restful-redux'
 import { User } from 'Dummy/business/models/user/user'
-import Card from '@/components/ui/card/card'
+import { Card } from '@ms7/bui'
 
 type UserItemData = User | User[]
 

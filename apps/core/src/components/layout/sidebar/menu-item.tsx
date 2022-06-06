@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import Icon from '@/components/ui/icon'
+import { Icon } from '@ms7/bui'
 import Link from '@/components/router/nav/link'
 import { Role } from '@ms7/auth-providers'
 

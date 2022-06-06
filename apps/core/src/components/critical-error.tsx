@@ -2,13 +2,13 @@ import React from 'react'
 import FatalError from '@/business/models/errors/fatal-error'
 import BaseLink from '@/components/router/nav/base-link'
 import LayoutEmpty from '@/layouts/layout-empty'
-import CardCenterSmall from '@/components/ui/card/card-center-small'
+import { CardSmallCentered } from '@ms7/bui'
 
 interface Props { error: FatalError, allowNavigation?: boolean }
 
 const CriticalError = (props: Props) => (
     <LayoutEmpty>
-        <CardCenterSmall>
+        <CardSmallCentered>
             <h2>{`${props.error.name} - ${props.error.message}`}</h2>
             {props.allowNavigation &&
                 <p>
@@ -17,7 +17,7 @@ const CriticalError = (props: Props) => (
                         text='Dashboard' />
                 </p>
             }
-        </CardCenterSmall>
+        </CardSmallCentered>
     </LayoutEmpty>
 )
 

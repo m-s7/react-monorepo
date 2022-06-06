@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import Icon from '@/components/ui/icon'
+import { Icon } from '@ms7/bui'
 import Link from '@/components/router/nav/link'
 import { getActiveMenuNode, getFlatMenu } from '@/utils/menu-utils'
 import { useLocation } from 'react-router-dom'

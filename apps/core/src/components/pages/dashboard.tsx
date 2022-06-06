@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '@/assets/logo.svg'
 import BaseLink from '@/components/router/nav/base-link'
 import styles from '@/components/pages/dashboard.module.css'
-import Card from '@/components/ui/card/card'
+import { Card } from '@ms7/bui'
 
 const Dashboard = () => (
     <Card fillViewport={true}>

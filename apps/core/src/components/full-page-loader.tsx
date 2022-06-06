@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '@/components/full-page-loader.module.css'
 import BaseLink from '@/components/router/nav/base-link'
 import LayoutEmpty from '@/layouts/layout-empty'
-import CardCenterSmall from '@/components/ui/card/card-center-small'
+import { CardSmallCentered } from '@ms7/bui'
 
 interface Props {
     navigateName?: string,
@@ -13,7 +13,7 @@ const FullPageLoader = (props: Props) => {
     const { navigateName, navigatePath } = props
     return (
         <LayoutEmpty>
-            <CardCenterSmall>
+            <CardSmallCentered>
                 <div className={`${styles.loader}`} />
                 <span className={styles.info}>{'Please wait...'}</span>
                 {(navigateName && navigatePath) &&
@@ -21,7 +21,7 @@ const FullPageLoader = (props: Props) => {
                         to={navigatePath}
                         text={navigateName} />
                 }
-            </CardCenterSmall>
+            </CardSmallCentered>
         </LayoutEmpty>
     )
 }
