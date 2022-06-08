@@ -1,6 +1,6 @@
-# Router
+# Websocket
 
-React router utils, helpers and types.
+Websocket client with multiple protocol support and react integration.
 
 ## Installation
 
@@ -33,3 +33,11 @@ yarn clean
 ```
 
 If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
+
+## Usage
+
+```tsx
+<WebsocketProvider provider={provider}>
+    <p>children</p>
+</WebsocketProvider>
+```

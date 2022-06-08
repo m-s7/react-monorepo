@@ -22,6 +22,16 @@ To build:
 yarn build
 ```
 
+To run linter:
+```bash
+yarn lint
+```
+
+To remove apps and packages temp directories:
+```bash
+yarn clean
+```
+
 If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
 ## Usage
@@ -62,17 +72,3 @@ interface UserBody {
 const getUser = async (id: number) => await get<User>('https://localhost:9999/users/1')
 const postUser = async (body: UserBody) => await post<User, typeof body>('https://localhost:9999/users', body)
 ```
-
-## Scripts
-
-To run test suite:
-```bash
-yarn test
-```
-
-To build apps and packages:
-```bash
-yarn build
-```
-
-If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.

@@ -11,11 +11,10 @@
     "dist/**"
   ],
   "scripts": {
+    "test": "jest",
     "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts --external react",
-    "dev": "node_modules/.bin/tsup src/index.ts --format esm,cjs --watch --dts --external react",
     "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "test": "jest"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
     "@ms7/common": "*",
