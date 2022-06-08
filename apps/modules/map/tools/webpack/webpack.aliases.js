@@ -7,10 +7,6 @@ const { createWebpackAliases } = require('./webpack.helpers')
  * to match the `paths` used here for aliases in project.
  */
 module.exports = createWebpackAliases({
-    '@': 'src/',
-    '@/*': 'src/*',
-    'Dummy': '../modules/dummy/src',
-    'Dummy/*': '../modules/dummy/src/*',
-    'Map': '../modules/map/src',
-    'Map/*': '../modules/map/src/*',
+    'Map': 'src/',
+    'Map/*': 'src/*',
 })

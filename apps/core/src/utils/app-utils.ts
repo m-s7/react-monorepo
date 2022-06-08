@@ -17,5 +17,4 @@ export const hasRoles = (roles: Role[], authContext?: AuthModel): boolean => {
     return true
 }
 
-// export const getAppRouters = (): RouterConfig[] => [getConfigRouter(), ...getAppsRoutersConfigs()]
 export const getAppRouters = (): RouterEntrypoint[] => [{ router: getConfigRouter() }, ...getAppsRouterEntrypointConfigs()]
