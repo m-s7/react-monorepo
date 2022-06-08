@@ -9,14 +9,8 @@
     "baseUrl": ".",
     "jsx": "react",
     "paths": {
-      "@": ["src/"],
-      "@/*": ["src/*"],
-//      "Dummy": ["src/apps/dummy"],
-//      "Dummy/*": ["src/apps/dummy/*"],
-      "Dummy": ["../modules/dummy/src/"],
-      "Dummy/*": ["../modules/dummy/src/*"],
-      "Map": ["src/apps/map"],
-      "Map/*": ["src/apps/map/*"]
+      "Dummy": ["src/"],
+      "Dummy/*": ["src/*"],
     },
     "types": [
       "node",

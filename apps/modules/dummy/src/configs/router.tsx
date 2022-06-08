@@ -3,13 +3,8 @@ import About from 'Dummy/pages/about'
 import Counter from 'Dummy/pages/counter'
 import Static from 'Dummy/pages/static'
 import { RouterConfig } from '@ms7/router'
-import Entrypoint from 'Dummy/entrypoint'
 
 const config: RouterConfig = {
-    entrypoint: {
-        baseUrl: '/dummy/*',
-        component: Entrypoint,
-    },
     routes: [
         { path: '/', component: Index, title: 'Dummy', breadcrumb: 'Dummy' },
         { path: '/about', component: About, title: 'About', breadcrumb: 'About' },

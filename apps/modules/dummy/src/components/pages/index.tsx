@@ -25,7 +25,6 @@ const Dummy = () => {
         EventBus.unsubscribe('dummy-ws-message')
     }, [])
 
-
     return (
         <Card fillViewport={true}>
             <h1>{'Dummy!'}</h1>

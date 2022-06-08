@@ -11,7 +11,7 @@ import { Optional } from '@ms7/common'
 import LayoutRed from '@/layouts/layout-red'
 
 const { GUEST, USER, ADMIN } = Role
-const config: Optional<RouterConfig, 'entrypoint'> = {
+const config: RouterConfig = {
     routes: [
         { path: '/', component: Dashboard, title: 'Dashboard', breadcrumb: 'Dashboard' },
         { path: '/about', component: About, title: 'About', breadcrumb: 'About', layout: LayoutRed },

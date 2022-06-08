@@ -9,9 +9,6 @@ const store = configureStore({
 
 ApiService.setStore(store)
 
-// @ts-ignore
-export const getModuleState = <T>(): T => (store.getState().apps as T)
-
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
 // export type AppSubscribe = typeof reducersManager.subscribe

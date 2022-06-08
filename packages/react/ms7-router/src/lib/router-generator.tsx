@@ -1,4 +1,4 @@
-import React, { ElementType } from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
 import { RouteConfig } from './types'
 import ProtectedRoute from './protected-route'

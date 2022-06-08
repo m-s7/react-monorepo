@@ -1,0 +1,23 @@
+html {
+    display: flex;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    flex: 1;
+}
+
+a {
+    color: #1098ad;
+    text-decoration: none;
+}
+
+.height-25 {
+    height: 25px !important;
+}
+
+.breadcrumb {
+    margin-bottom: 0 !important;
+}

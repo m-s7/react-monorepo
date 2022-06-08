@@ -1,7 +1,6 @@
 # optional [none, trace, debug, info, warn, error]
 REACT_APP_LOG_LEVEL=trace
 
-REACT_APP_KEYCLOAK_ENABLED=false
 REACT_APP_KEYCLOAK_URL=http://127.0.0.1:8080/auth
 REACT_APP_KEYCLOAK_REALM=realm
 REACT_APP_KEYCLOAK_CLIENTID=clientid

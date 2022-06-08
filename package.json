@@ -4,7 +4,8 @@
   "workspaces": [
     "packages/*",
     "packages/react/*",
-    "apps/*"
+    "apps/*",
+    "apps/modules/*"
   ],
   "scripts": {
     "test": "turbo run test",

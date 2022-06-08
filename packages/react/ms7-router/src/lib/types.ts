@@ -4,7 +4,6 @@ import { PageTitleComponentType } from '@ms7/page-title'
 import { BreadcrumbComponentType } from '@ms7/breadcrumbs'
 
 export interface RouterConfig {
-    entrypoint?: RouteEntrypointConfig,
     routes: RouteConfig[],
 }
 
@@ -19,7 +18,7 @@ export interface RouteConfig {
     children?: RouteConfig[],
 }
 
-export interface RouteEntrypointConfig {
+export interface EntrypointConfig {
     baseUrl: string,
     component: React.ComponentType<{ parentLayout: React.ElementType }>,
 }

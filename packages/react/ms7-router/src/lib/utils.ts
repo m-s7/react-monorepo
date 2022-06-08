@@ -1,5 +1,10 @@
-import { RouteConfig, RouterConfig } from './types'
+import { EntrypointConfig, RouteConfig, RouterConfig } from './types'
 import { AuthModel, Role } from '@ms7/auth-providers'
+
+export type RouterEntrypoint = {
+    router: RouterConfig,
+    entrypoint?: EntrypointConfig,
+}
 
 export const hasRoles = (roles: Role[], authContext?: AuthModel): boolean => {
     if(authContext)
@@ -10,11 +15,12 @@ export const hasRoles = (roles: Role[], authContext?: AuthModel): boolean => {
     return true
 }
 
-
-export const getRoutes = (routers: RouterConfig[]): RouteConfig[] => {
+export const getRoutes = (data: RouterEntrypoint[]): RouteConfig[] => {
     const appsRoutes: RouteConfig[] = []
 
-    routers.forEach(( { routes, entrypoint }) => {
+    data.forEach(( { router, entrypoint }) => {
+        const { routes } = router
+
         let relativeRoutes: RouteConfig[] = []
         if(entrypoint) {
             relativeRoutes = getRoutesWithRelativePaths(routes, entrypoint.baseUrl)
