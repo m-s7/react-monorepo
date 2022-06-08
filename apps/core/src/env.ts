@@ -4,7 +4,7 @@ declare global {
     }
 }
 
-type EnvType = {
+interface EnvType {
     REACT_APP_LOG_LEVEL: string,
 
     REACT_APP_KEYCLOAK_URL: string,
