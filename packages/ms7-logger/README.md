@@ -1,6 +1,6 @@
-# MS7 Codebase
+# Logger
 
-Main codebase of MS7 project.
+Logger for JavaScript.
 
 ## Installation
 
@@ -17,14 +17,9 @@ To run test suite:
 yarn test
 ```
 
-To build apps and packages:
+To build:
 ```bash
 yarn build
-```
-
-To start server in development mode:
-```bash
-yarn dev
 ```
 
 To run linter:
@@ -39,20 +34,18 @@ yarn clean
 
 If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
-## Versioning
+## Usage
 
-To add changes to changelog in apps and packages:
-```bash
-yarn changeset-create
+```ts
+import {logging, LogLevel} from '@ms7/logger'
+
+// initialize logger
+logging.configure({minLevels: assignLevelToLoggers(['', 'core'], LogLevel.INFO)}).registerConsoleLogger()
+
+// log message
+const logger = logging.getLogger('core')
+logger.info('message', ['some', 'data'])
+
+// update logger configuration
+logging.addConfigurationOption({ minLevels: { 'module': LogLevel.ERROR }})
 ```
-
-To apply changes to changelog in apps and packages:
-```bash
-yarn changeset-apply
-```
-
-To publish changelog:
-```bash
-yarn release
-```
-

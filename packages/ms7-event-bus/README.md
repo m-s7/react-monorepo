@@ -1,6 +1,6 @@
-# MS7 Codebase
+# Event Bus
 
-Main codebase of MS7 project.
+Event bus for JavaScript.
 
 ## Installation
 
@@ -17,14 +17,9 @@ To run test suite:
 yarn test
 ```
 
-To build apps and packages:
+To build:
 ```bash
 yarn build
-```
-
-To start server in development mode:
-```bash
-yarn dev
 ```
 
 To run linter:
@@ -39,20 +34,16 @@ yarn clean
 
 If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
-## Versioning
+## Usage
 
-To add changes to changelog in apps and packages:
-```bash
-yarn changeset-create
+```ts
+import EventBus from "@ms7/event-bus";
+
+EventBus.register('channel')
+EventBus.subscribre('channel', x => { /* do something */})
+
+EventBus.dispatch('channel', 'message')
+
+EventBus.unsubscribe('channel')
+EventBus.unregister('channel')
 ```
-
-To apply changes to changelog in apps and packages:
-```bash
-yarn changeset-apply
-```
-
-To publish changelog:
-```bash
-yarn release
-```
-

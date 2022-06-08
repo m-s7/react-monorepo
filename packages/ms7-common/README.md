@@ -1,6 +1,6 @@
-# MS7 Codebase
+# Common
 
-Main codebase of MS7 project.
+Common types, classes and utils used by apps and packages.
 
 ## Installation
 
@@ -17,14 +17,9 @@ To run test suite:
 yarn test
 ```
 
-To build apps and packages:
+To build:
 ```bash
 yarn build
-```
-
-To start server in development mode:
-```bash
-yarn dev
 ```
 
 To run linter:
@@ -38,21 +33,3 @@ yarn clean
 ```
 
 If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
-
-## Versioning
-
-To add changes to changelog in apps and packages:
-```bash
-yarn changeset-create
-```
-
-To apply changes to changelog in apps and packages:
-```bash
-yarn changeset-apply
-```
-
-To publish changelog:
-```bash
-yarn release
-```
-

@@ -22,7 +22,7 @@ To build:
 yarn build
 ```
 
-If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
+If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
 ## Usage
 
@@ -68,4 +68,4 @@ To build apps and packages:
 yarn build
 ```
 
-If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
+If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.

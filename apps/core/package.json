@@ -4,11 +4,12 @@
   "version": "0.0.1",
   "description": "MS7 Core app",
   "scripts": {
+    "test": "jest",
+    "build": "NODE_ENV=production webpack --config tools/webpack/webpack.config.prod.js",
     "dev": "NODE_ENV=development webpack serve --config tools/webpack/webpack.config.dev.js",
     "prod": "NODE_ENV=production webpack serve --config tools/webpack/webpack.config.prod.js",
-    "build": "NODE_ENV=production webpack --config tools/webpack/webpack.config.prod.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
-    "test": "jest"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",

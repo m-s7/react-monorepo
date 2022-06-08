@@ -1,6 +1,6 @@
 # Core
 
-Core app created using react.
+MS7 Core app.
 
 ## Installation
 
@@ -32,7 +32,18 @@ To start server in production mode:
 yarn prod
 ```
 
-If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
+To run linter:
+```bash
+yarn lint
+```
+
+To remove apps and packages temp directories:
+```bash
+yarn clean
+```
+
+
+If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
 ## Injecting environmental variables
 

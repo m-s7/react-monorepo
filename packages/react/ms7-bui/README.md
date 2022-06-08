@@ -22,7 +22,7 @@ To build:
 yarn build
 ```
 
-If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
+If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
 ## Usage
 
@@ -30,17 +30,3 @@ To use this package you must include [bootstrap5](https://turborepo.org/docs/cor
 
 ```tsx
 ```
-
-## Scripts
-
-To run test suite:
-```bash
-yarn test
-```
-
-To build apps and packages:
-```bash
-yarn build
-```
-
-If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.

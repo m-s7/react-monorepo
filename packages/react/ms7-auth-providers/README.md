@@ -1,6 +1,6 @@
-# Restful Redux
+# Auth Providers
 
-Set of auth providers for react.
+Auth providers for react.
 
 ## Installation
 
@@ -22,7 +22,17 @@ To build:
 yarn build
 ```
 
-If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
+To run linter:
+```bash
+yarn lint
+```
+
+To remove apps and packages temp directories:
+```bash
+yarn clean
+```
+
+If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
 ## Usage
 
@@ -36,17 +46,19 @@ If you need more build options use [turbo](https://turborepo.org/docs/core-conce
 
 ###Example
 
+####Keycloak provider
+
 ```tsx
 import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
 
-const CriticalError = (error: { error: Error }) => (<div>{props.error.message}</div>);
+const FatalError = (error: { error: Error }) => (<div>{props.error.message}</div>);
 const Loader = () => (<i class="loader" />);
 
 <AuthProvider<KeycloakAuthProviderProps>
     provider={KeycloakAuthProvider}
     providerProps={{
         config: { url: 'https://keycloak.local', realm: 'react-realm', clientId: 'react-client-id' },
-        errorComponent: CriticalError,
+        errorComponent: FatalError,
         suspenseComponent: Loader,
         onAuthenticatedHandler: (token: string, logoutMethod: () => void) => {
             //handle authentication
@@ -55,17 +67,3 @@ const Loader = () => (<i class="loader" />);
     <AppRouter />
 </AuthProvider>
 ```
-
-## Scripts
-
-To run test suite:
-```bash
-yarn test
-```
-
-To build apps and packages:
-```bash
-yarn build
-```
-
-If you need more build options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
