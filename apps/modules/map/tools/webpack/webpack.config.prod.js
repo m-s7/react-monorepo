@@ -1,41 +1,5 @@
-module.exports = {
-    mode: 'production',
-    module: {
-        rules: require('./webpack.rules'),
-    },
-    output: {
-        publicPath: '/',
-        filename: '[name].[chunkhash].js',
-        chunkFilename: '[name].[chunkhash].chunk.js',
-        clean: true,
-    },
-    plugins: [...require('./webpack.plugins')],
-    resolve: {
-        extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
-        alias: {
-            ...require('./webpack.aliases'),
-        },
-    },
-    optimization: {
-        minimize: true,
-        sideEffects: true,
-        concatenateModules: true,
-        runtimeChunk: 'single',
-        splitChunks: {
-            chunks: 'all',
-            maxInitialRequests: 10,
-            minSize: 0,
-            cacheGroups: {
-                vendor: {
-                    name: 'vendors',
-                    test: /[\\/]node_modules[\\/]/,
-                    chunks: 'all',
-                },
-            },
-        },
-    },
-    performance: {
-        maxEntrypointSize: 1024000,
-        maxAssetSize: 1024000,
-    },
-}
+const webpackProdConfig = require('../../../../packages/assets/webpack/apps/webpack-apps.prod.js')
+
+webpackProdConfig.resolve.alias = { ...require('./webpack.aliases') }
+
+module.exports = webpackProdConfig

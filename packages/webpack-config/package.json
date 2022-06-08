@@ -1,6 +1,0 @@
-{
-  "private": true,
-  "version": "0.0.1",
-  "name": "webpack-config",
-  "files": ["webpack.js"]
-}
