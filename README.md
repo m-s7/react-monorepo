@@ -56,3 +56,12 @@ To publish changelog:
 yarn release
 ```
 
+## Tools
+
+####ms7-merge
+
+This tool is used for merging package.json files.
+
+```bash
+ms7-merge -l package.json -r ../../packages/assets/package-base-app.json
+```
