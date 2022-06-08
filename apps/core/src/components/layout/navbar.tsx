@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { SmallLoader } from '@ms7/bui'
+import { LoaderSmall } from '@ms7/bui'
 import { CoreStoreContext } from '@/index'
 import { Unsubscribe } from 'redux'
 
@@ -67,7 +67,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className="d-flex">
-                        {isRestLoading && <SmallLoader />}
+                        {isRestLoading && <LoaderSmall />}
                     </div>
                 </div>
             </div>

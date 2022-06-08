@@ -31,7 +31,7 @@ class KeycloakAuth implements AuthModel {
 
     public async init(): Promise<void> {
         if(isEmpty(this.config.realm) || isEmpty(this.config.clientId)) {
-            this.callback(false, new Error(KeycloakAuth.getConfigError(this.config)))
+            this.callback(false, new Error(`Keycloak - ${KeycloakAuth.getConfigError(this.config)}`))
             return
         }
 
@@ -50,7 +50,7 @@ class KeycloakAuth implements AuthModel {
                     this.startTokenRefreshRunner()
             })
             .catch(error => {
-                this.callback(false, new Error('Service offline'))
+                this.callback(false, new Error('Keycloak - Service offline'))
                 this.logger.error('Service offline', error)
             })
     }

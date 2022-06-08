@@ -1,14 +1,14 @@
 import React from 'react'
-import { FatalError as FatalErrorInstance } from '@ms7/common'
+import { FatalError } from '@ms7/common'
 import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardSmallCentered } from '../components/card-small-centered'
 import { RouterLink } from '../router-link'
 
-interface Props { error: FatalErrorInstance | Error, allowNavigation?: boolean }
+interface Props { error: FatalError | Error, allowNavigation?: boolean }
 
 export const FullPageError = (props: Props) => {
     const { error, allowNavigation } = props
-    const title = (error.name ? `${error.name} - ${error.message}` : error.message)
+    const title = (error instanceof FatalError ? `${error.name} - ${error.message}` : error.message)
 
     return (
         <LayoutEmpty>
