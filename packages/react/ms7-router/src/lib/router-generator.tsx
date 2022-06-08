@@ -3,10 +3,9 @@ import { Route } from 'react-router-dom'
 import { RouteConfig } from './types'
 import ProtectedRoute from './protected-route'
 
-export const RouterGenerator = (routes: RouteConfig[], component404: ElementType, parentLayout?: ElementType): JSX.Element[] => routes.map(({ path, index, roles, component, layout, children }, idx) => {
+export const RouterGenerator = (routes: RouteConfig[], component404: JSX.Element, parentLayout?: React.ElementType): JSX.Element[] => routes.map(({ path, index, roles, component, layout, children }, idx) => {
     const Layout = layout || parentLayout || React.Fragment
     const Component = component
-    const Component404 = component404
     const Protected = (
         <ProtectedRoute
             roles={roles}

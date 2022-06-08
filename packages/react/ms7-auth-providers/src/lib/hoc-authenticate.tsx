@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react'
-import { AuthProviderContext } from '@ms7/auth-providers'
+import { AuthProviderContext } from './auth-provider'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 
-const withAuth = <T extends Props = Props>(WrappedComponent: React.ComponentType<T>) => {
+export const withAuth = <T extends Props = Props>(WrappedComponent: React.ComponentType<T>) => {
     const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component'
 
     const componentWithAuth = (props: Omit<T, keyof Props>) => {
@@ -30,5 +30,3 @@ const withAuth = <T extends Props = Props>(WrappedComponent: React.ComponentType
 
     return componentWithAuth
 }
-
-export default withAuth

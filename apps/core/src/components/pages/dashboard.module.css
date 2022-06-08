@@ -1,6 +1,5 @@
 .logo {
     height: 20vw;
-    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {

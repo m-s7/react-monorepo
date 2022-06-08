@@ -14,9 +14,11 @@
     "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts --external react",
     "dev": "node_modules/.bin/tsup src/index.ts --format esm,cjs --watch --dts --external react",
     "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "test": "jest"
   },
   "dependencies": {
+    "@ms7/common": "*",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@types/react": "^18.0.7",
@@ -25,12 +27,20 @@
     "eslint": "^8.16.0",
     "react": "^18.0.0",
     "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.5",
     "tsup": "^6.0.1",
     "typescript": "^4.6.3"
   },
   "devDependencies": {
-    "ts-config-lib": "*"
+    "ts-config-lib": "*",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@types/jest": "^28.1.0",
+    "jest": "^28.1.0",
+    "jest-each": "^28.0.1",
+    "jest-environment-jsdom": "^28.1.0",
+    "jest-svg-transformer": "^1.0.0",
+    "ts-jest": "^28.0.3"
   },
   "publishConfig": {
     "access": "public"

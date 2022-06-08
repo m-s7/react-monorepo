@@ -5,7 +5,7 @@ import { setClient } from 'Dummy/store/reducers/websocket-reducer'
 import { WebsocketClient } from '@ms7/websocket-client'
 import { AuthProviderContext } from '@ms7/auth-providers'
 import { useAppDispatch } from 'Dummy/hooks/use-app-dispatch'
-import FullPageLoader from '@/components/full-page-loader'
+import { FullPageLoader } from '@ms7/bui'
 import { WebsocketProviderComponentProps } from '@ms7/websocket-client'
 
 const DummyWebsocketProvider = (props: WebsocketProviderComponentProps) => {

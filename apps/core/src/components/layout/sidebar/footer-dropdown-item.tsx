@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from '@/components/router/nav/link'
+import { RouterLink } from '@ms7/bui'
 
 interface MenuDropdownItemProps extends React.HTMLAttributes<HTMLLIElement>, React.AriaAttributes {
     path?: string,
@@ -10,11 +10,11 @@ const FooterDropdownItem = (props: MenuDropdownItemProps) => {
 
     return (
         <li {...rest}>
-            <Link
+            <RouterLink
                 to={path}
                 className={'dropdown-item'}>
                 {children}
-            </Link>
+            </RouterLink>
         </li>
     )
 }

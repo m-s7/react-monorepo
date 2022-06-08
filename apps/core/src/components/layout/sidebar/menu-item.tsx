@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Icon } from '@ms7/bui'
-import Link from '@/components/router/nav/link'
+import { RouterLink } from '@ms7/bui'
 import { Role } from '@ms7/auth-providers'
 
 interface MenuItemProps extends React.HTMLAttributes<HTMLLIElement>, React.AriaAttributes {
@@ -16,7 +16,7 @@ const MenuItem = (props: MenuItemProps) => {
 
     return (
         <li className={active ? 'nav-item' : ''}>
-            <Link
+            <RouterLink
                 to={path}
                 disabled={active}
                 className={`nav-link ${active ? 'active' : 'text-white'}`}>
@@ -25,7 +25,7 @@ const MenuItem = (props: MenuItemProps) => {
                     size={'sm'}
                     className={'me-2'} />
                 {children}
-            </Link>
+            </RouterLink>
         </li>
     )
 }

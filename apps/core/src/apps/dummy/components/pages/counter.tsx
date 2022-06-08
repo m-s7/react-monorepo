@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from 'Dummy/store/reducers/counter-reducer'
 import styles from 'Dummy/components/pages/counter.module.css'
-import BaseLink from '@/components/router/nav/base-link'
 import { Card } from '@ms7/bui'
 import { useAppDispatch } from 'Dummy/hooks/use-app-dispatch'
 import { useAppSelector } from 'Dummy/hooks/use-app-selector'
@@ -15,7 +14,7 @@ const Counter = () => {
 
     return (
         <Card fillViewport={true}>
-            <h2>{'Dummy Counter!'}</h2>
+            <h1>{'Dummy Counter!'}</h1>
             <div className={styles.row}>
                 <button
                     className={styles.button}
@@ -53,17 +52,6 @@ const Counter = () => {
                     {'Add If Odd'}
                 </button>
             </div>
-            <h5>{'Dashboard:'}</h5>
-            <BaseLink
-                to='/'
-                text='Dashboard' />
-            <h5>{'Dummy App:'}</h5>
-            <BaseLink
-                to='/dummy'
-                text='Dummy' />
-            <BaseLink
-                to='/dummy/about'
-                text='Dummy About' />
         </Card>
     )
 }

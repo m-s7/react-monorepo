@@ -1,7 +1,7 @@
 import React, { useContext, useLayoutEffect, useState } from 'react'
 import styles from '@/components/layout/sidebar.module.css'
 import FooterDropdownItem from '@/components/layout/sidebar/footer-dropdown-item'
-import Link from '@/components/router/nav/link'
+import { RouterLink } from '@ms7/bui'
 import { Icon } from '@ms7/bui'
 import { useLocation } from 'react-router-dom'
 import AppMenuGenerator from '@/components/generators/app-menu-generator'
@@ -20,14 +20,14 @@ const Sidebar = () => {
 
     return (
         <div className={`d-flex flex-column flex-shrink-0 p-3 text-white ${styles.sidebar}`}>
-            <Link
+            <RouterLink
                 to={'/'}
                 className={'d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none'}>
                 <Icon
                     variant={'dashboard'}
                     size={'2x'} />
                 <span className="fs-4 ms-2">{'react-core'}</span>
-            </Link>
+            </RouterLink>
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
                 {menu && AppMenuGenerator(menu, location)}

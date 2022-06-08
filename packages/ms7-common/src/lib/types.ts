@@ -34,3 +34,4 @@ export interface WebsocketConfig {
     url: string,
     headers?: StringDictionary,
 }
+

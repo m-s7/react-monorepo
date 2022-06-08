@@ -1,4 +1,4 @@
-export default class FatalError extends Error {
+export class FatalError extends Error {
     name: string
 
     constructor(name: string, message: string) {

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import BaseLink from '@/components/router/nav/base-link'
 import { Card } from '@ms7/bui'
 import { Button } from '@ms7/bui'
 import EventBus from '@ms7/event-bus'
@@ -38,13 +37,10 @@ const About = () => {
     
     return (
         <Card fillViewport={true}>
+            <h1>{'About'}</h1>
             <Button onClick={handleClick}>
                 {'AAA'}
             </Button>
-            <h2>{'About'}</h2>
-            <BaseLink
-                to='/'
-                text='Dashboard' />
         </Card>
     )
 }

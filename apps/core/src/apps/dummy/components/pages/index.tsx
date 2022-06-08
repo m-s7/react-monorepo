@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import BaseLink from '@/components/router/nav/base-link'
 import { selectState1, selectState2, selectState3, setState1, setState2, setName, setType, setAge } from 'Dummy/store/reducers/person-reducer'
 import { Button } from '@ms7/bui'
 import TestProps from 'Dummy/components/test-props'
@@ -29,7 +28,7 @@ const Dummy = () => {
 
     return (
         <Card fillViewport={true}>
-            <h2>{'Dummy!'}</h2>
+            <h1>{'Dummy!'}</h1>
             <TestProps
                 name={'Michał'}
                 age={37}
@@ -60,17 +59,6 @@ const Dummy = () => {
                     {'Increment Age'}
                 </Button>
             </p>
-            <h5>{'Dashboard:'}</h5>
-            <BaseLink
-                to='/'
-                text='Dashboard' />
-            <h5>{'Dummy App:'}</h5>
-            <BaseLink
-                to='/dummy/about'
-                text='Dummy About' />
-            <BaseLink
-                to='/dummy/counter'
-                text='Dummy Counter' />
         </Card>
     )
 }

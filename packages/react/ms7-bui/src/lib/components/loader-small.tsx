@@ -15,4 +15,4 @@ const Component = styled.div`
     animation: ${rotate} 1s linear infinite;
 `
 
-export const SmallLoader = () => (<Component />)
+export const LoaderSmall = () => (<Component />)

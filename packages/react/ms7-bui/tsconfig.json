@@ -2,8 +2,19 @@
   "extends": "ts-config-lib/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "jsx": "react"
+    "jsx": "react",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   },
-  "exclude": ["**/__tests__/*", "dist", "build"],
-  "include": ["./"]
+  "exclude": [
+    "**/__tests__/*",
+    "dist",
+    "build"
+  ],
+  "include": [
+    "./"
+  ]
 }

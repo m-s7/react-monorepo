@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Icon } from '@ms7/bui'
-import Link from '@/components/router/nav/link'
+import { RouterLink } from '@ms7/bui'
 import { getActiveMenuNode, getFlatMenu } from '@/utils/menu-utils'
 import { useLocation } from 'react-router-dom'
 import { MenuConfig } from '@ms7/common'
@@ -54,7 +54,7 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
 
     return (
         <React.Fragment>
-            <Link to={'#'}>
+            <RouterLink to={'#'}>
                 <button
                     className={'align-items-center rounded collapsed nav-link text-white'}
                     data-bs-toggle='collapse'
@@ -70,7 +70,7 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
                         size={'sm'}
                         className={'ms-2'} />
                 </button>
-            </Link>
+            </RouterLink>
             <div
                 ref={elem => ref = elem}
                 className={`collapse ${isExpanded ? 'show' : ''}`}

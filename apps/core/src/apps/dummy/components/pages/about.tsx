@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import BaseLink from '@/components/router/nav/base-link'
 import { Button } from '@ms7/bui'
 import { getUsers, getUser, postUser, putUser, patchUser, removeUser } from 'Dummy/api/user-api'
 import { AxiosError } from '@ms7/restful-redux'
@@ -95,19 +94,8 @@ const About = () => {
 
     return (
         <Card fillViewport={true}>
-            <h2>{'Dummy About!'}</h2>
-            <h5>{'Dashboard:'}</h5>
-            <BaseLink
-                to='/'
-                text='Dashboard' />
-            <h5>{'Dummy App:'}</h5>
-            <BaseLink
-                to='/dummy'
-                text='Dummy' />
-            <BaseLink
-                to='/dummy/counter'
-                text='Dummy Counter' />
-            <h5>{'Users:'}</h5>
+            <h1>{'Dummy About!'}</h1>
+            <h5>{'User:'}</h5>
             <Button
                 disabled={isLoading}
                 onClick={() => getData()}>

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import BaseLink from '@/components/router/nav/base-link'
 import 'leaflet/dist/leaflet.css'
 import styles from 'Map/components/pages/index.module.css'
 import { createMarker, IconColor } from 'Map/utils/leaflet-utils'
@@ -65,9 +64,6 @@ const Map = () => {
             <div
                 id="map"
                 className={styles.container} />
-            <BaseLink
-                to='/'
-                text='Dashboard' />
         </Card>
     )
 }
