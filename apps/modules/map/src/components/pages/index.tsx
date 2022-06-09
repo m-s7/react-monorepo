@@ -1,15 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react'
 import 'leaflet/dist/leaflet.css'
-import styles from 'Map/components/pages/index.module.css'
 import { createMarker, IconColor } from 'Map/utils/leaflet-utils'
 import { createMapManager, MapManager } from 'Map/business/map-manager'
 import { LeafletMouseEvent, map } from 'leaflet'
-import { Button } from '@ms7/bui'
+import { Button, ButtonProps } from '@ms7/bui'
 import { Card } from '@ms7/bui'
+import styled from 'styled-components'
 
 type MapMode = 'single' | 'group' | 'group-alt'
 
 let mapManager: MapManager
+
+const MapContainer = styled.div`
+    height: 600px;
+`
+
+const ModeButton = (props: ButtonProps & { buttonMode: MapMode, currentMode: MapMode, clickHandler: (mode: MapMode) => void }) => (
+    <Button
+        variant={(props.currentMode === props.buttonMode ? 'primary' : 'secondary')}
+        className="m-1"
+        onClick={() => props.clickHandler(props.buttonMode)}>
+        {props.children}
+    </Button>
+
+)
 
 const Map = () => {
     const [mode, setMode] = useState<MapMode>('single')
@@ -47,23 +61,33 @@ const Map = () => {
     }
 
     return (
-        <Card>
-            <p>{`MODE: ${mode}`}</p>
-            <Button
-                onClick={() => setMode('single')}
-                className={'alert-warning'}>
-                {'single'}
-            </Button>
-            <Button onClick={() => setMode('group')}>
-                {'group'}
-            </Button>
-            <Button
-                onClick={() => setMode('group-alt')}>
-                {'group-alt'}
-            </Button>
-            <div
-                id="map"
-                className={styles.container} />
+        <Card fillViewport={true}>
+            <h5>{'Map Module'}</h5>
+            <hr />
+            <ul>
+                <li>{`mode: ${mode}`}</li>
+            </ul>
+            <div className="d-flex flex-row mb-2">
+                <ModeButton
+                    buttonMode={'single'}
+                    currentMode={mode}
+                    clickHandler={() => setMode('single')}>
+                    single
+                </ModeButton>
+                <ModeButton
+                    buttonMode={'group'}
+                    currentMode={mode}
+                    clickHandler={() => setMode('group')}>
+                    group
+                </ModeButton>
+                <ModeButton
+                    buttonMode={'group-alt'}
+                    currentMode={mode}
+                    clickHandler={() => setMode('group-alt')}>
+                    group-alt
+                </ModeButton>
+            </div>
+            <MapContainer id="map" />
         </Card>
     )
 }

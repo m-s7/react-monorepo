@@ -3,6 +3,8 @@ export { Icon } from './lib/icon'
 export { Button } from './lib/button'
 export { RouterLink } from './lib/router-link'
 
+export type { ButtonProps } from './lib/button'
+
 // components
 export { LoaderSmall } from './lib/components/loader-small'
 

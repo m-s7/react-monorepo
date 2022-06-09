@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, React.AriaAttributes {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, React.AriaAttributes {
     variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'light' | 'dark' | 'link' |
     'outline-primary' | 'outline-secondary' | 'outline-success' | 'outline-warning' |
     'outline-danger' | 'outline-info' | 'outline-light' | 'outline-dark',
