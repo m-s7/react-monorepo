@@ -4,7 +4,6 @@ import { getFlatRoutes, getRoutes } from '@ms7/router'
 import AppRouter from '@/app-router'
 import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
 import ApiService from '@ms7/restful-redux'
-import EventBus from '@ms7/event-bus'
 import { FatalError, env } from '@ms7/common'
 import { getAppRouters } from '@/utils/app-utils'
 import { FullPageError, FullPageLoader } from '@ms7/bui'
@@ -16,17 +15,7 @@ const App = () => {
     const [isInitialized, setIsInitialized] = useState(false)
 
     useEffect(() => {
-        EventBus.register('test-channel')
-        EventBus.subscribe('test-channel', x => {
-            console.log('MSG REC APP', x)
-        })
-
         initialize().then()
-    }, [])
-
-    useEffect(() => () => {
-        EventBus.unsubscribe('test-channel')
-        EventBus.unregister('test-channel')
     }, [])
 
     const initialize = async () => {

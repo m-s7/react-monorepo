@@ -8,9 +8,8 @@ import {
     increment,
     incrementAsync,
     incrementByAmount,
-    incrementIfOdd
+    incrementIfOdd, 
 } from 'Guide/store/reducers/counter-reducer'
-import styles from 'Guide/components/pages/counter.module.css'
 
 const Redux = () => {
     const dispatch = useAppDispatch()
@@ -23,7 +22,6 @@ const Redux = () => {
     // counter
     const { value, status } = useAppSelector(state => state.guideCounter)
     const [incrementAmount, setIncrementAmount] = useState(2)
-
     const incrementValue = incrementAmount
 
     return (
@@ -112,11 +110,6 @@ const Redux = () => {
                                 </Button>
                             </div>
                         </div>
-                        {/*<Button*/}
-                        {/*    className="d-block m-1 w-100"*/}
-                        {/*    onClick={() => dispatch(setDescription((Math.random() + 1).toString(36).substring(7)))}>*/}
-                        {/*{'change description'}*/}
-                        {/*</Button>*/}
                     </div>
                 </div>
             </div>

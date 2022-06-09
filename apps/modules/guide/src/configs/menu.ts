@@ -5,7 +5,7 @@ const config: MenuConfig[] = [
         children: [
             { path: '/guide/rest', name: 'Rest', icon: 'network-wired' },
             { path: '/guide/redux', name: 'Redux', icon: 'box-open' },
-            { path: '/guide/provider', name: 'Provider', icon: 'box' },
+            { path: '/guide/event-bus', name: 'EventBus', icon: 'bullhorn' },
         ],
     },
 ]
