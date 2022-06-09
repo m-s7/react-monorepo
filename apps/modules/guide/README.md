@@ -62,6 +62,7 @@ yarn standalone
 Parent app must provide:
 - react router (BrowserRouter)
 - initialized ApiService (@ms7/restful-redux)
+- font awesome icons
 - layout
 - configured webpack aliases (for development)
 

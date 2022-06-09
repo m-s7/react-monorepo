@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { User } from 'Guide/business/models/user/user'
 import { AxiosError } from '@ms7/restful-redux'
 import { getUser, getUsers, patchUser, postUser, putUser, removeUser } from 'Guide/api/user-api'
-import { Button, Card } from '@ms7/bui'
+import { Button } from '@ms7/bui'
 
 type UserItemData = User | User[]
 
@@ -92,7 +92,7 @@ const Rest = () => {
     }
 
     return (
-        <Card fillViewport={true}>
+        <React.Fragment>
             <h5>{'Rest Example'}</h5>
             <div className="d-flex flex-row p-3">
                 <div className="w-25">
@@ -146,7 +146,7 @@ const Rest = () => {
                     </React.Fragment>
                 </div>
             </div>
-        </Card>
+        </React.Fragment>
     )
 }
 

@@ -1,45 +1,43 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from 'Guide/store/store'
 
-export interface PersonState {
-    state1: number,
-    state2: string,
-    state3: { name: string, type: string, age: number },
+type PersonName = 'Mark' | 'Claudia'
+type PersonType = 'man' | 'woman'
+
+interface PersonState {
+    id: number,
+    description: string,
+    data: { name: PersonName, type: PersonType, age: number },
 }
 
 const initialState: PersonState = {
-    state1: 0,
-    state2: 'nothing',
-    state3: { name: 'Michał', type: 'Human', age: 37 },
+    id: 0,
+    description: '',
+    data: { name: 'Mark', type: 'man', age: 21 },
 }
 
 export const personReducer = createSlice({
     name: 'guide',
     initialState,
     reducers: {
-        setState1: (state, action: PayloadAction<number>) => {
-            state.state1 = action.payload
+        setId: (state, action: PayloadAction<number>) => {
+            state.id = action.payload
         },
-        setState2: (state, action: PayloadAction<string>) => {
-            state.state2 = action.payload
+        setDescription: (state, action: PayloadAction<string>) => {
+            state.description = action.payload
         },
-        setName: (state, action: PayloadAction<string>) => {
-            state.state3.name = action.payload
+        setName: (state, action: PayloadAction<PersonName>) => {
+            state.data.name = action.payload
         },
-        setType: (state, action: PayloadAction<string>) => {
-            state.state3.type = action.payload
+        setType: (state, action: PayloadAction<PersonType>) => {
+            state.data.type = action.payload
         },
         setAge: (state, action: PayloadAction<number>) => {
-            state.state3.age = action.payload
+            state.data.age = action.payload
         },
         reset: () => initialState,
     },
 })
 
-export const { setState1, setState2, setName, setType, setAge, reset } = personReducer.actions
-
-export const selectState1 = (state: RootState) => state.guidePerson.state1
-export const selectState2 = (state: RootState) => state.guidePerson.state2
-export const selectState3 = (state: RootState) => state.guidePerson.state3
+export const { setId, setDescription, setName, setType, setAge, reset } = personReducer.actions
 
 export default personReducer.reducer

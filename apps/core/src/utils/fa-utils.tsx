@@ -14,10 +14,11 @@ import {
     faBookOpen,
     faNetworkWired,
     faBox,
+    faBoxOpen,
 } from '@fortawesome/free-solid-svg-icons'
 
 export const loadFaIcons = (): void => {
     library.add(
         faHome, faDashboard, faMap, faCog, faDiagramProject, faAddressBook, faPizzaSlice, faChevronUp, faChevronDown,
-        faChevronLeft, faChevronRight, faBookOpen, faNetworkWired, faBox)
+        faChevronLeft, faChevronRight, faBookOpen, faNetworkWired, faBox, faBoxOpen)
 }
