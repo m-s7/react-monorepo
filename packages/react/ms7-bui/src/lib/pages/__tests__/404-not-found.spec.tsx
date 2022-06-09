@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { NotFound404 } from '../404-not-found'
 import { MemoryRouter } from 'react-router-dom'
 import { cleanup,  render, RenderResult } from '@testing-library/react'

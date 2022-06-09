@@ -3,11 +3,6 @@
   "compilerOptions": {
     "outDir": "./dist",
     "jsx": "react",
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ]
   },
   "exclude": [
     "**/__tests__/*",

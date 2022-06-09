@@ -11,7 +11,6 @@
     "dist/**"
   ],
   "scripts": {
-    "test": "jest",
     "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts",
     "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
