@@ -1,11 +1,15 @@
 import React from 'react'
-import styles from '@/components/layout/page-title.module.css'
 import usePageTitle from '@/hooks/use-page-title'
+import styled from 'styled-components'
+
+const Title = styled.span`
+    font-size: 22px;
+`
 
 const PageTitle = () => {
     const pageTitle = usePageTitle()
 
-    return (<span className={styles.title}>{pageTitle?.title}</span>)
+    return (<Title>{pageTitle?.title}</Title>)
 }
 
 export default PageTitle

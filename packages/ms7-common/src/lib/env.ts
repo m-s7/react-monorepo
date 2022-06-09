@@ -15,9 +15,9 @@ type EnvType = {
     REACT_APP_MAP_API_URL: string,
     REACT_APP_MAP_WEBSOCKET_URL: string,
 
-    REACT_APP_DUMMY: string,
-    REACT_APP_DUMMY_API_URL: string,
-    REACT_APP_DUMMY_WEBSOCKET_URL: string,
+    REACT_APP_GUIDE: string,
+    REACT_APP_GUIDE_API_URL: string,
+    REACT_APP_GUIDE_WEBSOCKET_URL: string,
 }
 const env: EnvType = { ...process.env, ...window.env }
 

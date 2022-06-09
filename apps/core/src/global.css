@@ -1,3 +1,7 @@
+* {
+    color: #d1d1d1;
+}
+
 html {
     display: flex;
     min-height: 100%;
@@ -7,6 +11,10 @@ html {
 
 body {
     flex: 1;
+}
+
+#root {
+    height: 100%;
 }
 
 a {

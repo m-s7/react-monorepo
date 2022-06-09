@@ -7,13 +7,13 @@ import { env } from '@ms7/common'
 
 const About = () => {
     useEffect(() => {
-        EventBus.subscribe('dummy-ws-message', x => {
+        EventBus.subscribe('guide-ws-message', x => {
             console.log('WS MSG RECEIVED', x)
         })
         EventBus.subscribe('test-channel', x => {
             console.log('MSG REC ABT1', x)
             console.log(env)
-            console.log(env.REACT_APP_DUMMY_WEBSOCKET_URL)
+            console.log(env.REACT_APP_GUIDE_WEBSOCKET_URL)
         })
         EventBus.subscribeOnce('test-channel', x => {
             console.log('MSG REC ABT2', x)
@@ -24,7 +24,7 @@ const About = () => {
     }, [])
 
     useEffect(() => () => {
-        EventBus.unsubscribe('dummy-ws-message')
+        EventBus.unsubscribe('guide-ws-message')
         EventBus.unsubscribe('test-channel')
         EventBus.unsubscribe('test-channel')
         EventBus.unsubscribe('test-channel')

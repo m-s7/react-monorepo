@@ -1,5 +1,4 @@
 import React, { useContext, useLayoutEffect, useState } from 'react'
-import styles from '@/components/layout/sidebar.module.css'
 import FooterDropdownItem from '@/components/layout/sidebar/footer-dropdown-item'
 import { RouterLink } from '@ms7/bui'
 import { Icon } from '@ms7/bui'
@@ -8,6 +7,11 @@ import AppMenuGenerator from '@/components/generators/app-menu-generator'
 import { getMenu } from '@/utils/menu-utils'
 import { MenuConfig } from '@ms7/common'
 import { AuthProviderContext } from '@ms7/auth-providers'
+import styled from 'styled-components'
+
+const Container = styled.div`
+    background-color: #343a40;
+`
 
 const Sidebar = () => {
     const location = useLocation()
@@ -19,7 +23,7 @@ const Sidebar = () => {
     }, [location.pathname])
 
     return (
-        <div className={`d-flex flex-column flex-shrink-0 p-3 text-white ${styles.sidebar}`}>
+        <Container className="d-flex flex-column flex-shrink-0 p-3 text-white h-100">
             <RouterLink
                 to={'/'}
                 className={'d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none'}>
@@ -36,7 +40,7 @@ const Sidebar = () => {
             <div className="dropup">
                 <a
                     href="#"
-                    className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    className="d-flex align-items-center text-white text-decoration-none"
                     id="dropdownUser1"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -66,7 +70,7 @@ const Sidebar = () => {
                         </FooterDropdownItem>}
                 </ul>
             </div>
-        </div>
+        </Container>
     )
 }
 

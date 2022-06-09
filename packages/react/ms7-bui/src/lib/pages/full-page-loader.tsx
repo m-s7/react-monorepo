@@ -2,17 +2,12 @@ import React from 'react'
 import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardSmallCentered } from '../components/card-small-centered'
 import { RouterLink } from '../router-link'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 interface Props {
     navigateName?: string,
     navigatePath?: string,
 }
-
-const rotate = keyframes`
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-`
 
 const Component = styled.div`
     border: 18px solid #f3f3f3;
@@ -21,7 +16,12 @@ const Component = styled.div`
     width: 150px;
     height: 150px;
     margin-bottom: 10px;
-    animation: ${rotate} 1s linear infinite;
+    animation: rotate 1s linear infinite;
+    
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }    
+    }
 `
 
 export const FullPageLoader = (props: Props) => {

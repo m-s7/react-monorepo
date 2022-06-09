@@ -1,14 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { RouterGenerator } from '@ms7/router'
+import { getRouterConsoleMap, RouterGenerator } from '@ms7/router'
 import { NotFound404 } from '@ms7/bui'
 import { getRoutes } from '@ms7/router'
 import { getAppsEntrypointsConfigs } from '@/utils/apps-utils'
 import Layout from '@/layouts/layout'
-import { getAppRouters } from '@/utils/app-utils'
+import { getConfigRouter } from '@/configs/app'
 
 const AppRouter = () => {
-    const routes = getRoutes(getAppRouters())
+    const routes = getRoutes([{ router: getConfigRouter() }])
     const entrypoints = getAppsEntrypointsConfigs()
 
     const Component404 = (

@@ -1,13 +1,17 @@
 import React from 'react'
 import PageTitle from '@/components/layout/page-title'
 import Breadcrumbs from '@/components/layout/breadcrumbs'
-import styles from '@/components/layout/header.module.css'
+import styled from 'styled-components'
+
+const Container = styled.div`
+    margin: 10px 25px;
+`
 
 const Header = () => (
-    <div className={styles.container}>
+    <Container className="d-flex align-items-center justify-content-between">
         <PageTitle />
         <Breadcrumbs />
-    </div>
+    </Container>
 )
 
 export default Header
