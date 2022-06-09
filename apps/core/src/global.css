@@ -17,13 +17,21 @@ body {
     height: 100%;
 }
 
+.w-30 {
+    width: 30%;
+}
+
+.w-35 {
+    width: 35%;
+}
+
+.w-40px {
+    width: 40px;
+}
+
 a {
     color: #1098ad;
     text-decoration: none;
-}
-
-.height-25 {
-    height: 25px !important;
 }
 
 .breadcrumb {
