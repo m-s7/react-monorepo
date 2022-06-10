@@ -1,5 +1,5 @@
 import { WebsocketConfig } from '@ms7/common'
-import { env } from '@ms7/common'
+import env from 'Map/env'
 
 const config: WebsocketConfig = {
     name: 'map',

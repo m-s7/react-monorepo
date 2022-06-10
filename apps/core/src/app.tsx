@@ -4,9 +4,10 @@ import { getFlatRoutes, getRoutes } from '@ms7/router'
 import AppRouter from '@/app-router'
 import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
 import ApiService from '@ms7/restful-redux'
-import { FatalError, env } from '@ms7/common'
+import { FatalError } from '@ms7/common'
 import { getAppRouters } from '@/utils/app-utils'
 import { FullPageError, FullPageLoader } from '@ms7/bui'
+import env from '@/env'
 
 const App = () => {
     const logger = logging.getLogger('core')
@@ -91,18 +92,18 @@ const App = () => {
     }
 
     return (
-        // <AuthProvider<KeycloakAuthProviderProps>
-        //     provider={KeycloakAuthProvider}
-        //     providerProps={{
-        //         config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
-        //         errorComponent: FullPageError,
-        //         suspenseComponent: FullPageLoader,
-        //         onAuthenticatedHandler: (token: string, logoutMethod: () => void) => {
-        //             ApiService.setupApiServiceInterceptors(token, logoutMethod)
-        //         },
-        //     }}>
-        <AppRouter />
-        // </AuthProvider>
+        <AuthProvider<KeycloakAuthProviderProps>
+            provider={KeycloakAuthProvider}
+            providerProps={{
+                config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
+                errorComponent: FullPageError,
+                suspenseComponent: FullPageLoader,
+                onAuthenticatedHandler: (token: string, logoutMethod: () => void) => {
+                    ApiService.setupApiServiceInterceptors(token, logoutMethod)
+                },
+            }}>
+            <AppRouter />
+        </AuthProvider>
     )
 }
 

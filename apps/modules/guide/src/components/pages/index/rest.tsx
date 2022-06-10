@@ -98,37 +98,37 @@ const Rest = () => {
                 <div className="w-25">
                     <p>Actions</p>
                     <Button
-                        className="d-block m-1"
+                        className="m-1 w-75"
                         disabled={isLoading}
                         onClick={() => getData()}>
                         {'get all users'}
                     </Button>
                     <Button
-                        className="d-block m-1"
+                        className="m-1 w-75"
                         disabled={isLoading}
                         onClick={() => getDataOne(Math.floor(Math.random() * 10))}>
                         {'get random user'}
                     </Button>
                     <Button
-                        className="d-block m-1"
+                        className="m-1 w-75"
                         disabled={isLoading}
                         onClick={() => postData()}>
                         {'create new user'}
                     </Button>
                     <Button
-                        className="d-block m-1"
+                        className="m-1 w-75"
                         disabled={isLoading}
                         onClick={() => putData(Math.floor(Math.random() * 10))}>
                         {'change random user data'}
                     </Button>
                     <Button
-                        className="d-block m-1"
+                        className="m-1 w-75"
                         disabled={isLoading}
                         onClick={() => patchData(Math.floor(Math.random() * 10))}>
                         {'change random user age'}
                     </Button>
                     <Button
-                        className="d-block m-1"
+                        className="m-1 w-75"
                         disabled={isLoading}
                         onClick={() => removeData(Math.floor(Math.random() * 10))}>
                         {'remove random user'}

@@ -15,15 +15,19 @@ const MapContainer = styled.div`
     height: 600px;
 `
 
-const ModeButton = (props: ButtonProps & { buttonMode: MapMode, currentMode: MapMode, clickHandler: (mode: MapMode) => void }) => (
-    <Button
-        variant={(props.currentMode === props.buttonMode ? 'primary' : 'secondary')}
-        className="m-1"
-        onClick={() => props.clickHandler(props.buttonMode)}>
-        {props.children}
-    </Button>
+const ModeButton = (props: ButtonProps & { mode: MapMode, currentMode: MapMode, clickHandler: (mode: MapMode) => void }) => {
+    const { mode, currentMode, clickHandler } = props
+    
+    return (
+        <Button
+            variant={(currentMode === mode ? 'primary' : 'secondary')}
+            className="m-1"
+            onClick={() => clickHandler(mode)}>
+            {props.children}
+        </Button>
 
-)
+    )
+}
 
 const Map = () => {
     const [mode, setMode] = useState<MapMode>('single')
@@ -60,6 +64,10 @@ const Map = () => {
         mapManager.removeMarker(e.target)
     }
 
+    const setModeHandler = (mode: MapMode) => {
+        setMode(mode)
+    }
+    
     return (
         <Card fillViewport={true}>
             <h5>{'Map Module'}</h5>
@@ -69,21 +77,21 @@ const Map = () => {
             </ul>
             <div className="d-flex flex-row mb-2">
                 <ModeButton
-                    buttonMode={'single'}
+                    mode={'single'}
                     currentMode={mode}
-                    clickHandler={() => setMode('single')}>
+                    clickHandler={setModeHandler}>
                     single
                 </ModeButton>
                 <ModeButton
-                    buttonMode={'group'}
+                    mode={'group'}
                     currentMode={mode}
-                    clickHandler={() => setMode('group')}>
+                    clickHandler={setModeHandler}>
                     group
                 </ModeButton>
                 <ModeButton
-                    buttonMode={'group-alt'}
+                    mode={'group-alt'}
                     currentMode={mode}
-                    clickHandler={() => setMode('group-alt')}>
+                    clickHandler={setModeHandler}>
                     group-alt
                 </ModeButton>
             </div>
