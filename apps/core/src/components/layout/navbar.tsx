@@ -10,7 +10,8 @@ const Navbar = () => {
     let unsubscribe: Unsubscribe | undefined
     useEffect(() => {
         unsubscribe = store.subscribe(() => {
-            setIsRestLoading((store.getState().rest.status === 'loading'))
+            // fix for api calls in <Suspense> component, see https://github.com/facebook/react/issues/18178
+            setTimeout(() => setIsRestLoading((store.getState().rest.status === 'loading')), 0)
         })
     }, [])
 

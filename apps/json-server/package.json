@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "Simple json server",
   "scripts": {
-    "dev": "json-server db.json --port 3035",
+    "start": "json-server db.json --port 3035",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },

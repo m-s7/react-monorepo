@@ -1,7 +1,6 @@
 import { logging } from '@ms7/logger'
 import { StompClient } from '@ms7/websocket-client'
 import { Headers, Callback, StompProtocolClient } from '@ms7/websocket-client'
-import EventBus from '@ms7/event-bus'
 
 export default class WebsocketClient extends StompClient {
     private logger = logging.getLogger('websocket')
@@ -44,7 +43,6 @@ export default class WebsocketClient extends StompClient {
 
         const destination = '/topic/greetings'
         stompClient.subscribe(destination,  ({ body }) => {
-            EventBus.dispatch('guide-ws-message', JSON.parse(body))
             this.logger.debug('Message received on', destination, JSON.parse(body))
         })
         this.logger.debug('Subscribed', destination)

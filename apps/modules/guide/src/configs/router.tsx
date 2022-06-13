@@ -4,6 +4,7 @@ import Rest from 'Guide/components/pages/index/rest'
 import Redux from 'Guide/components/pages/index/redux'
 import EventBus from 'Guide/components/pages/index/event-bus'
 import RxjsSubject from 'Guide/components/pages/index/rxjs-subject'
+import LazySuspense from 'Guide/components/pages/index/lazy-suspense'
 
 const config: RouterConfig = {
     routes: [
@@ -13,6 +14,7 @@ const config: RouterConfig = {
                 { path: 'redux', component: Redux, title: 'Guide Redux', breadcrumb: 'Guide Redux' },
                 { path: 'event-bus', component: EventBus, title: 'Guide EventBus', breadcrumb: 'Guide EventBus' },
                 { path: 'rxjs-subject', component: RxjsSubject, title: 'Guide RxJsSubject', breadcrumb: 'Guide RxJsSubject' },
+                { path: 'lazy-suspense', component: LazySuspense, title: 'Guide LazySuspense', breadcrumb: 'Guide LazySuspense' },
             ],
         },
     ],

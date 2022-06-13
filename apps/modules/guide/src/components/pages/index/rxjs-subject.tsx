@@ -10,7 +10,7 @@ interface Message {
     },
 }
 
-const EventBus = () => {
+const RxJsSubject = () => {
     const [subject, setSubject] = useState<Subject<Message> | undefined>()
     const [subscription, setSubscription] = useState<Subscription | undefined>()
     
@@ -85,4 +85,4 @@ const EventBus = () => {
     )
 }
 
-export default EventBus
+export default RxJsSubject

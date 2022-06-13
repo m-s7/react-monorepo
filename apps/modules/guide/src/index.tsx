@@ -7,9 +7,9 @@ const container = document.getElementById('root')
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(container!)
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <Entrypoint />
-        </BrowserRouter>
-    </React.StrictMode>,
+    // <React.StrictMode>
+    <BrowserRouter>
+        <Entrypoint />
+    </BrowserRouter>,
+    // </React.StrictMode>,
 )

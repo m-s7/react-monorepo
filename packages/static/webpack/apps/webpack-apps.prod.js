@@ -15,6 +15,12 @@ module.exports = {
         extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
         alias: {},
     },
+    devServer: {
+        open: true,
+        hot: true,
+        port: 8901,
+        historyApiFallback: true,
+    },
     optimization: {
         minimize: true,
         sideEffects: true,
