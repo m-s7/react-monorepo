@@ -43,7 +43,11 @@ const GuideWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     }, [])
 
     if(showLoader || !isConnected)
-        return (<FullPageLoader />)
+        return (
+            <FullPageLoader
+                navigateName={'Dashboard'}
+                navigatePath={'/'} />
+        )
 
     return (
         <React.Fragment>

@@ -27,9 +27,9 @@ const App = (props: Props) => {
     }, [])
 
     return (
-        // <WebsocketProvider provider={GuideWebsocketProvider}>
-        <AppRouter {...props} />
-        // </WebsocketProvider>
+        <WebsocketProvider provider={GuideWebsocketProvider}>
+            <AppRouter {...props} />
+        </WebsocketProvider>
     )
 }
 
