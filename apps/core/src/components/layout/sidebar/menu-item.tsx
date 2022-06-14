@@ -5,7 +5,7 @@ import { RouterLink } from '@ms7/bui'
 import { Role } from '@ms7/auth-providers'
 
 interface MenuItemProps extends React.HTMLAttributes<HTMLLIElement>, React.AriaAttributes {
-    icon: IconProp,
+    icon?: IconProp,
     path?: string,
     active?: boolean,
     roles?: Role[],
@@ -20,10 +20,12 @@ const MenuItem = (props: MenuItemProps) => {
                 to={path}
                 disabled={active}
                 className={`nav-link ${active ? 'active' : 'text-white'}`}>
-                <Icon
-                    variant={icon}
-                    size={'sm'}
-                    className={'me-2'} />
+                {icon &&
+                    <Icon
+                        variant={icon}
+                        size={'sm'}
+                        className={'me-2'} />
+                }
                 {children}
             </RouterLink>
         </li>

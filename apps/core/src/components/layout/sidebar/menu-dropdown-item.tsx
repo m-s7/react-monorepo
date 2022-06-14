@@ -10,7 +10,7 @@ import { Role } from '@ms7/auth-providers'
 interface MenuDropdownItemProps extends React.HTMLAttributes<HTMLElement> {
     id: string,
     text: string,
-    icon: IconProp,
+    icon?: IconProp,
     roles?: Role[],
     menuChildren?: MenuConfig[],
     firstLevel?: boolean,
@@ -60,10 +60,12 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
                     data-bs-toggle='collapse'
                     data-bs-target={`#${id}-collapse`}
                     aria-expanded={'true'}>
-                    <Icon
-                        variant={icon}
-                        size={'sm'}
-                        className={'me-2'} />
+                    {icon &&
+                        <Icon
+                            variant={icon}
+                            size={'sm'}
+                            className={'me-2'} />
+                    }
                     {text}
                     <Icon
                         variant={isChevronExpanded ? 'chevron-down' : 'chevron-left'}

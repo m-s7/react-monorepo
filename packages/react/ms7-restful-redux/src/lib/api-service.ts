@@ -1,7 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 import { getThunk, postThunk, putThunk, patchThunk, removeThunk, restReducer, restSlice } from './rest-reducer'
 
-
 class ApiService {
     private store: any
     public static service: AxiosInstance

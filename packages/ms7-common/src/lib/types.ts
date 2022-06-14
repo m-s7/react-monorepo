@@ -24,7 +24,7 @@ export interface AppConfig {
 export interface MenuConfig {
     readonly path: string,
     readonly name: string,
-    readonly icon: IconProp,
+    readonly icon?: IconProp,
     readonly roles?: Role[],
     readonly children?: MenuConfig[],
 }

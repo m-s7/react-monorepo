@@ -1,25 +1,38 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { Button } from '@ms7/bui'
 
-interface Fallback {
-    error: Error,
-    resetErrorBoundary: () => void,
+interface Props {
+    error: Error | undefined,
+    onRetry?: () => void,
 }
 
-const ErrorFallback = ({ error, resetErrorBoundary }: Fallback) => (
-    <div>
-        <p className="text-warning">Something went wrong:</p>
-        <ul>
-            <li>
-                <pre>{error.message}</pre>
-            </li>
-        </ul>
-        <Button
-            className="btn-sm ms-3"
-            onClick={resetErrorBoundary}>
-            Try again
-        </Button>
-    </div>
-)
+const ErrorFallback = (props: PropsWithChildren<Props>) => {
+    const { error, onRetry, children } = props
+
+    if(error)
+        return (
+            <div>
+                <p className="text-warning">Something went wrong:</p>
+                <ul>
+                    <li>
+                        <pre>{error.message}</pre>
+                    </li>
+                </ul>
+                {onRetry &&
+                <Button
+                    className="btn-sm ms-3"
+                    onClick={() => onRetry()}>
+                    Try again
+                </Button>
+                }
+            </div>
+        )
+
+    return (
+        <React.Fragment>
+            {children}
+        </React.Fragment>
+    )
+}
 
 export default ErrorFallback

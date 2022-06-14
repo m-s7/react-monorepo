@@ -17,17 +17,12 @@ interface Params<D> {
 
 export const getThunk = <R>() => createAsyncThunk(
     'rest/get',
-    async (url: string): Promise<AxiosResponse<R>> => {
-        await new Promise(r => setTimeout(r, 500))
-
-        return await ApiService.service.get<R>(url)
-    },
+    async (url: string): Promise<AxiosResponse<R>> => await ApiService.service.get<R>(url),
 )
 
 export const postThunk = <R, D>() => createAsyncThunk(
     'rest/post',
     async (params: Params<D>): Promise<AxiosResponse<R>> => {
-        await new Promise(r => setTimeout(r, 500))
         const { url, body } = params
 
         return await ApiService.service.post<R>(url, body)
@@ -37,7 +32,6 @@ export const postThunk = <R, D>() => createAsyncThunk(
 export const putThunk = <R, D>() => createAsyncThunk(
     'rest/put',
     async (params: Params<D>): Promise<AxiosResponse<R>> => {
-        await new Promise(r => setTimeout(r, 500))
         const { url, body } = params
 
         return await ApiService.service.put<R>(url, body)
@@ -47,7 +41,6 @@ export const putThunk = <R, D>() => createAsyncThunk(
 export const patchThunk = <R, D>() => createAsyncThunk(
     'rest/patch',
     async (params: Params<D>): Promise<AxiosResponse<R>> => {
-        await new Promise(r => setTimeout(r, 500))
         const { url, body } = params
 
         return await ApiService.service.patch<R>(url, body)
@@ -56,11 +49,7 @@ export const patchThunk = <R, D>() => createAsyncThunk(
 
 export const removeThunk = () => createAsyncThunk(
     'rest/remove',
-    async (url: string): Promise<AxiosResponse> => {
-        await new Promise(r => setTimeout(r, 500))
-
-        return await ApiService.service.delete(url)
-    },
+    async (url: string): Promise<AxiosResponse> => await ApiService.service.delete(url),
 )
 
 export const restSlice = createSlice({

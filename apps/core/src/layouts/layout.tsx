@@ -16,6 +16,7 @@ const Container = styled.div`
 
 const ContainerLeft = styled.div`
     width: 250px;
+    min-width: 250px;
 `
 
 const ContainerRight = styled.div`
