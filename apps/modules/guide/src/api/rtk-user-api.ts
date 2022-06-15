@@ -1,10 +1,10 @@
-import { User } from 'Guide/business/models/user/user'
+import { User } from 'Guide/business/types/user'
 import { createApi } from '@reduxjs/toolkit/dist/query/react'
-import { baseQueryWithAuth } from 'Guide/business/lib/rtk/api-service'
+import { baseQueryWithAuth } from '@ms7/restful-rtk'
 import { Optional } from '@ms7/common'
 
 const rtkUserApi = createApi({
-    baseQuery: baseQueryWithAuth,
+    baseQuery: baseQueryWithAuth('http://localhost:3035', '111'),
     tagTypes: ['Users'],
     endpoints: build => ({
         getUser: build.query<User, number>({
@@ -44,8 +44,8 @@ const rtkUserApi = createApi({
             transformResponse: (response: User, meta, arg) => response,
             invalidatesTags: ['Users'],
         }),
-        deleteUser: build.mutation<User, Optional<User, 'age' | 'name'>>({
-            query: ({ id }) => ({
+        deleteUser: build.mutation<void, number>({
+            query: id => ({
                 url: `users/${id}`,
                 method: 'DELETE',
             }),

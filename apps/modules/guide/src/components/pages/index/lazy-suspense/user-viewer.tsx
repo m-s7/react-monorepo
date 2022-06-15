@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
-import { User } from 'Guide/business/models/user/user'
+import { User } from 'Guide/business/types/user'
 import { getUsers } from 'Guide/api/redux-user-api'
 import CenteredLoader from 'Guide/components/centered-loader'
 

@@ -1,6 +1,6 @@
 # Restful Redux
 
-Service for restful api calls using redux reducer and axios
+Service for restful api calls using redux reducer and axios.
 
 ## Installation
 

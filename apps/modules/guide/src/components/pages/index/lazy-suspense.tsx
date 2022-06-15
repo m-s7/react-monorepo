@@ -12,9 +12,11 @@ const LazySuspense = () => (
     <React.Fragment>
         <h5>{'LazySuspense Example'}</h5>
         <div className="p-3">
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <UserViewer />
-            </ErrorBoundary>
+            <Suspense fallback={<CenteredLoader text={'Loading lazily...'} />}>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                    <UserViewer />
+                </ErrorBoundary>
+            </Suspense>
         </div>
     </React.Fragment>
 )

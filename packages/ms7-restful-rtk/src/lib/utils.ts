@@ -1,5 +1,5 @@
 import { SerializedError } from '@reduxjs/toolkit'
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/index.js'
 
 export const getNormalizedError = (error: FetchBaseQueryError | SerializedError | undefined): Error | undefined => {
     if(!error) return

@@ -1,6 +1,6 @@
 import ApiService, { AxiosResponse } from '@ms7/restful-redux'
 import { getBaseUrl } from 'Guide/utils/router-utils'
-import { User, UserBody } from 'Guide/business/models/user/user'
+import { User, UserBody } from 'Guide/business/types/user'
 import { Obj } from '@ms7/common'
 
 export const getUsers = async (): Promise<User[]> => Obj.pickOne(await ApiService.get<User[]>(getBaseUrl('users')).unwrap(), 'data')

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { User } from 'Guide/business/models/user/user'
+import { User } from 'Guide/business/types/user'
 import { AxiosError } from '@ms7/restful-redux'
 import { getUser, getUsers, patchUser, postUser, putUser, removeUser } from 'Guide/api/redux-user-api'
 import { Button } from '@ms7/bui'

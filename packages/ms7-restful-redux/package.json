@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "name": "@ms7/restful-redux",
+  "version": "0.0.1",
+  "description": "Service for restful api calls using redux reducer and axios",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts",
+    "dev": "node_modules/.bin/tsup src/index.ts --format esm,cjs --watch --dts",
+    "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "dependencies": {
+    "tsup": "^6.0.1",
+    "eslint": "^8.16.0",
+    "typescript": "^4.6.3",
+    "@reduxjs/toolkit": "^1.8.1",
+    "axios": "^0.27.1"
+  },
+  "devDependencies": {
+    "ts-config-lib": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

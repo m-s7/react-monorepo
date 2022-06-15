@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '@ms7/bui'
-import { User } from 'Guide/business/models/user/user'
+import { User } from 'Guide/business/types/user'
 import {
     useCreateUserMutation, useDeleteUserMutation,
     useGetUsersQuery,
@@ -8,7 +8,7 @@ import {
     usePatchUserMutation,
     useUpdateUserMutation,
 } from 'Guide/api/rtk-user-api'
-import { getNormalizedError } from 'Guide/business/lib/rtk/utils'
+import { getNormalizedError } from '@ms7/restful-rtk'
 import CenteredLoader from 'Guide/components/centered-loader'
 import ErrorFallback from 'Guide/components/error-fallback'
 import { LoaderSmall } from '@ms7/bui'
@@ -68,7 +68,7 @@ const RestRTK = () => {
                     <Button
                         className="m-1 w-75"
                         disabled={isFetchingLazy}
-                        onClick={() => trigger(Math.floor(Math.random() * 9))}>
+                        onClick={() => trigger(selectedId)}>
                         {isFetchingLazy ? <LoaderSmall /> : 'get user'}
                     </Button>
                     <Button
@@ -126,7 +126,7 @@ const RestRTK = () => {
                         className="m-1 w-75"
                         disabled={isCreating}
                         onClick={() => {
-                            deleteUser({ id: selectedId })
+                            deleteUser(selectedId)
                                 .unwrap()
                                 .then(() => {
                                     setMutatedError(undefined)
