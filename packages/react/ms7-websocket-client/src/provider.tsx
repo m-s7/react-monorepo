@@ -2,7 +2,6 @@ import React, { createContext, useState } from 'react'
 
 interface Props {
     provider: WebsocketProviderComponentType,
-    children: React.ReactNode | React.ReactNode[],
 }
 
 interface Websocket {
@@ -10,8 +9,7 @@ interface Websocket {
     disconnect(): void,
 }
 
-export interface WebsocketProviderComponentProps {
-    children: React.ReactNode | React.ReactNode[],
+export interface WebsocketProviderComponentProps extends React.PropsWithChildren<any> {
     onLoad: (authInstance: Websocket) => void,
 }
 
@@ -20,7 +18,7 @@ type WebsocketProviderComponentType = React.ComponentType<WebsocketProviderCompo
 
 export const WebsocketProviderContext = createContext<Websocket | undefined>(undefined)
 
-export const Provider = (props: Props) => {
+export const Provider = (props: React.PropsWithChildren<Props>) => {
     const [providerWebsocketInstance, setProviderWebsocketInstance] = useState<Websocket>()
 
     const onLoad = (websocketInstance: Websocket) => {

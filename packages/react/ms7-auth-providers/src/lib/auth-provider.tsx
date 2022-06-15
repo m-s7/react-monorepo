@@ -3,13 +3,11 @@ import React, { createContext, useState } from 'react'
 interface Props<T> {
     providerProps: T,
     provider: AuthProviderComponentType,
-    children: React.ReactNode | React.ReactNode[],
 }
 
-export interface AuthProviderComponentProps {
+export interface AuthProviderComponentProps extends React.PropsWithChildren<any> {
     providerProps: any,
     onLoad: (authInstance: AuthModel) => void,
-    children: React.ReactNode | React.ReactNode[],
 }
 
 type AuthProviderComponentType = React.ComponentType<AuthProviderComponentProps>
@@ -26,7 +24,7 @@ export interface AuthModel {
 
 export const AuthProviderContext = createContext<AuthModel | undefined>(undefined)
 
-export const AuthProvider = <T, >(props: Props<T>) => {
+export const AuthProvider = <T, >(props: React.PropsWithChildren<Props<T>>) => {
     const [providerAuthInstance, setProviderAuthInstance] = useState<AuthModel>()
 
     const onLoad = (authInstance: AuthModel) => {

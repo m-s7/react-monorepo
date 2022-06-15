@@ -6,10 +6,9 @@ import { RouterLink } from '../router-link'
 interface NotFound404Props {
     to: string,
     header?: string,
-    children: React.ReactNode | React.ReactNode[],
 }
 
-export const NotFound404 = (props: NotFound404Props) => {
+export const NotFound404 = (props: React.PropsWithChildren<NotFound404Props>) => {
     const { to, header = '404 - Not Found', children } = props
 
     return (

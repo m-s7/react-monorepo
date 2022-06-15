@@ -8,10 +8,9 @@ interface Props {
     roles?: Role[],
     outlet?: boolean,
     component404: JSX.Element,
-    children: React.ReactNode | React.ReactNode[],
 }
 
-const ProtectedRoute = (props: Props) => {
+const ProtectedRoute = (props: React.PropsWithChildren<Props>) => {
     const { roles, component404, children } = props
     const authContext = useContext(AuthProviderContext)
 

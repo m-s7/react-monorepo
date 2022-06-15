@@ -92,18 +92,18 @@ const App = () => {
     }
 
     return (
-        // <AuthProvider<KeycloakAuthProviderProps>
-        //     provider={KeycloakAuthProvider}
-        //     providerProps={{
-        //         config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
-        //         errorComponent: FullPageError,
-        //         suspenseComponent: FullPageLoader,
-        //         onAuthenticatedHandler: (token: string, logoutMethod: () => void) => {
-        //             ApiService.setupApiServiceInterceptors(token, logoutMethod)
-        //         },
-        //     }}>
-        <AppRouter />
-        // </AuthProvider>
+        <AuthProvider<KeycloakAuthProviderProps>
+            provider={KeycloakAuthProvider}
+            providerProps={{
+                config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
+                errorComponent: FullPageError,
+                suspenseComponent: FullPageLoader,
+                onAuthenticatedHandler: (token: string, logoutMethod: () => void) => {
+                    ApiService.setupApiServiceInterceptors(token, logoutMethod)
+                },
+            }}>
+            <AppRouter />
+        </AuthProvider>
     )
 }
 

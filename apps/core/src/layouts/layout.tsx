@@ -7,9 +7,6 @@ import { CoreStoreContext } from '@/index'
 import { Provider } from 'react-redux'
 import styled from 'styled-components'
 
-interface LayoutProps {
-    children?: React.ReactNode | React.ReactNode[],
-}
 const Container = styled.div`
     background-color: #454d55;
 `
@@ -23,7 +20,7 @@ const ContainerRight = styled.div`
     flex-flow: column;
 `
 
-const Layout = (props: LayoutProps) => {
+const Layout = (props: React.PropsWithChildren<void>) => {
     const { children } = props
 
     return (
