@@ -17,7 +17,7 @@ const Loader = styled.div`
 `
 
 const CenteredLoader = ({ text }: { text?: string }) => (
-    <div className="d-flex flex-column align-items-center">
+    <div className="d-flex flex-column align-items-center m-3">
         <Loader />
         <span>{text ?? ''}</span>
     </div>

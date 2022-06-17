@@ -9,25 +9,22 @@ import {
     useUpdateUserMutation,
 } from 'Guide/api/rtk-user-api'
 import { getNormalizedError } from '@ms7/restful-rtk'
-import CenteredLoader from 'Guide/components/centered-loader'
 import ErrorFallback from 'Guide/components/error-fallback'
 import { LoaderSmall } from '@ms7/bui'
+import { Card } from '@ms7/bui'
 
 const RestRTK = () => {
     const [selectedId, setSelectedId] = useState(0)
     const [mutatedUser, setMutatedUser] = useState<User | undefined>()
     const [mutatedError, setMutatedError] = useState<Error | undefined>()
 
-    const { data: users, error, isFetching, refetch } = useGetUsersQuery(undefined, { refetchOnMountOrArgChange: false, skip: false })
+    const { data: users, error, isLoading, isFetching, refetch } = useGetUsersQuery(undefined, { refetchOnMountOrArgChange: false, skip: false })
     const [trigger, { data: user, isFetching: isFetchingLazy, error: errorLazy }] = useLazyGetUserQuery()
 
     const [createUser, { isLoading: isCreating }] = useCreateUserMutation()
     const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation()
     const [patchUser, { isLoading: isPatching }] = usePatchUserMutation()
     const [deleteUser, { isLoading: isDeleting }] = useDeleteUserMutation()
-
-    if(isFetching)
-        return (<CenteredLoader text={'Loading users...'} />)
 
     const Users = () => (
         <React.Fragment>
@@ -60,105 +57,114 @@ const RestRTK = () => {
 
     return (
         <ErrorFallback
-            error={getNormalizedError(error)}
+            className="d-flex justify-content-center m-1"
+            error={!isFetching ? getNormalizedError(error) : undefined}
             onRetry={() => refetch()}>
-            <div className="d-flex flex-row p-3">
-                <div className="w-25">
-                    <p>Actions</p>
-                    <Button
-                        className="m-1 w-75"
-                        disabled={isFetchingLazy}
-                        onClick={() => trigger(selectedId)}>
-                        {isFetchingLazy ? <LoaderSmall /> : 'get user'}
-                    </Button>
-                    <Button
-                        className="m-1 w-75"
-                        disabled={isCreating}
-                        onClick={() => {
-                            createUser({ age: 666, name: 'Monica' })
-                                .unwrap()
-                                .then(user => {
-                                    setMutatedError(undefined)
-                                    setMutatedUser(user)
-                                })
-                                .catch(error => {
-                                    setMutatedUser(undefined)
-                                    setMutatedError(error)
-                                })
-                        }}>
-                        {isCreating ? <LoaderSmall /> : 'create user'}
-                    </Button>
-                    <Button
-                        className="m-1 w-75"
-                        disabled={isCreating}
-                        onClick={() => {
-                            updateUser({ id: selectedId, age: 666, name: 'Monica' })
-                                .unwrap()
-                                .then(user => {
-                                    setMutatedError(undefined)
-                                    setMutatedUser(user)
-                                })
-                                .catch(error => {
-                                    setMutatedUser(undefined)
-                                    setMutatedError(error)
-                                })
-                        }}>
-                        {isUpdating ? <LoaderSmall /> : 'update user'}
-                    </Button>
-                    <Button
-                        className="m-1 w-75"
-                        disabled={isCreating}
-                        onClick={() => {
-                            patchUser({ id: selectedId, age: 123 })
-                                .unwrap()
-                                .then(user => {
-                                    setMutatedError(undefined)
-                                    setMutatedUser(user)
-                                })
-                                .catch(error => {
-                                    setMutatedUser(undefined)
-                                    setMutatedError(error)
-                                })
-                        }}>
-                        {isPatching ? <LoaderSmall /> : 'patch user'}
-                    </Button>
-                    <Button
-                        className="m-1 w-75"
-                        disabled={isCreating}
-                        onClick={() => {
-                            deleteUser(selectedId)
-                                .unwrap()
-                                .then(() => {
-                                    setMutatedError(undefined)
-                                    setMutatedUser(undefined)
-                                })
-                                .catch(error => {
-                                    setMutatedUser(undefined)
-                                    setMutatedError(error)
-                                })
-                        }}>
-                        {isDeleting ? <LoaderSmall /> : 'delete user'}
-                    </Button>
-                    <hr className="m-1 w-75" />
-                    <label className="m-1 d-block">[update/patch/delete] user id</label>
-                    <input
-                        className="text-black m-1 w-75"
-                        value={selectedId}
-                        type='number'
-                        onChange={e => setSelectedId(Number(e.target.value))} />
-                </div>
-                <div className="w-25">
-                    <p>Results Mutation</p>
-                    <MutatedResult />
-                </div>
-                <div className="w-25">
-                    <p>Results Lazy</p>
-                    <LazyResult />
-                </div>
-                <div className="w-25">
-                    <p>Results</p>
-                    <Users />
-                </div>
+            <div className="d-flex flex-row m-1">
+                <Card className="w-25 me-1">
+                    <div className="d-flex flex-column align-items-center">
+                        <p>Actions</p>
+                        <Button
+                            className="m-1 w-75"
+                            disabled={isLoading || isFetching || isFetchingLazy}
+                            onClick={() => trigger(selectedId)}>
+                            {'get user'}
+                        </Button>
+                        <Button
+                            className="m-1 w-75"
+                            disabled={isLoading || isFetching || isCreating}
+                            onClick={() => {
+                                createUser({ age: 666, name: 'Monica' })
+                                    .unwrap()
+                                    .then(user => {
+                                        setMutatedError(undefined)
+                                        setMutatedUser(user)
+                                    })
+                                    .catch(error => {
+                                        setMutatedUser(undefined)
+                                        setMutatedError(error)
+                                    })
+                            }}>
+                            {'create user'}
+                        </Button>
+                        <Button
+                            className="m-1 w-75"
+                            disabled={isLoading || isFetching || isUpdating}
+                            onClick={() => {
+                                updateUser({ id: selectedId, age: 666, name: 'Monica' })
+                                    .unwrap()
+                                    .then(user => {
+                                        setMutatedError(undefined)
+                                        setMutatedUser(user)
+                                    })
+                                    .catch(error => {
+                                        setMutatedUser(undefined)
+                                        setMutatedError(error)
+                                    })
+                            }}>
+                            {'update user'}
+                        </Button>
+                        <Button
+                            className="m-1 w-75"
+                            disabled={isLoading || isFetching || isPatching}
+                            onClick={() => {
+                                patchUser({ id: selectedId, age: 123 })
+                                    .unwrap()
+                                    .then(user => {
+                                        setMutatedError(undefined)
+                                        setMutatedUser(user)
+                                    })
+                                    .catch(error => {
+                                        setMutatedUser(undefined)
+                                        setMutatedError(error)
+                                    })
+                            }}>
+                            {'patch user'}
+                        </Button>
+                        <Button
+                            className="m-1 w-75"
+                            disabled={isLoading || isFetching || isDeleting}
+                            onClick={() => {
+                                deleteUser(selectedId)
+                                    .unwrap()
+                                    .then(() => {
+                                        setMutatedError(undefined)
+                                        setMutatedUser(undefined)
+                                    })
+                                    .catch(error => {
+                                        setMutatedUser(undefined)
+                                        setMutatedError(error)
+                                    })
+                            }}>
+                            {'delete user'}
+                        </Button>
+                        <hr className="m-1 w-75" />
+                        <label className="m-1 d-block">[update/patch/delete] user id</label>
+                        <input
+                            className="text-black m-1 w-75"
+                            value={selectedId}
+                            type='number'
+                            onChange={e => setSelectedId(Number(e.target.value))} />
+                    </div>
+                </Card>
+                <Card className="w-25 me-1">
+                    <div className="d-flex flex-column align-items-center">
+                        <p>Results Mutation</p>
+                        {(isCreating || isUpdating || isPatching || isDeleting) ? <LoaderSmall /> : <MutatedResult />}
+                    </div>
+                </Card>
+                <Card className="w-25 me-1">
+                    <div className="d-flex flex-column align-items-center">
+                        <p>Results Lazy</p>
+                        {isFetchingLazy ? <LoaderSmall /> : <LazyResult />}
+                    </div>
+                </Card>
+                <Card className="w-25">
+                    <div className="d-flex flex-column align-items-center">
+                        <p>Results</p>
+                        {(isLoading || isFetching) ? <LoaderSmall /> : <Users />}
+                    </div>
+                </Card>
             </div>
         </ErrorFallback>
     )

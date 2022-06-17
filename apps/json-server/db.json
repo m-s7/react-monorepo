@@ -61,39 +61,9 @@
       "id": 20
     },
     {
-      "name": "Riley",
-      "age": 83,
+      "age": 666,
+      "name": "Monica",
       "id": 21
-    },
-    {
-      "name": "Ellie",
-      "age": 15,
-      "id": 22
-    },
-    {
-      "age": 666,
-      "name": "Monica",
-      "id": 25
-    },
-    {
-      "age": 666,
-      "name": "Monica",
-      "id": 26
-    },
-    {
-      "age": 666,
-      "name": "Monica",
-      "id": 27
-    },
-    {
-      "age": 666,
-      "name": "Monica",
-      "id": 28
-    },
-    {
-      "age": 666,
-      "name": "Monica",
-      "id": 29
     }
   ]
 }

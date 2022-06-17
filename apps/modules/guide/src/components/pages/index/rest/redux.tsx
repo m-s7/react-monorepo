@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { User } from 'Guide/business/types/user'
 import { AxiosError } from '@ms7/restful-redux'
 import { getUser, getUsers, patchUser, postUser, putUser, removeUser } from 'Guide/api/redux-user-api'
-import { Button } from '@ms7/bui'
+import { Button, LoaderSmall } from '@ms7/bui'
+import { Card } from '@ms7/bui'
 
 type UserItem = User | User[]
 
@@ -92,9 +93,9 @@ const RestRedux = () => {
     }
 
     return (
-        <React.Fragment>
-            <div className="d-flex flex-row p-3">
-                <div className="w-25">
+        <div className="d-flex flex-row m-1">
+            <Card className="me-1 w-25">
+                <div className="d-flex flex-column align-items-center">
                     <p>Actions</p>
                     <Button
                         className="m-1 w-75"
@@ -133,15 +134,21 @@ const RestRedux = () => {
                         {'remove random user'}
                     </Button>
                 </div>
-                <div>
+            </Card>
+            <Card className="w-25">
+                <div className="d-flex flex-column align-items-center">
                     <p>Results</p>
-                    {error && <div className="danger">{`Error: ${error.message}`}</div>}
-                    <React.Fragment>
-                        {getNormalizedUsers().map(user => (<div key={user.id}>{`${user.id} - ${user.name} - ${user.age}`}</div>))}
-                    </React.Fragment>
+                    {error && 
+                            <div
+                                className="alert alert-danger"
+                                role="alert">
+                                {`Error: ${error.message}`}
+                            </div>
+                    }
+                    {isLoading ? <LoaderSmall /> : getNormalizedUsers().map(user => (<div key={user.id}>{`${user.id} - ${user.name} - ${user.age}`}</div>))}
                 </div>
-            </div>
-        </React.Fragment>
+            </Card>
+        </div>
     )
 }
 

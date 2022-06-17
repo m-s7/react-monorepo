@@ -69,7 +69,7 @@ const Map = () => {
     }
     
     return (
-        <Card fillViewport={true}>
+        <Card>
             <h5>{'Map Module'}</h5>
             <hr />
             <ul>

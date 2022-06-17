@@ -13,7 +13,7 @@ const UserViewer = () => {
             getUsers()
                 .then(users => setUsers(users))
                 .catch(error => handleError(error))
-        }, 2500)
+        }, 1000)
     }, [])
 
     if(users) {

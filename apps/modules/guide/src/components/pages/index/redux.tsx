@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useAppSelector } from 'Guide/hooks/use-app-selector'
 import { useAppDispatch } from 'Guide/hooks/use-app-dispatch'
 import { setId, setDescription, setName, setType, setAge } from 'Guide/store/reducers/person-reducer'
-import { Button } from '@ms7/bui'
+import { Button, Card } from '@ms7/bui'
 import {
     decrement,
     increment,
@@ -25,10 +25,9 @@ const Redux = () => {
     const incrementValue = incrementAmount
 
     return (
-        <React.Fragment>
-            <h5>{'Redux Example'}</h5>
-            <div className="d-flex flex-row p-3">
-                <div className="w-30">
+        <div className="d-flex flex-row m-1">
+            <Card className="me-1 w-25">
+                <div className="d-flex flex-column align-items-center">
                     <p>Person State:</p>
                     <ul>
                         <li>{`id: ${id}`}</li>
@@ -65,7 +64,9 @@ const Redux = () => {
                         </Button>
                     </div>
                 </div>
-                <div className="50">
+            </Card>
+            <Card className="w-25">
+                <div className="d-flex flex-column align-items-center">
                     <p>Counter State:</p>
                     <ul>
                         <li>{`counter: ${value}`}</li>
@@ -112,8 +113,8 @@ const Redux = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </React.Fragment>
+            </Card>
+        </div>
     )
 }
 

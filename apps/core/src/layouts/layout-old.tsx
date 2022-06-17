@@ -35,8 +35,10 @@ const Layout = (props: React.PropsWithChildren<void>) => {
                     <Navbar />
                 </Provider>
                 <Header />
-                <div className="p-1 h-100">
-                    {children && children}
+                <div className="h-100">
+                    <div className="p-1 h-100">
+                        {children && children}
+                    </div>
                 </div>
             </ContainerRight>
         </Container>

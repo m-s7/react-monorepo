@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement>, React.AriaAttributes {
     header?: React.ReactNode | React.ReactNode[],
-    fillViewport?: boolean,
 }
 
 const Component = styled.div`
@@ -12,11 +11,11 @@ const Component = styled.div`
 `
 
 export const Card = (props: CardProps) => {
-    const { children, className, header, fillViewport, ...rest } = props
+    const { children, className, header, ...rest } = props
 
     return (
         <Component
-            className={`card ${fillViewport ? 'h-100 w-100' : ''} ${className}`}
+            className={className ? `card ${className}` : 'card'}
             {...rest}>
             {header && <div className={'card-header'}>{header}</div>}
             <div className={'card-body'}>

@@ -18,15 +18,17 @@ const Logo = styled.img`
 `
 
 const Dashboard = () => (
-    <Card fillViewport={true}>
-        <div className="d-flex flex-column align-items-center">
-            <h1>{'MS7 Core'}</h1>
-            <Logo
-                src={logo}
-                alt="logo"
-                data-testid='dashboard-image' />
-        </div>
-    </Card>
+    <div className="d-flex justify-content-center">
+        <Card>
+            <div className="d-flex flex-column align-items-center">
+                <h1>{'MS7 Core'}</h1>
+                <Logo
+                    src={logo}
+                    alt="logo"
+                    data-testid='dashboard-image' />
+            </div>
+        </Card>
+    </div>
 )
 
 export default Dashboard
