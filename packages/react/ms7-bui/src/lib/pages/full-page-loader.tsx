@@ -5,6 +5,7 @@ import { RouterLink } from '../router-link'
 import styled from 'styled-components'
 
 interface Props {
+    header?: string,
     navigateName?: string,
     navigatePath?: string,
 }
@@ -25,11 +26,11 @@ const Component = styled.div`
 `
 
 export const FullPageLoader = (props: Props) => {
-    const { navigateName, navigatePath } = props
+    const { header, navigateName, navigatePath } = props
 
     return (
         <LayoutEmpty>
-            <CardCentered>
+            <CardCentered header={header}>
                 <Component />
                 <span>{'Please wait...'}</span>
                 {(navigateName && navigatePath) &&

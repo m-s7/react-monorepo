@@ -51,7 +51,7 @@ const Header = () => {
         { path: '/', props: { some: 'component', props: '!' }, breadcrumb: 'Home' },
         { path: '/user', props: { user: 'prop' }, breadcrumb: BreadcrumbComponent },
     ]
-    const options = { disableDefaults: true, overrideDefaultHome: 'Dashboard' }
+    const options = { disableDefaults: true, overrideDefaultHome: 'Index' }
     
     const breadcrumbs = useRouterBreadcrumbs(routes, options)
 

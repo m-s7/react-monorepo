@@ -1,6 +1,6 @@
-# Core
+# Example
 
-MS7 Core app.
+MS7 Example App.
 
 ## Installation
 

@@ -5,7 +5,7 @@ import { Icon } from '@ms7/bui'
 import { useLocation } from 'react-router-dom'
 import AppMenuGenerator from '@/components/generators/app-menu-generator'
 import { getMenu } from '@/utils/menu-utils'
-import { MenuConfig } from '@ms7/common'
+import { env, MenuConfig } from '@ms7/common'
 import { AuthProviderContext } from '@ms7/auth-providers'
 import styled from 'styled-components'
 
@@ -24,24 +24,26 @@ const Sidebar = () => {
 
     return (
         <Container className="d-flex flex-column flex-shrink-0 p-3 text-white h-100">
-            <RouterLink
-                to={'/'}
-                className={'d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none'}>
-                <Icon
-                    variant={'dashboard'}
-                    size={'2x'} />
-                <span className="fs-4 ms-2">{'react-core'}</span>
-            </RouterLink>
+            <div className="d-flex justify-content-center">
+                <RouterLink
+                    to={'/'}
+                    className={'d-flex align-items-center mb-3 mb-md-0 text-white text-decoration-none'}>
+                    <Icon
+                        variant={'dashboard'}
+                        size={'2x'} />
+                    <span className="fs-4 ms-2">{env.REACT_APP_NAME}</span>
+                </RouterLink>
+            </div>
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
                 {menu && AppMenuGenerator(menu, location)}
             </ul>
             <hr />
-            <div className="dropup">
+            <div className="dropup ms-1">
                 <a
                     href="#"
-                    className="d-flex align-items-center text-white text-decoration-none"
-                    id="dropdownUser1"
+                    className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    id="dropdownUser"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img
@@ -54,7 +56,7 @@ const Sidebar = () => {
                 </a>
                 <ul
                     className="dropdown-menu dropdown-menu-dark text-small shadow"
-                    aria-labelledby="dropdownUser1">
+                    aria-labelledby="dropdownUser">
                     <FooterDropdownItem
                         path={'/profile'}>
                         {'Profile'}
@@ -65,7 +67,9 @@ const Sidebar = () => {
                     {authContext &&
                         <FooterDropdownItem
                             path={'#'}
-                            onClick={() => { authContext?.logout() }}>
+                            onClick={() => {
+                                authContext?.logout()
+                            }}>
                             {'Sign out'}
                         </FooterDropdownItem>}
                 </ul>

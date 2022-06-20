@@ -4,9 +4,6 @@ import { getConfigRouter } from '@/configs/app'
 import { getAppsRouterEntrypointConfigs } from '@/utils/apps-utils'
 import { RouterEntrypoint } from '@ms7/router'
 
-export const isDev = (): boolean => (process.env.NODE_ENV !== 'production')
-export const isProd = (): boolean => (process.env.NODE_ENV === 'production')
-
 export const hasRole = (role: string, authContext?: AuthModel): boolean => authContext?.hasRole(role) || true
 export const hasRoles = (roles: Role[], authContext?: AuthModel): boolean => {
     if(authContext)

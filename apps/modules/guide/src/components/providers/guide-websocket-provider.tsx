@@ -7,6 +7,7 @@ import { AuthProviderContext } from '@ms7/auth-providers'
 import { useAppDispatch } from 'Guide/hooks/use-app-dispatch'
 import { FullPageLoader } from '@ms7/bui'
 import { WebsocketProviderComponentProps } from '@ms7/websocket-client'
+import { env } from '@ms7/common'
 
 const GuideWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     let websocketClient: WebsocketClient | undefined
@@ -47,7 +48,8 @@ const GuideWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     if(showLoader || !isConnected)
         return (
             <FullPageLoader
-                navigateName={'Dashboard'}
+                header={env.REACT_APP_NAME}
+                navigateName={'Index'}
                 navigatePath={'/'} />
         )
 

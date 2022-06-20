@@ -3,6 +3,7 @@ import { getConfigRouter } from 'Guide/configs/app'
 import { Route, Routes } from 'react-router-dom'
 import { RouterGenerator } from '@ms7/router'
 import { NotFound404 } from '@ms7/bui'
+import { env } from '@ms7/common'
 
 interface Props {
     parentLayout?: React.ElementType,
@@ -13,9 +14,10 @@ const AppRouter = (props: Props) => {
 
     const Component404 = (
         <NotFound404
-            to={'/'}
-            header={'404 - Not Found'}>
-            {'Dashboard'}
+            to={'/map'}
+            title={'404 - Not Found'}
+            header={env.REACT_APP_NAME}>
+            {'Index'}
         </NotFound404> )
 
     return (

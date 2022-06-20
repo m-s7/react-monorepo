@@ -12,7 +12,8 @@ type MapMode = 'single' | 'group' | 'group-alt'
 let mapManager: MapManager
 
 const MapContainer = styled.div`
-    height: 600px;
+    min-height: 750px;
+    height: 100%;
 `
 
 const ModeButton = (props: ButtonProps & { mode: MapMode, currentMode: MapMode, clickHandler: (mode: MapMode) => void }) => {
@@ -69,34 +70,35 @@ const Map = () => {
     }
     
     return (
-        <Card>
-            <h5>{'Map Module'}</h5>
-            <hr />
-            <ul>
-                <li>{`mode: ${mode}`}</li>
-            </ul>
-            <div className="d-flex flex-row mb-2">
-                <ModeButton
-                    mode={'single'}
-                    currentMode={mode}
-                    clickHandler={setModeHandler}>
-                    single
-                </ModeButton>
-                <ModeButton
-                    mode={'group'}
-                    currentMode={mode}
-                    clickHandler={setModeHandler}>
-                    group
-                </ModeButton>
-                <ModeButton
-                    mode={'group-alt'}
-                    currentMode={mode}
-                    clickHandler={setModeHandler}>
-                    group-alt
-                </ModeButton>
-            </div>
-            <MapContainer id="map" />
-        </Card>
+        <div className="d-flex">
+            <Card className="d-flex flex-grow-1 me-1">
+                <MapContainer id="map" />
+            </Card>
+            <Card className="w-25">
+                <div className="d-flex flex-column mb-2">
+                    <h5>Mode:</h5>
+                    <ModeButton
+                        mode={'single'}
+                        currentMode={mode}
+                        clickHandler={setModeHandler}>
+                        single
+                    </ModeButton>
+                    <ModeButton
+                        mode={'group'}
+                        currentMode={mode}
+                        clickHandler={setModeHandler}>
+                        group
+                    </ModeButton>
+                    <ModeButton
+                        mode={'group-alt'}
+                        currentMode={mode}
+                        clickHandler={setModeHandler}>
+                        group-alt
+                    </ModeButton>
+                </div>
+                <hr />
+            </Card>
+        </div>
     )
 }
 

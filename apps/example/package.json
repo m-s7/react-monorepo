@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "core",
+  "name": "example",
   "version": "0.0.1",
-  "description": "MS7 Core app",
+  "description": "MS7 Example App",
   "scripts": {
     "build": "NODE_ENV=production webpack --config tools/webpack/webpack.config.prod.js",
     "dev": "NODE_ENV=development webpack serve --config tools/webpack/webpack.config.dev.js",

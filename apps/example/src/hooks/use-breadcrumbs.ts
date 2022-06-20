@@ -12,7 +12,7 @@ const useBreadcrumbs = () => {
         setRoutes(getFlatRoutes(getRoutes(getAppRouters()), true).map(({ path, breadcrumb }) => ({ path, breadcrumb })))
     }, [pathname])
 
-    return useRouterBreadcrumbs(routes, { disableDefaults: true, stringReturn: true, overrideDefaultHome: 'Dashboard' })
+    return useRouterBreadcrumbs(routes, { disableDefaults: true, stringReturn: true, overrideDefaultHome: 'Home' })
 }
 
 export default useBreadcrumbs

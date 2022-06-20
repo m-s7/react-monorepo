@@ -5,16 +5,17 @@ import { RouterLink } from '../router-link'
 
 interface NotFound404Props {
     to: string,
+    title?: string,
     header?: string,
 }
 
 export const NotFound404 = (props: React.PropsWithChildren<NotFound404Props>) => {
-    const { to, header = '404 - Not Found', children } = props
+    const { to, title = '404 - Not Found', header, children } = props
 
     return (
         <LayoutEmpty>
-            <CardCentered>
-                <h2>{header}</h2>
+            <CardCentered header={header}>
+                <h2>{title}</h2>
                 <RouterLink to={to}>
                     {children}
                 </RouterLink>

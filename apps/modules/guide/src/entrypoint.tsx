@@ -17,6 +17,7 @@ interface Props {
 const FallbackError = (props: FullPageFatalErrorProps) => (
     <FullPageFatalError
         error={props.error}
+        header={env.REACT_APP_NAME}
         home_link_name={env.REACT_APP_HOMEPAGE_NAME} />
 )
 
