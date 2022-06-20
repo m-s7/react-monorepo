@@ -12,7 +12,7 @@ type MapMode = 'single' | 'group' | 'group-alt'
 let mapManager: MapManager
 
 const MapContainer = styled.div`
-    min-height: 750px;
+    min-height: 500px;
     height: 100%;
 `
 
@@ -70,7 +70,7 @@ const Map = () => {
     }
     
     return (
-        <div className="d-flex">
+        <div className="d-flex h-100">
             <Card className="d-flex flex-grow-1 me-1">
                 <MapContainer id="map" />
             </Card>
