@@ -23,6 +23,8 @@ const GuideWebsocketProvider = (props: WebsocketProviderComponentProps) => {
         if(websocket) {
             const { url, name, headers } = websocket
 
+            if(!url) throw new Error(`Invalid url, ${url}`)
+
             const token = authContext?.getToken()
             const callback = (isConnected: boolean): void => { setIsConnected(isConnected) }
 

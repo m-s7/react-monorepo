@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface CardSmallCenteredProps extends React.HTMLAttributes<HTMLElement>, React.AriaAttributes {
-    fullSpace?: boolean,
+interface CardSmallCenteredProps extends React.HTMLAttributes<HTMLElement> {
+    header?: string,
+    //min-width, height,
 }
 
 const Component = styled.div`
@@ -19,15 +20,15 @@ const ComponentBody = styled.div`
     justify-content: center;
     flex-direction: column;
     margin: 0 20px 20px;
-    min-width: 430px;
+    min-width: 450px;
 `
 
-export const CardSmallCentered = (props: CardSmallCenteredProps) => {
-    const { children } = props
+export const CardCentered = (props: CardSmallCenteredProps) => {
+    const { header, className, children } = props
 
     return (
-        <Component className={'card'}>
-            <div className={'card-header text-center'}>{'react-core'}</div>
+        <Component className={className ? `card ${className}` : 'card'}>
+            <div className={'card-header text-center'}>{header ?? header}</div>
             <ComponentBody className={'card-body'}>
                 {children}
             </ComponentBody>

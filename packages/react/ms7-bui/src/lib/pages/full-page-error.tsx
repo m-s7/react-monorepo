@@ -1,7 +1,7 @@
 import React from 'react'
 import { FatalError } from '@ms7/common'
 import { LayoutEmpty } from '../layouts/layout-empty'
-import { CardSmallCentered } from '../components/card-small-centered'
+import { CardCentered } from '../components/card-centered'
 import { RouterLink } from '../router-link'
 
 interface Props { error: FatalError | Error, allowNavigation?: boolean }
@@ -12,7 +12,7 @@ export const FullPageError = (props: Props) => {
 
     return (
         <LayoutEmpty>
-            <CardSmallCentered>
+            <CardCentered>
                 <h2>{title}</h2>
                 {allowNavigation &&
                     <p>
@@ -21,7 +21,7 @@ export const FullPageError = (props: Props) => {
                         </RouterLink>
                     </p>
                 }
-            </CardSmallCentered>
+            </CardCentered>
         </LayoutEmpty>
     )
 }

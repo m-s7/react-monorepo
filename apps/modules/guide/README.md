@@ -60,15 +60,16 @@ yarn standalone
 ### Module
 
 Parent app must provide:
-- react router (BrowserRouter)
-- initialized ApiService (@ms7/restful-redux)
-- font awesome icons
 - layout
+- font awesome icons
+- environmental variables
+- react router (BrowserRouter)
 - configured webpack aliases (for development)
 
 Optionally parent may provide:
 - logger instance
 - auth provider
+- error boundary component
 
 ####React router info
 Since redux allows only one instance of store per app, parent store must be initialized using react context, see example below.

@@ -2,9 +2,10 @@ import { User } from 'Guide/business/types/user'
 import { createApi } from '@reduxjs/toolkit/dist/query/react'
 import { baseQueryWithAuth } from '@ms7/restful-rtk'
 import { Optional } from '@ms7/common'
+import env from 'Guide/env'
 
 const rtkUserApi = createApi({
-    baseQuery: baseQueryWithAuth('http://localhost:3035', '111'),
+    baseQuery: baseQueryWithAuth(env.REACT_APP_GUIDE_API_URL, '111'),
     tagTypes: ['Users'],
     endpoints: build => ({
         getUser: build.query<User, number>({

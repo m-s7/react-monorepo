@@ -1,6 +1,6 @@
 import React from 'react'
 import { LayoutEmpty } from '../layouts/layout-empty'
-import { CardSmallCentered } from '../components/card-small-centered'
+import { CardCentered } from '../components/card-centered'
 import { RouterLink } from '../router-link'
 
 interface NotFound404Props {
@@ -13,12 +13,12 @@ export const NotFound404 = (props: React.PropsWithChildren<NotFound404Props>) =>
 
     return (
         <LayoutEmpty>
-            <CardSmallCentered>
+            <CardCentered>
                 <h2>{header}</h2>
                 <RouterLink to={to}>
                     {children}
                 </RouterLink>
-            </CardSmallCentered>
+            </CardCentered>
         </LayoutEmpty>
     )
 }

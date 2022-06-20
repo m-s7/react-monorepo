@@ -1,6 +1,6 @@
 import React from 'react'
 import { LayoutEmpty } from '../layouts/layout-empty'
-import { CardSmallCentered } from '../components/card-small-centered'
+import { CardCentered } from '../components/card-centered'
 import { RouterLink } from '../router-link'
 import styled from 'styled-components'
 
@@ -29,7 +29,7 @@ export const FullPageLoader = (props: Props) => {
 
     return (
         <LayoutEmpty>
-            <CardSmallCentered>
+            <CardCentered>
                 <Component />
                 <span>{'Please wait...'}</span>
                 {(navigateName && navigatePath) &&
@@ -37,7 +37,7 @@ export const FullPageLoader = (props: Props) => {
                         {navigateName}
                     </RouterLink>
                 }
-            </CardSmallCentered>
+            </CardCentered>
         </LayoutEmpty>
     )
 }
