@@ -1,14 +1,14 @@
 import React from 'react'
 import App from 'Guide/app'
-import env from 'Guide/env'
 import store from 'Guide/store/store'
-import { logging, LogLevel } from '@ms7/logger'
+import { env, isDev } from '@ms7/common'
+import { getLogLevelForEnv, logging, LogLevel } from '@ms7/logger'
 import { Provider } from 'react-redux'
 import { FullPageFatalError } from '@ms7/bui'
 import { ErrorBoundary } from 'react-error-boundary'
 import { FullPageFatalErrorProps } from '@ms7/bui'
 
-logging.addConfigurationOption({ minLevels: { 'websocket': LogLevel.ERROR }})
+logging.addConfigurationOption({ minLevels: { 'websocket': getLogLevelForEnv(isDev()) }})
 
 interface Props {
     parentLayout?: React.ElementType,

@@ -1,9 +1,9 @@
 import { AnyAction, Middleware } from '@reduxjs/toolkit'
 import { logging, getLogLevelForEnv, Logger } from '@ms7/logger'
-import { StringDictionary } from '@ms7/common'
+import { isDev, StringDictionary } from '@ms7/common'
 
 export const queryLogger: Middleware = () => next => action => {
-    logging.addConfigurationOption({ minLevels: { 'query': getLogLevelForEnv(process.env.NODE_ENV === 'development') }})
+    logging.addConfigurationOption({ minLevels: { 'query': getLogLevelForEnv(isDev()) }})
 
     logAction(logging.getLogger('query'), action)
     

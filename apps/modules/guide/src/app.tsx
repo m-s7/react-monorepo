@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import AppRouter from 'Guide/app-router'
+import { env } from '@ms7/common'
 import { useAppDispatch } from 'Guide/hooks/use-app-dispatch'
 import { reset as resetPersonReducer } from 'Guide/store/reducers/person-reducer'
 import { reset as resetCounterReducer } from 'Guide/store/reducers/counter-reducer'
@@ -7,7 +8,6 @@ import { reset as resetWebsocketReducer } from 'Guide/store/reducers/websocket-r
 import { Provider as WebsocketProvider } from '@ms7/websocket-client'
 import GuideWebsocketProvider from 'Guide/components/providers/guide-websocket-provider'
 import EventBus from '@ms7/event-bus'
-import env from 'Guide/env'
 
 interface Props {
     parentLayout?: React.ElementType,

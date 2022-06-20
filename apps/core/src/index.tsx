@@ -8,7 +8,7 @@ import { logging, assignLevelToLoggers, getLogLevelForEnv } from '@ms7/logger'
 import { loadFaIcons } from '@/utils/fa-utils'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/global.css'
-import { isDev } from '@/utils/app-utils'
+import { isDev } from '@ms7/common'
 
 loadFaIcons()
 logging.configure({ minLevels: assignLevelToLoggers(['', 'core'], getLogLevelForEnv(isDev())) }).registerConsoleLogger()

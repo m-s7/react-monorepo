@@ -1,5 +1,4 @@
 import { Role } from '@ms7/auth-providers'
-import { LogLevel } from '@ms7/logger'
 import { RouterConfig } from '@ms7/router'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
@@ -15,7 +14,6 @@ export interface AppConfig {
     active: boolean,
     title: string,
     apiUrl?: string,
-    log: Readonly<{ name: string, min: LogLevel }>,
     menu: MenuConfig[],
     router: RouterConfig,
     websocket?: WebsocketConfig,

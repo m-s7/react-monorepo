@@ -7,7 +7,7 @@ import ApiService from '@ms7/restful-redux'
 import { FatalError } from '@ms7/common'
 import { getAppRouters } from '@/utils/app-utils'
 import { FullPageError, FullPageLoader } from '@ms7/bui'
-import env from '@/env'
+import { env } from '@ms7/common'
 
 const App = () => {
     const logger = logging.getLogger('core')
