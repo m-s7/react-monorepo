@@ -7,9 +7,9 @@ import { reset as resetCounterReducer } from 'Guide/store/reducers/counter-reduc
 import { reset as resetWebsocketReducer } from 'Guide/store/reducers/websocket-reducer'
 import { Provider as WebsocketProvider } from '@ms7/websocket-client'
 import GuideWebsocketProvider from 'Guide/components/providers/guide-websocket-provider'
-import { AuthProviderContext, setToken } from '@ms7/auth-providers'
+import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth-providers'
 import { EntrypointComponentProps } from '@ms7/router'
-import ApiService, { AxiosError } from '@ms7/restful-redux'
+import ApiService from '@ms7/restful-redux'
 
 const App = (props: EntrypointComponentProps) => {
     const dispatch = useAppDispatch()
@@ -19,15 +19,16 @@ const App = (props: EntrypointComponentProps) => {
     if(env.REACT_APP_GUIDE_API_URL === undefined) throw new Error('Invalid API url')
 
     useLayoutEffect(() => {
-        const token = context?.getToken()
-        const logout = context?.logout
-        if(token) {
-            dispatch(setToken(token))
+        if(context) {
+            const token = context.getToken()
+            const logoutUrl = context.getLogoutUrl()
 
-            if(logout)
-                ApiService.setupApiServiceInterceptors(token, logout)
+            dispatch(setToken(token))
+            dispatch(setLogoutUrl(logoutUrl))
+            dispatch(setUsername(context.getUserInfo().username))
+
+            ApiService.setupApiServiceInterceptors(token, logoutUrl)
         }
-        
     }, [])
     
     useEffect(() => () => {

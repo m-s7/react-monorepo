@@ -1,7 +1,7 @@
 import Keycloak from 'keycloak-js'
 import { isEmpty } from 'lodash'
 import { logging } from '@ms7/logger'
-import { AuthModel } from '../auth-provider'
+import { AuthModel, UserInfo } from '../auth-provider'
 
 interface KeycloakCallback {
     (isAuthenticated: boolean, error?: Error | undefined): void,
@@ -87,16 +87,28 @@ class KeycloakAuth implements AuthModel {
         return this.keycloak?.hasRealmRole(role) || false
     }
 
-    public logout(): void {
-        if(this.tokenRefreshRunner)
-            window.clearInterval(this.tokenRefreshRunner)
+    public getUserInfo(): UserInfo {
+        return {
+            name: this.keycloak?.idTokenParsed?.name,
+            email: this.keycloak?.idTokenParsed?.email,
+            username: this.keycloak?.idTokenParsed?.preferred_username,
+        }
+    }
 
+    public getLogoutUrl(): URL {
         const baseUrl = window.location.origin
         const keycloakBaseUrl = this.getKeycloakBaseUrl()
 
-        if(!baseUrl || !keycloakBaseUrl) return
+        if(!baseUrl || !keycloakBaseUrl) throw new Error(`Cannot construct keycloak logout url, baseUrl: ${baseUrl}, keycloakBaseUrl: ${keycloakBaseUrl}`)
 
-        window.location.replace(this.keycloak?.createLogoutUrl() || `${keycloakBaseUrl}/logout?redirect_uri=${baseUrl}`)
+        return new URL(this.keycloak?.createLogoutUrl() || `${keycloakBaseUrl}/logout?redirect_uri=${baseUrl}`)
+    }
+
+    private logout(): void {
+        if(this.tokenRefreshRunner)
+            window.clearInterval(this.tokenRefreshRunner)
+
+        window.location.replace(this.getLogoutUrl())
     }
 
     private startTokenRefreshRunner(): number | undefined {

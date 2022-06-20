@@ -21,7 +21,8 @@
     "eslint": "^8.16.0",
     "tsup": "^6.0.1",
     "typescript": "^4.6.3",
-    "rxjs": "^7.5.5"
+    "rxjs": "^7.5.5",
+    "@ms7/auth-providers": "*"
   },
   "devDependencies": {
     "ts-config-lib": "*"

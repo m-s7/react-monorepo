@@ -16,10 +16,17 @@ type AuthProviderComponentType = React.ComponentType<AuthProviderComponentProps>
 export interface AuthModel {
     init(): void,
     validate(): void,
-    logout(): void,
+    getLogoutUrl(): URL,
     getToken(): string | undefined,
     hasRole(role: string): boolean,
     isAuthenticated(): boolean,
+    getUserInfo(): UserInfo,
+}
+
+export interface UserInfo {
+    username: string,
+    name?: string,
+    email?: string,
 }
 
 export const AuthProviderContext = createContext<AuthModel | undefined>(undefined)

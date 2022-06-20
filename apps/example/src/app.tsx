@@ -111,9 +111,6 @@ const App = () => {
                 config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
                 errorComponent: ErrorComponent,
                 suspenseComponent: SuspenseComponent,
-                onAuthenticatedHandler: (token: string | undefined, logoutMethod: () => void) => {
-                    if(token) ApiService.setupApiServiceInterceptors(token, logoutMethod)
-                },
             }}>
             <AppRouter />
         </AuthProvider>

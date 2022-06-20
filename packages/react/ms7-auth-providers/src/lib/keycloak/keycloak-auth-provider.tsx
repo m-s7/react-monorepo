@@ -30,7 +30,7 @@ export const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
             if(isAuthenticated) {
                 const token = keycloakAuth.getToken()
 
-                if(onAuthenticatedHandler) onAuthenticatedHandler(token, keycloakAuth.logout)
+                if(onAuthenticatedHandler) onAuthenticatedHandler(token, keycloakAuth.getLogoutUrl)
             }
         })
 

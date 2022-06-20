@@ -5,19 +5,24 @@ import { baseQueryWithAuth } from '@ms7/restful-rtk'
 import { Optional } from '@ms7/common'
 
 const rtkUserApi = createApi({
-    //TODO: remove token, pass logout method <optional>
-    baseQuery: baseQueryWithAuth(env.REACT_APP_GUIDE_API_URL, '111'),
+    //TODO: remove token add logout method to the auth store
+    baseQuery: baseQueryWithAuth(env.REACT_APP_GUIDE_API_URL),
     tagTypes: ['Users'],
     endpoints: build => ({
+        getUsers: build.query<User[], void>({
+            query: () => ({ url: 'users' }),
+            transformResponse: (response: User[], meta, arg) => response,
+            providesTags: (result, error) => {
+                if(result)
+                    return [...result.map(({ id }) => ({ type: 'Users' as const, id })), { type: 'Users', id: 'LIST' }]
+
+                return [{ type: 'Users', id: 'LIST' }]
+            },
+        }),
         getUser: build.query<User, number>({
             query: id => ({ url: `users/${id}` }),
             transformResponse: (response: User, meta, arg) => response,
             providesTags: (result, error, id) => [{ type: 'Users', id }],
-        }),
-        getUsers: build.query<User[], void>({
-            query: () => ({ url: 'users' }),
-            transformResponse: (response: User[], meta, arg) => response,
-            providesTags: (result, error) => [{ type: 'Users' }],
         }),
         createUser: build.mutation<User, Optional<User, 'id'>>({
             query: ({ ...user }) => ({
@@ -26,7 +31,7 @@ const rtkUserApi = createApi({
                 body: user,
             }),
             transformResponse: (response: User, meta, arg) => response,
-            invalidatesTags: ['Users'],
+            invalidatesTags: [{ type: 'Users', id: 'LIST' }],
         }),
         updateUser: build.mutation<User, User>({
             query: ({ id, ...user }) => ({
@@ -34,8 +39,17 @@ const rtkUserApi = createApi({
                 method: 'PUT',
                 body: user,
             }),
+            async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
+                // optimistic update
+                const patchResult = dispatch(
+                    rtkUserApi.util.updateQueryData('getUser', id, draft => {
+                        Object.assign(draft, patch)
+                    }),
+                )
+                queryFulfilled.catch(patchResult.undo)
+            },
             transformResponse: (response: User, meta, arg) => response,
-            invalidatesTags: ['Users'],
+            invalidatesTags: [{ type: 'Users', id: 'LIST' }],
         }),
         patchUser: build.mutation<User, Optional<User, 'age' | 'name'>>({
             query: ({ id, ...user }) => ({
@@ -43,15 +57,32 @@ const rtkUserApi = createApi({
                 method: 'PATCH',
                 body: user,
             }),
+            async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
+                // pessimistic update
+                const { data: updatedUser } = await queryFulfilled
+                dispatch(
+                    rtkUserApi.util.updateQueryData('getUser', id, draft => {
+                        Object.assign(draft, updatedUser)
+                    }),
+                )
+            },
             transformResponse: (response: User, meta, arg) => response,
-            invalidatesTags: ['Users'],
+            invalidatesTags: [{ type: 'Users', id: 'LIST' }],
         }),
         deleteUser: build.mutation<void, number>({
             query: id => ({
                 url: `users/${id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: ['Users'],
+            async onQueryStarted(id, { dispatch, queryFulfilled }) {
+                const patchResult = dispatch(
+                    rtkUserApi.util.updateQueryData('getUser', id, draft => {
+                        Object.assign(draft, null)
+                    }),
+                )
+                queryFulfilled.catch(patchResult.undo)
+            },
+            invalidatesTags: [{ type: 'Users' }],
         }),
     }),
 })

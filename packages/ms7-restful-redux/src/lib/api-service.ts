@@ -26,13 +26,13 @@ class ApiService {
         throw new Error('Invalid store instance, store must contain restReducer')
     }
 
-    public setupApiServiceInterceptors(token: string, logout: () => void) {
+    public setupApiServiceInterceptors(token: string | undefined, logoutUrl: URL | undefined) {
         ApiService.service.interceptors.request.use(
             config => {
                 apiSubject.next({ isLoading: true })
 
                 const headers = config?.headers
-                if(headers) {
+                if(headers && token) {
                     if(token) headers['Authorization'] = `Bearer ${token}`
                     if(!headers['Content-Type']) headers['Content-Type'] = 'application/json'
                 }
@@ -53,8 +53,8 @@ class ApiService {
             error => {
                 apiSubject.next({ isLoading: false })
 
-                if(error.status === 401)
-                    logout()
+                if(error.status === 401 && logoutUrl)
+                    window.location.replace(logoutUrl)
 
                 return Promise.reject(error)
             })

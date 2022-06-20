@@ -68,7 +68,7 @@ const Sidebar = () => {
                         <FooterDropdownItem
                             path={'#'}
                             onClick={() => {
-                                authContext?.logout()
+                                window.location.replace(authContext.getLogoutUrl())
                             }}>
                             {'Sign out'}
                         </FooterDropdownItem>}

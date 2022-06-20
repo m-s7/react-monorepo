@@ -18,8 +18,9 @@ export const withAuth = <T extends Props = Props>(WrappedComponent: React.Compon
             if(authContext) {
                 await authContext.validate()
 
-                if(!authContext.isAuthenticated())
-                    authContext.logout()
+                if(!authContext.isAuthenticated()) {
+                    window.location.replace(authContext.getLogoutUrl())
+                }
             }
         }
 
