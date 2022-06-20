@@ -2,7 +2,7 @@ import { getFlatRoutes, getRoutes } from '@ms7/router'
 import useRouterBreadcrumbs, { BreadcrumbRoute } from '@ms7/breadcrumbs'
 import { useLocation } from 'react-router-dom'
 import { useLayoutEffect, useState } from 'react'
-import { getAppRouters } from '@/utils/app-utils'
+import { getAppRouters } from '@/utils/apps-utils'
 
 const useBreadcrumbs = () => {
     const { pathname } = useLocation()

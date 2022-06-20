@@ -1,12 +1,11 @@
 import { AnyAction, Middleware } from '@reduxjs/toolkit'
 import { logging, getLogLevelForEnv, Logger } from '@ms7/logger'
-import { isDev, StringDictionary } from '@ms7/common'
 
-export const queryLogger: Middleware = () => next => action => {
-    logging.addConfigurationOption({ minLevels: { 'query': getLogLevelForEnv(isDev()) }})
+export const apiLogger: Middleware = () => next => action => {
+    logging.configure({ minLevels: { 'rtk-query': getLogLevelForEnv(process.env.NODE_ENV === 'development') }}).registerConsoleLogger()
 
-    logAction(logging.getLogger('query'), action)
-    
+    logAction(logging.getLogger('rtk-query'), action)
+
     return next(action)
 }
 
@@ -25,7 +24,7 @@ const logQueryAction = (logger: Logger, action: AnyAction): void => {
     const { meta, error, payload } = action
     const requestStatus = meta.requestStatus
 
-    const data: StringDictionary = {
+    const data: { [x: string]: string } = {
         endpointName: meta.arg.endpointName,
         queryCacheKey: meta.arg.queryCacheKey,
         args: meta.arg.originalArgs,
@@ -50,7 +49,7 @@ const logMutationAction = (logger: Logger, action: AnyAction): void => {
     const { meta, error, payload } = action
     const requestStatus = meta.requestStatus
 
-    const data: StringDictionary = {
+    const data: { [x: string]: string } = {
         endpointName: meta.arg.endpointName,
         args: meta.arg.originalArgs,
     }

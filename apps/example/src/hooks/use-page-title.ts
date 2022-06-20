@@ -2,7 +2,7 @@ import { getFlatRoutes, getRoutes } from '@ms7/router'
 import useRouterPageTitle, { PageTitleRoute } from '@ms7/page-title'
 import { useLayoutEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { getAppRouters } from '@/utils/app-utils'
+import { getAppRouters } from '@/utils/apps-utils'
 
 const usePageTitle = () => {
     const { pathname } = useLocation()

@@ -1,27 +1,35 @@
-import { Logger } from '@ms7/logger'
-import { AnyAction } from '@reduxjs/toolkit'
+import { AnyAction, Middleware } from '@reduxjs/toolkit'
+import { logging, getLogLevelForEnv, Logger } from '@ms7/logger'
 
-export const logRestAction = (logger: Logger, action: AnyAction): void => {
+export const apiLogger: Middleware = () => next => action => {
+    logging.configure({ minLevels: { 'rest': getLogLevelForEnv(process.env.NODE_ENV === 'development') }}).registerConsoleLogger()
+
+    logAction(logging.getLogger('rest'), action)
+
+    return next(action)
+}
+
+const logAction = (logger: Logger, action: AnyAction): void => {
     switch(getActionType(action)) {
         case 'get':
-            logRestGetAction(logger, action)
+            logGetAction(logger, action)
             break
         case 'post':
-            logRestPostAction(logger, action)
+            logPostAction(logger, action)
             break
         case 'put':
-            logRestPutAction(logger, action)
+            logPutAction(logger, action)
             break
         case 'patch':
-            logRestPatchAction(logger, action)
+            logPatchAction(logger, action)
             break
         case 'remove':
-            logRestRemoveAction(logger, action)
+            logRemoveAction(logger, action)
             break
     }
 }
 
-const logRestGetAction = (logger: Logger, action: AnyAction): void => {
+const logGetAction = (logger: Logger, action: AnyAction): void => {
     const { meta, error, payload } = action
 
     switch(getActionStatus(action)) {
@@ -37,7 +45,7 @@ const logRestGetAction = (logger: Logger, action: AnyAction): void => {
     }
 }
 
-const logRestPostAction = (logger: Logger, action: AnyAction): void => {
+const logPostAction = (logger: Logger, action: AnyAction): void => {
     const { meta, error, payload } = action
 
     switch(getActionStatus(action)) {
@@ -53,7 +61,7 @@ const logRestPostAction = (logger: Logger, action: AnyAction): void => {
     }
 }
 
-const logRestPutAction = (logger: Logger, action: AnyAction): void => {
+const logPutAction = (logger: Logger, action: AnyAction): void => {
     const { meta, error, payload } = action
 
     switch(getActionStatus(action)) {
@@ -69,7 +77,7 @@ const logRestPutAction = (logger: Logger, action: AnyAction): void => {
     }
 }
 
-const logRestPatchAction = (logger: Logger, action: AnyAction): void => {
+const logPatchAction = (logger: Logger, action: AnyAction): void => {
     const { meta, error, payload } = action
 
     switch(getActionStatus(action)) {
@@ -85,7 +93,7 @@ const logRestPatchAction = (logger: Logger, action: AnyAction): void => {
     }
 }
 
-const logRestRemoveAction = (logger: Logger, action: AnyAction): void => {
+const logRemoveAction = (logger: Logger, action: AnyAction): void => {
     const { meta, error } = action
 
     switch(getActionStatus(action)) {

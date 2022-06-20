@@ -2,9 +2,6 @@ import React from 'react'
 import Sidebar from '@/components/layout/sidebar'
 import Navbar from '@/components/layout/navbar'
 import Header from '@/components/layout/header'
-import store from '@/store/store'
-import { CoreStoreContext } from '@/index'
-import { Provider } from 'react-redux'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -29,11 +26,7 @@ const Layout = (props: React.PropsWithChildren<void>) => {
                 <Sidebar />
             </ContainerLeft>
             <ContainerRight className="d-flex flex-grow-1">
-                <Provider
-                    context={CoreStoreContext}
-                    store={store}>
-                    <Navbar />
-                </Provider>
+                <Navbar />
                 <Header />
                 <div className="p-1 h-100">
                     {children && children}

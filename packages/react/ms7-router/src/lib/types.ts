@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import { Role } from '@ms7/auth-providers'
 import { PageTitleComponentType } from '@ms7/page-title'
 import { BreadcrumbComponentType } from '@ms7/breadcrumbs'
@@ -20,5 +20,9 @@ export interface RouteConfig {
 
 export interface EntrypointConfig {
     baseUrl: string,
-    component: React.ComponentType<{ parentLayout: React.ElementType }>,
+    component: React.ComponentType<EntrypointComponentProps>,
+}
+
+export interface EntrypointComponentProps {
+    parentLayout?: React.ElementType,
 }

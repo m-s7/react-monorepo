@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
-import { getThunk, postThunk, putThunk, patchThunk, removeThunk, restReducer, restSlice } from './rest-reducer'
+import { getThunk, postThunk, putThunk, patchThunk, removeThunk, restSlice } from './rest-reducer'
+import { apiSubject } from './api-subject'
 
 class ApiService {
     private store: any
@@ -26,17 +27,10 @@ class ApiService {
     }
 
     public setupApiServiceInterceptors(token: string, logout: () => void) {
-        ApiService.service.interceptors.response.use(
-            config => config,
-            error => {
-                if(error.status === 401)
-                    logout()
-
-                return Promise.reject(error)
-            })
-
         ApiService.service.interceptors.request.use(
             config => {
+                apiSubject.next({ isLoading: true })
+
                 const headers = config?.headers
                 if(headers) {
                     if(token) headers['Authorization'] = `Bearer ${token}`
@@ -45,7 +39,25 @@ class ApiService {
 
                 return config
             },
-            error => Promise.reject(error))
+            error => {
+                apiSubject.next({ isLoading: false })
+                Promise.reject(error)
+            })
+
+        ApiService.service.interceptors.response.use(
+            config => {
+                apiSubject.next({ isLoading: false })
+
+                return config
+            },
+            error => {
+                apiSubject.next({ isLoading: false })
+
+                if(error.status === 401)
+                    logout()
+
+                return Promise.reject(error)
+            })
     }
 
     public get<R>(url: string) {

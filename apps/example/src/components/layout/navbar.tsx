@@ -1,23 +1,31 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LoaderSmall } from '@ms7/bui'
-import { CoreStoreContext } from '@/index'
-import { Unsubscribe } from 'redux'
+import { apiSubject as rtkSubject, Subscription as RtkSubscription } from '@ms7/restful-rtk'
+import { apiSubject as reduxSubject, Subscription as ReduxSubscription } from '@ms7/restful-redux'
 
 const Navbar = () => {
-    const { store } = useContext(CoreStoreContext)
-    const [isRestLoading, setIsRestLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
-    let unsubscribe: Unsubscribe | undefined
+    let rtkSubjectSubscription: RtkSubscription | undefined
+    let reduxSubjectSubscription: ReduxSubscription | undefined
+
+    const handleApiMessage = (isApiLoading: boolean) => {
+        if(isLoading !== isApiLoading) setIsLoading(isApiLoading)
+    }
+
     useEffect(() => {
-        unsubscribe = store.subscribe(() => {
-            // fix for api calls in <Suspense> component, see https://github.com/facebook/react/issues/18178
-            setTimeout(() => setIsRestLoading((store.getState().rest.status === 'loading')), 0)
+        rtkSubjectSubscription = rtkSubject.subscribe({
+            next: message => handleApiMessage(message.isLoading),
         })
-    }, [])
 
-    
+        reduxSubjectSubscription = reduxSubject.subscribe({
+            next: message => handleApiMessage(message.isLoading),
+        })
+    })
+
     useEffect(() => () => {
-        if(unsubscribe) unsubscribe()
+        rtkSubjectSubscription?.unsubscribe()
+        reduxSubjectSubscription?.unsubscribe()
     }, [])
 
     return (
@@ -68,7 +76,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className="d-flex">
-                        {isRestLoading && <LoaderSmall />}
+                        {isLoading && <LoaderSmall />}
                     </div>
                 </div>
             </div>

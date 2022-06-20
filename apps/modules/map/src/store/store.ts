@@ -1,13 +1,11 @@
-import { restLogger } from '@/store/middleware/rest-logger'
 import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import ApiService, { restReducer } from '@ms7/restful-redux'
+import { authReducer } from '@ms7/auth-providers'
+import { restReducer } from '@ms7/restful-redux'
 
 const store = configureStore({
-    reducer: { rest: restReducer },
-    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(restLogger),
+    reducer: { auth: authReducer, rest: restReducer },
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
 })
-
-ApiService.setStore(store)
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>

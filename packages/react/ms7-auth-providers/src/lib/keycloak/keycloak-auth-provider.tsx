@@ -9,7 +9,7 @@ export interface KeycloakAuthProviderProps {
     config: KeycloakConfig,
     errorComponent: KeycloakErrorComponentType,
     suspenseComponent: KeycloakSuspenseComponentType,
-    onAuthenticatedHandler: (token: string, logoutMethod: () => void) => void,
+    onAuthenticatedHandler?: (token: string | undefined, logoutMethod: () => void) => void,
     allowLogger?: boolean,
 }
 
@@ -30,7 +30,7 @@ export const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
             if(isAuthenticated) {
                 const token = keycloakAuth.getToken()
 
-                if(token) onAuthenticatedHandler(token, keycloakAuth.logout)
+                if(onAuthenticatedHandler) onAuthenticatedHandler(token, keycloakAuth.logout)
             }
         })
 

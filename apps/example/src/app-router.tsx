@@ -32,7 +32,10 @@ const AppRouter = () => {
                     <Route
                         key={`app-entrypoint-${index}`}
                         path={baseUrl}
-                        element={<Component parentLayout={layout} /> } />
+                        element={
+                            <Component
+                                parentLayout={layout} />
+                        } />
                 )
             })}
             <Route

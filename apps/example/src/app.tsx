@@ -5,7 +5,7 @@ import AppRouter from '@/app-router'
 import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
 import ApiService from '@ms7/restful-redux'
 import { FatalError } from '@ms7/common'
-import { getAppRouters } from '@/utils/app-utils'
+import { getAppRouters } from '@/utils/apps-utils'
 import { FullPageError, FullPageLoader } from '@ms7/bui'
 import { env } from '@ms7/common'
 
@@ -86,24 +86,37 @@ const App = () => {
         return true
     }
 
+    const ErrorComponent = () => {
+        if(!error) return null
+        
+        return (
+            <FullPageError
+                error={error}
+                header={env.REACT_APP_NAME} />
+        )
+    }
+    
+    const SuspenseComponent = () => (<FullPageLoader header={env.REACT_APP_NAME} />)
+    
     if(!isInitialized) {
-        if(error) return (<FullPageError error={error} />)
-        else return (<FullPageLoader />)
+        if(error) return (<ErrorComponent />)
+        else return (<SuspenseComponent />)
     }
 
     return (
-        // <AuthProvider<KeycloakAuthProviderProps>
-        //     provider={KeycloakAuthProvider}
-        //     providerProps={{
-        //         config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
-        //         errorComponent: FullPageError,
-        //         suspenseComponent: FullPageLoader,
-        //         onAuthenticatedHandler: (token: string, logoutMethod: () => void) => {
-        //             ApiService.setupApiServiceInterceptors(token, logoutMethod)
-        //         },
-        //     }}>
-        <AppRouter />
-        // </AuthProvider>
+        //TODO: remove onAuthenticatedHandler
+        <AuthProvider<KeycloakAuthProviderProps>
+            provider={KeycloakAuthProvider}
+            providerProps={{
+                config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
+                errorComponent: ErrorComponent,
+                suspenseComponent: SuspenseComponent,
+                onAuthenticatedHandler: (token: string | undefined, logoutMethod: () => void) => {
+                    if(token) ApiService.setupApiServiceInterceptors(token, logoutMethod)
+                },
+            }}>
+            <AppRouter />
+        </AuthProvider>
     )
 }
 

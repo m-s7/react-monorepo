@@ -1,15 +1,11 @@
 import React from 'react'
 import { getConfigRouter } from 'Guide/configs/app'
 import { Route, Routes } from 'react-router-dom'
-import { RouterGenerator } from '@ms7/router'
+import { EntrypointComponentProps, RouterGenerator } from '@ms7/router'
 import { NotFound404 } from '@ms7/bui'
 import { env } from '@ms7/common'
 
-interface Props {
-    parentLayout?: React.ElementType,
-}
-
-const AppRouter = (props: Props) => {
+const AppRouter = (props: EntrypointComponentProps) => {
     const { routes } = getConfigRouter()
 
     const Component404 = (
