@@ -1,6 +1,5 @@
 import menuConfig from 'Guide/configs/menu'
 import routerConfig from 'Guide/configs/router'
-import websocketConfig from 'Guide/configs/websocket'
 import { env } from '@ms7/common'
 import { AppConfig } from '@ms7/common'
 import { RouterConfig } from '@ms7/router'
@@ -12,7 +11,6 @@ const config: AppConfig = {
     apiUrl: env.REACT_APP_GUIDE_API_URL,
     menu: menuConfig,
     router: routerConfig,
-    websocket: websocketConfig,
 }
 
 export const getConfigRouter = (): RouterConfig => routerConfig

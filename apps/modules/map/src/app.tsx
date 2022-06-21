@@ -4,5 +4,4 @@ import { EntrypointComponentProps } from '@ms7/router'
 
 const App = (props: EntrypointComponentProps) => (<AppRouter {...props} />)
 
-
 export default App

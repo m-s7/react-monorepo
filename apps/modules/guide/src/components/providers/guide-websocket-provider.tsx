@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import config from 'Guide/configs/app'
 import GuideWebsocketClient from 'Guide/business/websocket-client'
 import { setClient } from 'Guide/store/reducers/websocket-reducer'
 import { WebsocketClient } from '@ms7/websocket-client'
@@ -20,22 +19,19 @@ const GuideWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     useEffect(() => {
         if(websocketClient) return
 
-        const { websocket } = config
-        if(websocket) {
-            const { url, name, headers } = websocket
+        const url = env.REACT_APP_GUIDE_WEBSOCKET_URL
 
-            if(!url) throw new Error(`Invalid url, ${url}`)
+        if(!url) throw new Error(`Invalid url, ${url}`)
 
-            const token = authContext?.getToken()
-            const callback = (isConnected: boolean): void => { setIsConnected(isConnected) }
+        const token = authContext?.getToken()
+        const callback = (isConnected: boolean): void => { setIsConnected(isConnected) }
 
-            websocketClient = new GuideWebsocketClient(callback, token, name, url, headers)
-            websocketClient.connect()
+        websocketClient = new GuideWebsocketClient(callback, token, 'guide', url)
+        websocketClient.connect()
 
-            dispatch(setClient(websocketClient))
+        dispatch(setClient(websocketClient))
 
-            props.onLoad(websocketClient)
-        }
+        props.onLoad(websocketClient)
 
         setShowLoader(false)
     }, [])

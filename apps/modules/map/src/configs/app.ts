@@ -1,6 +1,5 @@
 import menuConfig from 'Map/configs/menu'
 import routerConfig from 'Map/configs/router'
-import websocketConfig from 'Map/configs/websocket'
 import { env } from '@ms7/common'
 import { AppConfig } from '@ms7/common'
 import { RouterConfig } from '@ms7/router'
@@ -12,7 +11,6 @@ const config: AppConfig = {
     apiUrl: env.REACT_APP_MAP_API_URL,
     menu: menuConfig,
     router: routerConfig,
-    websocket: websocketConfig,
 }
 
 export const getConfigRouter = (): RouterConfig => routerConfig

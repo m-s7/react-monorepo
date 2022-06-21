@@ -16,7 +16,6 @@ export interface AppConfig {
     apiUrl?: string,
     menu: MenuConfig[],
     router: RouterConfig,
-    websocket?: WebsocketConfig,
 }
 
 export interface MenuConfig {
@@ -26,10 +25,3 @@ export interface MenuConfig {
     readonly roles?: Role[],
     readonly children?: MenuConfig[],
 }
-
-export interface WebsocketConfig {
-    name: string,
-    url: string,
-    headers?: StringDictionary,
-}
-
