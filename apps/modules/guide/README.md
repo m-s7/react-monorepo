@@ -1,10 +1,10 @@
 # Core
 
-MS7 Index module.
+MS7 Guide Module.
 
 ## Installation
 
-Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install codebase.
+Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install.
 
 ```bash
 yarn install
@@ -50,7 +50,7 @@ This is a module app, it can work in two modes, standalone and as a module for p
 
 ### Standalone
 
-Module in standalone mode does not contain layout only component styles inherited from packages.
+Module in standalone mode does not contain layout, components are styled by style inherited from packages.
 
 Tu run standalone mode:
 ```bash
@@ -122,9 +122,36 @@ root.render(
 )
 ```
 
-#####entrypoint.ts
+#####app.tsx
 
-```ts
+Valid when parent (or self) provides AuthProviderContext.
+
+```tsx
+import React, { useContext, useLayoutEffect } from 'react'
+import AppRouter from 'Guide/app-router'
+import { useAppDispatch } from 'Guide/hooks/use-app-dispatch'
+import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth-providers'
+import { EntrypointComponentProps } from '@ms7/router'
+
+const App = (props: EntrypointComponentProps) => {
+    const dispatch = useAppDispatch()
+    const context = useContext(AuthProviderContext)
+
+    useLayoutEffect(() => {
+        if(context) {
+            const token = context.getToken()
+            const logoutUrl = context.getLogoutUrl()
+
+            dispatch(setToken(token))
+            dispatch(setLogoutUrl(logoutUrl))
+            dispatch(setUsername(context.getUserInfo().username))
+        }
+    }, [])
+    
+    return (<AppRouter parentLayout={props.parentLayout} />)
+}
+
+export default App
 ```
 
 ## Injecting environmental variables

@@ -4,7 +4,7 @@ A hook for generating breadcrumbs for react router.
 
 ## Installation
 
-Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install codebase.
+Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install.
 
 ```bash
 yarn install

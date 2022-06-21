@@ -4,7 +4,7 @@ Helper methods for making api calls with rtk query.
 
 ## Installation
 
-Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install codebase.
+Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install.
 
 ```bash
 yarn install

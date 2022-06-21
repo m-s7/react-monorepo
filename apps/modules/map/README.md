@@ -1,10 +1,10 @@
 # Core
 
-MS7 Map module.
+MS7 Map Module.
 
 ## Installation
 
-Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install codebase.
+Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install.
 
 ```bash
 yarn install
@@ -50,7 +50,7 @@ This is a module app, it can work in two modes, standalone and as a module for p
 
 ### Standalone
 
-Standalone mode does not have menu, styles and initialized store (these must be provided by parent app).
+Module in standalone mode does not contain layout, components are styled by style inherited from packages.
 
 Tu run standalone mode:
 ```bash
@@ -59,15 +59,19 @@ yarn standalone
 
 ### Module
 
-Parent app must provide:
-- react router (BrowserRouter)
-- initialized ApiService (@ms7/restful-redux)
-- layout
-- configured webpack aliases (for development)
+Parent app must:
+- provide environmental variables
+- provide react router (BrowserRouter)
+- provide configured webpack aliases (for development mode)
+- injected entrypoint component inside parent router
 
 Optionally parent may provide:
-- logger instance
+- layout
 - auth provider
+- font awesome icons
+
+Parent component may not:
+- include redux store instance (child store will override parent store)
 
 ####React router info
 Since redux allows only one instance of store per app, parent store must be initialized using react context, see example below.
@@ -105,41 +109,52 @@ module.exports = {
 
 ```tsx
 import React from 'react'
-import { RootState } from '@/store/store'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { ReactReduxContextValue } from 'react-redux'
-import { logging, assignLevelToLoggers, getLogLevelForEnv } from '@ms7/logger'
-
-// create react context instance
-export const CoreStoreContext = React.createContext<ReactReduxContextValue<RootState>>({} as any)
+import ParentRouter from '@/ParentRouter'
+import layout from '@/layouts'
+import Entrypoint from 'Guide/entrypoint'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
-
 root.render(
     <BrowserRouter>
-        // app component
+        <ParentRouter />
+        <Entrypoint parentLayout={layout} />
     </BrowserRouter>
 )
 ```
 
-#####store.ts
+#####app.tsx
 
-```ts
-import { AnyAction, configureStore } from '@reduxjs/toolkit'
-import ApiService, { restReducer } from '@ms7/restful-redux'
+Valid when parent (or self) provides AuthProviderContext.
 
-export const store = configureStore({
-    reducer: { rest: restReducer },
-    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
-})
+```tsx
+import React, { useContext, useLayoutEffect } from 'react'
+import AppRouter from 'Guide/app-router'
+import { useAppDispatch } from 'Guide/hooks/use-app-dispatch'
+import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth-providers'
+import { EntrypointComponentProps } from '@ms7/router'
 
-ApiService.setStore(store)
+const App = (props: EntrypointComponentProps) => {
+    const dispatch = useAppDispatch()
+    const context = useContext(AuthProviderContext)
 
-export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, AnyAction>
+    useLayoutEffect(() => {
+        if(context) {
+            const token = context.getToken()
+            const logoutUrl = context.getLogoutUrl()
+
+            dispatch(setToken(token))
+            dispatch(setLogoutUrl(logoutUrl))
+            dispatch(setUsername(context.getUserInfo().username))
+        }
+    }, [])
+    
+    return (<AppRouter parentLayout={props.parentLayout} />)
+}
+
+export default App
 ```
 
 ## Injecting environmental variables

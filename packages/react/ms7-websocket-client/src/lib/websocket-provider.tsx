@@ -4,9 +4,15 @@ interface Props {
     provider: WebsocketProviderComponentType,
 }
 
-interface Websocket {
+export interface Websocket {
     connect(): void,
     disconnect(): void,
+    onConnecting(): void,
+    onConnected(): void,
+    onDisconnected(): void,
+    onConnectionClosed(): void,
+    isConnected(): boolean,
+    getName(): string,
 }
 
 export interface WebsocketProviderComponentProps extends React.PropsWithChildren {
@@ -18,7 +24,7 @@ type WebsocketProviderComponentType = React.ComponentType<WebsocketProviderCompo
 
 export const WebsocketProviderContext = createContext<Websocket | undefined>(undefined)
 
-export const Provider = (props: React.PropsWithChildren<Props>) => {
+export const WebsocketProvider = (props: React.PropsWithChildren<Props>) => {
     const [providerWebsocketInstance, setProviderWebsocketInstance] = useState<Websocket>()
 
     const onLoad = (websocketInstance: Websocket) => {

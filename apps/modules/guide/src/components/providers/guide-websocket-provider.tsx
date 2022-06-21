@@ -49,7 +49,7 @@ const GuideWebsocketProvider = (props: WebsocketProviderComponentProps) => {
         return (
             <FullPageLoader
                 header={env.REACT_APP_NAME}
-                navigateName={'Index'}
+                navigateName={env.REACT_APP_HOMEPAGE_NAME}
                 navigatePath={'/'} />
         )
 
