@@ -1,5 +1,5 @@
 import { AppConfig } from '@ms7/common'
-import { EntrypointConfig, RouterConfig, RouterEntrypoint } from '@ms7/router'
+import { EntrypointConfig, RouterEntrypoint } from '@ms7/router'
 import mapConfig from 'Map/configs/app'
 import mapEntrypointConfig from 'Map/configs/entrypoint'
 import guideConfig from 'Guide/configs/app'

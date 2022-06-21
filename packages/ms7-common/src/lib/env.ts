@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// noinspection JSUnusedGlobalSymbols
+
 declare global {
     interface Window {
         env: any,

@@ -17,11 +17,12 @@ const getReactEnvs = () => {
     return envs
 }
 
-const getHmrPlugin = () => {
-    if(isDevelopment) return new ReactRefreshPlugin()
-
-    return
-}
+// TODO: load HMR conditionally
+// const getHmrPlugin = () => {
+//     if(isDevelopment) return new ReactRefreshPlugin()
+//
+//     return
+// }
 
 module.exports = [
     new ForkTsCheckerWebpackPlugin(),
@@ -40,5 +41,5 @@ module.exports = [
     new DefinePlugin({
         'process.env': JSON.stringify({ ...getReactEnvs() }),
     }),
-    new ReactRefreshPlugin(), //TODO: only needed in dev, how to conditionally load?
+    new ReactRefreshPlugin(),
 ]

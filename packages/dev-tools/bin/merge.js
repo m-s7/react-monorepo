@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// noinspection ES6ConvertVarToLetConst,JSUnresolvedFunction
+
 var fs = require('fs')
 var path = require('path')
 var yargs = require('yargs')

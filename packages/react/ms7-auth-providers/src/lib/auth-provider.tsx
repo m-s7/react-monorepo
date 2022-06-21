@@ -5,8 +5,8 @@ interface Props<T> {
     provider: AuthProviderComponentType,
 }
 
-export interface AuthProviderComponentProps extends React.PropsWithChildren<any> {
-    providerProps: any,
+export interface AuthProviderComponentProps extends React.PropsWithChildren {
+    providerProps: unknown,
     onLoad: (authInstance: AuthModel) => void,
 }
 

@@ -2,8 +2,8 @@ import { BaseQueryFn, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@re
 import { apiSubject } from './api-subject'
 import { AuthState } from '@ms7/auth-providers'
 
-const isAuthState = (object: any): object is AuthState | undefined => ('token' in object && 'username' in object && 'logoutUrl' in object)
-const getAuthState = (store: any): AuthState | undefined => {
+const isAuthState = (object: object): object is AuthState => ('token' in object && 'username' in object && 'logoutUrl' in object)
+const getAuthState = (store: object): AuthState | undefined => {
     for(const state of Object.values(store)) {
         if(isAuthState(state))
             return state
@@ -15,7 +15,7 @@ const baseQuery = (baseUrl: string) => fetchBaseQuery({
     prepareHeaders: (headers, { getState }) => {
         apiSubject.next({ isLoading: true })
 
-        const authState = getAuthState(getState())
+        const authState = getAuthState(getState() as object)
         if(authState && authState.token) {
             headers.set('Authorization', `Bearer ${authState.token}`)
         }
@@ -28,7 +28,7 @@ export const baseQueryWithAuth = (baseUrl: string): BaseQueryFn<string | FetchAr
     const result = await baseQuery(baseUrl)(args, api, extraOptions)
     apiSubject.next({ isLoading: false })
 
-    const authState = getAuthState(api.getState())
+    const authState = getAuthState(api.getState() as object)
     if(authState && authState.logoutUrl && result.error && result.error.status === 401)
         window.location.replace(authState.logoutUrl)
 

@@ -2,8 +2,7 @@ import menuConfig from 'Guide/configs/menu'
 import routerConfig from 'Guide/configs/router'
 import websocketConfig from 'Guide/configs/websocket'
 import { env } from '@ms7/common'
-import { AppConfig, isDev } from '@ms7/common'
-import { getLogLevelForEnv } from '@ms7/logger'
+import { AppConfig } from '@ms7/common'
 import { RouterConfig } from '@ms7/router'
 
 const config: AppConfig = {

@@ -50,7 +50,7 @@ This is a module app, it can work in two modes, standalone and as a module for p
 
 ### Standalone
 
-Standalone mode does not have menu, styles and initialized store (these must be provided by parent app).
+Module in standalone mode does not contain layout only component styles inherited from packages.
 
 Tu run standalone mode:
 ```bash
@@ -59,22 +59,21 @@ yarn standalone
 
 ### Module
 
-Parent app must provide:
-- layout
-- font awesome icons
-- environmental variables
-- react router (BrowserRouter)
-- configured webpack aliases (for development)
+Parent app must:
+- provide environmental variables
+- provide react router (BrowserRouter)
+- provide configured webpack aliases (for development mode)
+- injected entrypoint component inside parent router
 
 Optionally parent may provide:
-- logger instance
+- layout
 - auth provider
-- error boundary component
+- font awesome icons
 
-####React router info
-Since redux allows only one instance of store per app, parent store must be initialized using react context, see example below.
+Parent component may not:
+- include redux store instance (child store will override parent store)
 
-##### Example
+##### Example configuration
 
 #####webpack.config.js
 
@@ -82,8 +81,8 @@ Since redux allows only one instance of store per app, parent store must be init
 module.exports = {
     resolve: {
         alias: {
-            'Index': '../modules/guide/src',
-            'Index/*': '../modules/guide/src/*',
+            'Guide': '../modules/guide/src',
+            'Guide/*': '../modules/guide/src/*',
         },
     },
 
@@ -96,8 +95,8 @@ module.exports = {
 {
   "compilerOptions": {
     "paths": {
-      "Index": ["../modules/guide/src/"],
-      "Index/*": ["../modules/guide/src/*"]
+      "Guide": ["../modules/guide/src/"],
+      "Guide/*": ["../modules/guide/src/*"]
     }
   }
 }
@@ -107,41 +106,25 @@ module.exports = {
 
 ```tsx
 import React from 'react'
-import { RootState } from '@/store/store'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { ReactReduxContextValue } from 'react-redux'
-import { logging, assignLevelToLoggers, getLogLevelForEnv } from '@ms7/logger'
-
-// create react context instance
-export const CoreStoreContext = React.createContext<ReactReduxContextValue<RootState>>({} as any)
+import ParentRouter from '@/ParentRouter'
+import layout from '@/layouts'
+import Entrypoint from 'Guide/entrypoint'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
-
 root.render(
     <BrowserRouter>
-        // app component
+        <ParentRouter />
+        <Entrypoint parentLayout={layout} />
     </BrowserRouter>
 )
 ```
 
-#####store.ts
+#####entrypoint.ts
 
 ```ts
-import { AnyAction, configureStore } from '@reduxjs/toolkit'
-import ApiService, { restReducer } from '@ms7/restful-redux'
-
-export const store = configureStore({
-    reducer: { rest: restReducer },
-    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
-})
-
-ApiService.setStore(store)
-
-export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, AnyAction>
 ```
 
 ## Injecting environmental variables

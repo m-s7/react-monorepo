@@ -5,7 +5,6 @@ import { baseQueryWithAuth } from '@ms7/restful-rtk'
 import { Optional } from '@ms7/common'
 
 const rtkUserApi = createApi({
-    //TODO: remove token add logout method to the auth store
     baseQuery: baseQueryWithAuth(env.REACT_APP_GUIDE_API_URL),
     tagTypes: ['Users'],
     endpoints: build => ({

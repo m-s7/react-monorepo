@@ -9,7 +9,7 @@ interface Websocket {
     disconnect(): void,
 }
 
-export interface WebsocketProviderComponentProps extends React.PropsWithChildren<any> {
+export interface WebsocketProviderComponentProps extends React.PropsWithChildren {
     onLoad: (authInstance: Websocket) => void,
 }
 

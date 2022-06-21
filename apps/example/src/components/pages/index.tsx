@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '@/assets/logo.svg'
 import { Card } from '@ms7/bui'
 import styled from 'styled-components'
+import { env } from '@ms7/common'
 
 const Logo = styled.img`
     height: 20vw;
@@ -21,7 +22,7 @@ const Index = () => (
     <div className="d-flex justify-content-center">
         <Card>
             <div className="d-flex flex-column align-items-center">
-                <h1>{'MS7 Core'}</h1>
+                <h1>{env.REACT_APP_NAME}</h1>
                 <Logo
                     src={logo}
                     alt="logo" />

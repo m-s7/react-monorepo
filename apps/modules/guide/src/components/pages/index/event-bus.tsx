@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import EBus from '@ms7/event-bus'
 import { uniqueId } from 'lodash'
 import { Button, Card } from '@ms7/bui'
