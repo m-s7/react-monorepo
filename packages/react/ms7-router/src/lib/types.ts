@@ -4,18 +4,29 @@ import { PageTitleComponentType } from '@ms7/page-title'
 import { BreadcrumbComponentType } from '@ms7/breadcrumbs'
 
 export interface RouterConfig {
-    routes: RouteConfig[],
+    routes: Array<Route>,
+}
+
+export type Route = RouteParentConfig | RouteConfig
+
+export interface RouteParentConfig {
+    component: React.ElementType,
+    children: Array<Route>,
+    path?: never,
+    title?: never,
+    roles?: never,
+    layout?: never,
+    breadcrumb?: never,
 }
 
 export interface RouteConfig {
-    path?: string,
-    index?: boolean,
-    roles?: Role[],
     component: React.ElementType,
-    title?: PageTitleComponentType | string,
-    breadcrumb?: BreadcrumbComponentType | string,
+    path: string,
+    title: PageTitleComponentType | string,
+    breadcrumb: BreadcrumbComponentType | string,
+    roles?: Role[],
     layout?: React.ElementType,
-    children?: RouteConfig[],
+    children?: never,
 }
 
 export interface EntrypointConfig {

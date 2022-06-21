@@ -1,9 +1,9 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-import { RouteConfig } from './types'
+import { Route as RouterRoute } from 'react-router-dom'
 import ProtectedRoute from './protected-route'
+import { Route } from './types'
 
-export const RouterGenerator = (routes: RouteConfig[], component404: JSX.Element, parentLayout?: React.ElementType): JSX.Element[] => routes.map(({ path, index, roles, component, layout, children }, idx) => {
+export const RouterGenerator = (routes: Route[], component404: JSX.Element, parentLayout?: React.ElementType): JSX.Element[] => routes.map(({ path, roles, component, layout, children }, idx) => {
     const Layout = layout || parentLayout || React.Fragment
     const Component = component
     const Protected = (
@@ -18,7 +18,7 @@ export const RouterGenerator = (routes: RouteConfig[], component404: JSX.Element
 
     if(children) {
         return (
-            <Route
+            <RouterRoute
                 key={`idx-${path}-${idx}`}
                 path={path}
                 element={
@@ -27,23 +27,23 @@ export const RouterGenerator = (routes: RouteConfig[], component404: JSX.Element
                     </Layout>
                 }>
                 {RouterGenerator(children, component404)}
-            </Route>
+            </RouterRoute>
         )
     }
     else {
-        if(index)
-            return (
-                <Route
-                    key={`idx-${path}-${idx}`}
-                    index
-                    element={Protected} />
-            )
-        else
-            return (
-                <Route
-                    key={`idx-${path}-${idx}`}
-                    path={path}
-                    element={Protected} />
-            )
+        // if(index)
+        //     return (
+        //         <Route
+        //             key={`idx-${path}-${idx}`}
+        //             index
+        //             element={Protected} />
+        //     )
+        // else
+        return (
+            <RouterRoute
+                key={`idx-${path}-${idx}`}
+                path={path}
+                element={Protected} />
+        )
     }
 })

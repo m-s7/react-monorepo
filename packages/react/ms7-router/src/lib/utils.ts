@@ -1,4 +1,4 @@
-import { EntrypointConfig, RouteConfig, RouterConfig } from './types'
+import { EntrypointConfig, Route, RouteConfig, RouteParentConfig, RouterConfig } from './types'
 import { AuthModel, Role } from '@ms7/auth-providers'
 
 export type RouterEntrypoint = {
@@ -15,13 +15,13 @@ export const hasRoles = (roles: Role[], authContext?: AuthModel): boolean => {
     return true
 }
 
-export const getRoutes = (data: RouterEntrypoint[]): RouteConfig[] => {
-    const appsRoutes: RouteConfig[] = []
+export const getRoutes = (data: RouterEntrypoint[]): Route[] => {
+    const appsRoutes: Route[] = []
 
     data.forEach(( { router, entrypoint }) => {
         const { routes } = router
 
-        let relativeRoutes: RouteConfig[] = []
+        let relativeRoutes: Route[] = []
         if(entrypoint) {
             relativeRoutes = getRoutesWithRelativePaths(routes, entrypoint.baseUrl)
             appsRoutes.push(...relativeRoutes)
@@ -34,21 +34,21 @@ export const getRoutes = (data: RouterEntrypoint[]): RouteConfig[] => {
     return appsRoutes
 }
 
-export const getFlatRoutes = (routes: RouteConfig[], relativePaths?: boolean, parentPath?: string): RouteConfig[] => {
-    const flatRoutes: RouteConfig[] = []
+export const getFlatRoutes = (routes: Route[], relativePaths?: boolean, parentPath?: string): Route[] => {
+    const flatRoutes: Route[] = []
 
     routes.forEach(route => {
         const { children, path, ...rest } = route
 
         if(children) {
             flatRoutes.push(...getFlatRoutes(children, relativePaths, route.path))
-            flatRoutes.push({ ...rest, path, children })
+            flatRoutes.push(({ ...rest, children } as RouteParentConfig))
         }
         else if(path) {
             if(relativePaths)
-                flatRoutes.push({ ...rest, path: normalizeUrl((parentPath ? joinPaths([parentPath, path]) : path)) })
+                flatRoutes.push(({ ...rest, path: normalizeUrl((parentPath ? joinPaths([parentPath, path]) : path)) } as RouteConfig))
             else
-                flatRoutes.push({ ...rest, path })
+                flatRoutes.push(({ ...rest, path } as RouteConfig))
         }
     })
 
@@ -90,9 +90,9 @@ export const getRouterConsoleMap = (routes: RouteConfig[], index?: number) => {
 
 const joinPaths = (paths: string[]): string => paths.join('/').replace(/\/\/+/g, '/')
 
-const getRoutesWithRelativePaths = (routes: RouteConfig[], parentPath: string): RouteConfig[] => {
+const getRoutesWithRelativePaths = (routes: Route[], parentPath: string): Route[] => {
     const routesClone = [...routes]
-    const relativeRoutes: RouteConfig[] = []
+    const relativeRoutes: Route[] = []
 
     routesClone.forEach(route => {
         const mutableRoute = { ...route }

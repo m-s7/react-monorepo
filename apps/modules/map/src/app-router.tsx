@@ -10,7 +10,7 @@ const AppRouter = (props: EntrypointComponentProps) => {
 
     const Component404 = (
         <NotFound404
-            to={'/map'}
+            to={'/'}
             title={'404 - Not Found'}
             header={env.REACT_APP_NAME}>
             {'Map'}
