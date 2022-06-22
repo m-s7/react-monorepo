@@ -3,8 +3,12 @@ import { LoaderSmall } from '@ms7/bui'
 import { apiSubject as rtkSubject, Subscription as RtkSubscription } from '@ms7/restful-rtk'
 import { apiSubject as reduxSubject, Subscription as ReduxSubscription } from '@ms7/restful-redux'
 import i18n from '@/i18n'
+import styled from 'styled-components'
+import logo from '@/assets/logo.svg'
 
-//TODO: add styled component
+const LangChangeLink = styled.a<{ lng: string }>`
+    ${props => props.lng === i18n.language ? 'pointer-events: none; color: #d1d1d1;' : 'pointer-events: auto;'}
+`
 
 const Navbar = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -31,30 +35,35 @@ const Navbar = () => {
         reduxSubjectSubscription?.unsubscribe()
     }, [])
 
+    const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng).then()
+    }
+
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
             <div className="container-fluid">
+                <img
+                    src={logo}
+                    height={25} />
                 <a
                     className="navbar-brand"
                     href="#">
-                    {'Fixed navbar'}
+                    [BRAND]
                 </a>
                 <div className="navbar-collapse">
-                    <a
+                    <LangChangeLink
+                        lng={'pl'}
                         href="#"
-                        onClick={() => {
-                            i18n.changeLanguage('pl').then()
-                        }}>
+                        onClick={() => { changeLanguage('pl')}}>
                         pl
-                    </a>
+                    </LangChangeLink>
                     <div className="vr ms-2 me-2" />
-                    <a
+                    <LangChangeLink
+                        lng={'en'}
                         href="#"
-                        onClick={() => {
-                            i18n.changeLanguage('en').then()
-                        }}>
+                        onClick={() => { changeLanguage('en')}}>
                         en
-                    </a>
+                    </LangChangeLink>
                     {/*    <ul className="navbar-nav me-auto mb-2 mb-md-0">*/}
                     {/*        <li className="nav-item">*/}
                     {/*            <a*/}

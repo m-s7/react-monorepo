@@ -8,6 +8,7 @@ import { FullPageFatalError } from '@ms7/bui'
 import { ErrorBoundary } from 'react-error-boundary'
 import { FullPageFatalErrorProps } from '@ms7/bui'
 import { EntrypointComponentProps } from '@ms7/router'
+import 'Guide/i18n'
 
 logging.addConfigurationOption({ minLevels: { 'websocket': getLogLevelForEnv(isDev()) }})
 

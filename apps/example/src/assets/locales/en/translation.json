@@ -1,15 +1,6 @@
 {
-  "Home": "Home",
-  "Void (404)": "Void (404)",
-  "Admin (Protected)": "Admin (Protected)",
-  "Guide": "Guide",
-  "Rest": "Rest",
-  "Rest (RTK)": "Rest (RTK)",
-  "Rest (Redux)": "Rest (Redux)",
-  "Redux": "Redux",
-  "EventBus": "EventBus",
-  "RxJsSubject": "RxJsTemat",
-  "LazySuspense": "Dzielenie kodu",
-  "Map": "Map",
-  "Map Engine": "Map Engine"
+  "Void": "Void",
+  "Admin": "Admin",
+  "Protected": "Protected",
+  "Translated text from namespace": "Translated text from namespace"
 }

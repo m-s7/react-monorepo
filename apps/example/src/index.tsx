@@ -7,7 +7,7 @@ import { loadFaIcons } from '@/utils/fa-utils'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/global.css'
 import { isDev } from '@ms7/common'
-import './i18n'
+import '@/i18n'
 
 loadFaIcons()
 logging.configure({ minLevels: assignLevelToLoggers(['', 'core'], getLogLevelForEnv(isDev())) }).registerConsoleLogger()

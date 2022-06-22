@@ -52,7 +52,7 @@ const Sidebar = () => {
                         width="32"
                         height="32"
                         className="rounded-circle me-2" />
-                    <strong>{'m-s7'}</strong>
+                    <strong>{authContext?.getUserInfo().username || undefined}</strong>
                 </a>
                 <ul
                     className="dropdown-menu dropdown-menu-dark text-small shadow"

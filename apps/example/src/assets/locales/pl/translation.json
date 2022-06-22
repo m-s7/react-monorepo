@@ -1,15 +1,6 @@
 {
-  "Home": "Pulpit",
-  "Void (404)": "Próżnia (404)",
-  "Admin (Protected)": "Ścieżka chroniona",
-  "Guide": "Przykłady",
-  "Rest": "Rest",
-  "Rest (RTK)": "Rest (RTK) - PL",
-  "Rest (Redux)": "Rest (Redux) - PL",
-  "Redux": "Redux - PL",
-  "EventBus": "EventBus - PL",
-  "RxJsSubject": "RxJsSubject - PL",
-  "LazySuspense": "LazySuspense - PL",
-  "Map": "Mapa",
-  "Map Engine": "Silnik Mapowy"
+  "Void": "Próżnia",
+  "Admin": "Admin",
+  "Protected": "Rola",
+  "Translated text from namespace": "Przetłumaczony tekst"
 }

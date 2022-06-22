@@ -1,7 +1,8 @@
 import { MenuConfig } from '@ms7/common'
+import i18n from 'Guide/i18n'
 
 const config: MenuConfig[] = [
-    { path: '#', name: 'Guide', icon: 'book-open',
+    { path: '#', name: i18n.t('Guide'), icon: 'book-open',
         children: [
             { path: '#', name: 'Rest', icon: 'network-wired',
                 children: [

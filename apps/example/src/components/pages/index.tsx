@@ -20,14 +20,14 @@ const Logo = styled.img`
 `
 
 const Index = () => {
-    const { t } = useTranslation('common')
-    
+    const { t } = useTranslation()
+
     return (
         <div className="d-flex justify-content-center">
             <Card>
                 <div className="d-flex flex-column align-items-center">
                     <h1>{env.REACT_APP_NAME}</h1>
-                    <pre>{`Translated text from namespace: ${t('Hello')}`}</pre>
+                    <pre>{`${t('Translated text from namespace')}: ${t('Hello')}`}</pre>
                     <Logo
                         src={logo}
                         alt="logo" />
