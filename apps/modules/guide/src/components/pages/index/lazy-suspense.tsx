@@ -19,7 +19,14 @@ const LazyLoading = () => (
 
 const LazySuspense = () => (
     <Suspense fallback={<LazyLoading />}>
-        <Card className="m-1 w-50">
+        <Card className="m-1 w-75">
+            <div
+                className="alert alert-warning text-center m-2"
+                role="alert">
+                UserViewer component loads data inside useEffect hook.
+                <br />
+                This is just an example as you should never load data inside useEffect.
+            </div>
             <UserViewer />
         </Card>
     </Suspense>
