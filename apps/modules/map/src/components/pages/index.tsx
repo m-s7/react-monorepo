@@ -30,7 +30,7 @@ const ModeButton = (props: ButtonProps & { mode: MapMode, currentMode: MapMode, 
     )
 }
 
-const Map = () => {
+const Index = () => {
     const [mode, setMode] = useState<MapMode>('single')
     const stateRef = useRef<string>()
     stateRef.current = mode
@@ -102,4 +102,4 @@ const Map = () => {
     )
 }
 
-export default Map
+export default Index

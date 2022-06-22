@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "workspaces": [
     "packages/*",
-    "packages/react/*",
     "apps/*",
     "apps/modules/*"
   ],
