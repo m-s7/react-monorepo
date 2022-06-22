@@ -9,7 +9,8 @@ const useBreadcrumbs = () => {
     const [routes, setRoutes] = useState<BreadcrumbRoute[]>()
 
     useLayoutEffect(() => {
-        setRoutes(getFlatRoutes(getRoutes(getAppRouters()), true).map(({ path, breadcrumb }) => ({ path, breadcrumb })))
+        setRoutes(getFlatRoutes(getRoutes(getAppRouters()), true)
+            .map(({ path, breadcrumb }) => ({ path, breadcrumb })))
     }, [pathname])
 
     return useRouterBreadcrumbs(routes, { disableDefaults: true, stringReturn: true, overrideDefaultHome: 'Home' })

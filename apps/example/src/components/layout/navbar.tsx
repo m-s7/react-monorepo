@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { LoaderSmall } from '@ms7/bui'
 import { apiSubject as rtkSubject, Subscription as RtkSubscription } from '@ms7/restful-rtk'
 import { apiSubject as reduxSubject, Subscription as ReduxSubscription } from '@ms7/restful-redux'
+import i18n from '@/i18n'
+
+//TODO: add styled component
 
 const Navbar = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -36,34 +39,49 @@ const Navbar = () => {
                     href="#">
                     {'Fixed navbar'}
                 </a>
-                {/*<div className="navbar-collapse">*/}
-                {/*    <ul className="navbar-nav me-auto mb-2 mb-md-0">*/}
-                {/*        <li className="nav-item">*/}
-                {/*            <a*/}
-                {/*                className="nav-link active"*/}
-                {/*                aria-current="page"*/}
-                {/*                href="#">*/}
-                {/*                Home*/}
-                {/*            </a>*/}
-                {/*        </li>*/}
-                {/*        <li className="nav-item">*/}
-                {/*            <a*/}
-                {/*                className="nav-link"*/}
-                {/*                href="#">*/}
-                {/*                Link*/}
-                {/*            </a>*/}
-                {/*        </li>*/}
-                {/*        <li className="nav-item">*/}
-                {/*            <a*/}
-                {/*                className="nav-link disabled"*/}
-                {/*                href="#"*/}
-                {/*                tabIndex={-1}*/}
-                {/*                aria-disabled="true">*/}
-                {/*                Disabled*/}
-                {/*            </a>*/}
-                {/*        </li>*/}
-                {/*    </ul>*/}
-                {/*</div>*/}
+                <div className="navbar-collapse">
+                    <a
+                        href="#"
+                        onClick={() => {
+                            i18n.changeLanguage('pl').then()
+                        }}>
+                        pl
+                    </a>
+                    <div className="vr ms-2 me-2" />
+                    <a
+                        href="#"
+                        onClick={() => {
+                            i18n.changeLanguage('en').then()
+                        }}>
+                        en
+                    </a>
+                    {/*    <ul className="navbar-nav me-auto mb-2 mb-md-0">*/}
+                    {/*        <li className="nav-item">*/}
+                    {/*            <a*/}
+                    {/*                className="nav-link active"*/}
+                    {/*                aria-current="page"*/}
+                    {/*                href="#">*/}
+                    {/*                Home*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*        <li className="nav-item">*/}
+                    {/*            <a*/}
+                    {/*                className="nav-link"*/}
+                    {/*                href="#">*/}
+                    {/*                Link*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*        <li className="nav-item">*/}
+                    {/*            <a*/}
+                    {/*                className="nav-link disabled"*/}
+                    {/*                href="#"*/}
+                    {/*                tabIndex={-1}*/}
+                    {/*                aria-disabled="true">*/}
+                    {/*                Disabled*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*    </ul>*/}
+                </div>
                 <div className="d-flex">
                     {isLoading && <LoaderSmall />}
                 </div>
