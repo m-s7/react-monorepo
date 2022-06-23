@@ -1,6 +1,6 @@
 import { logging } from '@ms7/logger'
-import { StompClient } from '@ms7/websocket-client'
-import { Headers, Callback, StompProtocolClient } from '@ms7/websocket-client'
+import { StompClient } from '@ms7/websocket'
+import { Headers, Callback, StompProtocolClient } from '@ms7/websocket'
 
 export default class WebsocketClient extends StompClient {
     private logger = logging.getLogger('websocket')

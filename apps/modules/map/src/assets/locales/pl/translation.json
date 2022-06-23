@@ -1,0 +1,27 @@
+{
+  "dashboard": "Pulpit",
+
+  "menu": {
+    "map": "Mapa",
+    "map-engine": "Silnik Mapowy"
+  },
+
+  "router": {
+    "map": "Mapa"
+  },
+
+  "error": {
+    "not-found": "404 - Nie odnaleziono"
+  },
+
+  "index": {
+    "label": {
+      "mode": "Tryb"
+    },
+    "button": {
+      "single": "pojedyńczy",
+      "group": "groupowy",
+      "group-alt": "grupowy (alternatywny)"
+    }
+  }
+}

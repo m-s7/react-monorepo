@@ -6,7 +6,7 @@ import { reset as resetPersonReducer } from 'Guide/store/reducers/person-reducer
 import { reset as resetCounterReducer } from 'Guide/store/reducers/counter-reducer'
 import { reset as resetWebsocketReducer } from 'Guide/store/reducers/websocket-reducer'
 import GuideWebsocketProvider from 'Guide/components/providers/guide-websocket-provider'
-import { WebsocketProvider } from '@ms7/websocket-client'
+import { WebsocketProvider } from '@ms7/websocket'
 import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth-providers'
 import { EntrypointComponentProps } from '@ms7/router'
 import ApiService from '@ms7/restful-redux'

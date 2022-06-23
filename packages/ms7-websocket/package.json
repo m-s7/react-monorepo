@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@ms7/websocket-client",
+  "name": "@ms7/websocket",
   "version": "0.0.1",
   "description": "Websocket client with multiple protocol support and react integration",
   "main": "dist/index.js",

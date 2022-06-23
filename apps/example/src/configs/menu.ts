@@ -4,9 +4,9 @@ import i18n from '@/i18n'
 
 const { ADMIN } = Role
 const config: MenuConfig[] = [
-    { path: '/', name: i18n.t('Home'), icon: 'home' },
-    { path: '/void', name: `${i18n.t('Void')} (404)`, icon: 'circle-exclamation' },
-    { path: '/admin', name: `${i18n.t('Admin')} (${i18n.t('Protected')})`, icon: 'lock', roles: [ADMIN] },
+    { path: '/', name: i18n.t('menu.home'), icon: 'home' },
+    { path: '/void', name: `${i18n.t('menu.void')}`, icon: 'circle-exclamation' },
+    { path: '/admin', name: `${i18n.t('menu.admin-secured')}`, icon: 'lock', roles: [ADMIN] },
 ]
 
 export default config

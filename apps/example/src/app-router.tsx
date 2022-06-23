@@ -9,17 +9,19 @@ import { getConfigRouter } from '@/configs/app'
 import layout from '@/layouts/layout'
 import { capitalize } from 'lodash'
 import { env } from '@ms7/common'
+import { useTranslation } from 'react-i18next'
 
 const AppRouter = () => {
+    const { t } = useTranslation()
     const routes = getRoutes([{ router: getConfigRouter() }])
     const entrypoints = getAppsEntrypointsConfigs()
 
     const Component404 = (
         <NotFound404
             to={'/'}
-            title={'404 - Not Found'}
+            title={t('error.not-found')}
             header={env.REACT_APP_NAME}>
-            {capitalize(env.REACT_APP_HOMEPAGE_NAME)}
+            {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
         </NotFound404> )
     
     return (

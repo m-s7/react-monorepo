@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import GuideWebsocketClient from 'Guide/business/websocket-client'
 import { setClient } from 'Guide/store/reducers/websocket-reducer'
-import { WebsocketClient } from '@ms7/websocket-client'
+import { WebsocketClient } from '@ms7/websocket'
 import { AuthProviderContext } from '@ms7/auth-providers'
 import { useAppDispatch } from 'Guide/hooks/use-app-dispatch'
 import { FullPageLoader } from '@ms7/bui'
-import { WebsocketProviderComponentProps } from '@ms7/websocket-client'
+import { WebsocketProviderComponentProps } from '@ms7/websocket'
 import { env } from '@ms7/common'
 
 const GuideWebsocketProvider = (props: WebsocketProviderComponentProps) => {

@@ -2,13 +2,13 @@ import React from 'react'
 import { Button } from '../button'
 import { LayoutEmpty } from '../layouts/layout-empty'
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
+interface ErrorBoundaryFallbackProps extends React.HTMLAttributes<HTMLDivElement> {
     error: Error,
     resetErrorBoundary: () => void,
     allowRetry?: boolean,
 }
 
-export const ErrorBoundaryFallback = ({ error, resetErrorBoundary, children }: Props) => {
+export const ErrorBoundaryFallback = ({ error, resetErrorBoundary, children }: ErrorBoundaryFallbackProps) => {
     if(error)
         return (
             <LayoutEmpty>

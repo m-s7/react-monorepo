@@ -27,7 +27,7 @@ const Index = () => {
             <Card>
                 <div className="d-flex flex-column align-items-center">
                     <h1>{env.REACT_APP_NAME}</h1>
-                    <pre>{`${t('Translated text from namespace')}: ${t('Hello')}`}</pre>
+                    <pre>{t('index.label')}</pre>
                     <Logo
                         src={logo}
                         alt="logo" />

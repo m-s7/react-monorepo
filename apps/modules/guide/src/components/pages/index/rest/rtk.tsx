@@ -12,8 +12,10 @@ import { getNormalizedError } from '@ms7/restful-rtk'
 import ErrorFallback from 'Guide/components/error-fallback'
 import { LoaderSmall } from '@ms7/bui'
 import { Card } from '@ms7/bui'
+import { useTranslation } from 'react-i18next'
 
 const RestRTK = () => {
+    const { t } = useTranslation()
     const [selectedId, setSelectedId] = useState(0)
     const [mutatedUser, setMutatedUser] = useState<User | undefined>()
     const [mutatedError, setMutatedError] = useState<Error | undefined>()
@@ -36,7 +38,7 @@ const RestRTK = () => {
     const LazyResult = () => {
         if(!isFetchingLazy) {
             if(errorLazy)
-                return (<div className="danger">{`Error: ${getNormalizedError(errorLazy)?.message}`}</div>)
+                return (<div className="danger">{`${t('rest-rtk.label.error')}: ${getNormalizedError(errorLazy)?.message}`}</div>)
 
             if(user)
                 return (<div>{`${user.id} - ${user.name} - ${user.age}`}</div>)
@@ -47,7 +49,7 @@ const RestRTK = () => {
 
     const MutatedResult = () => {
         if(mutatedError)
-            return (<div className="danger">{`Error: ${getNormalizedError(mutatedError)?.message}`}</div>)
+            return (<div className="danger">{`${t('rest-rtk.label.error')}: ${getNormalizedError(mutatedError)?.message}`}</div>)
 
         if(mutatedUser)
             return (<div>{`${mutatedUser.id} - ${mutatedUser.name} - ${mutatedUser.age}`}</div>)
@@ -63,12 +65,12 @@ const RestRTK = () => {
             <div className="d-flex flex-row m-1">
                 <Card className="w-25 me-1">
                     <div className="d-flex flex-column align-items-center">
-                        <p>Actions</p>
+                        <p>{t('rest-rtk.label.actions')}</p>
                         <Button
                             className="m-1 w-75"
                             disabled={isLoading || isFetching || isFetchingLazy}
                             onClick={() => trigger(selectedId)}>
-                            {'get user'}
+                            {t('rest-rtk.button.get')}
                         </Button>
                         <Button
                             className="m-1 w-75"
@@ -85,7 +87,7 @@ const RestRTK = () => {
                                         setMutatedError(error)
                                     })
                             }}>
-                            {'create user'}
+                            {t('rest-rtk.button.create')}
                         </Button>
                         <Button
                             className="m-1 w-75"
@@ -102,7 +104,7 @@ const RestRTK = () => {
                                         setMutatedError(error)
                                     })
                             }}>
-                            {'update user'}
+                            {t('rest-rtk.button.update')}
                         </Button>
                         <Button
                             className="m-1 w-75"
@@ -119,7 +121,7 @@ const RestRTK = () => {
                                         setMutatedError(error)
                                     })
                             }}>
-                            {'patch user'}
+                            {t('rest-rtk.button.patch')}
                         </Button>
                         <Button
                             className="m-1 w-75"
@@ -136,10 +138,10 @@ const RestRTK = () => {
                                         setMutatedError(error)
                                     })
                             }}>
-                            {'delete user'}
+                            {t('rest-rtk.button.delete')}
                         </Button>
                         <hr className="m-1 w-75" />
-                        <label className="m-1 d-block">[update/patch/delete] user id</label>
+                        <label className="m-1 d-block">{t('rest-rtk.label.user-id')}</label>
                         <input
                             className="text-black m-1 w-75"
                             value={selectedId}
@@ -149,19 +151,19 @@ const RestRTK = () => {
                 </Card>
                 <Card className="w-25 me-1">
                     <div className="d-flex flex-column align-items-center">
-                        <p>Results Mutation</p>
+                        <p>{t('rest-rtk.label.results-mutation')}</p>
                         {(isCreating || isUpdating || isPatching || isDeleting) ? <LoaderSmall /> : <MutatedResult />}
                     </div>
                 </Card>
                 <Card className="w-25 me-1">
                     <div className="d-flex flex-column align-items-center">
-                        <p>Results Lazy</p>
+                        <p>{t('rest-rtk.label.results-lazy')}</p>
                         {isFetchingLazy ? <LoaderSmall /> : <LazyResult />}
                     </div>
                 </Card>
                 <Card className="w-25">
                     <div className="d-flex flex-column align-items-center">
-                        <p>Results</p>
+                        <p>{t('rest-rtk.label.results')}</p>
                         {(isLoading || isFetching) ? <LoaderSmall /> : <Users />}
                     </div>
                 </Card>

@@ -6,6 +6,7 @@ import { LeafletMouseEvent, map } from 'leaflet'
 import { Button, ButtonProps } from '@ms7/bui'
 import { Card } from '@ms7/bui'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 type MapMode = 'single' | 'group' | 'group-alt'
 
@@ -31,6 +32,7 @@ const ModeButton = (props: ButtonProps & { mode: MapMode, currentMode: MapMode, 
 }
 
 const Index = () => {
+    const { t } = useTranslation()
     const [mode, setMode] = useState<MapMode>('single')
     const stateRef = useRef<string>()
     stateRef.current = mode
@@ -76,24 +78,24 @@ const Index = () => {
             </Card>
             <Card className="w-25">
                 <div className="d-flex flex-column mb-2">
-                    <h5>Mode:</h5>
+                    <h5>{t('index.label.mode')}:</h5>
                     <ModeButton
                         mode={'single'}
                         currentMode={mode}
                         clickHandler={setModeHandler}>
-                        single
+                        {t('index.button.single')}
                     </ModeButton>
                     <ModeButton
                         mode={'group'}
                         currentMode={mode}
                         clickHandler={setModeHandler}>
-                        group
+                        {t('index.button.group')}
                     </ModeButton>
                     <ModeButton
                         mode={'group-alt'}
                         currentMode={mode}
                         clickHandler={setModeHandler}>
-                        group-alt
+                        {t('index.button.group-alt')}
                     </ModeButton>
                 </div>
                 <hr />

@@ -23,7 +23,7 @@
     "@ms7/page-title": "*",
     "@ms7/restful-redux": "*",
     "@ms7/router": "*",
-    "@ms7/websocket-client": "*",
+    "@ms7/websocket": "*",
     "@ms7/i18n": "*",
     "@reduxjs/toolkit": "^1.8.1",
     "bootstrap": "^5.1.3",

@@ -1,28 +1,13 @@
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
-import { commonEN } from '@ms7/i18n'
+import i18next, { Resource } from 'i18next'
 import translationEN from '@/assets/locales/en/translation.json'
-import { commonPL } from '@ms7/i18n'
 import translationPL from '@/assets/locales/pl/translation.json'
+import { getDefaultI18n } from '@ms7/i18n'
 
-i18n
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-        resources: {
-            en: { translation: translationEN },
-            pl: { translation: translationPL },
-        },
-        load: 'languageOnly',
-        debug: true,
-        fallbackLng: 'pl',
-        interpolation: {
-            escapeValue: false, // not needed, react escapes by default
-        },
-    }).then()
+const resources: Resource = {
+    en: { translation: translationEN },
+    pl: { translation: translationPL },
+}
 
-i18n.addResourceBundle('en', 'translation', commonEN)
-i18n.addResourceBundle('pl', 'translation', commonPL)
+const i18n = getDefaultI18n(i18next.createInstance(), resources)
 
 export default i18n

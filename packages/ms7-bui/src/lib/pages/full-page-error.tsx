@@ -4,13 +4,13 @@ import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardCentered } from '../components/card-centered'
 import { RouterLink } from '../router-link'
 
-interface Props {
+interface FullPageErrorProps {
     error: FatalError | Error,
     header?: string,
     allowNavigation?: boolean,
 }
 
-export const FullPageError = (props: Props) => {
+export const FullPageError = (props: FullPageErrorProps) => {
     const { error, header, allowNavigation } = props
     const title = (error instanceof FatalError ? `${error.name} - ${error.message}` : error.message)
 

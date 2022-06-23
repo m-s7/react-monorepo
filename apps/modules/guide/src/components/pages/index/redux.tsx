@@ -10,8 +10,10 @@ import {
     incrementByAmount,
     incrementIfOdd, 
 } from 'Guide/store/reducers/counter-reducer'
+import { useTranslation } from 'react-i18next'
 
 const Redux = () => {
+    const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
     // person
@@ -28,52 +30,52 @@ const Redux = () => {
         <div className="d-flex flex-row m-1">
             <Card className="me-1 w-25">
                 <div className="d-flex flex-column align-items-center">
-                    <p>Person State:</p>
+                    <p>{t('redux.label.person-state')}</p>
                     <ul>
                         <li>{`id: ${id}`}</li>
-                        <li>{`age: ${age}`}</li>
-                        <li>{`name: ${name}`}</li>
-                        <li>{`type: ${type}`}</li>
-                        <li>{`desc: ${description}`}</li>
+                        <li>{`${t('redux.label.age')}: ${age}`}</li>
+                        <li>{`${t('redux.label.name')}: ${name}`}</li>
+                        <li>{`${t('redux.label.type')}: ${type}`}</li>
+                        <li>{`${t('redux.label.desc')}: ${description}`}</li>
                     </ul>
                     <div className="d-flex flex-column w-50">
                         <Button
                             className="m-1 w-100"
                             onClick={() => dispatch(setId(Math.floor(Math.random() * (100 - 1 + 1)) + 1))}>
-                            {'change id'}
+                            {t('redux.button.change-id')}
                         </Button>
                         <Button
                             className="m-1 w-100"
                             onClick={() => dispatch(setAge((age + 1)))}>
-                            {'increment age'}
+                            {t('redux.button.increment-age')}
                         </Button>
                         <Button
                             className="m-1 w-100"
                             onClick={() => dispatch(setName((name === 'Mark' ? 'Claudia' : 'Mark')))}>
-                            {'switch name'}
+                            {t('redux.button.switch-name')}
                         </Button>
                         <Button
                             className="m-1 w-100"
                             onClick={() => dispatch(setType(type === 'man' ? 'woman' : 'man'))}>
-                            {'switch type'}
+                            {t('redux.button.switch-type')}
                         </Button>
                         <Button
                             className="m-1 w-100"
                             onClick={() => dispatch(setDescription((Math.random() + 1).toString(36).substring(7)))}>
-                            {'change description'}
+                            {t('redux.button.change-desc')}
                         </Button>
                     </div>
                 </div>
             </Card>
             <Card className="w-25">
                 <div className="d-flex flex-column align-items-center">
-                    <p>Counter State:</p>
+                    <p>{t('redux.label.counter-state')}</p>
                     <ul>
-                        <li>{`counter: ${value}`}</li>
-                        <li>{`status: ${status}`}</li>
+                        <li>{`${t('redux.label.counter')}: ${value}`}</li>
+                        <li>{`${t('redux.label.status')}: ${status}`}</li>
                     </ul>
                     <div className="w-40">
-                        <label className="d-block">increment amount</label>
+                        <label className="d-block">{t('redux.label.increment')}</label>
                         <div>
                             <input
                                 className="text-black w-100"
@@ -85,18 +87,18 @@ const Redux = () => {
                             <Button
                                 className="mb-2 w-100"
                                 onClick={() => dispatch(incrementByAmount(incrementValue))}>
-                                add
+                                {t('redux.button.add')}
                             </Button>
                             <Button
                                 className="mb-2 w-100"
                                 disabled={status === 'loading'}
                                 onClick={() => dispatch(incrementAsync(incrementValue))}>
-                                add async
+                                {t('redux.button.add-async')}
                             </Button>
                             <Button
                                 className="mb-2 w-100"
                                 onClick={() => dispatch(incrementIfOdd(incrementValue))}>
-                                add if odd
+                                {t('redux.button.add-if-odd')}
                             </Button>
                             <div className="d-flex flex-row">
                                 <Button

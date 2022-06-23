@@ -2,12 +2,12 @@ import React, { PropsWithChildren } from 'react'
 import { Button } from '@ms7/bui'
 import { Card } from '@ms7/bui'
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
+interface ErrorFallbackProps extends React.HTMLAttributes<HTMLDivElement> {
     error: Error | undefined,
     onRetry?: () => void,
 }
 
-const ErrorFallback = (props: PropsWithChildren<Props>) => {
+const ErrorFallback = (props: PropsWithChildren<ErrorFallbackProps>) => {
     const { error, onRetry, children, className = '' } = props
 
     if(error)

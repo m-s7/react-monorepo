@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 
-interface Props<T> {
+interface AuthProviderProps<T> {
     providerProps: T,
     provider: AuthProviderComponentType,
 }
@@ -31,7 +31,7 @@ export interface UserInfo {
 
 export const AuthProviderContext = createContext<AuthModel | undefined>(undefined)
 
-export const AuthProvider = <T, >(props: React.PropsWithChildren<Props<T>>) => {
+export const AuthProvider = <T, >(props: React.PropsWithChildren<AuthProviderProps<T>>) => {
     const [providerAuthInstance, setProviderAuthInstance] = useState<AuthModel>()
 
     const onLoad = (authInstance: AuthModel) => {

@@ -4,13 +4,13 @@ import { Role } from '@ms7/auth-providers'
 import { AuthProviderContext } from '@ms7/auth-providers'
 import { withAuth } from '@ms7/auth-providers'
 
-interface Props {
+interface ProtectedRouteProps {
     roles?: Role[],
     outlet?: boolean,
     component404: JSX.Element,
 }
 
-const ProtectedRoute = (props: React.PropsWithChildren<Props>) => {
+const ProtectedRoute = (props: React.PropsWithChildren<ProtectedRouteProps>) => {
     const { roles, component404, children } = props
     const authContext = useContext(AuthProviderContext)
 

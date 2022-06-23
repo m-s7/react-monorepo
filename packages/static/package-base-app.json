@@ -3,7 +3,7 @@
     "@ms7/common": "*",
     "@ms7/event-bus": "*",
     "@ms7/logger": "*",
-    "@ms7/websocket-client": "*",
+    "@ms7/websocket": "*",
     "@ms7/restful-redux": "*",
     "@ms7/auth-providers": "*",
     "@ms7/router": "*",

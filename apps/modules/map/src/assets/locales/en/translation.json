@@ -1,0 +1,27 @@
+{
+  "dashboard": "Dashboard",
+
+  "menu": {
+    "map": "Map",
+    "map-engine": "Map Engine"
+  },
+
+  "router": {
+    "map": "Map"
+  },
+
+  "error": {
+    "not-found": "404 - Not Found"
+  },
+
+  "index": {
+    "label": {
+      "mode": "Mode"
+    },
+    "button": {
+      "single": "single",
+      "group": "group",
+      "group-alt": "group alt"
+    }
+  }
+}

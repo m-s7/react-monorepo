@@ -4,7 +4,7 @@ import { CardCentered } from '../components/card-centered'
 import { RouterLink } from '../router-link'
 import styled from 'styled-components'
 
-interface Props {
+interface FullPageLoaderProps {
     header?: string,
     navigateName?: string,
     navigatePath?: string,
@@ -25,7 +25,7 @@ const Component = styled.div`
     }
 `
 
-export const FullPageLoader = (props: Props) => {
+export const FullPageLoader = (props: FullPageLoaderProps) => {
     const { header, navigateName, navigatePath } = props
 
     return (

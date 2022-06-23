@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 
-interface Props {
+interface WebsocketProviderProps {
     provider: WebsocketProviderComponentType,
 }
 
@@ -24,7 +24,7 @@ type WebsocketProviderComponentType = React.ComponentType<WebsocketProviderCompo
 
 export const WebsocketProviderContext = createContext<Websocket | undefined>(undefined)
 
-export const WebsocketProvider = (props: React.PropsWithChildren<Props>) => {
+export const WebsocketProvider = (props: React.PropsWithChildren<WebsocketProviderProps>) => {
     const [providerWebsocketInstance, setProviderWebsocketInstance] = useState<Websocket>()
 
     const onLoad = (websocketInstance: Websocket) => {
