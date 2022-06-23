@@ -1,7 +1,9 @@
+// noinspection TypeScriptValidateJSTypes
+
 import { env } from '@ms7/common'
 import { User } from 'Guide/business/types/user'
 import { createApi } from '@reduxjs/toolkit/dist/query/react'
-import { baseQueryWithAuth } from '@ms7/restful-rtk'
+import { baseQueryWithAuth, providesList } from '@ms7/restful-rtk'
 import { Optional } from '@ms7/common'
 
 const rtkUserApi = createApi({
@@ -11,12 +13,7 @@ const rtkUserApi = createApi({
         getUsers: build.query<User[], void>({
             query: () => ({ url: 'users' }),
             transformResponse: (response: User[], meta, arg) => response,
-            providesTags: (result, error) => {
-                if(result)
-                    return [...result.map(({ id }) => ({ type: 'Users' as const, id })), { type: 'Users', id: 'LIST' }]
-
-                return [{ type: 'Users', id: 'LIST' }]
-            },
+            providesTags: result => providesList(result, 'Users'),
         }),
         getUser: build.query<User, number>({
             query: id => ({ url: `users/${id}` }),

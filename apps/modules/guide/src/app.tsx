@@ -4,7 +4,6 @@ import { env } from '@ms7/common'
 import { useAppDispatch } from 'Guide/hooks/use-app-dispatch'
 import { reset as resetPersonReducer } from 'Guide/store/reducers/person-reducer'
 import { reset as resetCounterReducer } from 'Guide/store/reducers/counter-reducer'
-import { reset as resetWebsocketReducer } from 'Guide/store/reducers/websocket-reducer'
 import GuideWebsocketProvider from 'Guide/components/providers/guide-websocket-provider'
 import { WebsocketProvider } from '@ms7/websocket'
 import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth-providers'
@@ -34,7 +33,6 @@ const App = (props: EntrypointComponentProps) => {
     useEffect(() => () => {
         dispatch(resetPersonReducer())
         dispatch(resetCounterReducer())
-        dispatch(resetWebsocketReducer())
     }, [])
 
     return (
