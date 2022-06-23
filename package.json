@@ -7,7 +7,7 @@
     "apps/modules/*"
   ],
   "scripts": {
-    "start": "turbo run dev --filter=./apps/example",
+    "start": "npm start --prefix ./apps/example",
     "test": "turbo run test",
     "build": "turbo run build --filter=./packages/ms7-logger && turbo run build --filter=!./packages/ms7-logger",
     "dev": "turbo run dev --no-cache --parallel --continue",
