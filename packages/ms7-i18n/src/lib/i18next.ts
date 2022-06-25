@@ -11,7 +11,7 @@ export const getDefaultI18n = (i18nInstance: i18n, resources: Resource): i18n =>
         .init({
             resources,
             load: 'languageOnly',
-            debug: true,
+            debug: process.env.NODE_ENV === 'development',
             fallbackLng: 'en',
             interpolation: {
                 escapeValue: false, // not needed, react escapes by default
