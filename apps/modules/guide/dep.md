@@ -39,7 +39,7 @@ docker stop $(docker ps -a -q)
 minikube start
 minikube create namespace ms7-guide
 kubectl config set-context --current --namespace=ms7-guide
-cd k8s
+cd tools/k8s
 kubectl apply -f deployment.yaml
 kubectl apply -f load-balancer.yaml
 ```
@@ -54,7 +54,7 @@ Navigate to:
 http://[minikubeip]:31000
 
 ## Resources
-https://docs.docker.com/engine/install/centos/
-https://minikube.sigs.k8s.io/docs/start/
-https://kubernetes.io/docs/tasks/tools/
+https://docs.docker.com/engine/install/centos/ \
+https://minikube.sigs.k8s.io/docs/start/ \
+https://kubernetes.io/docs/tasks/tools/ \
 https://blog.logrocket.com/deploy-react-app-kubernetes-using-docker/
