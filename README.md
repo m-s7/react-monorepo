@@ -56,6 +56,25 @@ To publish changelog:
 yarn release
 ```
 
+## Deployment
+
+#### Heroku
+
+Login to heroku:
+```bash
+heorku login
+```
+
+Deploy app:
+```bash
+git push heroku [branch name]:main
+```
+
+Open app:
+```bash
+heroku open
+```
+
 ## Tools
 
 ####ms7-merge

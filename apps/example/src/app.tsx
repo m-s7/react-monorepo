@@ -21,20 +21,20 @@ const App = () => {
     }, [])
     
     return (
-        // <AuthProvider<KeycloakAuthProviderProps>
-        //     provider={KeycloakAuthProvider}
-        //     providerProps={{
-        //         config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
-        //         errorComponent: (props: { error: Error }) => (
-        //             <FullPageError
-        //                 error={props.error}
-        //                 header={env.REACT_APP_NAME} />),
-        //         suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
-        //     }}>
-        <I18nextProvider i18n={i18n}>
-            {showLoader ? <FullPageLoader header={env.REACT_APP_NAME} /> : <AppRouter />}
-        </I18nextProvider>
-        // </AuthProvider>
+        <AuthProvider<KeycloakAuthProviderProps>
+            provider={KeycloakAuthProvider}
+            providerProps={{
+                config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
+                errorComponent: (props: { error: Error }) => (
+                    <FullPageError
+                        error={props.error}
+                        header={env.REACT_APP_NAME} />),
+                suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
+            }}>
+            <I18nextProvider i18n={i18n}>
+                {showLoader ? <FullPageLoader header={env.REACT_APP_NAME} /> : <AppRouter />}
+            </I18nextProvider>
+        </AuthProvider>
     )
 }
 
