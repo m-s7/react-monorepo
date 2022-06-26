@@ -5,6 +5,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     'outline-primary' | 'outline-secondary' | 'outline-success' | 'outline-warning' |
     'outline-danger' | 'outline-info' | 'outline-light' | 'outline-dark',
     size?: 'sm' | 'lg',
+    onClick: () => void,
 }
 
 export const Button = (props: ButtonProps) => {
@@ -12,7 +13,7 @@ export const Button = (props: ButtonProps) => {
 
     return (
         <button
-            className={`btn btn-${variant} ${size ? `btn-${size}` : ''} ${className}`}
+            className={`btn btn-${variant} ${size ? `btn-${size}` : ''} ${className ? className : ''}`}
             {...rest}>
             {children}
         </button>
