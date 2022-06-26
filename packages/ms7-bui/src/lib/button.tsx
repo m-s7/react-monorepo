@@ -5,7 +5,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     'outline-primary' | 'outline-secondary' | 'outline-success' | 'outline-warning' |
     'outline-danger' | 'outline-info' | 'outline-light' | 'outline-dark',
     size?: 'sm' | 'lg',
-    onClick: () => void,
+    onClick?: () => void,
 }
 
 export const Button = (props: ButtonProps) => {

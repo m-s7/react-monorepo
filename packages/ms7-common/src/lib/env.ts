@@ -16,9 +16,9 @@ type EnvType = {
     REACT_APP_KEYCLOAK_REALM: string,
     REACT_APP_KEYCLOAK_CLIENTID: string,
 
-    REACT_APP_GUIDE: string,
-    REACT_APP_GUIDE_API_URL: string,
-    REACT_APP_GUIDE_WEBSOCKET_URL: string,
+    REACT_APP_CORE: string,
+    REACT_APP_CORE_API_URL: string,
+    REACT_APP_CORE_WEBSOCKET_URL: string,
 
     REACT_APP_MAP: string,
     REACT_APP_MAP_API_URL: string,

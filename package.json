@@ -1,11 +1,13 @@
 {
   "private": true,
   "version": "0.0.1",
-  "workspaces": [
-    "packages/*",
-    "apps/*",
-    "apps/modules/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*",
+      "apps/modules/*"
+    ]
+  },
   "scripts": {
     "start": "node server.js",
     "test": "turbo run test",

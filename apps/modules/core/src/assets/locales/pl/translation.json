@@ -1,0 +1,143 @@
+{
+  "dashboard": "Pulpit",
+
+  "menu": {
+    "core": "Przykłady",
+    "rest": "Rest",
+    "rest-rtk": "Rest (RTK)",
+    "rest-redux": "Rest (Redux)",
+    "redux": "Redux",
+    "event-bus": "EventBus",
+    "rxjs-subject": "RxJsSubject",
+    "lazy-suspense": "LazySuspense"
+  },
+
+  "router": {
+    "rest-rtk": "Przykłady Rest (RTK)",
+    "rest-redux": "Przykłady Rest (Redux)",
+    "redux": "Przykłady Redux",
+    "event-bus": "Przykłady EventBus",
+    "rxjs-subject": "Przykłady RxJsSubject",
+    "lazy-suspense": "Przykłady LazySuspense"
+  },
+
+  "error": {
+    "not-found": "404 - Nie odnaleziono"
+  },
+
+  "index": {
+    "info1": "To jest komponent rodzica, komponent dziecka jest renderowany przez <Outlet>.",
+    "info2": "Ponowny render komponentu dziecka, nie ma wpływu na stan rodzica."
+  },
+
+  "rest-rtk": {
+    "label": {
+      "actions": "Akcje",
+      "results": "Wynik",
+      "results-mutation": "Wynik Mutacji",
+      "results-lazy": "Wynik Leniwego Ładowania",
+      "user-id": "[get/update/patch/delete] id",
+      "error": "Błąd"
+    },
+    "button": {
+      "get": "pobierz użytkownika",
+      "create": "stwórz użytkownika",
+      "update": "zaktualizuj użytkownika",
+      "patch": "zmień wiek użytkownika",
+      "delete": "usuń użytkownika"
+    }
+  },
+
+  "rest-redux": {
+    "label": {
+      "actions": "Akcje",
+      "results": "Wynik",
+      "error": "Błąd"
+    },
+    "button": {
+      "get-all": "pobierz użytkowników",
+      "get-random": "pobierz losowego użytkownika",
+      "create": "stwórz użytkownika",
+      "change-data": "zmień dane losowego użytkownika",
+      "change-age": "zmień wiek losowego użytkownika",
+      "remove": "usuń losowego użytkownika"
+    }
+  },
+
+  "redux": {
+    "label": {
+      "person-state": "Osoba",
+      "age": "wiek",
+      "name": "imię",
+      "type": "typ",
+      "desc": "opis",
+      "counter-state": "Licznik",
+      "counter": "licznik",
+      "status": "stan",
+      "increment": "zwiększana ilość"
+    },
+    "button": {
+      "change-id": "zmień id",
+      "increment-age": "postarz",
+      "switch-name": "zmień imię",
+      "switch-type": "zmień typ",
+      "change-desc": "zmień opis",
+      "add": "dodaj",
+      "add-async": "dodaj asynchronicznie",
+      "add-if-odd": "dodaj jeśli nieparzyste"
+    }
+  },
+
+  "event-bus": {
+    "warning1": "EventBus to 'anty-wzorzec' i powinno się go unikać.",
+    "warning2": "W aplikacjach bazujących na eventach powinno się uzywać bibliotek bazujących na 'observables' (np. rxjs).",
+    "label": {
+      "register": "Zarejestruj Kanał",
+      "subscribe": "Zasubskrybuj Kanał",
+      "dispatch": "Wyślij wiadomość (wiadomość logowana w konsoli)",
+      "unsubscribe": "Odsubskrybuj Kanał",
+      "unregister": "Wyrejestruj Kanał"
+    },
+    "button": {
+      "register": "zarejestruj",
+      "subscribe": "zasubskrybuj",
+      "dispatch": "wyślij",
+      "unsubscribe": "odsubskrybuj",
+      "unregister": "wyrejestruj"
+    }
+  },
+
+  "rxjs-subject": {
+    "subject": "Temat",
+    "subscription": "Subskrypcja",
+    "label": {
+      "create": "Stwórz Temat",
+      "subscribe": "Zasubskrybuj Temat",
+      "dispatch": "Wyślij Wiadomość (wiadomość logowana w konsoli)",
+      "unsubscribe": "Odsubskrybuj Temat",
+      "remove": "Usuń Temat"
+    },
+    "button": {
+      "create": "stwórz",
+      "subscribe": "zasubskrybuj",
+      "dispatch": "wyślij",
+      "unsubscribe": "odsubskrybuj",
+      "remove": "usuń"
+    }
+  },
+
+  "lazy-suspense": {
+    "loading": "Leniwe ładowanie...",
+    "warning1": "Komponent <UserViewer> ładuje dane wewnątrz hooka useEffect.",
+    "warning2": "Ten kod jest tylko przykładem, nigdy nie powinno wykonywać się asynchronicznych operacji wewnątrz useEffect."
+  },
+
+  "user-viewer": {
+    "loading": "Ładuję użytkowników...",
+    "label": {
+      "user": "Użytkownik",
+      "name": "Imię",
+      "age": "Wiek"
+    }
+  }
+}

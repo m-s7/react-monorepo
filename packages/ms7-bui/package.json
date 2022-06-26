@@ -16,8 +16,8 @@
     "dev": "node_modules/.bin/tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
-    "build-storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && build-storybook",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "test-storybook": "test-storybook"
   },
   "dependencies": {
