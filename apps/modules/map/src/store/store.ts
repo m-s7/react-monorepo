@@ -1,9 +1,8 @@
 import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import { authReducer } from '@ms7/auth-providers'
-import { restReducer } from '@ms7/restful-redux'
 
 const store = configureStore({
-    reducer: { auth: authReducer, rest: restReducer },
+    reducer: { auth: authReducer },
     middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
 })
 

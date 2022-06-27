@@ -2,4 +2,12 @@ const webpackDevConfig = require('../../../../../packages/static/webpack/apps/we
 
 webpackDevConfig.resolve.alias = { ...require('./webpack.aliases') }
 
-module.exports = webpackDevConfig
+module.exports = {
+    ...webpackDevConfig,
+    devServer: {
+        open: true,
+        hot: true,
+        port: 8902,
+        historyApiFallback: true,
+    },
+}
