@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 import styled from 'styled-components'
 
-interface RouterLinkProps extends React.AnchorHTMLAttributes<LinkProps & HTMLAnchorElement> {
+export interface RouterLinkProps extends React.AnchorHTMLAttributes<LinkProps & HTMLAnchorElement> {
     to: string,
     variant?: 'default' | 'primary',
     disabled?: boolean,

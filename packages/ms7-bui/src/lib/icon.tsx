@@ -3,7 +3,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 
-interface IconProps extends React.HTMLAttributes<HTMLElement> {
+export interface IconProps extends React.HTMLAttributes<HTMLElement> {
     variant: IconProp,
     size?: SizeProp,
 }
