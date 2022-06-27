@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { RouterGenerator } from '@ms7/router'
-import { NotFound404 } from '@ms7/bui'
+import { Card, NotFound404 } from '@ms7/bui'
 import { getRoutes } from '@ms7/router'
 import { getAppsEntrypointsConfigs } from '@/utils/apps-utils'
 import Layout from '@/layouts/layout'
@@ -10,6 +10,7 @@ import layout from '@/layouts/layout'
 import { capitalize } from 'lodash'
 import { env } from '@ms7/common'
 import { useTranslation } from 'react-i18next'
+import { FullPageLoader } from '@ms7/bui'
 
 const AppRouter = () => {
     const { t } = useTranslation()
@@ -35,8 +36,10 @@ const AppRouter = () => {
                         key={`app-entrypoint-${index}`}
                         path={baseUrl}
                         element={
-                            <Component
-                                parentLayout={layout} />
+                            <Suspense fallback={<FullPageLoader header={env.REACT_APP_NAME} />}>
+                                <Component
+                                    parentLayout={layout} />
+                            </Suspense>
                         } />
                 )
             })}

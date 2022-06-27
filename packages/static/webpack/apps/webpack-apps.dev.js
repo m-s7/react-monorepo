@@ -1,13 +1,13 @@
 module.exports = {
     mode: 'development',
-    entry: ['./src/index.tsx'],
+    // entry: ['./src/index.tsx'],
     module: {
         rules: require('./webpack-apps.rules'),
     },
     output: {
         publicPath: '/', //Important: HMR will break on deep route navigation without publicPath
-        filename: '[name].js',
-        chunkFilename: '[name].chunk.js',
+        // filename: '[name].js',
+        // chunkFilename: '[name].chunk.js',
     },
     plugins: require('./webpack-apps.plugins'),
     resolve: {
@@ -16,19 +16,19 @@ module.exports = {
             // ...require('./webpack.aliases'),
         },
     },
-    devtool: 'cheap-module-source-map',
+    // devtool: 'cheap-module-source-map',
     devServer: {
         open: true,
         hot: true,
         port: 8901,
         historyApiFallback: true,
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
-    },
-    performance: {
-        hints: false,
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all',
+    //     },
+    // },
+    // performance: {
+    //     hints: false,
+    // },
 }

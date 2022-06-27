@@ -29,7 +29,7 @@ module.exports = [
     new HtmlWebpackPlugin({
         template: 'public/index.html',
         favicon: 'public/favicon.ico',
-        inject: true,
+        // inject: true,
     }),
     new MiniCssExtractPlugin({
         filename: '[name].[chunkhash].css',

@@ -1,0 +1,25 @@
+{
+    "name": "helloReac",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "webpack serve --config=config/webpack.dev.js",
+        "build": "webpack --config=config/webpack.prod.js",
+        "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    },
+    "dependencies": {
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "react-router-dom": "^6.3.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.18.2",
+        "@babel/preset-env": "^7.18.2",
+        "@babel/preset-react": "^7.17.12",
+        "babel-loader": "^8.1.0",
+        "html-webpack-plugin": "^4.5.0",
+        "webpack": "^5.73.0",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "^4.8.1",
+        "webpack-merge": "^5.2.0"
+    }
+}
