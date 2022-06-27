@@ -11,6 +11,10 @@ const devConfig = {
     },
     devServer: {
         port: 9991,
+        hot: false,
+        devMiddleware: {
+            writeToDisk: true,
+        },
         historyApiFallback: {
             index: '/index.html'
         }
