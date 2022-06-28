@@ -29,16 +29,16 @@ const App = (props: EntrypointComponentProps) => {
             ApiService.setupApiServiceInterceptors(token, logoutUrl)
         }
     }, [])
-    
+
     useEffect(() => () => {
         dispatch(resetPersonReducer())
         dispatch(resetCounterReducer())
     }, [])
 
     return (
-        <WebsocketProvider provider={CoreWebsocketProvider}>
-            <AppRouter parentLayout={props.parentLayout} />
-        </WebsocketProvider>
+        // <WebsocketProvider provider={CoreWebsocketProvider}>
+        <AppRouter parentLayout={props.parentLayout} />
+        // </WebsocketProvider>
     )
 }
 
