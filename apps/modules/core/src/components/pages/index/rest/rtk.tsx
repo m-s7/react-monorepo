@@ -24,7 +24,7 @@ const RestRTK = () => {
     const { data: users, error, isLoading, isFetching, refetch } = useGetUsersQuery(undefined, { refetchOnMountOrArgChange: false, skip: false })
     const [trigger, { data: user, isFetching: isFetchingLazy, error: errorLazy }] = useLazyGetUserQuery()
 
-    const [triggerPost, { data: post}] = useLazyGetPostsQuery()
+    const [triggerPost, { data: posts }] = useLazyGetPostsQuery()
 
     const [createUser, { isLoading: isCreating }] = useCreateUserMutation()
     const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation()
@@ -68,6 +68,12 @@ const RestRTK = () => {
             <button
                 onClick={() => triggerPost(undefined)}>
                 aaa
+            </button>
+            <button
+                onClick={() => {
+                    console.log(posts)
+                }}>
+                bbb
             </button>
             <div className="d-flex flex-row m-1">
                 <Card className="w-25 me-1">

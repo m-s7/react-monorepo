@@ -25,24 +25,24 @@ const graphqlBaseQuery =
 export const gqlApi = createApi({
     reducerPath: 'gql',
     baseQuery: graphqlBaseQuery({
-        baseUrl: 'https://graphqlzero.almansi.me/api',
+        baseUrl: 'http://localhost:4000/',
     }),
     endpoints: build => ({
         getPosts: build.query({
             query: () => ({
                 body: gql`
                   query {
-                    posts {
-                      data {
+                    users {
+                      id
+                      username
+                      friends {
                         id
-                        title
-                        body
                       }
                     }
                   }
                 `,
             }),
-            transformResponse: response => response.posts.data,
+            transformResponse: response => response.launchesPast,
         }),
         getPost: build.query({
             query: id => ({
