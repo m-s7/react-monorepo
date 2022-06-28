@@ -5,8 +5,66 @@ import { User } from 'Core/business/types/user'
 import { createApi } from '@reduxjs/toolkit/dist/query/react'
 import { baseQueryWithAuth, providesList } from '@ms7/restful-rtk'
 import { Optional } from '@ms7/common'
+import { request, gql, ClientError } from 'graphql-request'
+
+const graphqlBaseQuery =
+    ({ baseUrl }: { baseUrl: string }) =>
+        async ({ body }: { body: string }) => {
+            try {
+                const result = await request(baseUrl, body)
+                return { data: result }
+            }
+            catch(error) {
+                if(error instanceof ClientError) {
+                    return { error: { status: error.response.status, data: error }}
+                }
+                return { error: { status: 500, data: error }}
+            }
+        }
+
+export const gqlApi = createApi({
+    reducerPath: 'gql',
+    baseQuery: graphqlBaseQuery({
+        baseUrl: 'https://graphqlzero.almansi.me/api',
+    }),
+    endpoints: build => ({
+        getPosts: build.query({
+            query: () => ({
+                body: gql`
+                  query {
+                    posts {
+                      data {
+                        id
+                        title
+                        body
+                      }
+                    }
+                  }
+                `,
+            }),
+            transformResponse: response => response.posts.data,
+        }),
+        getPost: build.query({
+            query: id => ({
+                body: gql`
+                    query {
+                      post(id: ${id}) {
+                        id
+                        title
+                        body
+                      }
+                    }
+                    `,
+            }),
+            transformResponse: response => response.post,
+        }),
+    }),
+})
+
+export const { useLazyGetPostQuery, useLazyGetPostsQuery } = gqlApi
 
 const rtkUserApi = createApi({
+    reducerPath: 'users',
     baseQuery: baseQueryWithAuth(env.REACT_APP_CORE_API_URL),
     tagTypes: ['Users'],
     endpoints: build => ({

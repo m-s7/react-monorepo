@@ -8,6 +8,7 @@ import {
     usePatchUserMutation,
     useUpdateUserMutation,
 } from 'Core/api/rtk-user-api'
+import { useLazyGetPostsQuery } from 'Core/api/rtk-user-api'
 import { getNormalizedError } from '@ms7/restful-rtk'
 import ErrorFallback from 'Core/components/error-fallback'
 import { LoaderSmall } from '@ms7/bui'
@@ -22,6 +23,8 @@ const RestRTK = () => {
 
     const { data: users, error, isLoading, isFetching, refetch } = useGetUsersQuery(undefined, { refetchOnMountOrArgChange: false, skip: false })
     const [trigger, { data: user, isFetching: isFetchingLazy, error: errorLazy }] = useLazyGetUserQuery()
+
+    const [triggerPost, { data: post}] = useLazyGetPostsQuery()
 
     const [createUser, { isLoading: isCreating }] = useCreateUserMutation()
     const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation()
@@ -62,6 +65,10 @@ const RestRTK = () => {
             className="d-flex justify-content-center m-1"
             error={!isFetching ? getNormalizedError(error) : undefined}
             onRetry={() => refetch()}>
+            <button
+                onClick={() => triggerPost(undefined)}>
+                aaa
+            </button>
             <div className="d-flex flex-row m-1">
                 <Card className="w-25 me-1">
                     <div className="d-flex flex-column align-items-center">
