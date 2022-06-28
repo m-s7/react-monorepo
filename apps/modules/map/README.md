@@ -73,12 +73,9 @@ Optionally parent may provide:
 Parent component may not:
 - include redux store instance (child store will override parent store)
 
-####React router info
-Since redux allows only one instance of store per app, parent store must be initialized using react context, see example below.
-
 ##### Example
 
-#####webpack.config.js
+##### webpack.config.js
 
 ```js
 module.exports = {

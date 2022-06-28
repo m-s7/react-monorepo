@@ -75,7 +75,7 @@ Parent component may not:
 
 ##### Example configuration
 
-#####webpack.config.js
+##### webpack.config.js
 
 ```js
 module.exports = {
@@ -89,7 +89,7 @@ module.exports = {
 }
 ```
 
-#####tsconfig.json
+##### tsconfig.json
 
 ```json
 {
@@ -102,7 +102,7 @@ module.exports = {
 }
 ```
 
-#####index.tsx
+##### index.tsx
 
 ```tsx
 import React from 'react'
@@ -122,7 +122,7 @@ root.render(
 )
 ```
 
-#####app.tsx
+##### app.tsx
 
 Valid when parent (or self) provides AuthProviderContext.
 

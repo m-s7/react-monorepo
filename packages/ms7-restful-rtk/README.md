@@ -42,7 +42,7 @@ createApi({
 })
 ```
 
-###Example
+### Example
 
 ```ts
 import { createApi } from '@reduxjs/toolkit/dist/query/react'

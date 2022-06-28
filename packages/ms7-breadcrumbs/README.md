@@ -40,7 +40,7 @@ If you need more options use [turbo](https://turborepo.org/docs/core-concepts/fi
 useRouterBreadcrumbs(routes, options)
 ```
 
-###Example
+### Example
 
 ```tsx
 import useRouterBreadcrumbs from '@ms7/breadcrumbs'
@@ -61,7 +61,7 @@ const Header = () => {
 }
 ```
 
-##Options
+## Options
 
 An options object can be passed as the 2nd argument to the hook.
 

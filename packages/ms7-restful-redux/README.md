@@ -43,7 +43,7 @@ ApiService.setStore(store)
 ApiService.setupApiServiceInterceptors(token, logoutFunction)
 ```
 
-###Example
+### Example
 
 ```ts
 // store.ts
