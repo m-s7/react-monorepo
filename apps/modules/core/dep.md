@@ -23,15 +23,13 @@ yarn build
 
 ```bash
 cd apps/modules/core
-docker run -d -p 8901:80 msmolik/ms7-core
+docker build -t codebase-test .
+docker run -p 3000:80 msmolik/ms7-core
 ```
 
-Otwórz w przeglądarce stronę http://localhost:8901 \
-Jeśli strona się ładuje to usuń obraz:
-
-```bash
-docker stop $(docker ps -a -q)
-```
+Otwórz w przeglądarce stronę http://localhost:3000 \
+Powinna się pojawić strina 404 (u góry jest menu którym można przejść na inną stronę).
+Ostatnia linia info czemu remote
 
 ###Kubernetes
 

@@ -20,31 +20,31 @@ const root = createRoot(container!)
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <AuthProvider<KeycloakAuthProviderProps>
-                provider={KeycloakAuthProvider}
-                providerProps={{
-                    config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
-                    errorComponent: (props: { error: Error }) => (
-                        <FullPageError
-                            error={props.error}
-                            header={env.REACT_APP_NAME} />),
-                    suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
-                }}>
-                <Container className="p-1">
-                    <Card className="d-flex flex-column mb-1">
+            {/*<AuthProvider<KeycloakAuthProviderProps>*/}
+            {/*    provider={KeycloakAuthProvider}*/}
+            {/*    providerProps={{*/}
+            {/*        config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },*/}
+            {/*        errorComponent: (props: { error: Error }) => (*/}
+            {/*            <FullPageError*/}
+            {/*                error={props.error}*/}
+            {/*                header={env.REACT_APP_NAME} />),*/}
+            {/*        suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),*/}
+            {/*    }}>*/}
+            <Container className="p-1">
+                <Card className="d-flex flex-column mb-1">
                         Menu
-                        <ul className="list-group list-group-horizontal">
-                            <li className="list-group-item"><Link to={'/rest-rtk'}>Rest RTK</Link></li>
-                            <li className="list-group-item"><Link to={'/rest-redux'}>Rest Redux</Link></li>
-                            <li className="list-group-item"><Link to={'/redux'}>Redux</Link></li>
-                            <li className="list-group-item"><Link to={'/event-bus'}>Event Bus</Link></li>
-                            <li className="list-group-item"><Link to={'/rxjs-subject'}>RxJsSubject</Link></li>
-                            <li className="list-group-item"><Link to={'/lazy-suspense'}>LazySuspense</Link></li>
-                        </ul>
-                    </Card>
-                    <Entrypoint />
-                </Container>
-            </AuthProvider>
+                    <ul className="list-group list-group-horizontal">
+                        <li className="list-group-item"><Link to={'/rest-rtk'}>Rest RTK</Link></li>
+                        <li className="list-group-item"><Link to={'/rest-redux'}>Rest Redux</Link></li>
+                        <li className="list-group-item"><Link to={'/redux'}>Redux</Link></li>
+                        <li className="list-group-item"><Link to={'/event-bus'}>Event Bus</Link></li>
+                        <li className="list-group-item"><Link to={'/rxjs-subject'}>RxJsSubject</Link></li>
+                        <li className="list-group-item"><Link to={'/lazy-suspense'}>LazySuspense</Link></li>
+                    </ul>
+                </Card>
+                <Entrypoint />
+            </Container>
+            {/*</AuthProvider>*/}
         </BrowserRouter>
     </React.StrictMode>,
 )
