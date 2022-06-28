@@ -36,9 +36,9 @@ const App = (props: EntrypointComponentProps) => {
     }, [])
 
     return (
-        // <WebsocketProvider provider={CoreWebsocketProvider}>
-        <AppRouter parentLayout={props.parentLayout} />
-        // </WebsocketProvider>
+        <WebsocketProvider provider={CoreWebsocketProvider}>
+            <AppRouter parentLayout={props.parentLayout} />
+        </WebsocketProvider>
     )
 }
 
