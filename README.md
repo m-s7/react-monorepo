@@ -79,7 +79,7 @@ heroku open
 
 ## Tools
 
-####ms7-merge
+#### ms7-merge
 
 This tool is used for merging package.json files.
 
