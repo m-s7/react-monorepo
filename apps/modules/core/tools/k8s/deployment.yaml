@@ -1,19 +1,19 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: ms7-core
+  name: ms7-module-core
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ms7-core
+      app: ms7-module-core
   template:
     metadata:
       labels:
-        app: ms7-core
+        app: ms7-module-core
     spec:
       containers:
-        - name: ms7-core
-          image: msmolik/ms7-core
+        - name: ms7-module-core
+          image: msmolik/ms7-module-core
           ports:
             - containerPort: 80
