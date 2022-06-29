@@ -37,6 +37,7 @@ root.render(
                             <li className="list-group-item"><Link to={'/rest-rtk'}>Rest RTK</Link></li>
                             <li className="list-group-item"><Link to={'/rest-redux'}>Rest Redux</Link></li>
                             <li className="list-group-item"><Link to={'/redux'}>Redux</Link></li>
+                            <li className="list-group-item"><Link to={'/graph-ql'}>Graph QL</Link></li>
                             <li className="list-group-item"><Link to={'/event-bus'}>Event Bus</Link></li>
                             <li className="list-group-item"><Link to={'/rxjs-subject'}>RxJsSubject</Link></li>
                             <li className="list-group-item"><Link to={'/lazy-suspense'}>LazySuspense</Link></li>

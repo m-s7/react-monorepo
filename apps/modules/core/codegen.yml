@@ -1,0 +1,13 @@
+overwrite: true
+schema: "http://localhost:4000"
+documents: "./src/**/*.ts"
+generates:
+  ./src/graphql/generated.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-rtk-query":
+          importBaseApiFrom: 'Core/api/rtk-car-api'
+          overrideExisting: 'module.hot?.status() === "apply"'
+    config:
+      fetcher: fetch

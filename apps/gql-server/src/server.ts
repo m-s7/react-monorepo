@@ -1,25 +1,27 @@
 const { ApolloServer, gql } = require('apollo-server')
 
 const typeDefs = gql`
-    type User {
+    type Car {
         id: ID!
-        username: String
-        friends: [User!]!
+        brand: String!
+        model: String!
+        similar: [Car!]!
     }
     
     type Query {
-        users: User!
+        cars: [Car]!
     }
 `
 
 const resolvers = {
     Query: {
-        users() {
-            return {
+        cars() {
+            return [{
                 id: '1',
-                username: 'ms7user',
-                friends: [],
-            }
+                brand: 'audi',
+                model: 'rs7 c8',
+                similar: [],
+            }]
         },
     },
 }
