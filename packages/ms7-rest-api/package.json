@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@ms7/restful-rtk",
+  "name": "@ms7/rest-api",
   "version": "0.0.1",
-  "description": "Helper methods for making api calls with rtk query",
+  "description": "Service for making rest api calls using axios",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -22,7 +22,7 @@
     "tsup": "^6.0.1",
     "typescript": "^4.6.3",
     "rxjs": "^7.5.5",
-    "@ms7/auth-providers": "*"
+    "axios": "^0.27.1"
   },
   "devDependencies": {
     "ts-config-lib": "*"
