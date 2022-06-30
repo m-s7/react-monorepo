@@ -10,6 +10,8 @@ import { FullPageFatalErrorProps } from '@ms7/bui'
 import { EntrypointComponentProps } from '@ms7/router'
 import i18n from 'Core/i18n'
 import { I18nextProvider } from 'react-i18next'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 logging.addConfigurationOption({ minLevels: { 'websocket': getLogLevelForEnv(isDev()) }})
 
@@ -23,9 +25,12 @@ const FallbackError = (props: FullPageFatalErrorProps) => (
 const Entrypoint = (props: EntrypointComponentProps) => (
     <ErrorBoundary FallbackComponent={FallbackError} >
         <I18nextProvider i18n={i18n}>
-            <Provider store={store}>
-                <App {...props} />
-            </Provider>
+            <QueryClientProvider client={new QueryClient()}>
+                <ReactQueryDevtools initialIsOpen={true} />
+                <Provider store={store}>
+                    <App {...props} />
+                </Provider>
+            </QueryClientProvider>
         </I18nextProvider>
     </ErrorBoundary>
 )

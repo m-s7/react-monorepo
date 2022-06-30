@@ -16,9 +16,8 @@ const baseQuery = (baseUrl: string) => fetchBaseQuery({
         apiSubject.next({ isLoading: true })
 
         const authState = getAuthState(getState() as object)
-        if(authState && authState.token) {
+        if(authState && authState.token)
             headers.set('Authorization', `Bearer ${authState.token}`)
-        }
 
         return headers
     },
