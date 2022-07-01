@@ -4,18 +4,6 @@ import { Optional } from '@ms7/common'
 import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-axios'
 import store from 'Core/store/store'
 
-const user: User = {
-    id: 1,
-    age: 2,
-    name: '3',
-}
-
-const fn = ({ id, ...rest }: User) => {
-    console.log(rest)
-}
-
-fn(user)
-
 const baseQuery = createBaseQuery({
     baseUrl: 'http://localhost:3035/',
     prepareHeaders: apiHeaders => {
@@ -43,6 +31,10 @@ const api = createApi({
             url: 'users',
             transformResponse: response => response.data,
         }),
+        getUser: (id: number) => builder.query<User>({
+            url: `users/${id}`,
+            transformResponse: response => response.data,
+        }),
         createUser: (data: Optional<User, 'id'>) => builder.mutation<User, typeof data>({
             url: 'users',
             method: 'POST',
@@ -57,11 +49,15 @@ const api = createApi({
         }),
         patchUser: ({ id, ...body }: Optional<User, 'age' | 'name'>) => builder.mutation<User, typeof body>({
             url: `users/${id}`,
-            method: 'PUT',
+            method: 'PATCH',
             data: body,
             transformResponse: response => response.data,
+        }),
+        deleteUser: (id: number) => builder.mutation({
+            url: `users/${id}`,
+            method: 'DELETE',
         }),
     }),
 })
 
-export const { getUsers, createUser, updateUser } = api.endpoints
+export const { getUsers, getUser, createUser, updateUser, patchUser, deleteUser } = api.endpoints
