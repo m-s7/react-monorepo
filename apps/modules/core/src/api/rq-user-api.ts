@@ -4,25 +4,28 @@ import { Optional } from '@ms7/common'
 import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-axios'
 import store from 'Core/store/store'
 
-const baseQuery = (baseUrl: string, headers?: Headers, errorHandler?: () => void) => createBaseQuery({
+const baseQuery = createBaseQuery({
     baseUrl: 'http://localhost:3035/',
     prepareHeaders: apiHeaders => {
+        const headers = new Headers()
+
+        const token = store.getState().auth.token
+        if(token) headers.set('Authorization', `Bearer ${token}`)
+
         combineHeaders(apiHeaders, headers)
 
         return apiHeaders
     },
-    errorHandler,
+    errorHandler: () => {
+        const logoutUrl = store.getState().auth.logoutUrl
+
+        if(logoutUrl) window.location.replace(logoutUrl)
+    },
     axiosInstance: axios.create(),
 })
 
-const headers = new Headers()
-headers.set('Authorization', 'Bearer 9821498219821')
-headers.set('Jest', 'OK')
-
 const api = createApi({
-    baseQuery: baseQuery('http://localhost:3035', headers, () => { 
-        //window.location.replace(store.getState())
-    }),
+    baseQuery,
     endpoints: builder => ({
         getUsers: () => builder.get<User[]>({
             url: 'users',
