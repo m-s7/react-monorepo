@@ -2,13 +2,14 @@ import React from 'react'
 import { Card } from '@ms7/bui'
 import { useMutation, useQuery } from 'react-query'
 import { User } from 'Core/business/types/user'
-import { getUsers, createUser } from 'Core/api/rq-user-api'
+import { getUsers, createUser, updateUser } from 'Core/api/rq-user-api'
 import { Optional } from '@ms7/common'
 import { Button } from '@ms7/bui'
 
 const GraphQL = () => {
-    const { data: users } = useQuery<User[], Error>('user', getUsers, { refetchOnMount: true })
-    const mutation = useMutation((args: Optional<User, 'id'>) => createUser(args))
+    const { data: users } = useQuery<User[], Error>('user', getUsers, { refetchOnMount: false, refetchOnWindowFocus: false })
+    // const mutation = useMutation((args: Optional<User, 'id'>) => createUser(args))
+    const mutation = useMutation((args: User) => updateUser(args))
     // const { data: cars, error, isLoading, isFetching, refetch } = useGetCarsQuery(undefined, { refetchOnMountOrArgChange: true, skip: false })
 
     // const Cars = () => (
@@ -19,7 +20,7 @@ const GraphQL = () => {
 
     const Users = () => (
         <React.Fragment>
-            {users?.map(user => (<div key={user.id}>{`${user.name} - ${user.age}`}</div>))}
+            {users?.map(user => (<div key={user.id}>{`${user.id} - ${user.name} - ${user.age}`}</div>))}
         </React.Fragment>
     )
 
@@ -29,7 +30,7 @@ const GraphQL = () => {
                 {/*<Cars />*/}
                 <Button
                     onClick={() => {
-                        mutation.mutate({ age: 987, name: 'Thomas' })
+                        mutation.mutate({ id: 6, age: 987, name: 'Thomas' })
                     }}>
                     CREATE
                 </Button>

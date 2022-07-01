@@ -4,6 +4,18 @@ import { Optional } from '@ms7/common'
 import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-axios'
 import store from 'Core/store/store'
 
+const user: User = {
+    id: 1,
+    age: 2,
+    name: '3',
+}
+
+const fn = ({ id, ...rest }: User) => {
+    console.log(rest)
+}
+
+fn(user)
+
 const baseQuery = createBaseQuery({
     baseUrl: 'http://localhost:3035/',
     prepareHeaders: apiHeaders => {
@@ -27,16 +39,29 @@ const baseQuery = createBaseQuery({
 const api = createApi({
     baseQuery,
     endpoints: builder => ({
-        getUsers: () => builder.get<User[]>({
+        getUsers: () => builder.query<User[]>({
             url: 'users',
             transformResponse: response => response.data,
         }),
-        createUser: (data: Optional<User, 'id'>) => builder.post<User, typeof data>({
+        createUser: (data: Optional<User, 'id'>) => builder.mutation<User, typeof data>({
             url: 'users',
+            method: 'POST',
             data,
+            transformResponse: response => response.data,
+        }),
+        updateUser: ({ id, ...body }: User) => builder.mutation<User, typeof body>({
+            url: `users/${id}`,
+            method: 'PUT',
+            data: body,
+            transformResponse: response => response.data,
+        }),
+        patchUser: ({ id, ...body }: Optional<User, 'age' | 'name'>) => builder.mutation<User, typeof body>({
+            url: `users/${id}`,
+            method: 'PUT',
+            data: body,
             transformResponse: response => response.data,
         }),
     }),
 })
 
-export const { getUsers, createUser } = api.endpoints
+export const { getUsers, createUser, updateUser } = api.endpoints

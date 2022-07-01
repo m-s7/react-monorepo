@@ -1,6 +1,6 @@
 import { AxiosRequestHeaders } from 'axios'
 
-export const combineUrls = (url1: string, url2: string): string => new URL('users', 'http://localhost:3035').href
+export const combineUrls = (url: string, baseUrl: string): string => new URL(url, baseUrl).href
 
 export const combineHeaders = (apiHeaders: AxiosRequestHeaders | Headers | undefined, newHeaders: Headers | undefined): void => {
     if(!apiHeaders || !newHeaders) return
