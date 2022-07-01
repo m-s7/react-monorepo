@@ -12,7 +12,7 @@ interface QueryBuilderArgs<T = undefined, R = AxiosResponse<T>> {
 }
 
 interface MutationBuilderArgs<T, D> extends QueryBuilderArgs<T> {
-    method: MutationMethod | DeleteMethod,
+    method: MutationMethod,
     data: D,
 }
 
