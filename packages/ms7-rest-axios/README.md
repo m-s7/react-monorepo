@@ -1,6 +1,6 @@
 # Restful RTK
 
-Helper methods for making api calls with rtk query.
+Library for making api calls using axios.
 
 ## Installation
 

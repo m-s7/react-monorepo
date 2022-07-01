@@ -19,6 +19,7 @@
     "@ms7/logger": "*",
     "@ms7/restful-redux": "*",
     "@ms7/restful-rtk": "*",
+    "@ms7/rest-axios": "*",
     "@ms7/router": "*",
     "@ms7/websocket": "*",
     "@reduxjs/toolkit": "^1.8.1",
