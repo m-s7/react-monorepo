@@ -3,6 +3,7 @@ import { User } from 'Core/business/types/user'
 import { Optional } from '@ms7/common'
 import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-axios'
 import store from 'Core/store/store'
+import { AxiosResponse } from '@ms7/restful-redux'
 
 const baseQuery = createBaseQuery({
     baseUrl: 'http://localhost:3035/',

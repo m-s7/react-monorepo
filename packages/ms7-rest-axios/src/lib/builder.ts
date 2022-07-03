@@ -4,11 +4,11 @@ import { combineUrls } from './utils'
 type DeleteMethod = 'DELETE'
 type MutationMethod = 'POST' | 'PUT' | 'PATCH'
 
-type TransformResponse<T = undefined, R = undefined> = T extends undefined ? never : R extends undefined ? never : (response: R) => T
+type TransformResponse<T = undefined, R = AxiosResponse<T>> = T extends undefined ? never : (response: R) => T
 
-interface QueryBuilderArgs<T = undefined, R = AxiosResponse<T>> {
+interface QueryBuilderArgs<T = undefined> {
     url: string,
-    transformResponse?: TransformResponse<T, R>,
+    transformResponse?: TransformResponse<T>,
 }
 
 interface MutationBuilderArgs<T, D> extends QueryBuilderArgs<T> {
@@ -22,8 +22,8 @@ interface DeleteBuilderArgs extends QueryBuilderArgs {
 }
 
 export interface QueryBuilder {
-    query: <T>({ url }: QueryBuilderArgs<T>) => T | Promise<T>,
-    mutation: <T, D>({ url, method, data }: MutationBuilderArgs<T, D> | DeleteBuilderArgs) => Promise<T>,
+    query: <T>({ url, transformResponse }: QueryBuilderArgs<T>) => T | Promise<T>,
+    mutation: <T, D>({ url, data, method, transformResponse }: MutationBuilderArgs<T, D> | DeleteBuilderArgs) => T | Promise<T>,
 }
 
 export const builder = (axiosInstance: AxiosInstance, baseUrl: string): QueryBuilder => ({
