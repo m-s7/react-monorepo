@@ -3,7 +3,6 @@ import { User } from 'Core/business/types/user'
 import { Optional } from '@ms7/common'
 import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-axios'
 import store from 'Core/store/store'
-import { AxiosResponse } from '@ms7/restful-redux'
 
 const baseQuery = createBaseQuery({
     baseUrl: 'http://localhost:3035/',
@@ -42,16 +41,16 @@ const api = createApi({
             data,
             transformResponse: response => response.data,
         }),
-        updateUser: ({ id, ...body }: User) => builder.mutation<User, typeof body>({
+        updateUser: ({ id, ...data }: User) => builder.mutation<User, typeof data>({
             url: `users/${id}`,
             method: 'PUT',
-            data: body,
+            data,
             transformResponse: response => response.data,
         }),
-        patchUser: ({ id, ...body }: Optional<User, 'age' | 'name'>) => builder.mutation<User, typeof body>({
+        patchUser: ({ id, ...data }: Optional<User, 'age' | 'name'>) => builder.mutation<User, typeof data>({
             url: `users/${id}`,
             method: 'PATCH',
-            data: body,
+            data,
             transformResponse: response => response.data,
         }),
         deleteUser: (id: number) => builder.mutation({
