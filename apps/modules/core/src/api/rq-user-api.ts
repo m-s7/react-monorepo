@@ -16,10 +16,12 @@ const baseQuery = createBaseQuery({
 
         return apiHeaders
     },
-    errorHandler: () => {
-        const logoutUrl = store.getState().auth.logoutUrl
+    errorHandler: status => {
+        if(status === 401) {
+            const logoutUrl = store.getState().auth.logoutUrl
 
-        if(logoutUrl) window.location.replace(logoutUrl)
+            if(logoutUrl) window.location.replace(logoutUrl)
+        }
     },
     axiosInstance: axios.create(),
 })

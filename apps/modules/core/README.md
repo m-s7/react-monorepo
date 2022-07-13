@@ -159,7 +159,7 @@ export default App
 Install required packages:
 
 ```bash
-yarn add  apollo graphql @types/graphql
+yarn add apollo graphql @types/graphql
 ```
 
 ## Injecting environmental variables

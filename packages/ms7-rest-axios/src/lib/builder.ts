@@ -23,7 +23,7 @@ interface DeleteBuilderArgs extends QueryBuilderArgs {
 
 export interface QueryBuilder {
     query: <T>({ url, transformResponse }: QueryBuilderArgs<T>) => T | Promise<T>,
-    mutation: <T, D>({ url, data, method, transformResponse }: MutationBuilderArgs<T, D> | DeleteBuilderArgs) => T | Promise<T>,
+    mutation: <T = undefined, D = undefined>({ url, data, method, transformResponse }: MutationBuilderArgs<T, D> | DeleteBuilderArgs) => Promise<T>,
 }
 
 export const builder = (axiosInstance: AxiosInstance, baseUrl: string): QueryBuilder => ({

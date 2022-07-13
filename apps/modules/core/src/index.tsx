@@ -34,6 +34,7 @@ root.render(
                 <Card className="d-flex flex-column mb-1">
                         Menu
                     <ul className="list-group list-group-horizontal">
+                        <li className="list-group-item"><Link to={'/rest-rq'}>Rest RQ</Link></li>
                         <li className="list-group-item"><Link to={'/rest-rtk'}>Rest RTK</Link></li>
                         <li className="list-group-item"><Link to={'/rest-redux'}>Rest Redux</Link></li>
                         <li className="list-group-item"><Link to={'/redux'}>Redux</Link></li>

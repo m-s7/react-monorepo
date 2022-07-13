@@ -9,7 +9,7 @@ export interface BaseQuery {
 interface BaseQueryArgs {
     baseUrl: string,
     prepareHeaders?: (headers: Headers) => Headers,
-    errorHandler?: () => void,
+    errorHandler?: (status: number) => void,
     axiosInstance?: AxiosInstance,
 }
 
@@ -27,8 +27,7 @@ export const createBaseQuery = ({ baseUrl, prepareHeaders, errorHandler, axiosIn
     api.interceptors.response.use(
         config => config,
         error => {
-            if(error.status === 401 && errorHandler)
-                errorHandler()
+            if(errorHandler) errorHandler(error.status)
 
             return Promise.reject(error)
         })

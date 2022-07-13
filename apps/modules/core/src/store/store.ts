@@ -3,7 +3,6 @@ import { authReducer } from '@ms7/auth-providers'
 import personReducer from 'Core/store/reducers/person-reducer'
 import counterReducer from 'Core/store/reducers/counter-reducer'
 import ApiService, { apiLogger as reduxLogger, restReducer } from '@ms7/restful-redux'
-import { apiLogger as rtkLogger } from '@ms7/restful-rtk'
 
 const store = configureStore({
     reducer: {
@@ -12,7 +11,7 @@ const store = configureStore({
         corePerson: personReducer,
         coreCounter: counterReducer,
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(rtkLogger, reduxLogger),
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(reduxLogger),
 })
 
 ApiService.setStore(store)
