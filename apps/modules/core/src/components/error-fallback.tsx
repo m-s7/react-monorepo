@@ -3,7 +3,7 @@ import { Button } from '@ms7/bui'
 import { Card } from '@ms7/bui'
 
 interface ErrorFallbackProps extends React.HTMLAttributes<HTMLDivElement> {
-    error: Error | undefined,
+    error: Error | null | undefined,
     onRetry?: () => void,
 }
 

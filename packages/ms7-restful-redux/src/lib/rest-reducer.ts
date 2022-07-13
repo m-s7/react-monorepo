@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import ApiService from './api-service'
 import { AxiosResponse } from 'axios'
 
-interface RestState {
+export interface RestState {
     status: 'idle' | 'loading' | 'failed',
 }
 

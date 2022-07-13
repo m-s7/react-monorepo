@@ -7,6 +7,7 @@ import { baseQueryWithAuth, providesList } from '@ms7/restful-rtk'
 import { Optional } from '@ms7/common'
 
 const rtkUserApi = createApi({
+    reducerPath: 'users',
     baseQuery: baseQueryWithAuth(env.REACT_APP_CORE_API_URL),
     tagTypes: ['Users'],
     endpoints: build => ({

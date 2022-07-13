@@ -39,6 +39,14 @@ yarn clean
 
 If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
+## GraphQl Types Generator
+
+To generate graphql types:
+
+```bash
+yarn graphql-generate
+```
+
 ## Versioning
 
 To add changes to changelog in apps and packages:

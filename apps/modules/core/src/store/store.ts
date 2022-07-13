@@ -2,9 +2,7 @@ import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import { authReducer } from '@ms7/auth-providers'
 import personReducer from 'Core/store/reducers/person-reducer'
 import counterReducer from 'Core/store/reducers/counter-reducer'
-import rtkUserApi from 'Core/api/rtk-user-api'
 import ApiService, { apiLogger as reduxLogger, restReducer } from '@ms7/restful-redux'
-import { apiLogger as rtkLogger } from '@ms7/restful-rtk'
 
 const store = configureStore({
     reducer: {
@@ -12,9 +10,8 @@ const store = configureStore({
         rest: restReducer,
         corePerson: personReducer,
         coreCounter: counterReducer,
-        [rtkUserApi.reducerPath]: rtkUserApi.reducer,
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(rtkUserApi.middleware, rtkLogger, reduxLogger),
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(reduxLogger),
 })
 
 ApiService.setStore(store)

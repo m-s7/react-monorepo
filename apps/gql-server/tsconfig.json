@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "gql server",
+  "extends": "ts-config/tsconfig.json",
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "isolatedModules": false,
+    "paths": {
+      "@": ["src/"],
+      "@/*": ["src/*"],
+    },
+    "types": [
+      "node",
+    ]
+  },
+  "include": ["."]
+}
