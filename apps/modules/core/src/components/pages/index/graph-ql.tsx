@@ -1,10 +1,13 @@
 import React from 'react'
-import { Card } from '@ms7/bui'
 import { useFetchCarsQuery } from 'Core/graphql/generated'
+import { useQueryClient } from 'react-query'
+import { Button, LoaderSmall, Card } from '@ms7/bui'
 
 const GraphQL = () => {
     const endpoint = 'http://localhost:4000'
-    const { data } = useFetchCarsQuery({
+    const queryClient = useQueryClient()
+
+    const { data, isFetching } = useFetchCarsQuery({
         endpoint,
         fetchParams: {
             headers: {
@@ -13,30 +16,22 @@ const GraphQL = () => {
         },
     })
 
-    // const { data: cars } = useQuery<Car[]>(['cars'], async () => {
-    //     const { cars } = await request(
-    //         endpoint,
-    //         gql`
-    //             query fetchCars {
-    //               cars {
-    //                 id
-    //                 brand
-    //                 model
-    //                 similar {
-    //                     id
-    //                 }
-    //               }
-    //             }
-    //           `,
-    //     )
-    //
-    //     return cars
-    // })
-
+    const Cars = () => (
+        <React.Fragment>
+            {data?.cars.map(car => (<div key={car?.id}>{`${car?.brand} - ${car?.model}`}</div>))}
+        </React.Fragment>
+    )
+    
     return (
         <div className="d-flex flex-column">
             <Card className="m-1 w-50">
-                {data?.cars.map(car => (<div key={car?.id}>{`${car?.brand} - ${car?.model}`}</div>))}
+                {isFetching ? <LoaderSmall /> : <Cars />}
+                <Button
+                    onClick={() => {
+                        queryClient.invalidateQueries(['fetchCars']).then()
+                    }}>
+                INVALIDATE!!
+                </Button>
             </Card>
         </div>
     )

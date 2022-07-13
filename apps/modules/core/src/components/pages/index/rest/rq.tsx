@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import { Button } from '@ms7/bui'
 import { User } from 'Core/business/types/user'
 import ErrorFallback from 'Core/components/error-fallback'
-import { LoaderSmall } from '@ms7/bui'
-import { Card } from '@ms7/bui'
+import { Button, LoaderSmall, Card } from '@ms7/bui'
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { getUser, getUsers, createUser, updateUser, patchUser, deleteUser } from 'Core/api/rq-user-api'
@@ -22,7 +20,7 @@ const RestRQ = () => {
     const [isMutating, setIsMutating] = useState(false)
     const [mutatedUser, setMutatedUser] = useState<User | undefined>()
     const [mutatedError, setMutatedError] = useState<Error | null>()
-    const { data: users, error, isFetching, isLoading, refetch } = useQuery<User[], Error>(['users'], getUsers, { refetchOnMount: true, refetchOnWindowFocus: false, retry: 1 })
+    const { data: users, error, isFetching, isLoading, refetch } = useQuery<User[], Error>(['users'], getUsers, { refetchOnMount: false, refetchOnWindowFocus: false, retry: 1 })
     const { data: user, isFetching: isFetchingLazy, error: errorLazy, refetch: get } = useQuery<User, Error>(['user', { id: selectedGetId }], () => getUser(selectedGetId), { enabled: (selectedGetId > 0), refetchOnMount: false, refetchOnWindowFocus: false, retry: 1 })
 
     const options = {
