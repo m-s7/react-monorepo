@@ -2,8 +2,6 @@ import { RouterConfig } from '@ms7/router'
 import Index from 'Core/pages'
 import Rest from 'Core/components/pages/index/rest'
 import RestRQ from 'Core/components/pages/index/rest/rq'
-import RestRTK from 'Core/components/pages/index/rest/rtk'
-import RestRedux from 'Core/components/pages/index/rest/redux'
 import Redux from 'Core/components/pages/index/redux'
 import GraphQL from 'Core/components/pages/index/graph-ql'
 import EventBus from 'Core/components/pages/index/event-bus'
@@ -18,8 +16,6 @@ const config: RouterConfig = {
                 { component: Rest,
                     children: [
                         { path: 'rest-rq', component: RestRQ, title: i18n.t('router.rest-rq'), breadcrumb: i18n.t('router.rest-rq') },
-                        { path: 'rest-rtk', component: RestRTK, title: i18n.t('router.rest-rtk'), breadcrumb: i18n.t('router.rest-rtk') },
-                        { path: 'rest-redux', component: RestRedux, title: i18n.t('router.rest-redux'), breadcrumb: i18n.t('router.rest-redux') },
                     ],
                 },
                 { path: 'redux', component: Redux, title: i18n.t('router.redux'), breadcrumb: i18n.t('router.redux') },

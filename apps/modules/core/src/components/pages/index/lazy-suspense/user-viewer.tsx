@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 import { User } from 'Core/business/types/user'
-import { getUsers } from 'Core/api/redux-user-api'
 import CenteredLoader from 'Core/components/centered-loader'
 import { useTranslation } from 'react-i18next'
+import { useQuery } from 'react-query'
+import { getUsers } from 'Core/api/rq-user-api'
 
 const UserViewer = () => {
     const { t } =  useTranslation()
-
     const handleError = useErrorHandler()
     const [users, setUsers] = useState<User[]>()
 
-    useEffect(() => {
-        setTimeout(() => {
-            getUsers()
-                .then(users => setUsers(users))
-                .catch(error => handleError(error))
-        }, 1000)
-    }, [])
+    useQuery<User[], Error>(['users'], getUsers, {
+        retry: false,
+        onError: error => { handleError(error) },
+        onSuccess: data => { setTimeout(() => setUsers(data), 1000) },
+    })
 
     if(users) {
         return (

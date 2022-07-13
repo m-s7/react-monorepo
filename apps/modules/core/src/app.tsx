@@ -8,7 +8,6 @@ import CoreWebsocketProvider from 'Core/components/providers/core-websocket-prov
 import { WebsocketProvider } from '@ms7/websocket'
 import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth-providers'
 import { EntrypointComponentProps } from '@ms7/router'
-import ApiService from '@ms7/restful-redux'
 
 const App = (props: EntrypointComponentProps) => {
     const dispatch = useAppDispatch()
@@ -25,8 +24,6 @@ const App = (props: EntrypointComponentProps) => {
             dispatch(setToken(token))
             dispatch(setLogoutUrl(logoutUrl))
             dispatch(setUsername(context.getUserInfo().username))
-
-            ApiService.setupApiServiceInterceptors(token, logoutUrl)
         }
     }, [])
 

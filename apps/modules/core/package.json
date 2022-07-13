@@ -17,8 +17,6 @@
     "@ms7/event-bus": "*",
     "@ms7/i18n": "*",
     "@ms7/logger": "*",
-    "@ms7/restful-redux": "*",
-    "@ms7/restful-rtk": "*",
     "@ms7/rest-axios": "*",
     "@ms7/router": "*",
     "@ms7/websocket": "*",

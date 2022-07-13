@@ -20,7 +20,7 @@ const RestRQ = () => {
     const [isMutating, setIsMutating] = useState(false)
     const [mutatedUser, setMutatedUser] = useState<User | undefined>()
     const [mutatedError, setMutatedError] = useState<Error | null>()
-    const { data: users, error, isFetching, isLoading, refetch } = useQuery<User[], Error>(['users'], getUsers, { refetchOnMount: false, refetchOnWindowFocus: false, retry: 1 })
+    const { data: users, error, isFetching, isLoading, refetch } = useQuery<User[], Error>(['users'], getUsers, { refetchOnMount: false, refetchOnWindowFocus: false, retry: false })
     const { data: user, isFetching: isFetchingLazy, error: errorLazy, refetch: get } = useQuery<User, Error>(['user', { id: selectedGetId }], () => getUser(selectedGetId), { enabled: (selectedGetId > 0), refetchOnMount: false, refetchOnWindowFocus: false, retry: 1 })
 
     const options = {
@@ -64,7 +64,7 @@ const RestRQ = () => {
 
     const User = () => {
         if(errorLazy)
-            return (<div className="danger">{`${t('rest-rtk.label.error')}: ${errorLazy?.message}`}</div>)
+            return (<div className="danger">{`${t('rest-rq.label.error')}: ${errorLazy?.message}`}</div>)
 
         if(user)
             return (<div>{`${user.id} - ${user.name} - ${user.age}`}</div>)
@@ -74,7 +74,7 @@ const RestRQ = () => {
 
     const MutatedResult = () => {
         if(mutatedError)
-            return (<div className="danger">{`${t('rest-rtk.label.error')}: ${mutatedError?.message}`}</div>)
+            return (<div className="danger">{`${t('rest-rq.label.error')}: ${mutatedError?.message}`}</div>)
 
         if(mutatedUser)
             return (<div>{`${mutatedUser.id} - ${mutatedUser.name} - ${mutatedUser.age}`}</div>)
@@ -99,13 +99,13 @@ const RestRQ = () => {
             <div className="d-flex flex-row m-1">
                 <Card className="w-25 me-1">
                     <div className="d-flex flex-column align-items-center">
-                        <p>{t('rest-rtk.label.actions')}</p>
+                        <p>{t('rest-rq.label.actions')}</p>
                         <div className="d-flex w-75">
                             <Button
                                 className="m-1 w-75"
                                 disabled={isLoading || isFetching || isFetchingLazy}
                                 onClick={() => get()}>
-                                {t('rest-rtk.button.get')}
+                                {t('rest-rq.button.get')}
                             </Button>
                             <input
                                 className="text-black m-1 w-25"
@@ -116,18 +116,18 @@ const RestRQ = () => {
                         </div>
                         <MutationButton
                             onClick={() => create.mutate({ age: 666, name: 'Estera' })}
-                            label={t('rest-rtk.button.create')} />
+                            label={t('rest-rq.button.create')} />
                         <MutationButton
                             onClick={() => update.mutate({ id: selectedMutationId, age: 123, name: 'John' })}
-                            label={t('rest-rtk.button.update')} />
+                            label={t('rest-rq.button.update')} />
                         <MutationButton
                             onClick={() => patch.mutate({ id: selectedMutationId, age: 7171 })}
-                            label={t('rest-rtk.button.patch')} />
+                            label={t('rest-rq.button.patch')} />
                         <MutationButton
                             onClick={() => remove.mutate(selectedMutationId)}
-                            label={t('rest-rtk.button.delete')} />
+                            label={t('rest-rq.button.delete')} />
                         <hr className="m-1 w-75" />
-                        <label className="m-1 d-block">{t('rest-rtk.label.user-id')}</label>
+                        <label className="m-1 d-block">{t('rest-rq.label.user-id')}</label>
                         <input
                             className="text-black m-1 w-75"
                             value={selectedMutationId}
@@ -138,19 +138,19 @@ const RestRQ = () => {
                 </Card>
                 <Card className="w-25 me-1">
                     <div className="d-flex flex-column align-items-center">
-                        <p>{t('rest-rtk.label.results-mutation')}</p>
+                        <p>{t('rest-rq.label.results-mutation')}</p>
                         {isMutating ? <LoaderSmall /> : <MutatedResult />}
                     </div>
                 </Card>
                 <Card className="w-25 me-1">
                     <div className="d-flex flex-column align-items-center">
-                        <p>{t('rest-rtk.label.results-lazy')}</p>
+                        <p>{t('rest-rq.label.results-lazy')}</p>
                         {isFetchingLazy ? <LoaderSmall /> : <User />}
                     </div>
                 </Card>
                 <Card className="w-25">
                     <div className="d-flex flex-column align-items-center">
-                        <p>{t('rest-rtk.label.results')}</p>
+                        <p>{t('rest-rq.label.results')}</p>
                         {(isLoading || isFetching) ? <LoaderSmall /> : <Users />}
                     </div>
                 </Card>

@@ -15,7 +15,6 @@
     "@ms7/event-bus": "*",
     "@ms7/logger": "*",
     "@ms7/websocket": "*",
-    "@ms7/restful-redux": "*",
     "@ms7/auth-providers": "*",
     "@ms7/router": "*",
     "@ms7/bui": "*",

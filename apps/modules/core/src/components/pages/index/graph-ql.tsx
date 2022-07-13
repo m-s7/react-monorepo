@@ -28,8 +28,7 @@ const GraphQL = () => {
                 {isFetching ? <LoaderSmall /> : <Cars />}
                 <Button
                     onClick={() => {
-                        console.log(useFetchCarsQuery.getKey())
-                        queryClient.invalidateQueries([useFetchCarsQuery.getKey()]).then()
+                        queryClient.invalidateQueries(useFetchCarsQuery.getKey()).then()
                     }}>
                 INVALIDATE!!
                 </Button>

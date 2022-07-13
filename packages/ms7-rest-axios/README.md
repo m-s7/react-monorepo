@@ -1,4 +1,4 @@
-# Restful RTK
+# Rest Axios
 
 Library for making api calls using axios.
 

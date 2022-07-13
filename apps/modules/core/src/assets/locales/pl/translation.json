@@ -5,8 +5,7 @@
   "menu": {
     "core": "Przykłady",
     "rest": "Rest",
-    "rest-rtk": "Rest (RTK)",
-    "rest-redux": "Rest (Redux)",
+    "rest-rq": "Rest (React Query)",
     "redux": "Redux",
     "event-bus": "EventBus",
     "rxjs-subject": "RxJsSubject",
@@ -14,8 +13,7 @@
   },
 
   "router": {
-    "rest-rtk": "Przykłady Rest (RTK)",
-    "rest-redux": "Przykłady Rest (Redux)",
+    "rest-rq": "Przykłady Rest (React Query)",
     "redux": "Przykłady Redux",
     "event-bus": "Przykłady EventBus",
     "rxjs-subject": "Przykłady RxJsSubject",
@@ -31,7 +29,7 @@
     "info2": "Ponowny render komponentu dziecka, nie ma wpływu na stan rodzica."
   },
 
-  "rest-rtk": {
+  "rest-rq": {
     "label": {
       "actions": "Akcje",
       "results": "Wynik",
@@ -46,22 +44,6 @@
       "update": "zaktualizuj użytkownika",
       "patch": "zmień wiek użytkownika",
       "delete": "usuń użytkownika"
-    }
-  },
-
-  "rest-redux": {
-    "label": {
-      "actions": "Akcje",
-      "results": "Wynik",
-      "error": "Błąd"
-    },
-    "button": {
-      "get-all": "pobierz użytkowników",
-      "get-random": "pobierz losowego użytkownika",
-      "create": "stwórz użytkownika",
-      "change-data": "zmień dane losowego użytkownika",
-      "change-age": "zmień wiek losowego użytkownika",
-      "remove": "usuń losowego użytkownika"
     }
   },
 

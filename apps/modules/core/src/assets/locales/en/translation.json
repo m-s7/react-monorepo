@@ -5,8 +5,7 @@
   "menu": {
     "core": "Core",
     "rest": "Rest",
-    "rest-rtk": "Rest (RTK)",
-    "rest-redux": "Rest (Redux)",
+    "rest-rq": "Rest (React Query)",
     "redux": "Redux",
     "graph-ql": "GraphQL",
     "event-bus": "EventBus",
@@ -15,8 +14,7 @@
   },
 
   "router": {
-    "rest-rtk": "Core Rest (RTK)",
-    "rest-redux": "Core Rest (Redux)",
+    "rest-rq": "Core Rest (React Query)",
     "redux": "Core Redux",
     "graph-ql": "Core GraphQL",
     "event-bus": "Core EventBus",
@@ -33,13 +31,13 @@
     "info2": "Child re-render does not affect this component state."
   },
 
-  "rest-rtk": {
+  "rest-rq": {
     "label": {
       "actions": "Actions",
       "results": "Results",
       "results-mutation": "Results Mutation",
       "results-lazy": "Results lazy",
-      "user-id": "[get/update/patch/delete] id",
+      "user-id": "[update/patch/delete] id",
       "error": "Error"
     },
     "button": {
@@ -48,22 +46,6 @@
       "update": "update user",
       "patch": "patch user",
       "delete": "delete user"
-    }
-  },
-
-  "rest-redux": {
-    "label": {
-      "actions": "Actions",
-      "results": "Results",
-      "error": "Error"
-    },
-    "button": {
-      "get-all": "get all users",
-      "get-random": "get random user",
-      "create": "create new user",
-      "change-data": "change random user data",
-      "change-age": "change random user age",
-      "remove": "remove random user"
     }
   },
 
