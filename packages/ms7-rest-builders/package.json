@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@ms7/rest-axios",
+  "name": "@ms7/rest-builder",
   "version": "0.0.1",
-  "description": "Library for making api calls using axios.",
+  "description": "Simple JavaScript library for building api endpoints.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",

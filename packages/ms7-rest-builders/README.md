@@ -1,6 +1,6 @@
-# Rest Axios
+# Rest Builder
 
-Library for making api calls using axios.
+Simple JavaScript library for building api endpoints.
 
 ## Installation
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { LoaderSmall } from '@ms7/bui'
-import { apiSubject as rtkSubject, Subscription as RtkSubscription } from '@ms7/restful-rtk'
-import { apiSubject as reduxSubject, Subscription as ReduxSubscription } from '@ms7/restful-redux'
+// import { apiSubject as rtkSubject, Subscription as RtkSubscription } from '@ms7/restful-rtk'
+// import { apiSubject as reduxSubject, Subscription as ReduxSubscription } from '@ms7/restful-redux'
 import i18n from '@/i18n'
 import styled from 'styled-components'
 import logo from '@/assets/logo.svg'
@@ -13,27 +13,27 @@ const LangChangeLink = styled.a<{ lng: string }>`
 const Navbar = () => {
     const [isLoading, setIsLoading] = useState(false)
 
-    let rtkSubjectSubscription: RtkSubscription | undefined
-    let reduxSubjectSubscription: ReduxSubscription | undefined
+    // let rtkSubjectSubscription: RtkSubscription | undefined
+    // let reduxSubjectSubscription: ReduxSubscription | undefined
 
-    const handleApiMessage = (isApiLoading: boolean) => {
-        if(isLoading !== isApiLoading) setIsLoading(isApiLoading)
-    }
-
-    useEffect(() => {
-        rtkSubjectSubscription = rtkSubject.subscribe({
-            next: message => handleApiMessage(message.isLoading),
-        })
-
-        reduxSubjectSubscription = reduxSubject.subscribe({
-            next: message => handleApiMessage(message.isLoading),
-        })
-    })
-
-    useEffect(() => () => {
-        rtkSubjectSubscription?.unsubscribe()
-        reduxSubjectSubscription?.unsubscribe()
-    }, [])
+    // const handleApiMessage = (isApiLoading: boolean) => {
+    //     if(isLoading !== isApiLoading) setIsLoading(isApiLoading)
+    // }
+    //
+    // useEffect(() => {
+    //     rtkSubjectSubscription = rtkSubject.subscribe({
+    //         next: message => handleApiMessage(message.isLoading),
+    //     })
+    //
+    //     reduxSubjectSubscription = reduxSubject.subscribe({
+    //         next: message => handleApiMessage(message.isLoading),
+    //     })
+    // })
+    //
+    // useEffect(() => () => {
+    //     rtkSubjectSubscription?.unsubscribe()
+    //     reduxSubjectSubscription?.unsubscribe()
+    // }, [])
 
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng).then()

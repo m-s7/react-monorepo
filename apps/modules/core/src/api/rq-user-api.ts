@@ -1,8 +1,15 @@
 import axios from 'axios'
 import { User } from 'Core/business/types/user'
 import { Optional } from '@ms7/common'
-import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-axios'
+import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-builder'
 import store from 'Core/store/store'
+
+// import { setLogger } from 'react-query'
+// setLogger({
+//     log: console.log,
+//     warn: console.warn,
+//     error: () => {},
+// })
 
 const baseQuery = createBaseQuery({
     baseUrl: 'http://localhost:3035/',
