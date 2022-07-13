@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFetchCarsQuery } from 'Core/graphql/generated'
+import { useFetchCarsQuery } from 'Core/api/graphql/generated'
 import { useQueryClient } from 'react-query'
 import { Button, LoaderSmall, Card } from '@ms7/bui'
 
@@ -28,7 +28,8 @@ const GraphQL = () => {
                 {isFetching ? <LoaderSmall /> : <Cars />}
                 <Button
                     onClick={() => {
-                        queryClient.invalidateQueries(['fetchCars']).then()
+                        console.log(useFetchCarsQuery.getKey())
+                        queryClient.invalidateQueries([useFetchCarsQuery.getKey()]).then()
                     }}>
                 INVALIDATE!!
                 </Button>

@@ -154,14 +154,6 @@ const App = (props: EntrypointComponentProps) => {
 export default App
 ```
 
-## GraphQL types generator
-
-Install required packages:
-
-```bash
-graphql-codegen
-```
-
 ## Injecting environmental variables
 
 After building static files you can inject env variables allowing for quick deployment with multiple configurations.
