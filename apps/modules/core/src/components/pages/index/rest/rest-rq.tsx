@@ -59,7 +59,6 @@ const RestRQ = () => {
         <React.Fragment>
             {users?.map(user => (<div key={user.id}>{`${user.id} - ${user.name} - ${user.age}`}</div>))}
         </React.Fragment>
-
     )
 
     const User = () => {
