@@ -5,7 +5,6 @@
   "description": "MS7 GraphQL Server",
   "scripts": {
     "dev": "ts-node src/server.ts",
-    "start": "ts-node src/server.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },

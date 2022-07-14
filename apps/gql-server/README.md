@@ -27,11 +27,6 @@ To start server in development mode:
 yarn dev
 ```
 
-To start server in production mode:
-```bash
-yarn prod
-```
-
 To run linter:
 ```bash
 yarn lint
@@ -42,21 +37,4 @@ To remove apps and packages temp directories:
 yarn clean
 ```
 
-
 If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
-
-## Injecting environmental variables
-
-After building static files you can inject env variables allowing for quick deployment with multiple configurations.
-
-To inject env variables:
-```bash
-[env variables] npx react-inject-env set
-```
-
-Example:
-```bash
-REACT_APP_TITLE="injected env" REACT_APP_COLOR=green npm react-inject-env set
-```
-
-If you need additional inject options check official docs [react-inject-env](https://github.com/codegowhere/react-inject-env).
