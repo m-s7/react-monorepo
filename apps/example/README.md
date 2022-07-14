@@ -42,7 +42,6 @@ To remove apps and packages temp directories:
 yarn clean
 ```
 
-
 If you need more options use [turbo](https://turborepo.org/docs/core-concepts/filtering) cli command.
 
 ## Injecting environmental variables
