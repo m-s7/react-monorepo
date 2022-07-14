@@ -6,9 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'Core/global.css'
 import styled from 'styled-components'
 import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
-import { env } from '@ms7/common'
+import { env, isDev } from '@ms7/common'
 import { Card, FullPageError, FullPageLoader } from '@ms7/bui'
 import { Link } from 'react-router-dom'
+import { assignLevelToLoggers, getLogLevelForEnv, logging } from '@ms7/logger'
+
+logging.configure({ minLevels: assignLevelToLoggers([''], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
 
 const Container = styled.div`
     background-color: #454d55;
@@ -32,7 +35,7 @@ root.render(
             {/*    }}>*/}
             <Container className="p-1">
                 <Card className="d-flex flex-column mb-1">
-                        Menu
+                    Menu
                     <ul className="list-group list-group-horizontal">
                         <li className="list-group-item"><Link to={'/rest-rq'}>Rest RQ</Link></li>
                         <li className="list-group-item"><Link to={'/redux'}>Redux</Link></li>

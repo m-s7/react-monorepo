@@ -36,6 +36,8 @@ If you need more options use [turbo](https://turborepo.org/docs/core-concepts/fi
 
 ## Usage
 
+TODO: UPDATE!!!!
+
 ```js
 createApi({
     baseQuery: baseQueryWithAuth(baseUrl, token),
