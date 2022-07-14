@@ -1,22 +1,24 @@
 {
   "dependencies": {
     "@ms7/common": "*",
-    "@ms7/event-bus": "*",
     "@ms7/logger": "*",
-    "@ms7/websocket": "*",
-    "@ms7/restful-redux": "*",
     "@ms7/auth-providers": "*",
     "@ms7/router": "*",
     "@ms7/bui": "*",
+    "@ms7/i18n": "*",
     "@reduxjs/toolkit": "^1.8.1",
     "dotenv": "^16.0.0",
     "lodash": "^4.17.21",
+    "i18next": "^21.8.10",
+    "i18next-browser-languagedetector": "^6.1.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-i18next": "^11.17.2",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -57,6 +59,8 @@
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "@types/styled-components": "^5.1.25",
+    "dev-tools": "*"
   }
 }
