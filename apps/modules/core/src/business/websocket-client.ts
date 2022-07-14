@@ -42,7 +42,7 @@ export default class WebsocketClient extends StompClient {
         if(!stompClient) return
 
         const destination = '/topic/greetings'
-        stompClient.subscribe(destination,  ({ body }) => {
+        stompClient.subscribe(destination, ({ body }) => {
             this.logger.debug('Message received on', destination, JSON.parse(body))
         })
         this.logger.debug('Subscribed', destination)

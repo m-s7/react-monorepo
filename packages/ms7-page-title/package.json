@@ -2,7 +2,7 @@
   "private": true,
   "name": "@ms7/page-title",
   "version": "0.0.1",
-  "description": "A hook for generating page title for react router",
+  "description": "A hook used for generating page title for react router",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",

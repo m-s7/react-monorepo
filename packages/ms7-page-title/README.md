@@ -1,6 +1,6 @@
 # Page Title
 
-A hook for generating page title for react router.
+A hook used for generating page title for react router.
 
 ## Installation
 

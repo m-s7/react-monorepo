@@ -37,7 +37,7 @@ const api = createApi({
             url: `users/${id}`,
             transformResponse: response => response.data,
         }),
-        createUser: (data: Optional<User, 'id'>) => builder.mutation<User, typeof data>({
+        createUser: (data: Omit<User, 'id'>) => builder.mutation<User, typeof data>({
             url: 'users',
             method: 'POST',
             data,

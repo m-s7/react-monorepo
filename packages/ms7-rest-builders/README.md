@@ -36,19 +36,11 @@ If you need more options use [turbo](https://turborepo.org/docs/core-concepts/fi
 
 ## Usage
 
-TODO: UPDATE!!!!
-
-```js
-createApi({
-    baseQuery: baseQueryWithAuth(baseUrl, token),
-})
-```
-
-### Example
+##### Create Api
 
 ```ts
-import { createApi } from '@reduxjs/toolkit/dist/query/react'
-import { baseQueryWithAuth } from '@ms7/restful-rtk'
+import { logging } from '@ms7/logger'
+import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-builder'
 
 interface User {
     readonly id: number,
@@ -56,27 +48,84 @@ interface User {
     age: number,
 }
 
-const rtkUserApi = createApi({
-    baseQuery: baseQueryWithAuth('http://localhost:3333', 'some-token'),
-    tagTypes: ['Users'],
-    endpoints: build => ({
-        getUser: build.query<User, number>({
-            query: id => ({ url: `users/${id}` }),
-            transformResponse: (response: User, meta, arg) => response,
-            providesTags: (result, error, id) => [{ type: 'Users', id }],
+const baseQuery = createBaseQuery({
+    baseUrl: 'http://localhost/',
+    prepareHeaders: apiHeaders => {
+        const headers = new Headers()
+        headers.set('My-Header', 'Some-Value')
+
+        combineHeaders(apiHeaders, headers)
+
+        return apiHeaders
+    },
+    errorHandler: status => {
+        if(status === 401) {
+            //logout user
+        }
+    },
+    logger: logging.getLogger('rest'),
+    loggerConfig: { params: true },
+})
+
+const api = createApi({
+    baseQuery,
+    endpoints: builder => ({
+        getUser: (id: number) => builder.query<User>({
+            url: `users/${id}`,
         }),
-        updateUser: build.mutation<User, User>({
-            query: ({ id, ...user }) => ({
-                url: `users/${id}`,
-                method: 'PUT',
-                body: user,
-            }),
-            transformResponse: (response: User, meta, arg) => response,
-            invalidatesTags: ['Users'],
+        createUser: (data: Omit<User, 'id'>) => builder.mutation<User, typeof data>({
+            url: 'users',
+            method: 'POST',
+            data,
+            transformResponse: response => response.data,
+        }),
+        updateUser: ({ id, ...data }: User) => builder.mutation<User, typeof data>({
+            url: `users/${id}`,
+            method: 'PUT',
+            data,
+            transformResponse: response => response.data,
         }),
     }),
 })
 
-export const { useGetUserQuery, useLazyGetUserQuery, useUpdateUserMutation } = rtkUserApi
-export default rtkUserApi
+export const { getUser, createUser, updateUser } = api.endpoints
+```
+
+##### Use Api
+
+```tsx
+import { getUser, createUser, updateUser } from 'Core/api/rq-user-api'
+
+const Component = () => {
+    getUser(1)
+        .then(user => { console.log(user) })
+        .catch(error => { console.error(error) })
+
+    createUser({ name: 'John', age: 35 })
+        .then(user => { console.log(user) })
+        .catch(error => { console.error(error) })
+
+    updateUser({ id: 1, name: 'Mary', age: 26 })
+        .then(user => { console.log(user) })
+        .catch(error => { console.error(error) })
+
+    return (<></>)
+}
+```
+
+#### Use Loading Indicator Hook
+
+This library provides a simple hook which returns **false** if api is idle and **true** is api is loading data.
+
+```tsx
+import { useApiIsLoading } from '@ms7/rest-builder'
+
+const Header = () => {
+    const isApiLoading = useApiIsLoading()
+
+    return (
+        <div>{`Loading: ${isApiLoading}`}</div>
+    )
+}
+
 ```

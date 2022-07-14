@@ -1,6 +1,6 @@
 # Breadcrumbs
 
-A hook for generating breadcrumbs for react router.
+A hook used for generating breadcrumbs for react router.
 
 ## Installation
 

@@ -22,13 +22,18 @@ interface DeleteBuilderArgs extends QueryBuilderArgs {
 }
 
 export interface QueryBuilder {
-    query: <T>({ url, transformResponse }: QueryBuilderArgs<T>) => T | Promise<T>,
+    query: <T>({ url, transformResponse }: QueryBuilderArgs<T>) => Promise<T>,
     mutation: <T = undefined, D = undefined>({ url, data, method, transformResponse }: MutationBuilderArgs<T, D> | DeleteBuilderArgs) => Promise<T>,
 }
 
 export const builder = (axiosInstance: AxiosInstance, baseUrl: string): QueryBuilder => ({
     query: <T>({ url, transformResponse }: QueryBuilderArgs<T>) =>
-        axiosInstance.get<T>(combineUrls(url, baseUrl)).then(response => transformResponse ? transformResponse(response) : response.data),
+        axiosInstance
+            .get<T>(combineUrls(url, baseUrl))
+            .then(response => transformResponse ? transformResponse(response) : response.data)
+            .catch(error => {
+                throw error
+            }),
     mutation: <T, D>({ url, data, method, transformResponse }: MutationBuilderArgs<T, D> | DeleteBuilderArgs) => {
         const combinedUrl = combineUrls(url, baseUrl)
 

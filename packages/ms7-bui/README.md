@@ -36,7 +36,7 @@ If you need more options use [turbo](https://turborepo.org/docs/core-concepts/fi
 
 ## Usage
 
-To use this package you must include [bootstrap5](https://turborepo.org/docs/core-concepts/filtering) css and script in your top level html file or import it in top level js file.
+To use this package you must include [bootstrap5](https://turborepo.org/docs/core-concepts/filtering) css and script in your top level html and top level js file.
 
 ```js
 import 'bootstrap/dist/css/bootstrap.min.css'

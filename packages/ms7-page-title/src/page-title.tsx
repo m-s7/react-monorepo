@@ -79,5 +79,4 @@ const humanize = (str: string): string => str
     .replace(/[-_\s]+/g, ' ')
     .replace(/^[a-z]/, m => m.toUpperCase())
 
-
 export default useRouterPageTitle

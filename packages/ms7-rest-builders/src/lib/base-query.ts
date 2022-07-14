@@ -27,33 +27,38 @@ export const createBaseQuery = ({ baseUrl, prepareHeaders, errorHandler, axiosIn
     api.interceptors.request.use(
         config => {
             apiSubject.next({ isLoading: true })
+
+            if(logger) requestLogger(logger, loggerConfig)
+
             combineHeaders(config?.headers, (prepareHeaders ? prepareHeaders(new Headers()) : undefined))
 
             return config
         },
         error => {
             apiSubject.next({ isLoading: false })
-            Promise.reject(error)
+
+            if(logger) errorLogger(logger, loggerConfig)
+
+            return Promise.reject(error)
         })
 
     api.interceptors.response.use(
         config => {
             apiSubject.next({ isLoading: false })
 
+            if(logger) responseLogger(logger, loggerConfig)
+
             return config
         },
         error => {
             apiSubject.next({ isLoading: false })
+
+            if(logger) errorLogger(logger, loggerConfig)
             if(errorHandler) errorHandler(error.status)
 
             return Promise.reject(error)
         })
 
-    if(logger) {
-        api.interceptors.request.use(requestLogger(logger, loggerConfig), errorLogger(logger, loggerConfig))
-        api.interceptors.response.use(responseLogger(logger, loggerConfig), errorLogger(logger, loggerConfig))
-    }    
-    
     return {
         axiosInstance: api,
         baseUrl,

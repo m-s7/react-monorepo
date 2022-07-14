@@ -91,6 +91,7 @@ heroku open
 
 This tool is used for merging package.json files.
 
+Merge:
 ```bash
 ms7-merge -l package.json -r ../../packages/assets/package-base-app.json
 ```

@@ -1,6 +1,6 @@
 # Auth Providers
 
-Auth providers for react.
+Auth providers wrapper for React.
 
 ## Installation
 
@@ -66,4 +66,18 @@ const Loader = () => (<i class="loader" />);
     }}>
     <AppRouter />
 </AuthProvider>
+```
+
+#### Access provider in child component
+
+```tsx
+import { AuthProviderContext } from '@ms7/auth-providers'
+
+const Child = () => {
+    const authContext = useContext(AuthProviderContext)
+    
+    return (
+        <div>{authContext?.getUserInfo().username}</div>
+    )
+}
 ```
