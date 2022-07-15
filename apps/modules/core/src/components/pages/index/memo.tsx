@@ -27,20 +27,8 @@ const Memo = () => {
 
     return (
         <div className="d-flex flex-row m-1">
-            <Card className="me-1 w-100">
+            <Card className="me-1 w-50">
                 <div className="d-flex flex-column align-items-center">
-                    <div className="mb-1">
-                        This is an example of useMemo (memoize) on slow function.
-                        <br />
-                        To see how this component works without useMemo()
-                        <br />
-                        <br />
-                        Change:
-                        <pre>{'const multipliedNumber = useMemo(() => slowMultiply(number), [number])'}</pre>
-                        To:
-                        <pre>{'const multipliedNumber = slowMultiply(number)'}</pre>
-                        <b>{'Don\'t use useMemo() on everything, since it creates some overhead.'}</b>
-                    </div>
                     <input
                         className="mb-1"
                         type={'number'}

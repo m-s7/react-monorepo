@@ -29,7 +29,7 @@ module.exports = {
         'react/jsx-first-prop-new-line': ['error', 'multiline'],
         'react/jsx-max-props-per-line': ['error', { maximum: { single: 1, multi: 1 }}],
         'react/jsx-handler-names': ['error', { eventHandlerPrefix: 'on', eventHandlerPropPrefix: 'on' }],
-        'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
+        // 'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
         'react/jsx-closing-tag-location': 'error',
         // 'react/jsx-no-literals': 'error',
         'react/jsx-no-target-blank': 'error',
