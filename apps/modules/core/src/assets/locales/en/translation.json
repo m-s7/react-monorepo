@@ -6,6 +6,7 @@
     "core": "Core",
     "rest": "Rest",
     "rest-rq": "Rest (React Query)",
+    "modal": "Modal",
     "redux": "Redux",
     "graph-ql": "GraphQL",
     "event-bus": "EventBus",
@@ -15,6 +16,7 @@
 
   "router": {
     "rest-rq": "Core Rest (React Query)",
+    "modal": "Core Modal",
     "redux": "Core Redux",
     "graph-ql": "Core GraphQL",
     "event-bus": "Core EventBus",
@@ -46,6 +48,12 @@
       "update": "update user",
       "patch": "patch user",
       "delete": "delete user"
+    }
+  },
+
+  "modal": {
+    "button": {
+      "show-modal": "Show Modal"
     }
   },
 

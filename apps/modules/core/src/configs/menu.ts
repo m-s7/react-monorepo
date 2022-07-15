@@ -10,6 +10,7 @@ const config: MenuConfig[] = [
                     { path: '/core/rest-rq', name: i18n.t('menu.rest-rq') },
                 ],
             },
+            { path: '/core/modal', name: i18n.t('menu.modal'), icon: 'square' },
             { path: '/core/redux', name: i18n.t('menu.redux'), icon: 'box-open' },
             { path: '/core/event-bus', name: i18n.t('menu.event-bus'), icon: 'bullhorn' },
             { path: '/core/rxjs-subject', name: i18n.t('menu.rxjs-subject'), icon: 'tower-broadcast' },

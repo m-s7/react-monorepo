@@ -6,6 +6,7 @@
     "core": "Przykłady",
     "rest": "Rest",
     "rest-rq": "Rest (React Query)",
+    "modal": "Okno Modalne",
     "redux": "Redux",
     "event-bus": "EventBus",
     "rxjs-subject": "RxJsSubject",
@@ -14,6 +15,7 @@
 
   "router": {
     "rest-rq": "Przykłady Rest (React Query)",
+    "modal": "Przykłady Okno Modalne",
     "redux": "Przykłady Redux",
     "event-bus": "Przykłady EventBus",
     "rxjs-subject": "Przykłady RxJsSubject",
@@ -27,6 +29,12 @@
   "index": {
     "info1": "To jest komponent rodzica, komponent dziecka jest renderowany przez <Outlet>.",
     "info2": "Ponowny render komponentu dziecka, nie ma wpływu na stan rodzica."
+  },
+
+  "modal": {
+    "button": {
+      "show-modal": "Show Modal"
+    }
   },
 
   "rest-rq": {
