@@ -3,6 +3,7 @@ import Index from 'Core/pages'
 import Rest from 'Core/components/pages/index/rest'
 import GraphQL from 'Core/components/pages/index/rest/graph-ql'
 import RestRQ from 'Core/components/pages/index/rest/rest-rq'
+import Memo from 'Core/components/pages/index/memo'
 import Modal from 'Core/components/pages/index/modal'
 import Redux from 'Core/components/pages/index/redux'
 import EventBus from 'Core/components/pages/index/event-bus'
@@ -20,6 +21,7 @@ const config: RouterConfig = {
                         { path: 'rest-rq', component: RestRQ, title: i18n.t('router.rest-rq'), breadcrumb: i18n.t('router.rest-rq') },
                     ],
                 },
+                { path: 'memo', component: Memo, title: i18n.t('router.memo'), breadcrumb: i18n.t('router.memo') },
                 { path: 'modal', component: Modal, title: i18n.t('router.modal'), breadcrumb: i18n.t('router.modal') },
                 { path: 'redux', component: Redux, title: i18n.t('router.redux'), breadcrumb: i18n.t('router.redux') },
                 { path: 'event-bus', component: EventBus, title: i18n.t('router.event-bus'), breadcrumb: i18n.t('router.event-bus') },

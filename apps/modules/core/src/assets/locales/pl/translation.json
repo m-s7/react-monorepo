@@ -6,6 +6,7 @@
     "core": "Przykłady",
     "rest": "Rest",
     "rest-rq": "Rest (React Query)",
+    "memo": "Zapamiętanie stanu",
     "modal": "Okno Modalne",
     "redux": "Redux",
     "event-bus": "EventBus",
@@ -15,6 +16,7 @@
 
   "router": {
     "rest-rq": "Przykłady Rest (React Query)",
+    "memo": "Przykłady useMemo",
     "modal": "Przykłady Okno Modalne",
     "redux": "Przykłady Redux",
     "event-bus": "Przykłady EventBus",

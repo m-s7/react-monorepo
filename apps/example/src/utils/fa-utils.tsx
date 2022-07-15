@@ -21,12 +21,12 @@ import {
     faLock,
     faGamepad,
     faBed,
-    faProjectDiagram, faSquare,
+    faProjectDiagram, faSquare, faMemory,
 } from '@fortawesome/free-solid-svg-icons'
 
 export const loadFaIcons = (): void => {
     library.add(
         faHome, faDashboard, faMap, faCog, faDiagramProject, faAddressBook, faPizzaSlice, faChevronUp, faChevronDown,
         faChevronLeft, faChevronRight, faBookOpen, faNetworkWired, faBox, faBoxOpen, faBullhorn, faTowerBroadcast,
-        faCircleExclamation, faLock, faGamepad, faBed, faProjectDiagram, faSquare)
+        faCircleExclamation, faLock, faGamepad, faBed, faProjectDiagram, faSquare, faMemory)
 }

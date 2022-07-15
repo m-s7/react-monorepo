@@ -6,6 +6,7 @@
     "core": "Core",
     "rest": "Rest",
     "rest-rq": "Rest (React Query)",
+    "memo": "Memo",
     "modal": "Modal",
     "redux": "Redux",
     "graph-ql": "GraphQL",
@@ -16,6 +17,7 @@
 
   "router": {
     "rest-rq": "Core Rest (React Query)",
+    "memo": "Core Memo",
     "modal": "Core Modal",
     "redux": "Core Redux",
     "graph-ql": "Core GraphQL",
