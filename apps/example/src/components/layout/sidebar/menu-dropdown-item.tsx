@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Icon } from '@ms7/bui'
 import { RouterLink } from '@ms7/bui'
@@ -17,16 +17,22 @@ interface MenuDropdownItemProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const MenuDropdownItem = (props: MenuDropdownItemProps) => {
+    const ref = useRef<HTMLDivElement>(null)
     const location = useLocation()
     const { id, text, icon, menuChildren = [], firstLevel = false, children } = props
     const [isExpanded, setIsExpanded] = useState<boolean>()
     const [isChevronExpanded, setIsChevronExpanded] = useState<boolean>()
 
-    let ref: HTMLDivElement | null
-
     useLayoutEffect(() => {
-        ref?.addEventListener('show.bs.collapse', handleShow)
-        ref?.addEventListener('hide.bs.collapse', handleHide)
+        const el = ref.current
+        
+        el?.addEventListener('show.bs.collapse', handleShow)
+        el?.addEventListener('hide.bs.collapse', handleHide)
+        
+        return () => {
+            el?.removeEventListener('show.bs.collapse', handleShow)
+            el?.removeEventListener('hide.bs.collapse', handleHide)
+        }
     }, [])
 
     useLayoutEffect(() => {
@@ -36,11 +42,6 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
         setIsExpanded(isExpanded)
         setIsChevronExpanded(isExpanded)
     }, [location.pathname])
-
-    useEffect(() => () => {
-        ref?.removeEventListener('show.bs.collapse', handleShow)
-        ref?.removeEventListener('hide.bs.collapse', handleHide)
-    }, [])
 
     const handleShow = (e: Event) => {
         setIsChevronExpanded(true)
@@ -74,7 +75,7 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
                 </button>
             </RouterLink>
             <div
-                ref={elem => ref = elem}
+                ref={ref}
                 className={`collapse ${isExpanded ? 'show' : ''}`}
                 id={`${id}-collapse`}>
                 <ul className="list-unstyled fw-normal pb-1 ms-3">
