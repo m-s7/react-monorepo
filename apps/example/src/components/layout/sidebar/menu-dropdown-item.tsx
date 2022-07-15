@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Icon } from '@ms7/bui'
 import { RouterLink } from '@ms7/bui'
@@ -25,10 +25,10 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
 
     useLayoutEffect(() => {
         const el = ref.current
-        
+
         el?.addEventListener('show.bs.collapse', handleShow)
         el?.addEventListener('hide.bs.collapse', handleHide)
-        
+
         return () => {
             el?.removeEventListener('show.bs.collapse', handleShow)
             el?.removeEventListener('hide.bs.collapse', handleHide)
@@ -87,4 +87,4 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
     )
 }
 
-export default React.memo(MenuDropdownItem)
+export default MenuDropdownItem

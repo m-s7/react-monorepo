@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react'
-import { Modal as BootstrapModal } from 'bootstrap'
+import { Modal } from 'bootstrap'
 import { useTranslation } from 'react-i18next'
 
 interface ModalProps extends React.PropsWithChildren {
@@ -16,10 +16,6 @@ const SimpleModal = (props: ModalProps) => {
     const { t } = useTranslation()
     const { title = '', show = false, backdrop = true, keyboard = true, focus = true, onHidden, children } = props
 
-    const modalHidden = () => {
-        if(onHidden) onHidden()
-    }
-
     useLayoutEffect(() => {
         const el = ref.current
         el?.addEventListener('hidden.bs.modal', modalHidden)
@@ -33,25 +29,25 @@ const SimpleModal = (props: ModalProps) => {
     }, [props])
 
     const showModal = () => {
-        const el = ref.current
+        if(!ref.current) return
         
-        if(el) {
-            const modal = new BootstrapModal(el, {
-                backdrop,
-                keyboard,
-                focus,
-            })
-            modal.show()
-        }
+        const modal = new Modal(ref.current, {
+            backdrop,
+            keyboard,
+            focus,
+        })
+        modal.show()
     }
 
     const hideModal = () => {
-        const el = ref.current
+        if(!ref.current) return
 
-        if(el) {
-            const modal = BootstrapModal.getOrCreateInstance(el)
-            modal.hide()
-        }
+        const modal = Modal.getOrCreateInstance(ref.current)
+        modal.hide()
+    }
+
+    const modalHidden = () => {
+        if(onHidden) onHidden()
     }
 
     return (
