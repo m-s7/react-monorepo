@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['ts', 'plugin:storybook/recommended']
-};
+    extends: ['ts', 'plugin:react-hooks/recommended'],
+}

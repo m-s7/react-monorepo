@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { Modal } from 'bootstrap'
 import { useTranslation } from 'react-i18next'
 
@@ -26,7 +26,7 @@ const SimpleModal = (props: ModalProps) => {
         return () => {
             el?.removeEventListener('hidden.bs.modal', modalHidden)
         }
-    }, [props])
+    }, [show, backdrop, keyboard, focus])
 
     const showModal = () => {
         if(!ref.current) return
