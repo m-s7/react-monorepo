@@ -26,7 +26,6 @@ const Entrypoint = (props: EntrypointComponentProps) => (
     <ErrorBoundary FallbackComponent={FallbackError} >
         <I18nextProvider i18n={i18n}>
             <QueryClientProvider client={new QueryClient()}>
-                <ReactQueryDevtools initialIsOpen={true} />
                 <Provider store={store}>
                     <App {...props} />
                 </Provider>

@@ -9,6 +9,8 @@
     "memo": "Zapamiętanie stanu",
     "modal": "Okno Modalne",
     "redux": "Redux",
+    "callback": "Callback",
+    "graph-ql": "GraphQL",
     "event-bus": "EventBus",
     "rxjs-subject": "RxJsSubject",
     "lazy-suspense": "LazySuspense"
@@ -19,6 +21,8 @@
     "memo": "Przykłady useMemo",
     "modal": "Przykłady Okno Modalne",
     "redux": "Przykłady Redux",
+    "callback": "Przykłady Callback",
+    "graph-ql": "Przykłady GraphQL",
     "event-bus": "Przykłady EventBus",
     "rxjs-subject": "Przykłady RxJsSubject",
     "lazy-suspense": "Przykłady LazySuspense"
@@ -31,6 +35,15 @@
   "index": {
     "info1": "To jest komponent rodzica, komponent dziecka jest renderowany przez <Outlet>.",
     "info2": "Ponowny render komponentu dziecka, nie ma wpływu na stan rodzica."
+  },
+
+  "memo": {
+    "button": {
+      "change-theme": "Zmień Tło"
+    },
+    "label": {
+      "multiplied-number": "Pomnożony Numer"
+    }
   },
 
   "modal": {

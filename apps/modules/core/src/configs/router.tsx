@@ -6,6 +6,7 @@ import RestRQ from 'Core/components/pages/index/rest/rest-rq'
 import Memo from 'Core/components/pages/index/memo'
 import Modal from 'Core/components/pages/index/modal'
 import Redux from 'Core/components/pages/index/redux'
+import Callback from 'Core/components/pages/index/callback'
 import EventBus from 'Core/components/pages/index/event-bus'
 import RxjsSubject from 'Core/components/pages/index/rxjs-subject'
 import LazySuspense from 'Core/components/pages/index/lazy-suspense'
@@ -24,6 +25,7 @@ const config: RouterConfig = {
                 { path: 'memo', component: Memo, title: i18n.t('router.memo'), breadcrumb: i18n.t('router.memo') },
                 { path: 'modal', component: Modal, title: i18n.t('router.modal'), breadcrumb: i18n.t('router.modal') },
                 { path: 'redux', component: Redux, title: i18n.t('router.redux'), breadcrumb: i18n.t('router.redux') },
+                { path: 'callback', component: Callback, title: i18n.t('router.callback'), breadcrumb: i18n.t('router.callback') },
                 { path: 'event-bus', component: EventBus, title: i18n.t('router.event-bus'), breadcrumb: i18n.t('router.event-bus') },
                 { path: 'rxjs-subject', component: RxjsSubject, title: i18n.t('router.rxjs-subject'), breadcrumb: i18n.t('router.rxjs-subject') },
                 { path: 'lazy-suspense', component: LazySuspense, title: i18n.t('router.lazy-suspense'), breadcrumb: i18n.t('router.lazy-suspense') },

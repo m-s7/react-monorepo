@@ -1,7 +1,8 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Card, Button } from '@ms7/bui'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
+import CallbackList from 'Core/components/callback-list'
 
 type Theme = 'light' | 'dark'
 
@@ -13,21 +14,14 @@ const Content = styled.div<ContentProps>`
     background-color: ${props => props.theme === 'dark' ? 'black' : 'white'}
 `
 
-const slowMultiply = (number: number) => {
-    if(number === 0) return 0
-
-    for(let i = 0; i <= 1000000000; i++) {
-        // simulate slow function
-    }
-
-    return number * 2
-}
-
-const Memo = () => {
+const Callback = () => {
     const { t } = useTranslation()
     const [number, setNumber] = useState(0)
     const [theme, setTheme] = useState<Theme>('light')
-    const multipliedNumber = useMemo(() => slowMultiply(number), [number])
+
+    // important: referential equality () !== ()
+    // use useCallback() only when passing function down the tree node or creating function is slow (very unlikely)
+    const getItems = useCallback((incrementBy: number) => [number + incrementBy, number + incrementBy + 1, number + incrementBy + 2], [number])
 
     return (
         <div className="d-flex flex-row m-1">
@@ -46,7 +40,7 @@ const Memo = () => {
                         {t('memo.button.change-theme')}
                     </Button>
                     <Content theme={theme}>
-                        {`${t('memo.label.multiplied-number')}: ${multipliedNumber}`}
+                        <CallbackList getItems={getItems} />
                     </Content>
                 </div>
             </Card>
@@ -54,4 +48,4 @@ const Memo = () => {
     )
 }
 
-export default Memo
+export default Callback

@@ -9,6 +9,7 @@
     "memo": "Memo",
     "modal": "Modal",
     "redux": "Redux",
+    "callback": "Callback",
     "graph-ql": "GraphQL",
     "event-bus": "EventBus",
     "rxjs-subject": "RxJsSubject",
@@ -20,6 +21,7 @@
     "memo": "Core Memo",
     "modal": "Core Modal",
     "redux": "Core Redux",
+    "callback": "Callback",
     "graph-ql": "Core GraphQL",
     "event-bus": "Core EventBus",
     "rxjs-subject": "Core RxJsSubject",
@@ -50,6 +52,15 @@
       "update": "update user",
       "patch": "patch user",
       "delete": "delete user"
+    }
+  },
+
+  "memo": {
+    "button": {
+      "change-theme": "Change Theme"
+    },
+    "label": {
+      "multiplied-number": "Multiplied Number"
     }
   },
 

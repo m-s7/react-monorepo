@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { getUser, getUsers, createUser, updateUser, patchUser, deleteUser } from 'Core/api/rq-user-api'
 import { Optional } from '@ms7/common'
+import {ReactQueryDevtools} from "react-query/devtools";
 
 interface MutationButtonProps {
     onClick: () => void,
@@ -91,70 +92,73 @@ const RestRQ = () => {
     )
 
     return (
-        <ErrorFallback
-            className="d-flex justify-content-center m-1"
-            error={error}
-            onRetry={() => refetch() }>
-            <div className="d-flex flex-row m-1">
-                <Card className="w-25 me-1">
-                    <div className="d-flex flex-column align-items-center">
-                        <p>{t('rest-rq.label.actions')}</p>
-                        <div className="d-flex w-75">
-                            <Button
-                                className="m-1 w-75"
-                                disabled={isLoading || isFetching || isFetchingLazy}
-                                onClick={() => get()}>
-                                {t('rest-rq.button.get')}
-                            </Button>
+        <React.Fragment>
+            <ErrorFallback
+                className="d-flex justify-content-center m-1"
+                error={error}
+                onRetry={() => refetch() }>
+                <div className="d-flex flex-row m-1">
+                    <Card className="w-25 me-1">
+                        <div className="d-flex flex-column align-items-center">
+                            <p>{t('rest-rq.label.actions')}</p>
+                            <div className="d-flex w-75">
+                                <Button
+                                    className="m-1 w-75"
+                                    disabled={isLoading || isFetching || isFetchingLazy}
+                                    onClick={() => get()}>
+                                    {t('rest-rq.button.get')}
+                                </Button>
+                                <input
+                                    className="text-black m-1 w-25"
+                                    value={selectedGetId}
+                                    type='number'
+                                    disabled={isMutating || isFetching || isFetchingLazy}
+                                    onChange={e => setSelectedGetId(Number(e.target.value))} />
+                            </div>
+                            <MutationButton
+                                onClick={() => create.mutate({ age: 666, name: 'Estera' })}
+                                label={t('rest-rq.button.create')} />
+                            <MutationButton
+                                onClick={() => update.mutate({ id: selectedMutationId, age: 123, name: 'John' })}
+                                label={t('rest-rq.button.update')} />
+                            <MutationButton
+                                onClick={() => patch.mutate({ id: selectedMutationId, age: 7171 })}
+                                label={t('rest-rq.button.patch')} />
+                            <MutationButton
+                                onClick={() => remove.mutate(selectedMutationId)}
+                                label={t('rest-rq.button.delete')} />
+                            <hr className="m-1 w-75" />
+                            <label className="m-1 d-block">{t('rest-rq.label.user-id')}</label>
                             <input
-                                className="text-black m-1 w-25"
-                                value={selectedGetId}
+                                className="text-black m-1 w-75"
+                                value={selectedMutationId}
                                 type='number'
                                 disabled={isMutating || isFetching || isFetchingLazy}
-                                onChange={e => setSelectedGetId(Number(e.target.value))} />
+                                onChange={e => setSelectedMutationId(Number(e.target.value))} />
                         </div>
-                        <MutationButton
-                            onClick={() => create.mutate({ age: 666, name: 'Estera' })}
-                            label={t('rest-rq.button.create')} />
-                        <MutationButton
-                            onClick={() => update.mutate({ id: selectedMutationId, age: 123, name: 'John' })}
-                            label={t('rest-rq.button.update')} />
-                        <MutationButton
-                            onClick={() => patch.mutate({ id: selectedMutationId, age: 7171 })}
-                            label={t('rest-rq.button.patch')} />
-                        <MutationButton
-                            onClick={() => remove.mutate(selectedMutationId)}
-                            label={t('rest-rq.button.delete')} />
-                        <hr className="m-1 w-75" />
-                        <label className="m-1 d-block">{t('rest-rq.label.user-id')}</label>
-                        <input
-                            className="text-black m-1 w-75"
-                            value={selectedMutationId}
-                            type='number'
-                            disabled={isMutating || isFetching || isFetchingLazy}
-                            onChange={e => setSelectedMutationId(Number(e.target.value))} />
-                    </div>
-                </Card>
-                <Card className="w-25 me-1">
-                    <div className="d-flex flex-column align-items-center">
-                        <p>{t('rest-rq.label.results-mutation')}</p>
-                        {isMutating ? <LoaderSmall /> : <MutatedResult />}
-                    </div>
-                </Card>
-                <Card className="w-25 me-1">
-                    <div className="d-flex flex-column align-items-center">
-                        <p>{t('rest-rq.label.results-lazy')}</p>
-                        {isFetchingLazy ? <LoaderSmall /> : <User />}
-                    </div>
-                </Card>
-                <Card className="w-25">
-                    <div className="d-flex flex-column align-items-center">
-                        <p>{t('rest-rq.label.results')}</p>
-                        {(isLoading || isFetching) ? <LoaderSmall /> : <Users />}
-                    </div>
-                </Card>
-            </div>
-        </ErrorFallback>
+                    </Card>
+                    <Card className="w-25 me-1">
+                        <div className="d-flex flex-column align-items-center">
+                            <p>{t('rest-rq.label.results-mutation')}</p>
+                            {isMutating ? <LoaderSmall /> : <MutatedResult />}
+                        </div>
+                    </Card>
+                    <Card className="w-25 me-1">
+                        <div className="d-flex flex-column align-items-center">
+                            <p>{t('rest-rq.label.results-lazy')}</p>
+                            {isFetchingLazy ? <LoaderSmall /> : <User />}
+                        </div>
+                    </Card>
+                    <Card className="w-25">
+                        <div className="d-flex flex-column align-items-center">
+                            <p>{t('rest-rq.label.results')}</p>
+                            {(isLoading || isFetching) ? <LoaderSmall /> : <Users />}
+                        </div>
+                    </Card>
+                </div>
+            </ErrorFallback>
+            <ReactQueryDevtools initialIsOpen={false} />
+        </React.Fragment>
     )
 }
 
