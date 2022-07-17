@@ -11,7 +11,7 @@ const Header = () => (
     <div>
         <Link to='/'>home</Link><br />
         <Link to='/react'>use react</Link><br />
-        <Link to='/vue'>use vue2</Link><br />
+        <Link to='/vue'>use vue</Link><br />
     </div >
 )
 
