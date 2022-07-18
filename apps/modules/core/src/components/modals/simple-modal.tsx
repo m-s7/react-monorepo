@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import { Modal } from 'bootstrap'
 import { useTranslation } from 'react-i18next'
 
