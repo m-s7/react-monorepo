@@ -7,7 +7,7 @@ interface ApiArgs<T> {
 }
 
 interface Api<T> {
-    endpoints: { [key in keyof T]: T[key] },
+    endpoints: { [K in keyof T]: T[K] },
 }
 
 export const createApi = <T>({ baseQuery, endpoints }: ApiArgs<T>): Api<T> => ({
