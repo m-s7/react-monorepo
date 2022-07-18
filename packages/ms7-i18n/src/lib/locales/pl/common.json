@@ -1,5 +1,10 @@
 {
   "common": {
     "close": "Zamknij"
+  },
+
+  "error": {
+    "not-found": "404 - Nie odnaleziono",
+    "forbidden": "403 - Brak dostępu"
   }
 }

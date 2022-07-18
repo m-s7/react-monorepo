@@ -13,9 +13,5 @@
 
   "index": {
     "label": "Welcome"
-  },
-
-  "error": {
-    "not-found": "404 - Not Found"
   }
 }

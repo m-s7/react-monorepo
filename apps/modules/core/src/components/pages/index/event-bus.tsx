@@ -8,15 +8,8 @@ const EventBus = () => {
     const { t } = useTranslation()
     
     return (
-        <div className="d-flex flex-column">
+        <div className="d-flex justify-content-center">
             <Card className="m-1 w-50">
-                <div
-                    className="alert alert-warning text-center m-1"
-                    role="alert">
-                    {t('event-bus.warning1')}
-                    <br />
-                    {t('event-bus.warning2')}
-                </div>
                 <div className="d-flex flex-column align-items-center mt-3">
                     <span>{t('event-bus.label.register')}</span>
                     <Button

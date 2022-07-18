@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { uniqueId } from 'lodash'
 import { Button, Card } from '@ms7/bui'
 import { Subject, Subscription } from 'rxjs'
-import {useTranslation} from "react-i18next";
+import { useTranslation } from 'react-i18next'
 
 interface Message {
     data: {
@@ -17,14 +17,16 @@ const RxJsSubject = () => {
     const [subscription, setSubscription] = useState<Subscription | undefined>()
 
     return (
-        <div className="d-flex">
+        <div className="d-flex justify-content-center">
             <Card className="m-1 w-50">
                 <div className="d-flex flex-column align-items-center">
-                    <div className="w-50 mt-3 p-1 text-center border border-white border-1">
-                        <div>{`${t('rxjs-subject.subject')}: ${subject ? 'created' : '-----'}`}</div>
-                        <div>{`${t('rxjs-subject.subscription')}: ${subscription ? 'active' : '-----'}`}</div>
+                    <div
+                        className="alert alert-warning text-center m-2 w-50"
+                        role="alert">
+                        <div className="text-dark">{`${t('rxjs-subject.subject')}: ${subject ? 'created' : '-----'}`}</div>
+                        <div className="text-dark">{`${t('rxjs-subject.subscription')}: ${subscription ? 'active' : '-----'}`}</div>
                     </div>
-                    <hr />
+                    <hr className="w-50" />
                     <span>{t('rxjs-subject.label.create')}</span>
                     <Button
                         className="mt-3 w-50"

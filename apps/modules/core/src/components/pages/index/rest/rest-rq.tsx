@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { getUser, getUsers, createUser, updateUser, patchUser, deleteUser } from 'Core/api/rq-user-api'
 import { Optional } from '@ms7/common'
-import {ReactQueryDevtools} from "react-query/devtools";
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 interface MutationButtonProps {
     onClick: () => void,

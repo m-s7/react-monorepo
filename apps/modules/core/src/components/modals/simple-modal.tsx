@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import { Modal } from 'bootstrap'
 import { useTranslation } from 'react-i18next'
+import { Button } from '@ms7/bui'
 
 interface ModalProps extends React.PropsWithChildren {
     title?: string,
@@ -62,27 +63,27 @@ const SimpleModal = (props: ModalProps) => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5
-                            className="modal-title"
+                            className="modal-title text-dark"
                             id="exampleModalLabel">
                             {title}
                         </h5>
-                        <button
+                        <Button
                             type="button"
                             className="btn-close"
                             data-bs-dismiss="modal"
                             aria-label="Close">
-                        </button>
+                        </Button>
                     </div>
-                    <div className="modal-body">
+                    <div className="modal-body text-center">
                         {children}
                     </div>
                     <div className="modal-footer">
-                        <button
+                        <Button
                             type="button"
                             className="btn btn-secondary"
                             data-bs-dismiss="modal">
                             {t('common.close')}
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

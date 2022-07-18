@@ -2,21 +2,28 @@ import React, { useEffect, useState } from 'react'
 
 interface CallbackListProps {
     getItems: (incrementBy: number) => number[],
+    className?: string,
 }
 
 const CallbackList = (props: CallbackListProps) => {
     const [items, setItems] = useState<number[]>([])
 
-    const { getItems } = props
+    const { getItems, className } = props
 
     useEffect(() => {
         setItems(getItems(3))
     }, [getItems])
     
     return (
-        <React.Fragment>
-            {items.map((item, index) => <div key={`item-${index}`}>{item}</div>)}
-        </React.Fragment>
+        <table className={`table text-center ${className || ''}`}>
+            <tbody>
+                <tr>
+                    {items.map((item, index) => (
+                        <td key={index}>{item}</td>
+                    ))}
+                </tr>
+            </tbody>
+        </table>
     )
 }
 

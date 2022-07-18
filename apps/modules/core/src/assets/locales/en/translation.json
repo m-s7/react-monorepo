@@ -21,7 +21,7 @@
     "memo": "Core Memo",
     "modal": "Core Modal",
     "redux": "Core Redux",
-    "callback": "Callback",
+    "callback": "Core Callback",
     "graph-ql": "Core GraphQL",
     "event-bus": "Core EventBus",
     "rxjs-subject": "Core RxJsSubject",
@@ -54,8 +54,20 @@
     "button": {
       "change-theme": "Change Theme"
     },
+    "form": {
+      "multiply-by": "Multiply By"
+    },
     "label": {
       "multiplied-number": "Multiplied Number"
+    }
+  },
+
+  "callback": {
+    "button": {
+      "change-theme": "Change Theme"
+    },
+    "form": {
+      "increment-by": "Increment By"
     }
   },
 

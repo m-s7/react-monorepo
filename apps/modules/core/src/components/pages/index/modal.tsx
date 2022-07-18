@@ -9,8 +9,8 @@ const Modal = () => {
     const [show, setShow] = useState(false)
 
     return (
-        <div className="d-flex flex-row m-1">
-            <Card className="w-25">
+        <div className="d-flex justify-content-center">
+            <Card className="w-25 align-items-center">
                 <Button
                     onClick={() => { setShow(true) }}>
                     {t('modal.button.show-modal')}

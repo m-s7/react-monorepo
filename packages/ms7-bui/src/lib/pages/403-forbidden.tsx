@@ -4,6 +4,7 @@ import { CardCentered } from '../components/card-centered'
 import { RouterLink } from '../router-link'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBan } from '@fortawesome/free-solid-svg-icons'
+import { Icon } from '../icon'
 
 library.add(faBan)
 
@@ -19,6 +20,10 @@ export const Forbidden403 = (props: React.PropsWithChildren<Forbidden403Props>) 
     return (
         <LayoutEmpty>
             <CardCentered header={header}>
+                <Icon
+                    variant={'ban'}
+                    size={'7x'}
+                    className="mb-5" />
                 <h2>{title}</h2>
                 <RouterLink to={to}>
                     {children}

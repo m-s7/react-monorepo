@@ -13,9 +13,5 @@
 
   "index": {
     "label": "Przetłumaczony tekst"
-  },
-
-  "error": {
-    "not-found": "404 - Nie odnaleziono"
   }
 }

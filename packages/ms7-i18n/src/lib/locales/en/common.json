@@ -1,5 +1,10 @@
 {
   "common": {
     "close": "Close"
+  },
+
+  "error": {
+    "not-found": "404 - Not Found",
+    "forbidden": "403 - Forbidden"
   }
 }

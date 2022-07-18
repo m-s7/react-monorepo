@@ -27,7 +27,7 @@ const Redux = () => {
     const incrementValue = incrementAmount
 
     return (
-        <div className="d-flex flex-row m-1">
+        <div className="d-flex justify-content-center">
             <Card className="me-1 w-25">
                 <div className="d-flex flex-column align-items-center">
                     <p>{t('redux.label.person-state')}</p>

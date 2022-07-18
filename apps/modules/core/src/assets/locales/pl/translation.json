@@ -36,8 +36,20 @@
     "button": {
       "change-theme": "Zmień Tło"
     },
+    "form": {
+      "multiply-by": "Pomnóż przez"
+    },
     "label": {
       "multiplied-number": "Pomnożony Numer"
+    }
+  },
+
+  "callback": {
+    "button": {
+      "change-theme": "Zmień Tło"
+    },
+    "form": {
+      "increment-by": "Pomnóż przez"
     }
   },
 
