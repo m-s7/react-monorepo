@@ -15,6 +15,7 @@ export { CardCentered } from './lib/components/card-centered'
 export { LayoutEmpty } from './lib/layouts/layout-empty'
 
 // pages
+export { Forbidden403 } from './lib/pages/403-forbidden'
 export { NotFound404 } from './lib/pages/404-not-found'
 export { FullPageLoader } from './lib/pages/full-page-loader'
 export { FullPageError } from './lib/pages/full-page-error'

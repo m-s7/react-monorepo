@@ -23,7 +23,7 @@ const Sidebar = () => {
     }, [location.pathname])
 
     return (
-        <Container className="d-flex flex-column flex-shrink-0 p-3 text-white h-100">
+        <Container className="d-flex flex-column flex-shrink-0 pt-3 ps-3 pe-3 text-white h-100">
             <div className="d-flex justify-content-center">
                 <RouterLink
                     to={'/'}
@@ -38,42 +38,7 @@ const Sidebar = () => {
             <ul className="nav nav-pills flex-column mb-auto">
                 {menu && AppMenuGenerator(menu, location)}
             </ul>
-            <hr />
-            <div className="dropup ms-1">
-                <a
-                    href="#"
-                    className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                    id="dropdownUser"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <img
-                        src="https://github.com/m-s7.png"
-                        alt=""
-                        width="32"
-                        height="32"
-                        className="rounded-circle me-2" />
-                    <strong>{authContext?.getUserInfo().username || undefined}</strong>
-                </a>
-                <ul
-                    className="dropdown-menu dropdown-menu-dark text-small shadow"
-                    aria-labelledby="dropdownUser">
-                    <FooterDropdownItem
-                        path={'/profile'}>
-                        {'Profile'}
-                    </FooterDropdownItem>
-                    <li>
-                        <hr className={'dropdown-divider'} />
-                    </li>
-                    {authContext &&
-                        <FooterDropdownItem
-                            path={'#'}
-                            onClick={() => {
-                                window.location.replace(authContext.getLogoutUrl())
-                            }}>
-                            {'Sign out'}
-                        </FooterDropdownItem>}
-                </ul>
-            </div>
+            <pre>v0.0.1</pre>
         </Container>
     )
 }

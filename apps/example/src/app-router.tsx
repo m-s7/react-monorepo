@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { RouterGenerator } from '@ms7/router'
-import { NotFound404 } from '@ms7/bui'
+import { Forbidden403, NotFound404 } from '@ms7/bui'
 import { getRoutes } from '@ms7/router'
 import { getAppsEntrypointsConfigs } from '@/utils/apps-utils'
 import Layout from '@/layouts/layout'
@@ -15,17 +15,26 @@ const AppRouter = () => {
     const routes = getRoutes([{ router: getConfigRouter() }])
     const entrypoints = getAppsEntrypointsConfigs()
 
-    const Component404 = (
+    const NotFound = (
         <NotFound404
             to={'/'}
             title={t('error.not-found')}
             header={env.REACT_APP_NAME}>
             {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
         </NotFound404> )
-    
+
+    const Forbidden = (
+        <Forbidden403
+            to={'/'}
+            title={t('error.forbidden')}
+            header={env.REACT_APP_NAME}>
+            {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
+        </Forbidden403>
+    )
+
     return (
         <Routes>
-            {RouterGenerator(routes, Component404, Layout)}
+            {RouterGenerator(routes, Forbidden, Layout)}
             {entrypoints.map(({ baseUrl, component }, index) => {
                 const Component = component
 
@@ -41,7 +50,7 @@ const AppRouter = () => {
             })}
             <Route
                 path={'*'}
-                element={Component404} />
+                element={NotFound} />
         </Routes>
     )
 }

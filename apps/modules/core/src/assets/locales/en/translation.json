@@ -32,11 +32,6 @@
     "not-found": "404 - Not Found"
   },
 
-  "index": {
-    "info1": "This is a parent component, child is rendered using <Outlet> component.",
-    "info2": "Child re-render does not affect this component state."
-  },
-
   "rest-rq": {
     "label": {
       "actions": "Actions",
@@ -133,15 +128,13 @@
   },
 
   "lazy-suspense": {
-    "loading": "Loading lazily...",
-    "warning1": "UserViewer component loads data inside useEffect hook.",
-    "warning2": "This is just an example as you should never load data inside useEffect."
+    "loading": "Loading lazily..."
   },
 
   "user-viewer": {
     "loading": "Loading users...",
     "label": {
-      "user": "User",
+      "users": "Users",
       "name": "Name",
       "age": "Age"
     }

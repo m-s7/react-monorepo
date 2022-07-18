@@ -32,11 +32,6 @@
     "not-found": "404 - Nie odnaleziono"
   },
 
-  "index": {
-    "info1": "To jest komponent rodzica, komponent dziecka jest renderowany przez <Outlet>.",
-    "info2": "Ponowny render komponentu dziecka, nie ma wpływu na stan rodzica."
-  },
-
   "memo": {
     "button": {
       "change-theme": "Zmień Tło"
@@ -133,15 +128,17 @@
   },
 
   "lazy-suspense": {
-    "loading": "Leniwe ładowanie...",
-    "warning1": "Komponent <UserViewer> ładuje dane wewnątrz hooka useEffect.",
-    "warning2": "Ten kod jest tylko przykładem, nigdy nie powinno wykonywać się asynchronicznych operacji wewnątrz useEffect."
+    "loading": "Leniwe ładowanie..."
+  },
+
+  "user-viewer": {
+    "label": "Użytkownicy"
   },
 
   "user-viewer": {
     "loading": "Ładuję użytkowników...",
     "label": {
-      "user": "Użytkownik",
+      "users": "Użykownicy",
       "name": "Imię",
       "age": "Wiek"
     }

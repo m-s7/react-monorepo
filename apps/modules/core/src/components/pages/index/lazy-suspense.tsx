@@ -22,23 +22,14 @@ const LazyLoading = () => {
     )
 }
 
-const LazySuspense = () => {
-    const { t } = useTranslation()
-
-    return (
-        <Suspense fallback={<LazyLoading />}>
-            <Card className="m-1 w-75">
-                <div
-                    className="alert alert-warning text-center m-2"
-                    role="alert">
-                    {t('lazy-suspense.warning1')}
-                    <br />
-                    {t('lazy-suspense.warning2')}
-                </div>
+const LazySuspense = () => (
+    <Suspense fallback={<LazyLoading />}>
+        <div className="d-flex justify-content-center">
+            <Card className="m-1 w-50">
                 <UserViewer />
             </Card>
-        </Suspense>
-    )
-}
+        </div>
+    </Suspense>
+)
 
 export default LazySuspense

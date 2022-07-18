@@ -7,15 +7,15 @@ import { withAuth } from '@ms7/auth-providers'
 interface ProtectedRouteProps {
     roles?: Role[],
     outlet?: boolean,
-    component404: JSX.Element,
+    forbidden: JSX.Element,
 }
 
 const ProtectedRoute = (props: React.PropsWithChildren<ProtectedRouteProps>) => {
-    const { roles, component404, children } = props
+    const { roles, forbidden, children } = props
     const authContext = useContext(AuthProviderContext)
 
     if(!hasRoles(roles || [], authContext))
-        return (component404)
+        return (forbidden)
 
     return (
         <React.Fragment>

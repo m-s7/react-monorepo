@@ -19,17 +19,28 @@ const UserViewer = () => {
 
     if(users) {
         return (
-            <ul>
-                {users?.map(user => (
-                    <li key={user.id}>
-                        {`${t('user-viewer.label.user')}: #${user.id}`}
-                        <ul>
-                            <li>{`${t('user-viewer.label.name')}: ${user.name}`}</li>
-                            <li>{`${t('user-viewer.label.age')}: ${user.age}`}</li>
-                        </ul>
-                    </li>
-                ))}
-            </ul>
+            <>
+                <h5>{t('user-viewer.label.users')}:</h5>
+                <hr />
+                <table className="table table-striped table-success">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">{t('user-viewer.label.name')}</th>
+                            <th scope="col">{t('user-viewer.label.age')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users?.map(user => (
+                            <tr key={user.id}>
+                                <td scope="row">{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.age}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </>
         )
     }
     

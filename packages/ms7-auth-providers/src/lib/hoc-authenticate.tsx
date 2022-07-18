@@ -8,8 +8,10 @@ export const withAuth = <T extends Props = Props>(WrappedComponent: React.Compon
     const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component'
 
     const componentWithAuth = (props: Omit<T, keyof Props>) => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         const authContext = useContext(AuthProviderContext)
 
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
             authenticate().then()
         }, [])

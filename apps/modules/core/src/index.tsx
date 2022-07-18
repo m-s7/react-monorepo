@@ -1,7 +1,7 @@
 import React from 'react'
 import Entrypoint from 'Core/entrypoint'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, useLocation } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'Core/global.css'
 import styled from 'styled-components'
@@ -10,7 +10,6 @@ import { env, isDev } from '@ms7/common'
 import { Card, FullPageError, FullPageLoader } from '@ms7/bui'
 import { Link } from 'react-router-dom'
 import { assignLevelToLoggers, getLogLevelForEnv, logging } from '@ms7/logger'
-
 logging.configure({ minLevels: assignLevelToLoggers([''], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
 
 const Container = styled.div`
