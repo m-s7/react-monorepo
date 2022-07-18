@@ -34,7 +34,7 @@ export interface BreadcrumbRoute<K extends string = string> extends RouteObject 
     props?: { [x: string]: unknown },
 }
 
-export type BreadcrumbComponentType<K extends string = string> = React.FunctionComponent<BreadcrumbComponentProps<K>>
+export type BreadcrumbComponentType<K extends string = string> = React.ComponentType<BreadcrumbComponentProps<K>>
 
 const NO_BREADCRUMB = Symbol('NO_BREADCRUMB')
 

@@ -6,7 +6,7 @@ import { uniqueId } from 'lodash'
 import { Location } from 'react-router-dom'
 
 const AppMenuGenerator = (menu: MenuConfig[], location: Location) => menu.map(({ path, name, icon, roles, children }, index) => {
-    if(children) {
+    if(children)
         return (
             <MenuDropdownItem
                 key={`menu-dropdown-${index}`}
@@ -19,19 +19,17 @@ const AppMenuGenerator = (menu: MenuConfig[], location: Location) => menu.map(({
                 {AppMenuGenerator(children, location)}
             </MenuDropdownItem>
         )
-    }
-    else if(!path.includes(':')) {
-        return (
-            <MenuItem
-                key={`menu-item-${index}`}
-                icon={icon}
-                path={path}
-                roles={roles}
-                active={location.pathname === path}>
-                {name}
-            </MenuItem>
-        )
-    }
+
+    return (
+        <MenuItem
+            key={`menu-item-${index}`}
+            icon={icon}
+            path={path}
+            roles={roles}
+            active={location.pathname === path}>
+            {name}
+        </MenuItem>
+    )
 })
 
 export default AppMenuGenerator

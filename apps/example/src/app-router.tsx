@@ -6,7 +6,6 @@ import { getRoutes } from '@ms7/router'
 import { getAppsEntrypointsConfigs } from '@/utils/apps-utils'
 import Layout from '@/layouts/layout'
 import { getConfigRouter } from '@/configs/app'
-import layout from '@/layouts/layout'
 import { capitalize } from 'lodash'
 import { env } from '@ms7/common'
 import { useTranslation } from 'react-i18next'
@@ -36,7 +35,7 @@ const AppRouter = () => {
                         path={baseUrl}
                         element={
                             <Component
-                                parentLayout={layout} />
+                                parentLayout={Layout} />
                         } />
                 )
             })}
