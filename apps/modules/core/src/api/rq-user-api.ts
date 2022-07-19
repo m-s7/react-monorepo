@@ -3,6 +3,7 @@ import { Optional } from '@ms7/common'
 import { createBaseQuery, createApi, combineHeaders } from '@ms7/rest-builder'
 import store from 'Core/store/store'
 import { logging } from '@ms7/logger'
+import { history } from '@ms7/router'
 
 const baseQuery = createBaseQuery({
     baseUrl: 'http://localhost:3035/',
@@ -17,10 +18,12 @@ const baseQuery = createBaseQuery({
         return apiHeaders
     },
     errorHandler: status => {
-        if(status === 401) {
-            const logoutUrl = store.getState().auth.logoutUrl
+        history.push('/logout')
 
-            if(logoutUrl) window.location.replace(logoutUrl)
+        if(status === 401) {
+            // const logoutUrl = store.getState().auth.logoutUrl
+            //
+            // if(logoutUrl) window.location.replace(logoutUrl)
         }
     },
     logger: logging.getLogger('rest'),

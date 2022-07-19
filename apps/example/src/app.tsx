@@ -5,18 +5,7 @@ import { FullPageError, FullPageLoader } from '@ms7/bui'
 import { env } from '@ms7/common'
 import i18n from '@/i18n'
 import { I18nextProvider } from 'react-i18next'
-import { FirebaseOptions } from 'firebase/app'
 import FirebaseAuthProvider, { FirebaseAuthProviderProps } from '@/business/firebase/firebase-auth-provider'
-import Login from '@/components/layout/pages/login'
-
-const options: FirebaseOptions = {
-    apiKey: 'AIzaSyDnVIFqbDjHSC7KcK5rNSW8iMvM4yCGsHk',
-    authDomain: 'ms7-codebase.firebaseapp.com',
-    projectId: 'ms7-codebase',
-    storageBucket: 'ms7-codebase.appspot.com',
-    messagingSenderId: '262749858061',
-    appId: '1:262749858061:web:55b69608fbe7c7af9ca844',
-}
 
 const App = () => {
     const [showLoader, setShowLoader] = useState(false)
@@ -47,9 +36,14 @@ const App = () => {
             <AuthProvider<FirebaseAuthProviderProps>
                 provider={FirebaseAuthProvider}
                 providerProps={{
-                    options,
-                    loginComponent: Login,
-                    suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
+                    options: {
+                        apiKey: env.REACT_APP_FIREBASE_API_KEY,
+                        authDomain: env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+                        projectId: env.REACT_APP_FIREBASE_PROJECT_ID,
+                        storageBucket: env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+                        messagingSenderId: env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+                        appId: env.REACT_APP_FIREBASE_APP_ID,
+                    },
                 }}>
                 {showLoader ? <FullPageLoader header={env.REACT_APP_NAME} /> : <AppRouter />}
             </AuthProvider>

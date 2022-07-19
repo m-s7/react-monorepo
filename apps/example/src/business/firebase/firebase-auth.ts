@@ -51,7 +51,9 @@ class FirebaseAuth implements AuthModel {
     public logout(): Promise<void> {
         return signOut(getAuth(this.firebase))
             .then(() => {
-                window.location.replace('/')
+                this._token = undefined
+                this._isAuthenticated = false
+                this._userCredential = undefined
             })
             .catch(error => {
                 throw new Error(error)
@@ -63,10 +65,12 @@ class FirebaseAuth implements AuthModel {
     }
 
     public getUserInfo(): UserInfo {
+        console.log(this._userCredential, 123)
+
         return {
-            name: this._userCredential?.user.displayName || '',
+            name: this._userCredential?.user.displayName || this._userCredential?.user.email || '',
             email: this._userCredential?.user.email || '',
-            username: this._userCredential?.user.displayName || '',
+            username: this._userCredential?.user.displayName || this._userCredential?.user.email || '',
         }
     }
 

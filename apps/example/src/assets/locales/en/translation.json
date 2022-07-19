@@ -9,7 +9,8 @@
 
   "router": {
     "home": "Dashboard",
-    "admin": "Admin"
+    "admin": "Admin",
+    "logout": "Logout"
   },
 
   "index": {

@@ -1,19 +1,39 @@
-import React, { useState } from 'react'
-import { Card, Icon, LayoutEmpty } from '@ms7/bui'
-import { FirebaseLoginComponentProps } from '@/business/firebase/firebase-auth-provider'
+import React, { useContext, useEffect, useState } from 'react'
+import { Card, FullPageLoader, Icon, LayoutEmpty } from '@ms7/bui'
 import { Trans, useTranslation } from 'react-i18next'
+import { env } from '@ms7/common'
+import { AuthProviderContext } from '@ms7/auth-providers'
+import { useLocation, useNavigate, Navigate } from 'react-router-dom'
 
-const Login = (props: FirebaseLoginComponentProps) => {
+const Login = () => {
     const { t } = useTranslation()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const authContext = useContext(AuthProviderContext)
+
+    const [error, setError] = useState<Error>()
+    const [isAuthenticating, setIsAuthenticating] = useState(false)
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
-    const { error, onSubmit } = props
+    if(!authContext || authContext.isAuthenticated())
+        return (
+            <Navigate
+                to={'/'}
+                replace={true} />
+        )
+
+    if(isAuthenticating)
+        return (
+            <LayoutEmpty>
+                <FullPageLoader header={env.REACT_APP_NAME} />
+            </LayoutEmpty>
+        )
 
     return (
         <LayoutEmpty>
             <div className="d-flex flex-column justify-content-center">
-                {error && 
+                {error &&
                 <div
                     className="alert alert-danger text-center"
                     role="alert">
@@ -58,7 +78,18 @@ const Login = (props: FirebaseLoginComponentProps) => {
                         <button
                             onClick={e => {
                                 e.preventDefault()
-                                onSubmit({ email, password })
+                                setIsAuthenticating(true)
+
+                                authContext?.login({ email, password })
+                                    .then(() => {
+                                        navigate((location.state as { referrer: string } | null)?.referrer || '/')
+                                    })
+                                    .catch(error => {
+                                        setError(error)
+                                    })
+                                    .finally(() => {
+                                        setIsAuthenticating(false)
+                                    })
                             }}
                             className="w-100 btn btn-lg btn-primary"
                             type="submit">
