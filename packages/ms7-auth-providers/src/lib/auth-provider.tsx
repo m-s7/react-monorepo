@@ -41,16 +41,14 @@ export const AuthProvider = <T, >(props: React.PropsWithChildren<AuthProviderPro
 
     const Provider = props.provider
     return (
-        <React.Fragment>
-            <Provider
-                providerProps={props.providerProps}
-                onLoad={authInstance => onLoad(authInstance)}>
-                {providerAuthInstance &&
-                    <AuthProviderContext.Provider value={providerAuthInstance}>
-                        {props.children}
-                    </AuthProviderContext.Provider>
-                }
-            </Provider>
-        </React.Fragment>
+        <Provider
+            providerProps={props.providerProps}
+            onLoad={authInstance => onLoad(authInstance)}>
+            {providerAuthInstance &&
+                <AuthProviderContext.Provider value={providerAuthInstance}>
+                    {props.children}
+                </AuthProviderContext.Provider>
+            }
+        </Provider>
     )
 }

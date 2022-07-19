@@ -13,6 +13,8 @@ const CoreWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     const [showLoader, setShowLoader] = useState(true)
     const [isConnected, setIsConnected] = useState(false)
 
+    const { onLoad, children } = props
+
     useEffect(() => {
         if(websocketClient) return
 
@@ -26,7 +28,7 @@ const CoreWebsocketProvider = (props: WebsocketProviderComponentProps) => {
         websocketClient = new CoreWebsocketClient(callback, token, 'core', url)
         websocketClient.connect()
 
-        props.onLoad(websocketClient)
+        onLoad(websocketClient)
 
         setShowLoader(false)
     }, [])
@@ -44,11 +46,7 @@ const CoreWebsocketProvider = (props: WebsocketProviderComponentProps) => {
                 navigatePath={'/'} />
         )
 
-    return (
-        <React.Fragment>
-            {props.children}
-        </React.Fragment>
-    )
+    return (<>{children}</>)
 }
 
 export default CoreWebsocketProvider

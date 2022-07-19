@@ -54,7 +54,7 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
     }
 
     return (
-        <React.Fragment>
+        <>
             <RouterLink to={'#'}>
                 <button
                     className={'align-items-center rounded collapsed nav-link text-white'}
@@ -83,7 +83,7 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
                 </ul>
                 {firstLevel && <hr />}
             </div>
-        </React.Fragment>
+        </>
     )
 }
 

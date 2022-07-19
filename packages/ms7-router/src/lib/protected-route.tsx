@@ -17,11 +17,7 @@ const ProtectedRoute = (props: React.PropsWithChildren<ProtectedRouteProps>) => 
     if(!hasRoles(roles || [], authContext))
         return (forbidden)
 
-    return (
-        <React.Fragment>
-            {children}
-        </React.Fragment>
-    )
+    return (<>{children}</>)
 }
 
 export default withAuth(ProtectedRoute)

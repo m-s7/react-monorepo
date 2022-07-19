@@ -1,5 +1,3 @@
-// noinspection DuplicatedCode
-
 import React from 'react'
 import { env } from '@ms7/common'
 import { getConfigRouter } from 'Map/configs/app'
@@ -22,14 +20,14 @@ const AppRouter = (props: EntrypointComponentProps) => {
         </NotFound404> )
 
     return (
-        <React.Fragment>
+        <>
             <Routes>
                 {RouterGenerator(routes, Component404, props.parentLayout)}
                 <Route
                     path={'*'}
                     element={Component404} />
             </Routes>
-        </React.Fragment>
+        </>
     )
 }
 

@@ -28,9 +28,5 @@ export const ErrorBoundaryFallback = ({ error, resetErrorBoundary, children }: E
             </LayoutEmpty>
         )
 
-    return (
-        <React.Fragment>
-            {children}
-        </React.Fragment>
-    )
+    return (<>{children}</>)
 }

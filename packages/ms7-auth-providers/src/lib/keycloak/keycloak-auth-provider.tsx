@@ -46,9 +46,5 @@ export const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
         else return (<SuspenseComponent />)
     }
     
-    return (
-        <React.Fragment>
-            {props.children}
-        </React.Fragment>
-    )
+    return (<>{props.children}</>)
 }

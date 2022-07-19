@@ -122,10 +122,10 @@ const ChildWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     }, [])
 
     return (
-        <React.Fragment>
+        <>
             {isConnected && props.children}
             {!isConnected && <div>WS Loading...</div>}
-        </React.Fragment>
+        </>
     )
 }
 

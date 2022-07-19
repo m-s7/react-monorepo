@@ -29,9 +29,5 @@ export const FullPageFatalError = ({ error, header, homeLinkName, children }: Re
             </LayoutEmpty>
         )
 
-    return (
-        <React.Fragment>
-            {children}
-        </React.Fragment>
-    )
+    return (<>{children}</>)
 }

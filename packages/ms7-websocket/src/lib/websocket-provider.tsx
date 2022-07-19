@@ -34,7 +34,7 @@ export const WebsocketProvider = (props: React.PropsWithChildren<WebsocketProvid
 
     const Provider = props.provider
     return (
-        <React.Fragment>
+        <>
             <Provider
                 onLoad={websocketInstance => onLoad(websocketInstance)}>
                 {providerWebsocketInstance &&
@@ -43,6 +43,6 @@ export const WebsocketProvider = (props: React.PropsWithChildren<WebsocketProvid
                     </WebsocketProviderContext.Provider>
                 }
             </Provider>
-        </React.Fragment>
+        </>
     )
 }

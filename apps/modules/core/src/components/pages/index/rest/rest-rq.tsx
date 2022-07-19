@@ -57,9 +57,9 @@ const RestRQ = () => {
     })
 
     const Users = () => (
-        <React.Fragment>
+        <>
             {users?.map(user => (<div key={user.id}>{`${user.id} - ${user.name} - ${user.age}`}</div>))}
-        </React.Fragment>
+        </>
     )
 
     const User = () => {
@@ -92,7 +92,7 @@ const RestRQ = () => {
     )
 
     return (
-        <React.Fragment>
+        <>
             <ErrorFallback
                 className="d-flex justify-content-center m-1"
                 error={error}
@@ -158,7 +158,7 @@ const RestRQ = () => {
                 </div>
             </ErrorFallback>
             <ReactQueryDevtools initialIsOpen={false} />
-        </React.Fragment>
+        </>
     )
 }
 

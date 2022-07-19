@@ -31,14 +31,14 @@ const AppRouter = (props: EntrypointComponentProps) => {
     )
 
     return (
-        <React.Fragment>
+        <>
             <Routes>
                 {RouterGenerator(routes, Forbidden, props.parentLayout)}
                 <Route
                     path={'*'}
                     element={NotFound} />
             </Routes>
-        </React.Fragment>
+        </>
     )
 }
 
