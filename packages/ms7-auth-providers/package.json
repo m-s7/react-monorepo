@@ -27,6 +27,7 @@
     "lodash": "^4.17.21",
     "@types/lodash": "^4.14.182",
     "keycloak-js": "^18.0.0",
+    "firebase": "^9.9.0",
     "@ms7/logger": "*"
   },
   "devDependencies": {

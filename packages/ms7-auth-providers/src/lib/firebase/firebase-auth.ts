@@ -1,11 +1,6 @@
-import { AuthModel, UserInfo } from '@ms7/auth-providers'
+import { AuthModel, LoginCredentials, UserInfo } from '../auth-provider'
 import { FirebaseApp, FirebaseOptions, initializeApp } from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword, UserCredential, AuthError, signOut } from 'firebase/auth'
-
-export interface FirebaseLoginCredentials {
-    email: string,
-    password: string,
-}
 
 class FirebaseAuth implements AuthModel {
     private readonly options: FirebaseOptions
@@ -25,7 +20,7 @@ class FirebaseAuth implements AuthModel {
         this.firebase = initializeApp(this.options)
     }
 
-    public async login(credentials: FirebaseLoginCredentials): Promise<boolean> {
+    public async login(credentials: LoginCredentials): Promise<boolean> {
         const { email, password } = credentials
 
         return await signInWithEmailAndPassword(getAuth(this.firebase), email, password)
@@ -65,8 +60,6 @@ class FirebaseAuth implements AuthModel {
     }
 
     public getUserInfo(): UserInfo {
-        console.log(this._userCredential, 123)
-
         return {
             name: this._userCredential?.user.displayName || this._userCredential?.user.email || '',
             email: this._userCredential?.user.email || '',

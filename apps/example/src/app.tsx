@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import AppRouter from '@/app-router'
-import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
-import { FullPageError, FullPageLoader } from '@ms7/bui'
+import { AuthProvider, FirebaseAuthProvider, FirebaseAuthProviderProps } from '@ms7/auth-providers'
+import { FullPageLoader } from '@ms7/bui'
 import { env } from '@ms7/common'
 import i18n from '@/i18n'
 import { I18nextProvider } from 'react-i18next'
-import FirebaseAuthProvider, { FirebaseAuthProviderProps } from '@/business/firebase/firebase-auth-provider'
 
 const App = () => {
     const [showLoader, setShowLoader] = useState(false)

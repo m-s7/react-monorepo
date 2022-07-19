@@ -2,20 +2,22 @@ import React, { createContext, useState } from 'react'
 
 interface AuthProviderProps<T> {
     providerProps: T,
-    provider: AuthProviderComponentType,
+    provider: React.ComponentType<AuthProviderComponentProps<T>>,
 }
 
-export interface AuthProviderComponentProps extends React.PropsWithChildren {
-    providerProps: unknown,
+export interface AuthProviderComponentProps<T> extends React.PropsWithChildren {
+    providerProps: T,
     onLoad: (authInstance: AuthModel) => void,
 }
 
-type AuthProviderComponentType = React.ComponentType<AuthProviderComponentProps>
-// type AuthProviderComponentType<K extends string = string> = React.ForwardRefExoticComponent<AuthProviderComponentProps<K> & React.RefAttributes<boolean>>
+export interface LoginCredentials {
+    email: string,
+    password: string,
+}
 
 export interface AuthModel {
     init(): void,
-    login(credentials?: unknown): Promise<boolean>, // types here KEYCLOAKCREDENTIALS | FIREBASE CREDENTIALS ETC
+    login(credentials?: LoginCredentials): Promise<boolean>,
     logout(): Promise<void>,
     validate(): void,
     getToken(): string | undefined,
