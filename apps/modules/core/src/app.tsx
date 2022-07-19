@@ -6,23 +6,18 @@ import { reset as resetPersonReducer } from 'Core/store/reducers/person-reducer'
 import { reset as resetCounterReducer } from 'Core/store/reducers/counter-reducer'
 import CoreWebsocketProvider from 'Core/components/providers/core-websocket-provider'
 import { WebsocketProvider } from '@ms7/websocket'
-import { AuthProviderContext, setToken, setUsername } from '@ms7/auth-providers'
+import { AuthProviderContext, setToken } from '@ms7/auth-providers'
 import { EntrypointComponentProps } from '@ms7/router'
 
 const App = (props: EntrypointComponentProps) => {
     const dispatch = useAppDispatch()
-    const context = useContext(AuthProviderContext)
+    const authContext = useContext(AuthProviderContext)
 
     if(env.REACT_APP_CORE_WEBSOCKET_URL === undefined) throw new Error('Invalid WS url')
     if(env.REACT_APP_CORE_API_URL === undefined) throw new Error('Invalid API url')
 
     useLayoutEffect(() => {
-        if(context) {
-            const token = context.getToken()
-
-            dispatch(setToken(token))
-            dispatch(setUsername(context.getUserInfo().username))
-        }
+        if(authContext) dispatch(setToken(authContext.getToken()))
     }, [])
 
     useEffect(() => () => {

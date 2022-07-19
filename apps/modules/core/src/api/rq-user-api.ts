@@ -18,13 +18,7 @@ const baseQuery = createBaseQuery({
         return apiHeaders
     },
     errorHandler: status => {
-        history.push('/logout')
-
-        if(status === 401) {
-            // const logoutUrl = store.getState().auth.logoutUrl
-            //
-            // if(logoutUrl) window.location.replace(logoutUrl)
-        }
+        if(status === 401) history.push('/logout')
     },
     logger: logging.getLogger('rest'),
 })
