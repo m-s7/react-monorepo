@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { RouterGenerator } from '@ms7/router'
 import { Forbidden403, NotFound404 } from '@ms7/bui'
@@ -9,9 +9,11 @@ import { getConfigRouter } from '@/configs/app'
 import { capitalize } from 'lodash'
 import { env } from '@ms7/common'
 import { useTranslation } from 'react-i18next'
+import { AuthProviderContext } from '@ms7/auth-providers'
 
 const AppRouter = () => {
     const { t } = useTranslation()
+    const authContext = useContext(AuthProviderContext)
     const routes = getRoutes([{ router: getConfigRouter() }])
     const entrypoints = getAppsEntrypointsConfigs()
 
@@ -25,10 +27,10 @@ const AppRouter = () => {
 
     const Forbidden = (
         <Forbidden403
-            to={'/'}
+            to={(authContext?.isAuthenticated() ? '/' : '/login')}
             title={t('error.forbidden')}
             header={env.REACT_APP_NAME}>
-            {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
+            {(authContext?.isAuthenticated() ? capitalize(t(env.REACT_APP_HOMEPAGE_NAME)) : capitalize(t('common.login')))}
         </Forbidden403>
     )
 

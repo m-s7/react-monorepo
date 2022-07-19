@@ -1,52 +1,68 @@
 import React, { useEffect, useState } from 'react'
-// import KeycloakAuth, { KeycloakConfig } from './keycloak-auth'
 import { AuthModel } from '@ms7/auth-providers'
-import firebase, { FirebaseApp, FirebaseOptions } from 'firebase/app'
-import FirebaseAuth from '@/business/firebase/firebase-auth'
-
-type FirebaseErrorComponentType = React.ComponentType<{ error: Error }>
-type FirebaseSuspenseComponentType = React.ComponentType
+import { FirebaseOptions } from 'firebase/app'
+import FirebaseAuth, { FirebaseLoginCredentials } from '@/business/firebase/firebase-auth'
 
 interface AuthProviderComponentProps extends React.PropsWithChildren {
     providerProps: unknown,
     onLoad: (authInstance: AuthModel) => void,
 }
 
+export interface FirebaseLoginComponentProps {
+    onSubmit: (credentials: FirebaseLoginCredentials) => void,
+    error?: Error,
+}
+
 export interface FirebaseAuthProviderProps {
     options: FirebaseOptions,
-    errorComponent: FirebaseErrorComponentType,
-    suspenseComponent: FirebaseSuspenseComponentType,
-    onAuthenticatedHandler?: (token: string | undefined, logoutMethod: () => void) => void,
+    loginComponent: React.ComponentType<FirebaseLoginComponentProps>,
+    suspenseComponent: React.ComponentType,
     allowLogger?: boolean,
 }
 
 const FirebaseAuthProvider = (props: AuthProviderComponentProps) => {
-    const { options, errorComponent, suspenseComponent, onAuthenticatedHandler, allowLogger } = (props.providerProps as FirebaseAuthProviderProps)
+    const { options, allowLogger, loginComponent, suspenseComponent } = (props.providerProps as FirebaseAuthProviderProps)
 
-    let firebaseAuth: FirebaseAuth
+    const [firebaseAuth, setFirebaseAuth] = useState<FirebaseAuth>()
     const [error, setError] = useState<Error>()
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isAuthenticating, setIsAuthenticating] = useState(false)
 
     useEffect(() => {
-        if(firebaseAuth) return
-        firebaseAuth = new FirebaseAuth(options, (isAuthenticated, error) : void => {
-            setIsAuthenticated(isAuthenticated)
-            setError(error)
+        const auth = new FirebaseAuth(options, allowLogger)
 
-            if(isAuthenticated && onAuthenticatedHandler)
-                onAuthenticatedHandler(firebaseAuth.getToken(), firebaseAuth.getLogoutUrl)
-        }, allowLogger)
+        auth.init()
+        props.onLoad(auth)
 
-        firebaseAuth.init({ email: 'aaa', password: 'bbb' })
-        props.onLoad(firebaseAuth)
+        setFirebaseAuth(auth)
     }, [])
 
-    if(!isAuthenticated) {
-        const ErrorComponent = errorComponent
+    if(isAuthenticating) {
         const SuspenseComponent = suspenseComponent
+        return (<SuspenseComponent />)
+    }
 
-        if(error) return (<ErrorComponent error={error} />)
-        else return (<SuspenseComponent />)
+    if(!isAuthenticated) {
+        const LoginComponent = loginComponent
+
+        return (
+            <LoginComponent
+                error={error}
+                onSubmit={credentials => {
+                    setIsAuthenticating(true)
+
+                    firebaseAuth?.login(credentials)
+                        .then(isAuthenticated => {
+                            setIsAuthenticated(isAuthenticated)
+                        })
+                        .catch(error => {
+                            setError(error)
+                        })
+                        .finally(() => {
+                            setIsAuthenticating(false)
+                        })
+                }} />
+        )
     }
 
     return (<>{props.children}</>)

@@ -8,10 +8,27 @@
   },
 
   "router": {
-    "home": "Panel"
+    "home": "Panel",
+    "admin": "Admin"
   },
 
   "index": {
-    "label": "Przetłumaczony tekst"
+    "label": "Witaj"
+  },
+
+  "page": {
+    "login": {
+      "label": {
+        "please-sign-in": "Zaloguj się",
+        "info": "Token nie jest przechowywany w aplikacji,<br />logowanie będzie wymagane po każdym odświeżeniu strony."
+      },
+      "form:": {
+        "password": "Hasło",
+        "email-address": "Adres email"
+      },
+      "button": {
+        "sign-in": "Zaloguj"
+      }
+    }
   }
 }

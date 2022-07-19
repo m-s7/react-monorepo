@@ -6,7 +6,7 @@ import { reset as resetPersonReducer } from 'Core/store/reducers/person-reducer'
 import { reset as resetCounterReducer } from 'Core/store/reducers/counter-reducer'
 import CoreWebsocketProvider from 'Core/components/providers/core-websocket-provider'
 import { WebsocketProvider } from '@ms7/websocket'
-import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth-providers'
+import { AuthProviderContext, setToken, setUsername } from '@ms7/auth-providers'
 import { EntrypointComponentProps } from '@ms7/router'
 
 const App = (props: EntrypointComponentProps) => {
@@ -19,10 +19,8 @@ const App = (props: EntrypointComponentProps) => {
     useLayoutEffect(() => {
         if(context) {
             const token = context.getToken()
-            const logoutUrl = context.getLogoutUrl()
 
             dispatch(setToken(token))
-            dispatch(setLogoutUrl(logoutUrl))
             dispatch(setUsername(context.getUserInfo().username))
         }
     }, [])

@@ -5,9 +5,9 @@ import { FullPageError, FullPageLoader } from '@ms7/bui'
 import { env } from '@ms7/common'
 import i18n from '@/i18n'
 import { I18nextProvider } from 'react-i18next'
-import { initializeApp, FirebaseApp, FirebaseOptions } from 'firebase/app'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { FirebaseOptions } from 'firebase/app'
 import FirebaseAuthProvider, { FirebaseAuthProviderProps } from '@/business/firebase/firebase-auth-provider'
+import Login from '@/components/layout/pages/login'
 
 const options: FirebaseOptions = {
     apiKey: 'AIzaSyDnVIFqbDjHSC7KcK5rNSW8iMvM4yCGsHk',
@@ -19,14 +19,9 @@ const options: FirebaseOptions = {
 }
 
 const App = () => {
-    let firebaseApp: FirebaseApp
     const [showLoader, setShowLoader] = useState(false)
 
     useEffect(() => {
-        firebaseApp = initializeApp(options)
-        const aaa = signInWithEmailAndPassword(getAuth(firebaseApp), 'smolik.it@gmail.com', 'admin123')
-        aaa.then(res => console.log('FB', res)).catch(err => console.log('smolik.it@gmail.com', err))
-
         i18n.on('languageChanged', () => {
             setShowLoader(true)
             window.location.reload()
@@ -36,36 +31,30 @@ const App = () => {
     useEffect(() => () => {
         i18n.off('languageChanged')
     }, [])
-    
+
     return (
-        <AuthProvider<FirebaseAuthProviderProps>
-            provider={FirebaseAuthProvider}
-            providerProps={{
-                options,
-                errorComponent: (props: { error: Error }) => (
-                    <FullPageError
-                        error={props.error}
-                        header={env.REACT_APP_NAME} />),
-                suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
-            }}>
-            <I18nextProvider i18n={i18n}>
+        // <AuthProvider<KeycloakAuthProviderProps>
+        //     provider={KeycloakAuthProvider}
+        //     providerProps={{
+        //         config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
+        //         errorComponent: (props: { error: Error }) => (
+        //             <FullPageError
+        //                 error={props.error}
+        //                 header={env.REACT_APP_NAME} />),
+        //         suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
+        //     }}>
+        <I18nextProvider i18n={i18n}>
+            <AuthProvider<FirebaseAuthProviderProps>
+                provider={FirebaseAuthProvider}
+                providerProps={{
+                    options,
+                    loginComponent: Login,
+                    suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
+                }}>
                 {showLoader ? <FullPageLoader header={env.REACT_APP_NAME} /> : <AppRouter />}
-            </I18nextProvider>
-        </AuthProvider>
+            </AuthProvider>
+        </I18nextProvider>
     )
 }
 
 export default App
-
-
-// <AuthProvider<KeycloakAuthProviderProps>
-//     provider={KeycloakAuthProvider}
-//     providerProps={{
-//         config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
-//         errorComponent: (props: { error: Error }) => (
-//             <FullPageError
-//                 error={props.error}
-//                 header={env.REACT_APP_NAME} />),
-//         suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
-//     }}>
-// </AuthProvider>

@@ -1,10 +1,12 @@
 {
   "common": {
+    "error": "Error",
     "close": "Close"
   },
 
   "error": {
     "not-found": "404 - Not Found",
-    "forbidden": "403 - Forbidden"
+    "forbidden": "403 - Forbidden",
+    "user-not-found": "User Not Found"
   }
 }

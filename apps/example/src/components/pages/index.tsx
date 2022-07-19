@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import logo from '@/assets/logo.svg'
 import { Card } from '@ms7/bui'
 import styled from 'styled-components'

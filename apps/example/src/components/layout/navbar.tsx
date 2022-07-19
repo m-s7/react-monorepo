@@ -103,7 +103,7 @@ const Navbar = () => {
                             <FooterDropdownItem
                                 path={'#'}
                                 onClick={() => {
-                                    window.location.replace(authContext.getLogoutUrl())
+                                    authContext?.logout()
                                 }}>
                                 {'Sign out'}
                             </FooterDropdownItem>}

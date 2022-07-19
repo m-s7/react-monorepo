@@ -9,12 +9,11 @@ export interface KeycloakAuthProviderProps {
     config: KeycloakConfig,
     errorComponent: KeycloakErrorComponentType,
     suspenseComponent: KeycloakSuspenseComponentType,
-    onAuthenticatedHandler?: (token: string | undefined, logoutMethod: () => void) => void,
     allowLogger?: boolean,
 }
 
 export const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
-    const { config, errorComponent, suspenseComponent, onAuthenticatedHandler, allowLogger } = (props.providerProps as KeycloakAuthProviderProps)
+    const { config, errorComponent, suspenseComponent, allowLogger } = (props.providerProps as KeycloakAuthProviderProps)
 
     let keycloakAuth: KeycloakAuth
     const [error, setError] = useState<Error>()
@@ -23,18 +22,15 @@ export const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
     useEffect(() => {
         if(keycloakAuth) return
 
-        keycloakAuth = new KeycloakAuth(config, (isAuthenticated, error) : void => {
-            setIsAuthenticated(isAuthenticated)
-            setError(error)
-
-            if(isAuthenticated) {
-                const token = keycloakAuth.getToken()
-
-                if(onAuthenticatedHandler) onAuthenticatedHandler(token, keycloakAuth.getLogoutUrl)
-            }
-        }, allowLogger)
-
-        keycloakAuth.init().then()
+        keycloakAuth = new KeycloakAuth(config, allowLogger)
+        keycloakAuth.init()
+        keycloakAuth.login()
+            .then(isAuthenticated => {
+                setIsAuthenticated(isAuthenticated)
+            })
+            .catch(error => {
+                setError(error)
+            })
         props.onLoad(keycloakAuth)
     }, [])
 

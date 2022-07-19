@@ -1,10 +1,12 @@
 {
   "common": {
+    "error": "Błąd",
     "close": "Zamknij"
   },
 
   "error": {
     "not-found": "404 - Nie odnaleziono",
-    "forbidden": "403 - Brak dostępu"
+    "forbidden": "403 - Brak dostępu",
+    "user-not-found": "Nie odnaleziono użytkownika"
   }
 }

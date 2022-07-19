@@ -3,10 +3,6 @@ import { isEmpty } from 'lodash'
 import { logging } from '@ms7/logger'
 import { AuthModel, UserInfo } from '../auth-provider'
 
-interface KeycloakCallback {
-    (isAuthenticated: boolean, error?: Error | undefined): void,
-}
-
 export interface KeycloakConfig {
     url: string,
     realm: string,
@@ -16,43 +12,51 @@ export interface KeycloakConfig {
 class KeycloakAuth implements AuthModel {
     private readonly logger = logging.getLogger('keycloak')
     private readonly config: KeycloakConfig
-    private readonly callback: KeycloakCallback
     private readonly allowLogger: boolean
 
     private keycloak: Keycloak.KeycloakInstance | undefined = undefined
     private tokenRefreshRunner: number | undefined
     private _isAuthenticated = false
 
-    constructor(config: KeycloakConfig, callback: KeycloakCallback, allowLogger = true) {
+    constructor(config: KeycloakConfig, allowLogger = true) {
         this.config = config
-        this.callback = callback
         this.allowLogger = allowLogger
     }
 
-    public async init(): Promise<void> {
-        if(isEmpty(this.config.realm) || isEmpty(this.config.clientId)) {
-            this.callback(false, new Error(`Keycloak - ${KeycloakAuth.getConfigError(this.config)}`))
-            return
-        }
-
+    public init(): void {
+        // if(isEmpty(this.config.realm) || isEmpty(this.config.clientId))
+        //     throw new Error(`Keycloak - ${KeycloakAuth.getConfigError(this.config)}`)
         this.keycloak = new Keycloak(this.config)
         this.startEventWatcher()
 
         this.logger.debug('Service started', this.config)
+    }
 
-        await this.keycloak
+    public async login(): Promise<boolean> {
+        if(!this.keycloak) return false
+
+        return await this.keycloak
             .init({ onLoad: 'login-required' })
             .then((isAuthenticated: boolean) => {
                 this._isAuthenticated = isAuthenticated
 
-                this.callback(isAuthenticated)
                 if(isAuthenticated)
                     this.startTokenRefreshRunner()
+
+                return true
             })
             .catch(error => {
-                this.callback(false, new Error('Keycloak - Service offline'))
                 this.logger.error('Service offline', error)
+
+                throw new Error('Keycloak - Service offline')
             })
+    }
+
+    public async logout(): Promise<void> {
+        if(this.tokenRefreshRunner)
+            window.clearInterval(this.tokenRefreshRunner)
+
+        window.location.replace(this.getLogoutUrl())
     }
 
     public async validate(): Promise<void> {
@@ -93,22 +97,6 @@ class KeycloakAuth implements AuthModel {
             email: this.keycloak?.idTokenParsed?.email,
             username: this.keycloak?.idTokenParsed?.preferred_username,
         }
-    }
-
-    public getLogoutUrl(): URL {
-        const baseUrl = window.location.origin
-        const keycloakBaseUrl = this.getKeycloakBaseUrl()
-
-        if(!baseUrl || !keycloakBaseUrl) throw new Error(`Cannot construct keycloak logout url, baseUrl: ${baseUrl}, keycloakBaseUrl: ${keycloakBaseUrl}`)
-
-        return new URL(this.keycloak?.createLogoutUrl() || `${keycloakBaseUrl}/logout?redirect_uri=${baseUrl}`)
-    }
-
-    private logout(): void {
-        if(this.tokenRefreshRunner)
-            window.clearInterval(this.tokenRefreshRunner)
-
-        window.location.replace(this.getLogoutUrl())
     }
 
     private startTokenRefreshRunner(): number | undefined {
@@ -158,6 +146,15 @@ class KeycloakAuth implements AuthModel {
         this.keycloak.onTokenExpired = () => {
             this.logger.debug('onTokenExpired event received')
         }
+    }
+
+    private getLogoutUrl(): URL {
+        const baseUrl = window.location.origin
+        const keycloakBaseUrl = this.getKeycloakBaseUrl()
+
+        if(!baseUrl || !keycloakBaseUrl) throw new Error(`Cannot construct keycloak logout url, baseUrl: ${baseUrl}, keycloakBaseUrl: ${keycloakBaseUrl}`)
+
+        return new URL(this.keycloak?.createLogoutUrl() || `${keycloakBaseUrl}/logout?redirect_uri=${baseUrl}`)
     }
 
     private getKeycloakBaseUrl(): string | undefined {

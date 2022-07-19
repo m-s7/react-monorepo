@@ -8,10 +8,27 @@
   },
 
   "router": {
-    "home": "Dashboard"
+    "home": "Dashboard",
+    "admin": "Admin"
   },
 
   "index": {
     "label": "Welcome"
+  },
+
+  "page": {
+    "login": {
+      "label": {
+        "please-sign-in": "Please sign in",
+        "info": "User token is not stored in app,<br />login will be required on every reload."
+      },
+      "form": {
+        "password": "Password",
+        "email-address": "Email address"
+      },
+      "button": {
+        "sign-in": "Sign in"
+      }
+    }
   }
 }

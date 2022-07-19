@@ -2,50 +2,67 @@ import { AuthModel, UserInfo } from '@ms7/auth-providers'
 import { FirebaseApp, FirebaseOptions, initializeApp } from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword, UserCredential, AuthError, signOut } from 'firebase/auth'
 
-interface FirebaseCallback {
-    (isAuthenticated: boolean, error?: Error | undefined): void,
+export interface FirebaseLoginCredentials {
+    email: string,
+    password: string,
 }
 
 class FirebaseAuth implements AuthModel {
     private readonly options: FirebaseOptions
-    private readonly callback: FirebaseCallback
     private readonly allowLogger: boolean
 
     private firebase: FirebaseApp | undefined = undefined
+    private _token: string | undefined
     private _isAuthenticated = false
     private _userCredential: UserCredential | undefined
 
-    constructor(options: FirebaseOptions, callback: FirebaseCallback, allowLogger = true) {
+    constructor(options: FirebaseOptions, allowLogger = true) {
         this.options = options
-        this.callback = callback
         this.allowLogger = allowLogger
     }
 
-    init(credentials: { email: string, password: string }): void {
+    public init(): void {
         this.firebase = initializeApp(this.options)
-        signInWithEmailAndPassword(getAuth(this.firebase), 'smolik.it@gmail.com', 'admin123')
+    }
+
+    public async login(credentials: FirebaseLoginCredentials): Promise<boolean> {
+        const { email, password } = credentials
+
+        return await signInWithEmailAndPassword(getAuth(this.firebase), email, password)
             .then((userCredential: UserCredential) => {
+                this._token = userCredential.user.refreshToken
                 this._isAuthenticated = true
                 this._userCredential = userCredential
 
-                this.callback(true)
+                return true
             })
             .catch((authError: AuthError) => {
-                this.callback(false, new Error('Firebase - ' + authError.message))
+                // simplify messages to allow simple translations
+                let message = authError.message
+                if(message.includes('auth/user-not-found')) message = 'user-not-found'
+                if(message.includes('auth/wrong-password')) message = 'user-not-found'
+                if(message.includes('auth/invalid-email')) message = 'user-not-found'
+                if(message.includes('auth/internal-error')) message = 'user-not-found'
+
+                throw new Error(message)
             })
     }
 
-    getLogoutUrl(): URL {
-        console.log('LOGOUT!!!!!!!')
-
-        return new URL('aaa')
+    public logout(): Promise<void> {
+        return signOut(getAuth(this.firebase))
+            .then(() => {
+                window.location.replace('/')
+            })
+            .catch(error => {
+                throw new Error(error)
+            })
     }
 
-    getToken(): string | undefined {
+    public getToken(): string | undefined {
         return undefined
     }
 
-    getUserInfo(): UserInfo {
+    public getUserInfo(): UserInfo {
         return {
             name: this._userCredential?.user.displayName || '',
             email: this._userCredential?.user.email || '',
@@ -53,16 +70,17 @@ class FirebaseAuth implements AuthModel {
         }
     }
 
-    hasRole(role: string): boolean {
-        return false
+    // since firebase does not support roles out of the box, authenticated user has every role access
+    public hasRole(role: string): boolean {
+        return this.isAuthenticated()
     }
 
-    isAuthenticated(): boolean {
+    public isAuthenticated(): boolean {
         return this._isAuthenticated
     }
 
-    validate(): void {
-        //TODO: implement
+    public validate(): void {
+        // ignored
     }
 }
 
