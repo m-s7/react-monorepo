@@ -8,11 +8,6 @@ interface AuthProviderComponentProps extends React.PropsWithChildren {
     onLoad: (authInstance: AuthModel) => void,
 }
 
-export interface FirebaseLoginComponentProps {
-    onSubmit: (credentials: FirebaseLoginCredentials) => void,
-    error?: Error,
-}
-
 export interface FirebaseAuthProviderProps {
     options: FirebaseOptions,
     allowLogger?: boolean,
