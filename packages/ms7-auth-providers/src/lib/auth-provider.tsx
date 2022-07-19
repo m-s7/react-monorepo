@@ -14,7 +14,7 @@ type AuthProviderComponentType = React.ComponentType<AuthProviderComponentProps>
 // type AuthProviderComponentType<K extends string = string> = React.ForwardRefExoticComponent<AuthProviderComponentProps<K> & React.RefAttributes<boolean>>
 
 export interface AuthModel {
-    init(): void,
+    init(credentials?: unknown): void,
     validate(): void,
     getLogoutUrl(): URL,
     getToken(): string | undefined,

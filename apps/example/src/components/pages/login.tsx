@@ -14,6 +14,7 @@ const Login = () => (
                     <input
                         type="email"
                         className="form-control"
+                        autoComplete="true"
                         id="floatingInput"
                         placeholder="name@example.com" />
                     <label htmlFor="floatingInput">Email address</label>
@@ -22,6 +23,7 @@ const Login = () => (
                     <input
                         type="password"
                         className="form-control"
+                        autoComplete="true"
                         id="floatingPassword"
                         placeholder="Password" />
                     <label htmlFor="floatingPassword">Password</label>

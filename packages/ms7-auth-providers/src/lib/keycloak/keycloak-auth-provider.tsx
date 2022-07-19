@@ -14,7 +14,7 @@ export interface KeycloakAuthProviderProps {
 }
 
 export const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
-    const { config, errorComponent, suspenseComponent, onAuthenticatedHandler } = (props.providerProps as KeycloakAuthProviderProps)
+    const { config, errorComponent, suspenseComponent, onAuthenticatedHandler, allowLogger } = (props.providerProps as KeycloakAuthProviderProps)
 
     let keycloakAuth: KeycloakAuth
     const [error, setError] = useState<Error>()
@@ -32,7 +32,7 @@ export const KeycloakAuthProvider = (props: AuthProviderComponentProps) => {
 
                 if(onAuthenticatedHandler) onAuthenticatedHandler(token, keycloakAuth.getLogoutUrl)
             }
-        })
+        }, allowLogger)
 
         keycloakAuth.init().then()
         props.onLoad(keycloakAuth)
