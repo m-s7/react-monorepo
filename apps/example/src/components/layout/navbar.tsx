@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { LoaderSmall } from '@ms7/bui'
 import { useApiIsLoading } from '@ms7/rest-builder'
 import i18n from '@/i18n'
@@ -71,6 +71,7 @@ const Navbar = () => {
             <div className="container-fluid">
                 <img
                     src={logo}
+                    alt="logo"
                     height={25} />
                 <a
                     className="navbar-brand"
