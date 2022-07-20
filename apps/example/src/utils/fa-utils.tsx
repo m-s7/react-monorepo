@@ -1,27 +1,9 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-    faHome,
-    faDashboard,
-    faMap,
-    faCog,
-    faDiagramProject,
-    faAddressBook,
-    faPizzaSlice,
-    faChevronUp,
-    faChevronDown,
-    faChevronLeft,
-    faChevronRight,
-    faBookOpen,
-    faNetworkWired,
-    faBox,
-    faBoxOpen,
-    faBullhorn,
-    faTowerBroadcast,
-    faCircleExclamation,
-    faLock,
-    faGamepad,
-    faBed,
-    faProjectDiagram, faSquare, faMemory, faArrowRotateLeft, faLockOpen,
+    faHome, faDashboard, faMap, faCog, faDiagramProject, faAddressBook, faPizzaSlice, faChevronUp, faChevronDown,
+    faChevronLeft, faChevronRight, faBookOpen, faNetworkWired, faBox, faBoxOpen, faBullhorn, faTowerBroadcast,
+    faCircleExclamation, faLock, faGamepad, faBed, faProjectDiagram, faSquare, faMemory, faArrowRotateLeft,
+    faLockOpen, faUser, faUserCircle,
 } from '@fortawesome/free-solid-svg-icons'
 
 export const loadFaIcons = (): void => {
@@ -29,5 +11,5 @@ export const loadFaIcons = (): void => {
         faHome, faDashboard, faMap, faCog, faDiagramProject, faAddressBook, faPizzaSlice, faChevronUp, faChevronDown,
         faChevronLeft, faChevronRight, faBookOpen, faNetworkWired, faBox, faBoxOpen, faBullhorn, faTowerBroadcast,
         faCircleExclamation, faLock, faGamepad, faBed, faProjectDiagram, faSquare, faMemory, faArrowRotateLeft,
-        faLockOpen)
+        faLockOpen, faUser, faUserCircle)
 }

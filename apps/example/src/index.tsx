@@ -9,6 +9,7 @@ import { env, isDev } from '@ms7/common'
 import { FullPageLoader } from '@ms7/bui'
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import { history } from '@ms7/router'
+import '@fortawesome/fontawesome-svg-core'
 
 loadFaIcons()
 logging.configure({ minLevels: assignLevelToLoggers(['', 'core'], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
