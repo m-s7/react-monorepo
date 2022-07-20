@@ -1,7 +1,8 @@
 import React from 'react'
 import Entrypoint from 'Core/entrypoint'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, useLocation } from 'react-router-dom'
+import { history } from '@ms7/router'
+import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'Core/global.css'
 import styled from 'styled-components'
@@ -20,7 +21,7 @@ const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
+        <HistoryRouter history={history}>
             <Container className="p-1">
                 <Card className="d-flex flex-column mb-1">
                     Menu
@@ -38,6 +39,6 @@ root.render(
                 </Card>
                 <Entrypoint />
             </Container>
-        </BrowserRouter>
+        </HistoryRouter>
     </React.StrictMode>,
 )
