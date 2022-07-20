@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import CenteredLoader from 'Core/components/centered-loader'
-import { Card } from '@ms7/bui'
+import { Card } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'
 
 const UserViewer = React.lazy(async () => {
@@ -14,7 +14,7 @@ const LazyLoading = () => {
     
     return (
         <div className="d-flex justify-content-center">
-            <Card className="m-1 w-50">
+            <Card className="w-50">
                 <CenteredLoader
                     text={t('lazy-suspense.loading')} />
             </Card>
@@ -25,7 +25,7 @@ const LazyLoading = () => {
 const LazySuspense = () => (
     <Suspense fallback={<LazyLoading />}>
         <div className="d-flex justify-content-center">
-            <Card className="m-1 w-50">
+            <Card className="w-50">
                 <UserViewer />
             </Card>
         </div>

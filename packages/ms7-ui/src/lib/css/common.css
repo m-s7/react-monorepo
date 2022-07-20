@@ -2,6 +2,10 @@
     --dark: #454d55;
     --darker: #343a40;
     --darkest: #212529;
+    --text-default: #d1d1d1;
+    --text-primary: #61dafb;
+    --text-secondary: #666666;
+    --text-link: #1098ad;
 }
 
 .background-dark {

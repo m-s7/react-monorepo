@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button'
 import { uniqueId } from 'lodash'
-import { Button, Card } from '@ms7/bui'
+import { Card } from '@ms7/ui'
 import { Subject, Subscription } from 'rxjs'
 import { useTranslation } from 'react-i18next'
 
@@ -18,7 +19,7 @@ const RxJsSubject = () => {
 
     return (
         <div className="d-flex justify-content-center">
-            <Card className="m-1 w-50">
+            <Card className="w-50">
                 <div className="d-flex flex-column align-items-center">
                     <div
                         className="alert alert-warning text-center m-2 w-50"

@@ -1,19 +1,16 @@
 import React, { useContext } from 'react'
-import { LoaderSmall } from '@ms7/bui'
+import { Spinner } from '@ms7/ui'
 import { useApiIsLoading } from '@ms7/rest-builder'
 import i18n from '@/i18n'
-import styled from 'styled-components'
 import logo from '@/assets/logo.svg'
-import FooterDropdownItem from '@/components/layout/sidebar/footer-dropdown-item'
+import NavbarDropdownItem from '@/components/layout/navbar/navbar-dropdown-item'
 import { AuthProviderContext } from '@ms7/auth-providers'
 import { useNavigate } from 'react-router-dom'
-import { RouterLink } from '@ms7/bui'
-
-const LangChangeLink = styled.a<{ lng: string }>`
-    ${props => props.lng === i18n.language ? 'pointer-events: none; color: #d1d1d1;' : 'pointer-events: auto;'}
-`
+import { Link } from '@ms7/ui'
+import { useTranslation } from 'react-i18next'
 
 const Navbar = () => {
+    const { t } = useTranslation()
     const isApiLoading = useApiIsLoading()
     const authContext = useContext(AuthProviderContext)
     const navigate = useNavigate()
@@ -26,7 +23,11 @@ const Navbar = () => {
         if(!authContext) return null
         
         if(!authContext.isAuthenticated())
-            return (<RouterLink to={'/login'}>Sign in</RouterLink>)
+            return (
+                <Link to="/login">
+                    {t('common.sign-in')}
+                </Link>
+            )
 
         return (
             <div className="dropstart ms-4">
@@ -47,20 +48,19 @@ const Navbar = () => {
                 <ul
                     className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start dropdown-menu-dark text-small shadow"
                     aria-labelledby="dropdownUser">
-                    <FooterDropdownItem
-                        path={'/profile'}>
-                        {'Profile'}
-                    </FooterDropdownItem>
+                    <NavbarDropdownItem
+                        to="/profile">
+                        {t('common.profile')}
+                    </NavbarDropdownItem>
                     <li>
                         <hr className={'dropdown-divider'} />
                     </li>
-                    <FooterDropdownItem
-                        path={'#'}
+                    <NavbarDropdownItem
                         onClick={() => {
                             navigate('/logout')
                         }}>
-                        {'Sign out'}
-                    </FooterDropdownItem>
+                        {t('common.sign-out')}
+                    </NavbarDropdownItem>
                 </ul>
             </div>
         )
@@ -79,22 +79,24 @@ const Navbar = () => {
                     [BRAND]
                 </a>
                 <div className="navbar-collapse">
-                    <LangChangeLink
-                        lng={'pl'}
-                        href="#"
+                    <Link
+                        to="#"
+                        variant={(i18n.language === 'pl' ? 'default' : 'link')}
+                        disabled={i18n.language === 'pl'}
                         onClick={() => { changeLanguage('pl')}}>
                         pl
-                    </LangChangeLink>
+                    </Link>
                     <div className="vr ms-2 me-2" />
-                    <LangChangeLink
-                        lng={'en'}
-                        href="#"
+                    <Link
+                        to="#"
+                        variant={(i18n.language === 'en' ? 'default' : 'link')}
+                        disabled={i18n.language === 'en'}
                         onClick={() => { changeLanguage('en')}}>
                         en
-                    </LangChangeLink>
+                    </Link>
                 </div>
                 <div className="d-flex">
-                    {isApiLoading && <LoaderSmall />}
+                    {isApiLoading && <Spinner />}
                 </div>
                 <UserContent />
             </div>

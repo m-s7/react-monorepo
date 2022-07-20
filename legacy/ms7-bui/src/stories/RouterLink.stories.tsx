@@ -5,7 +5,7 @@ import { RouterLink } from '../lib/router-link'
 import { BrowserRouter } from 'react-router-dom'
 
 export default {
-    title: 'BUI/Core/RouterLink',
+    title: 'BUI/Core/Link',
     component: RouterLink,
 } as ComponentMeta<typeof RouterLink>
 

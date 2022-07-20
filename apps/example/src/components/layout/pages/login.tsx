@@ -1,9 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Card, FullPageLoader, Icon, LayoutEmpty } from '@ms7/bui'
+import React, { useContext, useState } from 'react'
+import { Card, LayoutEmpty } from '@ms7/ui'
+import { FullPageLoader } from '@ms7/bui'
+import Button from 'react-bootstrap/Button'
 import { Trans, useTranslation } from 'react-i18next'
 import { env } from '@ms7/common'
 import { AuthProviderContext } from '@ms7/auth-providers'
 import { useLocation, useNavigate, Navigate } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Login = () => {
     const { t } = useTranslation()
@@ -41,9 +44,9 @@ const Login = () => {
                 </div>}
                 <Card>
                     <form className="d-flex flex-column align-items-center p-4">
-                        <Icon
-                            variant={'lock'}
-                            size={'4x'}
+                        <FontAwesomeIcon
+                            icon="lock"
+                            size="4x"
                             className="mb-5" />
                         <h1 className="h3 mb-3 fw-normal">{t('page.login.label.please-sign-in')}</h1>
                         <div className="form-floating mb-1">
@@ -75,7 +78,7 @@ const Login = () => {
                         {/*            value="remember-me" /> Remember me*/}
                         {/*    </label>*/}
                         {/*</div>*/}
-                        <button
+                        <Button
                             onClick={e => {
                                 e.preventDefault()
                                 setIsAuthenticating(true)
@@ -94,7 +97,7 @@ const Login = () => {
                             className="w-100 btn btn-lg btn-primary"
                             type="submit">
                             {t('page.login.button.sign-in')}
-                        </button>
+                        </Button>
                         <p className="mt-4 mb-3 text-muted">&copy; ms7</p>
                         <pre className="text-center">
                             <Trans

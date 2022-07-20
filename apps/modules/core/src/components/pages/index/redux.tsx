@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button'
 import { useAppSelector } from 'Core/hooks/use-app-selector'
 import { useAppDispatch } from 'Core/hooks/use-app-dispatch'
 import { setId, setDescription, setName, setType, setAge } from 'Core/store/reducers/person-reducer'
-import { Button, Card } from '@ms7/bui'
-import {
-    decrement,
-    increment,
-    incrementAsync,
-    incrementByAmount,
-    incrementIfOdd, 
-} from 'Core/store/reducers/counter-reducer'
+import { Card } from '@ms7/ui'
+import { decrement, increment, incrementAsync, incrementByAmount, incrementIfOdd } from 'Core/store/reducers/counter-reducer'
 import { useTranslation } from 'react-i18next'
 
 const Redux = () => {
@@ -28,7 +23,7 @@ const Redux = () => {
 
     return (
         <div className="d-flex justify-content-center">
-            <Card className="me-1 w-25">
+            <Card className="w-25 me-1">
                 <div className="d-flex flex-column align-items-center">
                     <p>{t('redux.label.person-state')}</p>
                     <ul>

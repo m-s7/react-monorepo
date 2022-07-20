@@ -52,14 +52,14 @@ If you need more options use [turbo](https://turborepo.org/docs/core-concepts/fi
 import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
 
 const FatalError = (error: { error: Error }) => (<div>{props.error.message}</div>);
-const Loader = () => (<i class="loader" />);
+const Spinner = () => (<i class="loader" />);
 
 <AuthProvider<KeycloakAuthProviderProps>
     provider={KeycloakAuthProvider}
     providerProps={{
         config: { url: 'https://keycloak.local', realm: 'react-realm', clientId: 'react-client-id' },
         errorComponent: FatalError,
-        suspenseComponent: Loader,
+        suspenseComponent: Spinner,
         onAuthenticatedHandler: (token: string, logoutMethod: () => void) => {
             //handle authentication
         },

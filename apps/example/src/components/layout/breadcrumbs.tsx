@@ -1,6 +1,6 @@
 import React from 'react'
 import useBreadcrumbs from '@/hooks/use-breadcrumbs'
-import { RouterLink } from '@ms7/bui'
+import { Link } from '@ms7/ui'
 
 const Breadcrumbs = () => {
     const breadcrumbs = useBreadcrumbs()
@@ -9,7 +9,7 @@ const Breadcrumbs = () => {
     const Breadcrumb = (index: number, path: string, name: string, isLast: boolean) => {
         const aria: React.AriaAttributes = { 'aria-current': 'page' }
         const classes = `breadcrumb-item ${isLast ? 'active' : ''}`
-        const text = isLast ? name : (<RouterLink to={path}>{name}</RouterLink>)
+        const text = isLast ? name : (<Link to={path}>{name}</Link>)
 
         return (
             <li

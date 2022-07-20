@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Component = styled.div`
+interface SpinnerProps {
+    size?: number,
+}
+
+const StyledSpinner = styled.div<SpinnerProps>`
     border: 2px solid #f3f3f3;
     border-top: 2px solid #3498db;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: ${props => props.security || 20}px;
+    height: ${props => props.security || 20}px;
     animation: rotate 1s linear infinite;
 
     @keyframes rotate {
@@ -15,4 +19,4 @@ const Component = styled.div`
     }
 `
 
-export const LoaderSmall = () => (<Component />)
+export const Spinner = (props: SpinnerProps) => (<StyledSpinner size={props.size} />)

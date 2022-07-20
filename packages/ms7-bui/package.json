@@ -15,10 +15,7 @@
     "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts --external react",
     "dev": "node_modules/.bin/tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "test-storybook": "test-storybook"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",

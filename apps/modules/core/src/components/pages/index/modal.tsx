@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Button } from '@ms7/bui'
+import Button from 'react-bootstrap/Button'
 import SimpleModal from 'Core/components/modals/simple-modal'
 import { useTranslation } from 'react-i18next'
-import { Card } from '@ms7/bui'
+import { Card } from '@ms7/ui'
 
 const Modal = () => {
     const { t } = useTranslation()

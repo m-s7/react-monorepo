@@ -11,7 +11,6 @@ import { EntrypointComponentProps } from '@ms7/router'
 import i18n from 'Core/i18n'
 import { I18nextProvider } from 'react-i18next'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 
 logging.addConfigurationOption({ minLevels: { 'websocket': getLogLevelForEnv(isDev()) }})
 

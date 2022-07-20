@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
-import { Button } from '@ms7/bui'
-import { Card } from '@ms7/bui'
+import Button from 'react-bootstrap/Button'
+import { Card } from '@ms7/ui'
 
 interface ErrorFallbackProps extends React.HTMLAttributes<HTMLDivElement> {
     error: Error | null | undefined,

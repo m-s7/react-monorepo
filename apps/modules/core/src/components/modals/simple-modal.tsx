@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import { Modal } from 'bootstrap'
 import { useTranslation } from 'react-i18next'
-import { Button } from '@ms7/bui'
+import Button from 'react-bootstrap/Button'
 
 interface ModalProps extends React.PropsWithChildren {
     title?: string,

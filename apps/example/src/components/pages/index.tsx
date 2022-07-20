@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import logo from '@/assets/logo.svg'
-import { Card } from '@ms7/bui'
+import { Card } from '@ms7/ui'
 import styled from 'styled-components'
 import { env } from '@ms7/common'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
 
 const Logo = styled.img`
     height: 20vw;
@@ -22,7 +21,6 @@ const Logo = styled.img`
 
 const Index = () => {
     const { t } = useTranslation()
-    const n = useNavigate()
 
     return (
         <div className="d-flex justify-content-center">

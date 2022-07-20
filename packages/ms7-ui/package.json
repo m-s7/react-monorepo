@@ -30,6 +30,7 @@
     "react": "^18.0.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
+    "react-bootstrap": "^2.4.0",
     "styled-components": "^5.3.5",
     "tsup": "^6.0.1",
     "typescript": "^4.6.3"

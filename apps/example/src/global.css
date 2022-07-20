@@ -1,11 +1,11 @@
 @import "~@ms7/ui/dist/index.css";
 
 h1, h2, h3, h4, h5, pre, span, div, hr {
-    color: #d1d1d1;
+    color: var(--text-default);
 }
 
 input, label {
-    color: #666666 !important;
+    color: var(--text-secondary) !important;
 }
 
 html {
@@ -35,11 +35,11 @@ body {
     width: 40px;
 }
 
-a {
-    color: #1098ad;
-    text-decoration: none;
-}
-
 .breadcrumb {
     margin-bottom: 0 !important;
+}
+
+.container-sidebar {
+    width: 250px;
+    min-width: 250px;
 }

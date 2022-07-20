@@ -5,7 +5,7 @@ import Logout from '@/components/layout/pages/logout'
 import { RouterConfig } from '@ms7/router'
 import i18n from '@/i18n'
 import { Role } from '@ms7/auth-providers'
-import { LayoutEmpty } from '@ms7/bui'
+import { LayoutEmpty } from '@ms7/ui'
 
 const config: RouterConfig = {
     routes: [

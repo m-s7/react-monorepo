@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { Icon } from '@ms7/bui'
-import { RouterLink } from '@ms7/bui'
 import { getActiveMenuNode, getFlatMenu } from '@/utils/menu-utils'
 import { useLocation } from 'react-router-dom'
 import { MenuConfig } from '@ms7/common'
@@ -55,25 +54,24 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
 
     return (
         <>
-            <RouterLink to={'#'}>
-                <button
-                    className={'align-items-center rounded collapsed nav-link text-white'}
-                    data-bs-toggle='collapse'
-                    data-bs-target={`#${id}-collapse`}
-                    aria-expanded={'true'}>
-                    {icon &&
-                        <Icon
-                            variant={icon}
-                            size={'sm'}
-                            className={'me-2'} />
-                    }
-                    {text}
-                    <Icon
-                        variant={isChevronExpanded ? 'chevron-down' : 'chevron-left'}
-                        size={'sm'}
-                        className={'ms-2'} />
-                </button>
-            </RouterLink>
+            <a
+                href="#"
+                className="align-items-center rounded collapsed nav-link text-white"
+                data-bs-toggle="collapse"
+                data-bs-target={`#${id}-collapse`}
+                aria-expanded={'true'}>
+                {icon &&
+                        <FontAwesomeIcon
+                            icon={icon}
+                            size="sm"
+                            className="me-2" />
+                }
+                {text}
+                <FontAwesomeIcon
+                    icon={isChevronExpanded ? 'chevron-down' : 'chevron-left'}
+                    size="sm"
+                    className="ms-2" />
+            </a>
             <div
                 ref={ref}
                 className={`collapse ${isExpanded ? 'show' : ''}`}

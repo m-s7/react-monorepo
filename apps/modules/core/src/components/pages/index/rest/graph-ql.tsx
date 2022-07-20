@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button'
 import { useFetchCarsQuery } from 'Core/api/graphql/generated'
 import { useQueryClient } from 'react-query'
-import { Button, LoaderSmall, Card } from '@ms7/bui'
+import { Card, Spinner } from '@ms7/ui'
 
 const GraphQL = () => {
     const endpoint = 'http://localhost:4000'
@@ -43,8 +44,8 @@ const GraphQL = () => {
     
     return (
         <div className="d-flex justify-content-center">
-            <Card className="m-1 w-50 align-items-center">
-                {(isFetching || isLoadingMock) ? <LoaderSmall /> : <Content />}
+            <Card className="w-50 align-items-center">
+                {(isFetching || isLoadingMock) ? <Spinner /> : <Content />}
             </Card>
         </div>
     )

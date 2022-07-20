@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { User } from 'Core/business/types/user'
+import Button from 'react-bootstrap/Button'
 import ErrorFallback from 'Core/components/error-fallback'
-import { Button, LoaderSmall, Card } from '@ms7/bui'
+import { User } from 'Core/business/types/user'
+import { Card, Spinner } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { getUser, getUsers, createUser, updateUser, patchUser, deleteUser } from 'Core/api/rq-user-api'
@@ -94,10 +95,10 @@ const RestRQ = () => {
     return (
         <>
             <ErrorFallback
-                className="d-flex justify-content-center m-1"
+                className="d-flex justify-content-center"
                 error={error}
                 onRetry={() => refetch() }>
-                <div className="d-flex flex-row m-1">
+                <div className="d-flex flex-row">
                     <Card className="w-25 me-1">
                         <div className="d-flex flex-column align-items-center">
                             <p>{t('rest-rq.label.actions')}</p>
@@ -140,19 +141,19 @@ const RestRQ = () => {
                     <Card className="w-25 me-1">
                         <div className="d-flex flex-column align-items-center">
                             <p>{t('rest-rq.label.results-mutation')}</p>
-                            {isMutating ? <LoaderSmall /> : <MutatedResult />}
+                            {isMutating ? <Spinner /> : <MutatedResult />}
                         </div>
                     </Card>
                     <Card className="w-25 me-1">
                         <div className="d-flex flex-column align-items-center">
                             <p>{t('rest-rq.label.results-lazy')}</p>
-                            {isFetchingLazy ? <LoaderSmall /> : <User />}
+                            {isFetchingLazy ? <Spinner /> : <User />}
                         </div>
                     </Card>
                     <Card className="w-25">
                         <div className="d-flex flex-column align-items-center">
                             <p>{t('rest-rq.label.results')}</p>
-                            {(isLoading || isFetching) ? <LoaderSmall /> : <Users />}
+                            {(isLoading || isFetching) ? <Spinner /> : <Users />}
                         </div>
                     </Card>
                 </div>
