@@ -1,7 +1,7 @@
 import Keycloak from 'keycloak-js'
 import { isEmpty } from 'lodash'
 import { logging } from '@ms7/logger'
-import { AuthModel, UserInfo } from '../auth-provider'
+import { AuthModel, UserInfo } from '../types'
 
 export interface KeycloakConfig {
     url: string,

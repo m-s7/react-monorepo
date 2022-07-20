@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import KeycloakAuth, { KeycloakConfig } from './keycloak-auth'
-import { AuthProviderComponentProps } from '../auth-provider'
+import { AuthProviderComponentProps } from '../types'
 
 type KeycloakErrorComponentType = React.ComponentType<{ error: Error }>
 type KeycloakSuspenseComponentType = React.ComponentType

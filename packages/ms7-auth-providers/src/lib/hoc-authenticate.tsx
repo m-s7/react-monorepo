@@ -20,7 +20,7 @@ export const withAuth = <T extends Props = Props>(WrappedComponent: React.Compon
             if(authContext) {
                 await authContext.validate()
 
-                //TODO: refactor (don't logout here, instead return roles false is user is not authenticated)
+                // TODO: probably not needed???
 
                 // if(!authContext.isAuthenticated())
                 //     authContext.logout().then()

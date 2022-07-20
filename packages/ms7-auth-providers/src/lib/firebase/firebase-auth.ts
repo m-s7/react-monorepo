@@ -1,4 +1,4 @@
-import { AuthModel, LoginCredentials, UserInfo } from '../auth-provider'
+import { AuthModel, LoginCredentials, UserInfo } from '../types'
 import { FirebaseApp, FirebaseOptions, initializeApp } from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword, UserCredential, AuthError, signOut } from 'firebase/auth'
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { AuthProviderComponentProps } from '../auth-provider'
+import { AuthProviderComponentProps } from '../types'
 import { FirebaseOptions } from 'firebase/app'
 import FirebaseAuth from './firebase-auth'
 
