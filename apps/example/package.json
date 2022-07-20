@@ -17,7 +17,6 @@
     "@ms7/auth-providers": "*",
     "@ms7/breadcrumbs": "*",
     "@ms7/ui": "*",
-    "@ms7/bui": "*",
     "@ms7/common": "*",
     "@ms7/i18n": "*",
     "@ms7/logger": "*",

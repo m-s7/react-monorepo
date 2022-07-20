@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from '../components/link'
 import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardCentered } from '../components/card-centered'
 import styled from 'styled-components'
@@ -9,8 +10,8 @@ export interface FullPageFatalErrorProps {
     homeLinkName?: string,
 }
 
-const Link = styled.a`
-    text-transform:capitalize;
+const StyledLink = styled(Link)`
+    text-transform: capitalize;
 `
 
 export const FullPageFatalError = ({ error, header, homeLinkName, children }: React.PropsWithChildren<FullPageFatalErrorProps>) => {
@@ -22,7 +23,7 @@ export const FullPageFatalError = ({ error, header, homeLinkName, children }: Re
                     <pre>Refresh page to try again</pre>
                     {homeLinkName &&
                         <span>
-                            <Link href="/">{homeLinkName}</Link>
+                            <StyledLink to="/">{homeLinkName}</StyledLink>
                         </span>
                     }
                 </CardCentered>

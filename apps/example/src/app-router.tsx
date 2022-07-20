@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { RouterGenerator } from '@ms7/router'
-import { Forbidden403, NotFound404 } from '@ms7/bui'
+import { Forbidden403, NotFound404 } from '@ms7/ui'
 import { getRoutes } from '@ms7/router'
 import { getAppsEntrypointsConfigs } from '@/utils/apps-utils'
 import Layout from '@/layouts/layout'

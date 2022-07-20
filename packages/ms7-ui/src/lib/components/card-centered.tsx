@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Card as BootstrapCard } from 'react-bootstrap'
 
-interface CardSmallCenteredProps extends React.HTMLAttributes<HTMLElement> {
-    header?: string,
-    //min-width, height,
+interface CardCenteredProps extends React.HTMLAttributes<HTMLDivElement>, React.AriaAttributes {
+    header?: React.ReactNode | React.ReactNode[],
 }
 
-const Component = styled.div`
+const StyledCardCentered = styled(BootstrapCard)`
     color: #ffffff;
     background-color: #343a40 !important;
     border: 0 !important;
@@ -14,7 +14,7 @@ const Component = styled.div`
     height: 450px;
 `
 
-const ComponentBody = styled.div`
+const StyledCardCenteredBody = styled(BootstrapCard.Body)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,15 +23,17 @@ const ComponentBody = styled.div`
     min-width: 450px;
 `
 
-export const CardCentered = (props: CardSmallCenteredProps) => {
-    const { header, className, children } = props
+export const CardCentered = (props: CardCenteredProps) => {
+    const { header, className, children, ...rest } = props
 
     return (
-        <Component className={className ? `card ${className}` : 'card'}>
-            <div className={'card-header text-center'}>{header ?? header}</div>
-            <ComponentBody className={'card-body'}>
+        <StyledCardCentered
+            className={`${className} background-darker text-center`}
+            {...rest}>
+            {header && <BootstrapCard.Header>{header}</BootstrapCard.Header>}
+            <StyledCardCenteredBody>
                 {children}
-            </ComponentBody>
-        </Component>
+            </StyledCardCenteredBody>
+        </StyledCardCentered>
     )
 }

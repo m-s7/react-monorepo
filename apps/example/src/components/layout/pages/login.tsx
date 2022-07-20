@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Card, LayoutEmpty } from '@ms7/ui'
-import { FullPageLoader } from '@ms7/bui'
+import { Card, LayoutEmpty, FullPageLoader } from '@ms7/ui'
 import Button from 'react-bootstrap/Button'
 import { Trans, useTranslation } from 'react-i18next'
 import { env } from '@ms7/common'

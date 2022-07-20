@@ -1,8 +1,8 @@
 import React from 'react'
 import { FatalError } from '@ms7/common'
+import { Link } from '../components/link'
 import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardCentered } from '../components/card-centered'
-import { RouterLink } from '../router-link'
 
 interface FullPageErrorProps {
     error: FatalError | Error,
@@ -20,9 +20,9 @@ export const FullPageError = (props: FullPageErrorProps) => {
                 <h2>{title}</h2>
                 {allowNavigation &&
                     <p>
-                        <RouterLink to='/'>
+                        <Link to='/'>
                             {'Index'}
-                        </RouterLink>
+                        </Link>
                     </p>
                 }
             </CardCentered>

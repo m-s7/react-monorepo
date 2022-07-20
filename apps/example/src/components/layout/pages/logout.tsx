@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { AuthProviderContext } from '@ms7/auth-providers'
-import { FullPageLoader } from '@ms7/bui'
+import { FullPageLoader } from '@ms7/ui'
 import { env } from '@ms7/common'
 
 const Logout = () => {

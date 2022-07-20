@@ -1,10 +1,10 @@
 import React from 'react'
+import { Link } from '../components/link'
 import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardCentered } from '../components/card-centered'
-import { RouterLink } from '../router-link'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
-import { Icon } from '../icon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 library.add(faCircleQuestion)
 
@@ -20,14 +20,14 @@ export const NotFound404 = (props: React.PropsWithChildren<NotFound404Props>) =>
     return (
         <LayoutEmpty>
             <CardCentered header={header}>
-                <Icon
-                    variant={'circle-question'}
-                    size={'7x'}
+                <FontAwesomeIcon
+                    icon="circle-question"
+                    size="7x"
                     className="mb-5" />
                 <h2>{title}</h2>
-                <RouterLink to={to}>
+                <Link to={to}>
                     {children}
-                </RouterLink>
+                </Link>
             </CardCentered>
         </LayoutEmpty>
     )

@@ -7,11 +7,11 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement>, React.AriaAttr
 }
 
 export const Card = (props: CardProps) => {
-    const { children, className, header, ...rest } = props
+    const { children, className = '', header, ...rest } = props
 
     return (
         <BootstrapCard
-            className={className ? `${className} background-darker` : 'background-darker'}
+            className={`${className} background-darker`}
             {...rest}>
             {header && <BootstrapCard.Header>{header}</BootstrapCard.Header>}
             <BootstrapCard.Body>

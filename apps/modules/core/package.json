@@ -13,7 +13,6 @@
   "dependencies": {
     "@ms7/auth-providers": "*",
     "@ms7/ui": "*",
-    "@ms7/bui": "*",
     "@ms7/common": "*",
     "@ms7/event-bus": "*",
     "@ms7/i18n": "*",

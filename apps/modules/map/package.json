@@ -16,7 +16,6 @@
     "@ms7/auth-providers": "*",
     "@ms7/router": "*",
     "@ms7/ui": "*",
-    "@ms7/bui": "*",
     "@ms7/i18n": "*",
     "@reduxjs/toolkit": "^1.8.1",
     "dotenv": "^16.0.0",

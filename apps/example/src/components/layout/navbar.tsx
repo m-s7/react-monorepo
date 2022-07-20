@@ -9,15 +9,15 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'
 
+const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng).then()
+}
+
 const Navbar = () => {
     const { t } = useTranslation()
     const isApiLoading = useApiIsLoading()
     const authContext = useContext(AuthProviderContext)
     const navigate = useNavigate()
-
-    const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng).then()
-    }
 
     const UserContent = () => {
         if(!authContext) return null

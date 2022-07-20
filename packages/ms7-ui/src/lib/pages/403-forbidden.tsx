@@ -1,10 +1,10 @@
 import React from 'react'
 import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardCentered } from '../components/card-centered'
-import { RouterLink } from '../router-link'
+import { Link } from '../components/link'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBan } from '@fortawesome/free-solid-svg-icons'
-import { Icon } from '../icon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 library.add(faBan)
 
@@ -20,14 +20,14 @@ export const Forbidden403 = (props: React.PropsWithChildren<Forbidden403Props>) 
     return (
         <LayoutEmpty>
             <CardCentered header={header}>
-                <Icon
-                    variant={'ban'}
-                    size={'7x'}
+                <FontAwesomeIcon
+                    icon="ban"
+                    size="7x"
                     className="mb-5" />
                 <h2>{title}</h2>
-                <RouterLink to={to}>
+                <Link to={to}>
                     {children}
-                </RouterLink>
+                </Link>
             </CardCentered>
         </LayoutEmpty>
     )
