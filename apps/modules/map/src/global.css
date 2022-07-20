@@ -1,5 +1,9 @@
-* {
+h1, h2, h3, h4, h5, pre, span, div, hr {
     color: #d1d1d1;
+}
+
+input, label {
+    color: #666666 !important;
 }
 
 html {
@@ -15,4 +19,9 @@ body {
 
 #root {
     height: 100%;
+}
+
+a {
+    color: #1098ad;
+    text-decoration: none;
 }

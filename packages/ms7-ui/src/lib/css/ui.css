@@ -1,0 +1,17 @@
+:root {
+    --dark: #454d55;
+    --darker: #343a40;
+    --darkest: #212529;
+}
+
+.background-dark {
+    background-color: var(--dark);
+}
+
+.background-darker {
+    background-color: var(--darker);
+}
+
+.background-darkest {
+    background-color: var(--darkest);
+}

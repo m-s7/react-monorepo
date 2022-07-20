@@ -1,7 +1,7 @@
 import React from 'react'
 import Entrypoint from 'Map/entrypoint'
 import { createRoot } from 'react-dom/client'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import 'Map/global.css'
 import styled from 'styled-components'
 import { history } from '@ms7/router'

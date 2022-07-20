@@ -1,12 +1,10 @@
-import React, { useContext, useLayoutEffect, useState } from 'react'
-import FooterDropdownItem from '@/components/layout/sidebar/footer-dropdown-item'
+import React, { useLayoutEffect, useState } from 'react'
 import { RouterLink } from '@ms7/bui'
 import { Icon } from '@ms7/bui'
 import { useLocation } from 'react-router-dom'
 import AppMenuGenerator from '@/components/generators/app-menu-generator'
 import { getMenu } from '@/utils/menu-utils'
 import { env, MenuConfig } from '@ms7/common'
-import { AuthProviderContext } from '@ms7/auth-providers'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -15,7 +13,6 @@ const Container = styled.div`
 
 const Sidebar = () => {
     const location = useLocation()
-    const authContext = useContext(AuthProviderContext)
     const [menu, setMenu] = useState<MenuConfig[]>()
 
     useLayoutEffect(() => {
