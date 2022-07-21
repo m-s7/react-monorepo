@@ -19,6 +19,14 @@ body {
     flex: 1;
 }
 
+a {
+    text-decoration: none;
+}
+
+ol > li > a, a:hover {
+    color: var(--text-link);
+}
+
 #root {
     height: 100%;
 }

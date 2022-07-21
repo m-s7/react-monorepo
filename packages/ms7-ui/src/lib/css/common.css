@@ -8,6 +8,51 @@
     --text-link: #1098ad;
 }
 
+.font-size-smallest {
+    font-size: 10px;
+}
+
+.font-size-smaller {
+    font-size: 12px;
+}
+
+.font-size-small {
+    font-size: 14px;
+}
+
+.font-size-normal {
+    font-size: 16px;
+}
+
+.font-size-large {
+    font-size: 18px;
+}
+
+.font-size-larger {
+    font-size: 20px;
+}
+
+.font-size-largest {
+    font-size: 22px;
+}
+
+
+.text-color-default {
+    color: var(--text-default);
+}
+
+.text-color-primary {
+    color: var(--text-primary);
+}
+
+.text-color-secondary {
+    color: var(--text-secondary);
+}
+
+.text-color-link {
+    color: var(--text-link);
+}
+
 .background-dark {
     background-color: var(--dark);
 }

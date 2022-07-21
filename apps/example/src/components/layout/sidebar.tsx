@@ -4,12 +4,7 @@ import { useLocation } from 'react-router-dom'
 import AppMenuGenerator from '@/components/generators/app-menu-generator'
 import { getMenu } from '@/utils/menu-utils'
 import { env, MenuConfig } from '@ms7/common'
-import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-const Container = styled.div`
-    background-color: #343a40;
-`
 
 const Sidebar = () => {
     const location = useLocation()
@@ -20,11 +15,11 @@ const Sidebar = () => {
     }, [location.pathname])
 
     return (
-        <Container className="d-flex flex-column flex-shrink-0 pt-3 ps-3 pe-3 text-white h-100">
+        <div className="d-flex flex-column flex-shrink-0 pt-3 ps-3 pe-3 background-darker text-white h-100">
             <div className="d-flex justify-content-center">
                 <Link
                     to="/"
-                    className={'d-flex align-items-center mb-3 mb-md-0 text-white text-decoration-none'}>
+                    className="d-flex align-items-center mb-3 mb-md-0 text-white text-decoration-none">
                     <FontAwesomeIcon
                         icon="dashboard"
                         size="2x" />
@@ -36,7 +31,7 @@ const Sidebar = () => {
                 {menu && AppMenuGenerator(menu, location)}
             </ul>
             <pre>v0.0.1</pre>
-        </Container>
+        </div>
     )
 }
 

@@ -76,5 +76,6 @@ module.exports = {
         'array-bracket-spacing': ['warn', 'never'],
         'generator-star-spacing': 'off',
         '@typescript-eslint/no-this-alias': 'off',
+        'react-hooks/exhaustive-deps': 'off',
     },
 }
