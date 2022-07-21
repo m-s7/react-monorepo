@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import Button from 'react-bootstrap/Button'
 import { CardCentered } from '@ms7/ui'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBomb } from '@fortawesome/free-solid-svg-icons/faBomb'
 
 interface ErrorFallbackProps extends React.HTMLAttributes<HTMLDivElement> {
     error: Error | null | undefined,
@@ -16,7 +17,7 @@ const ErrorFallback = (props: PropsWithChildren<ErrorFallbackProps>) => {
             <div className={className}>
                 <CardCentered>
                     <FontAwesomeIcon
-                        icon="bomb"
+                        icon={faBomb}
                         size="7x"
                         className="mb-5" />
                     <pre>Something went wrong</pre>

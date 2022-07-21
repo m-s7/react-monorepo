@@ -7,6 +7,8 @@ import { MenuConfig } from '@ms7/common'
 import { Role } from '@ms7/auth-providers'
 import { Collapse } from 'react-bootstrap'
 import { Link } from '@ms7/ui'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft'
 
 interface MenuDropdownItemProps extends React.HTMLAttributes<HTMLElement> {
     id: string,
@@ -52,7 +54,7 @@ const MenuDropdownItem = (props: MenuDropdownItemProps) => {
                 }
                 {text}
                 <FontAwesomeIcon
-                    icon={isOpen ? 'chevron-down' : 'chevron-left'}
+                    icon={isOpen ? faChevronDown : faChevronLeft}
                     size="sm"
                     className="ms-2" />
             </Link>

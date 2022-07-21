@@ -5,6 +5,7 @@ import AppMenuGenerator from '@/components/generators/app-menu-generator'
 import { getMenu } from '@/utils/menu-utils'
 import { env, MenuConfig } from '@ms7/common'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDashboard } from '@fortawesome/free-solid-svg-icons/faDashboard'
 
 const Sidebar = () => {
     const location = useLocation()
@@ -21,7 +22,7 @@ const Sidebar = () => {
                     to="/"
                     className="d-flex align-items-center mb-3 mb-md-0 text-white text-decoration-none">
                     <FontAwesomeIcon
-                        icon="dashboard"
+                        icon={faDashboard}
                         size="2x" />
                     <span className="fs-4 ms-2">{env.REACT_APP_NAME}</span>
                 </Link>
