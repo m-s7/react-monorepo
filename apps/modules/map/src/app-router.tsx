@@ -13,7 +13,7 @@ const AppRouter = (props: EntrypointComponentProps) => {
 
     const Component404 = (
         <NotFound404
-            to={'/'}
+            to="/"
             title={t('error.not-found')}
             header={env.REACT_APP_NAME}>
             {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
@@ -21,7 +21,7 @@ const AppRouter = (props: EntrypointComponentProps) => {
 
     const Forbidden = (
         <Forbidden403
-            to={'/'}
+            to="/"
             title={t('error.not-found')}
             header={env.REACT_APP_NAME}>
             {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
@@ -33,7 +33,7 @@ const AppRouter = (props: EntrypointComponentProps) => {
             <Routes>
                 {RouterGenerator(routes, Forbidden, props.parentLayout)}
                 <Route
-                    path={'*'}
+                    path="*"
                     element={Component404} />
             </Routes>
         </>

@@ -76,19 +76,19 @@ const Index = () => {
                 <div className="d-flex flex-column mb-2">
                     <h5>{t('index.label.mode')}:</h5>
                     <ModeButton
-                        mode={'single'}
+                        mode="single"
                         currentMode={mode}
                         clickHandler={setModeHandler}>
                         {t('index.button.single')}
                     </ModeButton>
                     <ModeButton
-                        mode={'group'}
+                        mode="group"
                         currentMode={mode}
                         clickHandler={setModeHandler}>
                         {t('index.button.group')}
                     </ModeButton>
                     <ModeButton
-                        mode={'group-alt'}
+                        mode="group-alt"
                         currentMode={mode}
                         clickHandler={setModeHandler}>
                         {t('index.button.group-alt')}

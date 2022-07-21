@@ -10,8 +10,8 @@ describe('<NotFound>', () => {
         const component: RenderResult = render(
             <MemoryRouter>
                 <NotFound404
-                    to={'/test-link'}
-                    header={'Test header - 123'}>
+                    to="test-link"
+                    header="Test header - 123">
                     {'Test Text'}
                 </NotFound404>
             </MemoryRouter>)

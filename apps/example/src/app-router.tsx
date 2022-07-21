@@ -19,7 +19,7 @@ const AppRouter = () => {
 
     const NotFound = (
         <NotFound404
-            to={'/'}
+            to="/"
             title={t('error.not-found')}
             header={env.REACT_APP_NAME}>
             {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
@@ -51,7 +51,7 @@ const AppRouter = () => {
                 )
             })}
             <Route
-                path={'*'}
+                path="*"
                 element={NotFound} />
         </Routes>
     )

@@ -1,5 +1,5 @@
 import Index from '@/pages'
-import Admin from '@/components/pages/admin'
+import Admin from '@/pages/admin'
 import Login from '@/components/layout/pages/login'
 import Logout from '@/components/layout/pages/logout'
 import { RouterConfig } from '@ms7/router'

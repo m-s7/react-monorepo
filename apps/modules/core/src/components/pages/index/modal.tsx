@@ -30,13 +30,13 @@ const Modal = () => {
             </Card>
             <SimpleModal
                 show={show}
-                title={'Modal Bootstrap'}
+                title="Modal Bootstrap"
                 onHidden={() => { setShow(false) }}>
                 {'🔥🍉🎪🏠⚽🎨☢🇵🇱'}
             </SimpleModal>
             <SimpleModalRB
                 show={showRB}
-                title={'Modal React Bootstrap'}
+                title="Modal React Bootstrap"
                 onHidden={() => { setShowRB(false) }}>
                 {'🧚🌌🍺🎢🏅🎇🚸🛠'}
             </SimpleModalRB>

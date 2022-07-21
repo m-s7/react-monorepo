@@ -7,10 +7,7 @@ const Logout = () => {
     const authContext = useContext(AuthProviderContext)
 
     useEffect(() => {
-        if(authContext)
-            authContext.logout().then(() => {
-                window.location.replace('/')
-            })
+        if(authContext) authContext.logout().then(() => { window.location.replace('/') })
         else window.location.replace('/')
     }, [])
     

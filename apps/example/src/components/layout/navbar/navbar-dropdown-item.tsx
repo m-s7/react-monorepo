@@ -12,7 +12,7 @@ const NavbarDropdownItem = (props: NavbarDropdownItemProps) => {
         <li {...rest}>
             <Link
                 to={to}
-                className={'dropdown-item'}>
+                className="dropdown-item">
                 {children}
             </Link>
         </li>

@@ -37,7 +37,7 @@ const CoreWebsocketProvider = (props: WebsocketProviderComponentProps) => {
             <FullPageLoader
                 header={env.REACT_APP_NAME}
                 navigateName={env.REACT_APP_HOMEPAGE_NAME}
-                navigatePath={'/'} />
+                navigatePath="/" />
         )
 
     return (<>{children}</>)

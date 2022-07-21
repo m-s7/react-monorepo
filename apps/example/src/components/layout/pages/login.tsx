@@ -22,7 +22,7 @@ const Login = () => {
     if(!authContext || authContext.isAuthenticated())
         return (
             <Navigate
-                to={'/'}
+                to="/"
                 replace={true} />
         )
 
@@ -104,7 +104,7 @@ const Login = () => {
                         <p className="mt-4 mb-3 text-muted">&copy; ms7</p>
                         <pre className="text-center">
                             <Trans
-                                i18nKey={'page.login.label.info'}
+                                i18nKey="page.login.label.info"
                                 components={{ br: <br /> }} />
                         </pre>
                     </div>
