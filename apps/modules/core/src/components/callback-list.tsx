@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Table from 'react-bootstrap/Table'
 
 interface CallbackListProps {
     getItems: (incrementBy: number) => number[],
@@ -8,14 +9,17 @@ interface CallbackListProps {
 const CallbackList = (props: CallbackListProps) => {
     const [items, setItems] = useState<number[]>([])
 
-    const { getItems, className } = props
+    const { getItems, className = '' } = props
 
     useEffect(() => {
         setItems(getItems(3))
     }, [getItems])
     
     return (
-        <table className={`table text-center ${className || ''}`}>
+        <Table
+            striped
+            bordered
+            className={className}>
             <tbody>
                 <tr>
                     {items.map((item, index) => (
@@ -23,7 +27,7 @@ const CallbackList = (props: CallbackListProps) => {
                     ))}
                 </tr>
             </tbody>
-        </table>
+        </Table>
     )
 }
 

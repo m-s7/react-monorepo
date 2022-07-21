@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 import { User } from 'Core/business/types/user'
 import CenteredLoader from 'Core/components/centered-loader'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import { getUsers } from 'Core/api/rq-user-api'
+import Table from 'react-bootstrap/Table'
 
 const UserViewer = () => {
     const { t } =  useTranslation()
@@ -22,7 +23,10 @@ const UserViewer = () => {
             <>
                 <h5>{t('user-viewer.label.users')}:</h5>
                 <hr />
-                <table className="table table-striped table-success">
+                <Table
+                    striped
+                    bordered
+                    variant="success">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -39,7 +43,7 @@ const UserViewer = () => {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </Table>
             </>
         )
     }

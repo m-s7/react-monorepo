@@ -1,4 +1,4 @@
-@import "~@ms7/ui/dist/index.css";
+@import "./common.css";
 
 h1, h2, h3, h4, h5, pre, span, div, hr {
     color: var(--text-default);
@@ -29,25 +29,4 @@ ol > li > a, a:hover {
 
 #root {
     height: 100%;
-}
-
-.w-30 {
-    width: 30%;
-}
-
-.w-35 {
-    width: 35%;
-}
-
-.w-40px {
-    width: 40px;
-}
-
-.breadcrumb {
-    margin-bottom: 0 !important;
-}
-
-.container-sidebar {
-    width: 250px;
-    min-width: 250px;
 }

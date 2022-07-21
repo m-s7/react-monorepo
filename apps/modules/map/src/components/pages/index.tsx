@@ -5,17 +5,11 @@ import { createMapManager, MapManager } from 'Map/business/map-manager'
 import { LeafletMouseEvent, map } from 'leaflet'
 import Button, { ButtonProps } from 'react-bootstrap/Button'
 import { Card } from '@ms7/ui'
-import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 
 type MapMode = 'single' | 'group' | 'group-alt'
 
 let mapManager: MapManager
-
-const MapContainer = styled.div`
-    min-height: 500px;
-    height: 100%;
-`
 
 const ModeButton = (props: ButtonProps & { mode: MapMode, currentMode: MapMode, clickHandler: (mode: MapMode) => void }) => {
     const { mode, currentMode, clickHandler } = props
@@ -74,7 +68,9 @@ const Index = () => {
     return (
         <div className="d-flex h-100">
             <Card className="d-flex flex-grow-1 me-1">
-                <MapContainer id="map" />
+                <div
+                    id="map"
+                    className="map-container" />
             </Card>
             <Card className="w-25">
                 <div className="d-flex flex-column mb-2">

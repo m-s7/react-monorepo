@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import { useFetchCarsQuery } from 'Core/api/graphql/generated'
 import { useQueryClient } from 'react-query'
 import { Card, Spinner } from '@ms7/ui'
+import Table from 'react-bootstrap/Table'
 
 const GraphQL = () => {
     const endpoint = 'http://localhost:4000'
@@ -20,7 +21,9 @@ const GraphQL = () => {
 
     const Content = () => (
         <>
-            <table className="table table-success mb-3">
+            <Table
+                className="mb-3"
+                variant="success">
                 <tbody>
                     <tr className="text-center">
                         {data?.cars.map((car, index) => (
@@ -28,7 +31,7 @@ const GraphQL = () => {
                         ))}
                     </tr>
                 </tbody>
-            </table>
+            </Table>
             <Button
                 onClick={() => {
                     setIsLoadingMock(true)

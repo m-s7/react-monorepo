@@ -4,17 +4,12 @@ import { createRoot } from 'react-dom/client'
 import { history } from '@ms7/router'
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'Core/global.css'
-import styled from 'styled-components'
 import { isDev } from '@ms7/common'
 import { Card } from '@ms7/ui'
 import { Link } from 'react-router-dom'
 import { assignLevelToLoggers, getLogLevelForEnv, logging } from '@ms7/logger'
 logging.configure({ minLevels: assignLevelToLoggers([''], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
-
-const Container = styled.div`
-    background-color: #454d55;
-`
+import 'Core/assets/styles/standalone.css'
 
 const container = document.getElementById('root')
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -22,7 +17,7 @@ const root = createRoot(container!)
 root.render(
     <React.StrictMode>
         <HistoryRouter history={history}>
-            <Container className="p-1">
+            <div className="p-1">
                 <Card className="d-flex flex-column mb-1">
                     Menu
                     <ul className="list-group list-group-horizontal">
@@ -38,7 +33,7 @@ root.render(
                     </ul>
                 </Card>
                 <Entrypoint />
-            </Container>
+            </div>
         </HistoryRouter>
     </React.StrictMode>,
 )
