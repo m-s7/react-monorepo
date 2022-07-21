@@ -1,10 +1,12 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useMemo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { getActiveMenuNode, getFlatMenu } from '@/utils/menu-utils'
 import { useLocation } from 'react-router-dom'
 import { MenuConfig } from '@ms7/common'
 import { Role } from '@ms7/auth-providers'
+import { Collapse } from 'react-bootstrap'
+import { Link } from '@ms7/ui'
 
 interface MenuDropdownItemProps extends React.HTMLAttributes<HTMLElement> {
     id: string,
@@ -16,71 +18,54 @@ interface MenuDropdownItemProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const MenuDropdownItem = (props: MenuDropdownItemProps) => {
-    const ref = useRef<HTMLDivElement>(null)
     const location = useLocation()
     const { id, text, icon, menuChildren = [], firstLevel = false, children } = props
-    const [isExpanded, setIsExpanded] = useState<boolean>()
-    const [isChevronExpanded, setIsChevronExpanded] = useState<boolean>()
+
+    const [isOpen, setIsOpen] = useState(false)
+    const [isInitiallyOpen, setIsInitiallyOpen] = useState(false)
+
+    const isPathInMenuTree = useMemo(() => (getActiveMenuNode(getFlatMenu(menuChildren), location) !== undefined), [location.pathname])
 
     useLayoutEffect(() => {
-        const el = ref.current
-
-        el?.addEventListener('show.bs.collapse', handleShow)
-        el?.addEventListener('hide.bs.collapse', handleHide)
-
-        return () => {
-            el?.removeEventListener('show.bs.collapse', handleShow)
-            el?.removeEventListener('hide.bs.collapse', handleHide)
-        }
+        setIsInitiallyOpen(isPathInMenuTree)
     }, [])
 
     useLayoutEffect(() => {
-        const activePath = getActiveMenuNode(getFlatMenu(menuChildren), location)
-        const isExpanded = (activePath !== undefined)
-
-        setIsExpanded(isExpanded)
-        setIsChevronExpanded(isExpanded)
+        setIsOpen(isPathInMenuTree)
     }, [location.pathname])
-
-    const handleShow = (e: Event) => {
-        setIsChevronExpanded(true)
-        e.stopPropagation()
-    }
-
-    const handleHide = (e: Event) => {
-        setIsChevronExpanded(false)
-        e.stopPropagation()
-    }
 
     return (
         <>
-            <a
-                href="#"
-                className="align-items-center rounded collapsed nav-link text-white"
-                data-bs-toggle="collapse"
-                data-bs-target={`#${id}-collapse`}
-                aria-expanded={'true'}>
+            <Link
+                to="#"
+                onClick={() => {
+                    setIsOpen(!isOpen)
+                }}
+                className="align-items-center rounded nav-link text-white"
+                aria-controls={`${id}-collapse`}
+                aria-expanded={isOpen}>
                 {icon &&
-                        <FontAwesomeIcon
-                            icon={icon}
-                            size="sm"
-                            className="me-2" />
+                    <FontAwesomeIcon
+                        icon={icon}
+                        size="sm"
+                        className="me-2" />
                 }
                 {text}
                 <FontAwesomeIcon
-                    icon={isChevronExpanded ? 'chevron-down' : 'chevron-left'}
+                    icon={isOpen ? 'chevron-down' : 'chevron-left'}
                     size="sm"
                     className="ms-2" />
-            </a>
-            <div
-                ref={ref}
-                className={`collapse ${isExpanded ? 'show' : ''}`}
-                id={`${id}-collapse`}>
-                <ul className="list-unstyled fw-normal pb-1 ms-3">
-                    {children}
-                </ul>
-                {firstLevel && <hr />}
-            </div>
+            </Link>
+            <Collapse in={isOpen}>
+                <div
+                    className={`${isInitiallyOpen ? 'transition-none' : ''}`}
+                    id={`${id}-collapse`}>
+                    <ul className="list-unstyled fw-normal pb-1 ms-3">
+                        {children}
+                    </ul>
+                    {firstLevel && <hr />}
+                </div>
+            </Collapse>
         </>
     )
 }
