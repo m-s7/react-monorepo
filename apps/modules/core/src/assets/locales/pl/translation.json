@@ -55,7 +55,8 @@
 
   "modal": {
     "button": {
-      "show-modal": "Show Modal"
+      "show-modal": "Wyświetl Modal Bootstrap",
+      "show-modal-rb": "Wyświetl Modal React Bootstrap"
     }
   },
 

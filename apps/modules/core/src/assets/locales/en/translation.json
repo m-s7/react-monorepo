@@ -73,7 +73,8 @@
 
   "modal": {
     "button": {
-      "show-modal": "Show Modal"
+      "show-modal": "Show Modal Bootstrap",
+      "show-modal-rb": "Show Modal React Bootstrap"
     }
   },
 
