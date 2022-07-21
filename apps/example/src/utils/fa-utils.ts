@@ -3,7 +3,7 @@ import {
     faHome, faDashboard, faMap, faCog, faDiagramProject, faAddressBook, faPizzaSlice, faChevronUp, faChevronDown,
     faChevronLeft, faChevronRight, faBookOpen, faNetworkWired, faBox, faBoxOpen, faBullhorn, faTowerBroadcast,
     faCircleExclamation, faLock, faGamepad, faBed, faProjectDiagram, faSquare, faMemory, faArrowRotateLeft,
-    faLockOpen, faUser, faUserCircle,
+    faLockOpen, faUser, faUserCircle, faBomb,
 } from '@fortawesome/free-solid-svg-icons'
 
 export const loadFaIcons = (): void => {
@@ -11,5 +11,5 @@ export const loadFaIcons = (): void => {
         faHome, faDashboard, faMap, faCog, faDiagramProject, faAddressBook, faPizzaSlice, faChevronUp, faChevronDown,
         faChevronLeft, faChevronRight, faBookOpen, faNetworkWired, faBox, faBoxOpen, faBullhorn, faTowerBroadcast,
         faCircleExclamation, faLock, faGamepad, faBed, faProjectDiagram, faSquare, faMemory, faArrowRotateLeft,
-        faLockOpen, faUser, faUserCircle)
+        faLockOpen, faUser, faUserCircle, faBomb)
 }

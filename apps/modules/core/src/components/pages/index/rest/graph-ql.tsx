@@ -69,7 +69,7 @@ const GraphQL = () => {
             }}>
             <div className="d-flex justify-content-center">
                 <Card className="w-50 align-items-center">
-                    {(isFetching || isLoadingMock) ? <Spinner size={75} /> : <Content />}
+                    {(isFetching || isLoadingMock) ? <Spinner size={125} /> : <Content />}
                 </Card>
             </div>
         </ErrorFallback>

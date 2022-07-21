@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import Button from 'react-bootstrap/Button'
-import { Card } from '@ms7/ui'
+import { CardCentered } from '@ms7/ui'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface ErrorFallbackProps extends React.HTMLAttributes<HTMLDivElement> {
     error: Error | null | undefined,
@@ -13,25 +14,27 @@ const ErrorFallback = (props: PropsWithChildren<ErrorFallbackProps>) => {
     if(error)
         return (
             <div className={className}>
-                <Card>
-                    <div className="d-flex flex-column align-items-center">
-                        <div className="text-warning mb-2">Something went wrong:</div>
-                        <div
-                            className="alert alert-danger"
-                            role="alert">
-                            {error?.message}
-                        </div>
-                        {onRetry &&
-                            <Button
-                                className="ms-3"
-                                onClick={() => {
-                                    onRetry()
-                                }}>
-                                Try again
-                            </Button>
-                        }
-                    </div>
-                </Card>
+                <CardCentered>
+                    <FontAwesomeIcon
+                        icon="bomb"
+                        size="7x"
+                        className="mb-5" />
+                    <pre>Something went wrong</pre>
+                    <pre
+                        className="alert alert-danger"
+                        role="alert">
+                        {error?.message}
+                    </pre>
+                    {onRetry &&
+                    <Button
+                        className="mt-3"
+                        onClick={() => {
+                            onRetry()
+                        }}>
+                        Try again
+                    </Button>
+                    }
+                </CardCentered>
             </div>
         )
 

@@ -2,11 +2,8 @@ import React from 'react'
 import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardCentered } from '../components/card-centered'
 import { Link } from '../components/link'
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-library.add(faBan)
 
 interface Forbidden403Props {
     to: string,
@@ -21,7 +18,7 @@ export const Forbidden403 = (props: React.PropsWithChildren<Forbidden403Props>) 
         <LayoutEmpty>
             <CardCentered header={header}>
                 <FontAwesomeIcon
-                    icon="ban"
+                    icon={faBan}
                     size="7x"
                     className="mb-5" />
                 <h2>{title}</h2>
