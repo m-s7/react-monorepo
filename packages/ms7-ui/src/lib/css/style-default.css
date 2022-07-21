@@ -4,7 +4,7 @@ h1, h2, h3, h4, h5, pre, span, div, hr {
     color: var(--text-default);
 }
 
-input, label {
+input, input:focus {
     color: var(--text-secondary) !important;
 }
 

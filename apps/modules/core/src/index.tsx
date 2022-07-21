@@ -5,8 +5,7 @@ import { history } from '@ms7/router'
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { isDev } from '@ms7/common'
-import { Card } from '@ms7/ui'
-import { Link } from 'react-router-dom'
+import { Card, Link } from '@ms7/ui'
 import { assignLevelToLoggers, getLogLevelForEnv, logging } from '@ms7/logger'
 logging.configure({ minLevels: assignLevelToLoggers([''], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
 import 'Core/assets/styles/standalone.css'
@@ -18,11 +17,10 @@ root.render(
     <React.StrictMode>
         <HistoryRouter history={history}>
             <div className="p-1">
-                <Card className="d-flex flex-column mb-1">
-                    Menu
+                <Card className="d-flex flex-column mb-1 align-items-center">
                     <ul className="list-group list-group-horizontal">
                         <li className="list-group-item"><Link to={'/rest-rq'}>Rest RQ</Link></li>
-                        <li className="list-group-item"><Link to={'/graph-ql'}>Graph QL</Link></li>
+                        <li className="list-group-item "><Link to={'/graph-ql'}>Graph QL</Link></li>
                         <li className="list-group-item"><Link to={'/memo'}>Memo</Link></li>
                         <li className="list-group-item"><Link to={'/modal'}>Modal</Link></li>
                         <li className="list-group-item"><Link to={'/redux'}>Redux</Link></li>

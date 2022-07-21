@@ -6,6 +6,7 @@ import { env } from '@ms7/common'
 import { AuthProviderContext } from '@ms7/auth-providers'
 import { useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Form from 'react-bootstrap/Form'
 
 const Login = () => {
     const { t } = useTranslation()
@@ -42,68 +43,71 @@ const Login = () => {
                     <strong>{t('common.error')}:</strong> {t(`error.${error?.message}`)}
                 </div>}
                 <Card>
-                    <form className="d-flex flex-column align-items-center p-4">
+                    <div className="d-flex flex-column align-items-center p-4">
                         <FontAwesomeIcon
                             icon="lock"
                             size="4x"
-                            className="mb-5" />
-                        <h1 className="h3 mb-3 fw-normal">{t('page.login.label.please-sign-in')}</h1>
-                        <div className="form-floating mb-1">
-                            <input
-                                value={email}
-                                onInput={e => setEmail((e.target as HTMLInputElement).value)}
-                                type="email"
-                                className="form-control"
-                                autoComplete="true"
-                                id="floatingInput"
-                                placeholder="name@example.com" />
-                            <label htmlFor="floatingInput">{t('page.login.form.email-address')}</label>
-                        </div>
-                        <div className="form-floating mb-5">
-                            <input
-                                value={password}
-                                onInput={e => setPassword((e.target as HTMLInputElement).value)}
-                                type="password"
-                                className="form-control"
-                                autoComplete="true"
-                                id="floatingPassword"
-                                placeholder="Password" />
-                            <label htmlFor="floatingPassword">{t('page.login.form.password')}</label>
-                        </div>
-                        {/*<div className="checkbox mb-3">*/}
-                        {/*    <label>*/}
-                        {/*        <input*/}
-                        {/*            type="checkbox"*/}
-                        {/*            value="remember-me" /> Remember me*/}
-                        {/*    </label>*/}
-                        {/*</div>*/}
-                        <Button
-                            onClick={e => {
-                                e.preventDefault()
-                                setIsAuthenticating(true)
+                            className="mb-4" />
+                        <h1 className="h3 mb-4 fw-normal">{t('page.login.label.please-sign-in')}</h1>
+                        <Form>
+                            <Form.Group
+                                className="mb-3"
+                                controlId="formEmail">
+                                <Form.Label>{t('page.login.form.email-address')}</Form.Label>
+                                <Form.Control
+                                    className="text-color-link"
+                                    value={email}
+                                    onInput={e => setEmail((e.target as HTMLInputElement).value)}
+                                    type="email"
+                                    placeholder="Enter email" />
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3 border-success"
+                                controlId="formEmail">
+                                <Form.Label>{t('page.login.form.password')}</Form.Label>
+                                <Form.Control
+                                    className="border-success"
+                                    type="password"
+                                    value={password}
+                                    onInput={e => setPassword((e.target as HTMLInputElement).value)}
+                                    placeholder="Enter password" />
+                            </Form.Group>
+                            {/*<div className="checkbox mb-3">*/}
+                            {/*    <label>*/}
+                            {/*        <input*/}
+                            {/*            type="checkbox"*/}
+                            {/*            value="remember-me" /> Remember me*/}
+                            {/*    </label>*/}
+                            {/*</div>*/}
+                            <hr />
+                            <Button
+                                onClick={e => {
+                                    e.preventDefault()
+                                    setIsAuthenticating(true)
 
-                                authContext?.login({ email, password })
-                                    .then(() => {
-                                        navigate((location.state as { referrer: string } | null)?.referrer || '/')
-                                    })
-                                    .catch(error => {
-                                        setError(error)
-                                    })
-                                    .finally(() => {
-                                        setIsAuthenticating(false)
-                                    })
-                            }}
-                            className="w-100 btn btn-lg btn-primary"
-                            type="submit">
-                            {t('page.login.button.sign-in')}
-                        </Button>
+                                    authContext?.login({ email, password })
+                                        .then(() => {
+                                            navigate((location.state as { referrer: string } | null)?.referrer || '/')
+                                        })
+                                        .catch(error => {
+                                            setError(error)
+                                        })
+                                        .finally(() => {
+                                            setIsAuthenticating(false)
+                                        })
+                                }}
+                                className="w-100 btn btn-lg btn-primary"
+                                type="submit">
+                                {t('page.login.button.sign-in')}
+                            </Button>
+                        </Form>
                         <p className="mt-4 mb-3 text-muted">&copy; ms7</p>
                         <pre className="text-center">
                             <Trans
                                 i18nKey={'page.login.label.info'}
                                 components={{ br: <br /> }} />
                         </pre>
-                    </form>
+                    </div>
                 </Card>
             </div>
         </LayoutEmpty>

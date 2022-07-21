@@ -8,6 +8,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { getUser, getUsers, createUser, updateUser, patchUser, deleteUser } from 'Core/api/rq-user-api'
 import { Optional } from '@ms7/common'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import Form from 'react-bootstrap/Form'
 
 interface MutationButtonProps {
     onClick: () => void,
@@ -109,10 +110,10 @@ const RestRQ = () => {
                                     onClick={() => get()}>
                                     {t('rest-rq.button.get')}
                                 </Button>
-                                <input
-                                    className="text-black m-1 w-25"
+                                <Form.Control
+                                    className="m-1 w-50"
+                                    type="number"
                                     value={selectedGetId}
-                                    type='number'
                                     disabled={isMutating || isFetching || isFetchingLazy}
                                     onChange={e => setSelectedGetId(Number(e.target.value))} />
                             </div>
@@ -129,11 +130,11 @@ const RestRQ = () => {
                                 onClick={() => remove.mutate(selectedMutationId)}
                                 label={t('rest-rq.button.delete')} />
                             <hr className="m-1 w-75" />
-                            <label className="m-1 d-block">{t('rest-rq.label.user-id')}</label>
-                            <input
-                                className="text-black m-1 w-75"
+                            <Form.Label>{t('rest-rq.label.user-id')}</Form.Label>
+                            <Form.Control
+                                className="m-1 w-75"
+                                type="number"
                                 value={selectedMutationId}
-                                type='number'
                                 disabled={isMutating || isFetching || isFetchingLazy}
                                 onChange={e => setSelectedMutationId(Number(e.target.value))} />
                         </div>
