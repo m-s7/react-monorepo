@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { AuthProviderContext } from '@ms7/auth-providers'
-import { FullPageLoader } from '@ms7/ui'
+import { FullPageSpinner } from '@ms7/ui'
 import { env } from '@ms7/common'
 
 const Logout = () => {
@@ -12,7 +12,7 @@ const Logout = () => {
     }, [])
     
     return (
-        <FullPageLoader header={env.REACT_APP_NAME} />
+        <FullPageSpinner header={env.REACT_APP_NAME} />
     )
 }
 

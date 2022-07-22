@@ -21,7 +21,7 @@ interface FullPageLoaderDefaultProps {
     useDefaults?: boolean,
 }
 
-export const FullPageLoader = (props: FullPageLoaderProps | FullPageLoaderDefaultProps) => {
+export const FullPageSpinner = (props: FullPageLoaderProps | FullPageLoaderDefaultProps) => {
     const { t } = useTranslation()
     const { useDefaults } = props
 
@@ -45,43 +45,3 @@ export const FullPageLoader = (props: FullPageLoaderProps | FullPageLoaderDefaul
         </LayoutEmpty>
     )
 }
-
-// import React from 'react'
-// import { Link } from '../components/link'
-// import { Spinner } from '../components/spinner'
-// import { LayoutEmpty } from '../layouts/layout-empty'
-// import { CardCentered } from '../components/card-centered'
-//
-// interface FullPageLoaderProps {
-//     header?: string,
-//     navigateName?: string,
-//     navigatePath?: string,
-//     useDefaults?: never,
-// }
-//
-// interface FullPageLoaderDefaultProps {
-//     header?: never,
-//     navigateName?: never,
-//     navigatePath?: never,
-//     useDefaults?: boolean,
-// }
-//
-// export const FullPageLoader = (props: FullPageLoaderProps) => {
-//     const { header, navigateName, navigatePath } = props
-//
-//     return (
-//         <LayoutEmpty>
-//             <CardCentered header={header}>
-//                 <Spinner
-//                     size={150}
-//                     className="mb-2" />
-//                 <span>{'Please wait...'}</span>
-//                 {(navigateName && navigatePath) &&
-//                     <Link to={navigatePath}>
-//                         {navigateName}
-//                     </Link>
-//                 }
-//             </CardCentered>
-//         </LayoutEmpty>
-//     )
-// }

@@ -5,15 +5,14 @@ import { Link } from '@ms7/ui'
 
 const BreadcrumbItem = (index: number, path: string, name: string, isActive: boolean) => (
     <Breadcrumb.Item
-        as="div"
+        linkAs={() => (
+            <Link to={path}>
+                {name}
+            </Link>
+        )}
         key={`breadcrumb-${index}`}
         active={isActive}>
-        <Link
-            className={isActive ? 'breadcrumb-item active' : ''}
-            to={isActive ? '#' : path}
-            disabled={isActive}>
-            {name}
-        </Link>
+        {name}
     </Breadcrumb.Item>
 )
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AppRouter from '@/app-router'
 import { AuthProvider, FirebaseAuthProvider, FirebaseAuthProviderProps, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
-import { FullPageError, FullPageLoader } from '@ms7/ui'
+import { FullPageError, FullPageSpinner } from '@ms7/ui'
 import { env } from '@ms7/common'
 import i18n from '@/i18n'
 
@@ -28,7 +28,7 @@ const App = () => {
         //             <FullPageError
         //                 error={props.error}
         //                 header={env.REACT_APP_NAME} />),
-        //         suspenseComponent: () => (<FullPageLoader header={env.REACT_APP_NAME} />),
+        //         suspenseComponent: () => (<FullPageSpinner header={env.REACT_APP_NAME} />),
         //     }}>
         <AuthProvider<FirebaseAuthProviderProps>
             provider={FirebaseAuthProvider}
@@ -43,7 +43,7 @@ const App = () => {
                 },
             }}>
             <>
-                {showLoader ? <FullPageLoader header={env.REACT_APP_NAME} /> : <AppRouter />}
+                {showLoader ? <FullPageSpinner header={env.REACT_APP_NAME} /> : <AppRouter />}
             </>
         </AuthProvider>
     )

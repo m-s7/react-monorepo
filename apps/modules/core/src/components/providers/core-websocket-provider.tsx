@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import CoreWebsocketClient from 'Core/business/websocket-client'
 import { AuthProviderContext } from '@ms7/auth-providers'
-import { FullPageLoader } from '@ms7/ui'
+import { FullPageSpinner } from '@ms7/ui'
 import { WebsocketProviderComponentProps } from '@ms7/websocket'
 import { env } from '@ms7/common'
 
@@ -33,7 +33,7 @@ const CoreWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     }, [])
 
     if(showLoader || !isConnected)
-        return (<FullPageLoader useDefaults />)
+        return (<FullPageSpinner useDefaults />)
 
     return (<>{children}</>)
 }

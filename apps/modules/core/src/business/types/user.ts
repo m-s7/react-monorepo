@@ -3,8 +3,3 @@ export interface User {
     name: string,
     age: number,
 }
-
-export interface UserBody {
-    name: string,
-    age: number,
-}

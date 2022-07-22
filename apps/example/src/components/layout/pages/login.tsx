@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Card, LayoutEmpty, FullPageLoader } from '@ms7/ui'
+import { Card, LayoutEmpty, FullPageSpinner } from '@ms7/ui'
 import Button from 'react-bootstrap/Button'
 import { Trans, useTranslation } from 'react-i18next'
 import { env } from '@ms7/common'
@@ -30,7 +30,7 @@ const Login = () => {
     if(isAuthenticating)
         return (
             <LayoutEmpty>
-                <FullPageLoader header={env.REACT_APP_NAME} />
+                <FullPageSpinner header={env.REACT_APP_NAME} />
             </LayoutEmpty>
         )
 
