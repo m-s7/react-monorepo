@@ -1,7 +1,8 @@
 import { AuthModel, LoginCredentials, UserInfo } from '../types'
 import { FirebaseApp, FirebaseOptions, initializeApp } from 'firebase/app'
-import { getAuth, signInWithEmailAndPassword, UserCredential, AuthError, signOut } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, UserCredential, AuthError, signOut, setPersistence, browserLocalPersistence } from 'firebase/auth'
 import { logging } from '@ms7/logger'
+import firebase from 'firebase/compat'
 
 class FirebaseAuth implements AuthModel {
     private readonly logger = logging.getLogger('firebase')
@@ -24,6 +25,8 @@ class FirebaseAuth implements AuthModel {
 
     public async login(credentials: LoginCredentials): Promise<boolean> {
         const { email, password } = credentials
+        const auth = getAuth(this.firebase)
+        await setPersistence(auth, browserLocalPersistence)
 
         return await signInWithEmailAndPassword(getAuth(this.firebase), email, password)
             .then((userCredential: UserCredential) => {

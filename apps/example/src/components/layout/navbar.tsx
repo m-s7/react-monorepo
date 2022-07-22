@@ -13,8 +13,6 @@ const changeLanguage = (lng: string) => {
 const Navbar = () => {
     const isApiLoading = useApiIsLoading()
 
-    console.log(i18n)
-
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
             <div className="container-fluid">
