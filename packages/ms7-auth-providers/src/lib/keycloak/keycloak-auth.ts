@@ -12,15 +12,13 @@ export interface KeycloakConfig {
 class KeycloakAuth implements AuthModel {
     private readonly logger = logging.getLogger('keycloak')
     private readonly config: KeycloakConfig
-    private readonly allowLogger: boolean
 
     private keycloak: Keycloak.KeycloakInstance | undefined = undefined
     private tokenRefreshRunner: number | undefined
     private _isAuthenticated = false
 
-    constructor(config: KeycloakConfig, allowLogger = true) {
+    constructor(config: KeycloakConfig) {
         this.config = config
-        this.allowLogger = allowLogger
     }
 
     public init(): void {
@@ -117,7 +115,7 @@ class KeycloakAuth implements AuthModel {
     }
 
     private startEventWatcher(): void {
-        if(!this.keycloak || !this.allowLogger) return
+        if(!this.keycloak) return
 
         this.keycloak.onReady = isAuthenticated => {
             this.logger.debug('onReady event received', { isAuthenticated })

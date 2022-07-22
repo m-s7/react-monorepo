@@ -21,9 +21,9 @@ interface FullPageLoaderDefaultProps {
     useDefaults?: boolean,
 }
 
-export const FullPageSpinner = (props: FullPageLoaderProps | FullPageLoaderDefaultProps) => {
+export const FullPageSpinner = (props: React.PropsWithChildren<FullPageLoaderProps | FullPageLoaderDefaultProps>) => {
     const { t } = useTranslation()
-    const { useDefaults } = props
+    const { useDefaults, children = t('common.please-wait')} = props
 
     const header = (useDefaults ? env.REACT_APP_NAME : props.header)
     const navigatePath = (useDefaults ? '/' : props.navigatePath)
@@ -35,7 +35,7 @@ export const FullPageSpinner = (props: FullPageLoaderProps | FullPageLoaderDefau
                 <Spinner
                     size={150}
                     className="mb-2" />
-                <span>{t('common.please-wait')}</span>
+                <span>{children}</span>
                 {(navigateName && navigatePath) &&
                     <Link to={navigatePath}>
                         {navigateName}

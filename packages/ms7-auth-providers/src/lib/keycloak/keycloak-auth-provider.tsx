@@ -9,11 +9,10 @@ export interface KeycloakAuthProviderProps {
     config: KeycloakConfig,
     errorComponent: KeycloakErrorComponentType,
     suspenseComponent: KeycloakSuspenseComponentType,
-    allowLogger?: boolean,
 }
 
 export const KeycloakAuthProvider = (props: AuthProviderComponentProps<KeycloakAuthProviderProps>) => {
-    const { config, errorComponent, suspenseComponent, allowLogger } = props.providerProps
+    const { config, errorComponent, suspenseComponent } = props.providerProps
 
     let keycloakAuth: KeycloakAuth
     const [error, setError] = useState<Error>()
@@ -22,7 +21,7 @@ export const KeycloakAuthProvider = (props: AuthProviderComponentProps<KeycloakA
     useEffect(() => {
         if(keycloakAuth) return
 
-        keycloakAuth = new KeycloakAuth(config, allowLogger)
+        keycloakAuth = new KeycloakAuth(config)
         keycloakAuth.init()
         keycloakAuth.login()
             .then(isAuthenticated => {

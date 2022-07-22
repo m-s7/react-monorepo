@@ -11,6 +11,7 @@
   "error": {
     "not-found": "404 - Nie odnaleziono",
     "forbidden": "403 - Brak dostępu",
-    "user-not-found": "Nie odnaleziono użytkownika"
+    "user-not-found": "Nie odnaleziono użytkownika",
+    "network-request-failed": "Błąd sieci"
   }
 }

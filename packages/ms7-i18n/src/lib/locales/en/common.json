@@ -11,6 +11,7 @@
   "error": {
     "not-found": "404 - Not Found",
     "forbidden": "403 - Forbidden",
-    "user-not-found": "User Not Found"
+    "user-not-found": "User Not Found",
+    "network-request-failed": "Network error"
   }
 }

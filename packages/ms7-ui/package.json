@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
+    "build": "tsup src/index.ts --format esm,cjs --dts",
     "postbuild": "uglifycss src/lib/css/common.css --output dist/common.min.css && cp src/lib/css/common.css dist/ && uglifycss src/lib/css/style-default.css --output dist/style-default.min.css && cp src/lib/css/style-default.css dist/",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",

@@ -1,23 +1,25 @@
 import { AuthModel, LoginCredentials, UserInfo } from '../types'
 import { FirebaseApp, FirebaseOptions, initializeApp } from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword, UserCredential, AuthError, signOut } from 'firebase/auth'
+import { logging } from '@ms7/logger'
 
 class FirebaseAuth implements AuthModel {
+    private readonly logger = logging.getLogger('firebase')
     private readonly options: FirebaseOptions
-    private readonly allowLogger: boolean
 
     private firebase: FirebaseApp | undefined = undefined
     private _token: string | undefined
     private _isAuthenticated = false
     private _userCredential: UserCredential | undefined
 
-    constructor(options: FirebaseOptions, allowLogger = true) {
+    constructor(options: FirebaseOptions) {
         this.options = options
-        this.allowLogger = allowLogger
     }
 
     public init(): void {
         this.firebase = initializeApp(this.options)
+
+        this.logger.debug('Service started', this.options)
     }
 
     public async login(credentials: LoginCredentials): Promise<boolean> {
@@ -38,6 +40,9 @@ class FirebaseAuth implements AuthModel {
                 if(message.includes('auth/wrong-password')) message = 'user-not-found'
                 if(message.includes('auth/invalid-email')) message = 'user-not-found'
                 if(message.includes('auth/internal-error')) message = 'user-not-found'
+                if(message.includes('auth/network-request-failed')) message = 'network-request-failed'
+
+                this.logger.error('Login error', authError.message)
 
                 throw new Error(message)
             })
@@ -51,12 +56,14 @@ class FirebaseAuth implements AuthModel {
                 this._userCredential = undefined
             })
             .catch(error => {
+                this.logger.error('Logout error', error)
+
                 throw new Error(error)
             })
     }
 
     public getToken(): string | undefined {
-        return undefined
+        return this._userCredential?.user.refreshToken
     }
 
     public getUserInfo(): UserInfo {
