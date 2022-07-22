@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Link } from '@ms7/ui'
-import { Role } from '@ms7/auth-providers'
+import { Role } from '@ms7/auth'
 
 interface MenuItemProps extends React.HTMLAttributes<HTMLLIElement>, React.AriaAttributes {
     icon?: IconProp,

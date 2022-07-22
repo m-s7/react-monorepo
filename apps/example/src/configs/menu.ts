@@ -1,5 +1,5 @@
 import { MenuConfig } from '@ms7/common'
-import { Role } from '@ms7/auth-providers'
+import { Role } from '@ms7/auth'
 import i18n from '@/i18n'
 import { faHome } from '@fortawesome/free-solid-svg-icons/faHome'
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock'

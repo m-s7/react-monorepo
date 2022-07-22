@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AuthProviderContext } from '@ms7/auth-providers'
+import { AuthProviderContext } from '@ms7/auth'
 import { FullPageSpinner, FullPageError } from '@ms7/ui'
 import { env } from '@ms7/common'
 

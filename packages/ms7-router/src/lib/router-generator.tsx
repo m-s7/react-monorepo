@@ -2,7 +2,7 @@ import React from 'react'
 import { Route as RouterRoute } from 'react-router-dom'
 import ProtectedRoute from './protected-route'
 import { Route } from './types'
-import { Role } from '@ms7/auth-providers'
+import { Role } from '@ms7/auth'
 
 export const RouterGenerator = (routes: Route[], forbidden: JSX.Element, parentLayout?: React.ElementType): JSX.Element[] => routes.map(({ path, roles, component, layout, children }, idx) => {
     const Layout = layout || parentLayout || React.Fragment

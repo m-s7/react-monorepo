@@ -2,7 +2,7 @@
   "dependencies": {
     "@ms7/common": "*",
     "@ms7/logger": "*",
-    "@ms7/auth-providers": "*",
+    "@ms7/auth": "*",
     "@ms7/router": "*",
     "@ms7/ui": "*",
     "@ms7/i18n": "*",

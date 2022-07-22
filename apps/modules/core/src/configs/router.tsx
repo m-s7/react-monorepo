@@ -11,7 +11,7 @@ import EventBus from 'Core/components/pages/index/event-bus'
 import RxjsSubject from 'Core/components/pages/index/rxjs-subject'
 import LazySuspense from 'Core/components/pages/index/lazy-suspense'
 import i18n from 'Core/i18n'
-import { Role } from '@ms7/auth-providers'
+import { Role } from '@ms7/auth'
 
 const config: RouterConfig = {
     routes: [

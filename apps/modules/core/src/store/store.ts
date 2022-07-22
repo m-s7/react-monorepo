@@ -1,5 +1,5 @@
 import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import { authReducer } from '@ms7/auth-providers'
+import { authReducer } from '@ms7/auth'
 import personReducer from 'Core/store/reducers/person-reducer'
 import counterReducer from 'Core/store/reducers/counter-reducer'
 

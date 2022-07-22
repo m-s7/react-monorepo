@@ -12,7 +12,9 @@ const changeLanguage = (lng: string) => {
 
 const Navbar = () => {
     const isApiLoading = useApiIsLoading()
-    
+
+    console.log(i18n)
+
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
             <div className="container-fluid">
@@ -28,16 +30,16 @@ const Navbar = () => {
                 <div className="navbar-collapse">
                     <Link
                         to="#"
-                        variant={(i18n.language === 'pl' ? 'default' : 'link')}
-                        disabled={i18n.language === 'pl'}
+                        variant={(i18n.language.startsWith('pl') ? 'default' : 'link')}
+                        disabled={i18n.language.startsWith('pl')}
                         onClick={() => { changeLanguage('pl')}}>
                         pl
                     </Link>
                     <div className="vr ms-2 me-2" />
                     <Link
                         to="#"
-                        variant={(i18n.language === 'en' ? 'default' : 'link')}
-                        disabled={i18n.language === 'en'}
+                        variant={(i18n.language.startsWith('en') ? 'default' : 'link')}
+                        disabled={i18n.language.startsWith('en')}
                         onClick={() => { changeLanguage('en')}}>
                         en
                     </Link>

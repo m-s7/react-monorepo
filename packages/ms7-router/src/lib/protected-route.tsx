@@ -1,8 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { hasRoles } from './utils'
-import { Role } from '@ms7/auth-providers'
-import { AuthProviderContext } from '@ms7/auth-providers'
-import { withAuth } from '@ms7/auth-providers'
+import { Role, AuthProviderContext, withAuth } from '@ms7/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 interface ProtectedRouteProps {

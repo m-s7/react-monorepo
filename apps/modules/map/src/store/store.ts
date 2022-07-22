@@ -1,5 +1,5 @@
 import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import { authReducer } from '@ms7/auth-providers'
+import { authReducer } from '@ms7/auth'
 
 const store = configureStore({
     reducer: { auth: authReducer },

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AppRouter from '@/app-router'
-import { AuthProvider, FirebaseAuthProvider, FirebaseAuthProviderProps, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
+import { AuthProvider, FirebaseAuthProvider, FirebaseAuthProviderProps, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth'
 import { FullPageSpinner, FullPageError } from '@ms7/ui'
 import { env } from '@ms7/common'
 import i18n from '@/i18n'

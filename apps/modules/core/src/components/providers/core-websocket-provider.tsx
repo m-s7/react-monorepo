@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import CoreWebsocketClient from 'Core/business/websocket-client'
-import { AuthProviderContext } from '@ms7/auth-providers'
+import { AuthProviderContext } from '@ms7/auth'
 import { FullPageSpinner } from '@ms7/ui'
 import { WebsocketProviderComponentProps } from '@ms7/websocket'
 import { env } from '@ms7/common'

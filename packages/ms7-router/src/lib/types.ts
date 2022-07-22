@@ -1,5 +1,5 @@
 import React from 'react'
-import { Role } from '@ms7/auth-providers'
+import { Role } from '@ms7/auth'
 import { PageTitleComponentType } from '@ms7/page-title'
 import { BreadcrumbComponentType } from '@ms7/breadcrumbs'
 

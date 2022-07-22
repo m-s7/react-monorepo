@@ -1,6 +1,6 @@
 # Auth Providers
 
-Auth providers wrapper for React.
+React authentication library.
 
 ## Installation
 
@@ -49,7 +49,7 @@ If you need more options use [turbo](https://turborepo.org/docs/core-concepts/fi
 #### Keycloak provider
 
 ```tsx
-import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth-providers'
+import { AuthProvider, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth'
 
 const FatalError = (error: { error: Error }) => (<div>{props.error.message}</div>);
 const Spinner = () => (<i class="loader" />);
@@ -71,7 +71,7 @@ const Spinner = () => (<i class="loader" />);
 #### Access provider in child component
 
 ```tsx
-import { AuthProviderContext } from '@ms7/auth-providers'
+import { AuthProviderContext } from '@ms7/auth'
 
 const Child = () => {
     const authContext = useContext(AuthProviderContext)

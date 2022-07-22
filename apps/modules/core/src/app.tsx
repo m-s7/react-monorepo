@@ -6,7 +6,7 @@ import { reset as resetPersonReducer } from 'Core/store/reducers/person-reducer'
 import { reset as resetCounterReducer } from 'Core/store/reducers/counter-reducer'
 import CoreWebsocketProvider from 'Core/components/providers/core-websocket-provider'
 import { WebsocketProvider } from '@ms7/websocket'
-import { AuthProviderContext, setToken } from '@ms7/auth-providers'
+import { AuthProviderContext, setToken } from '@ms7/auth'
 import { EntrypointComponentProps } from '@ms7/router'
 
 const App = (props: EntrypointComponentProps) => {

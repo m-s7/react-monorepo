@@ -1,5 +1,5 @@
 import { EntrypointConfig, Route, RouteConfig, RouteParentConfig, RouterConfig } from './types'
-import { AuthModel, Role } from '@ms7/auth-providers'
+import { AuthModel, Role } from '@ms7/auth'
 import { createBrowserHistory } from 'history'
 
 export type RouterEntrypoint = {

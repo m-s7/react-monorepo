@@ -130,7 +130,7 @@ Valid when parent (or self) provides AuthProviderContext.
 import React, { useContext, useLayoutEffect } from 'react'
 import AppRouter from 'Guide/app-router'
 import { useAppDispatch } from 'Guide/hooks/use-app-dispatch'
-import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth-providers'
+import { AuthProviderContext, setToken, setUsername, setLogoutUrl } from '@ms7/auth'
 import { EntrypointComponentProps } from '@ms7/router'
 
 const App = (props: EntrypointComponentProps) => {

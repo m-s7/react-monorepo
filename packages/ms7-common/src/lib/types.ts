@@ -1,4 +1,4 @@
-import { Role } from '@ms7/auth-providers'
+import { Role } from '@ms7/auth'
 import { RouterConfig } from '@ms7/router'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 

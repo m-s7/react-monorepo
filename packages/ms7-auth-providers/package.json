@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@ms7/auth-providers",
+  "name": "@ms7/auth",
   "version": "0.0.1",
-  "description": "Auth providers wrapper for React",
+  "description": "React authentication library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
