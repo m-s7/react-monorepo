@@ -5,40 +5,17 @@ import { getConfigRouter } from 'Core/configs/app'
 import { Route, Routes } from 'react-router-dom'
 import { EntrypointComponentProps, RouterGenerator } from '@ms7/router'
 import { Forbidden403, NotFound404 } from '@ms7/ui'
-import { env } from '@ms7/common'
-import { useTranslation } from 'react-i18next'
-import { capitalize } from 'lodash'
 
 const AppRouter = (props: EntrypointComponentProps) => {
-    const { t } = useTranslation()
     const { routes } = getConfigRouter()
 
-    const NotFound = (
-        <NotFound404
-            to="/"
-            title={t('error.not-found')}
-            header={env.REACT_APP_NAME}>
-            {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
-        </NotFound404> )
-    
-    const Forbidden = (
-        <Forbidden403
-            to="/"
-            title={t('error.not-found')}
-            header={env.REACT_APP_NAME}>
-            {capitalize(t(env.REACT_APP_HOMEPAGE_NAME))}
-        </Forbidden403>
-    )
-
     return (
-        <>
-            <Routes>
-                {RouterGenerator(routes, Forbidden, props.parentLayout)}
-                <Route
-                    path="*"
-                    element={NotFound} />
-            </Routes>
-        </>
+        <Routes>
+            {RouterGenerator(routes, (<Forbidden403 useDefaults />), props.parentLayout)}
+            <Route
+                path="*"
+                element={<NotFound404 useDefaults />} />
+        </Routes>
     )
 }
 

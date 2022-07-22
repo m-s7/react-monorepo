@@ -15,11 +15,14 @@ export interface KeycloakAuthProviderProps {
 export const KeycloakAuthProvider = (props: AuthProviderComponentProps<KeycloakAuthProviderProps>) => {
     const { config, errorComponent, suspenseComponent, allowLogger } = props.providerProps
 
+    let keycloakAuth: KeycloakAuth
     const [error, setError] = useState<Error>()
     const [isAuthenticated, setIsAuthenticated] = useState(false)
 
     useEffect(() => {
-        const keycloakAuth = new KeycloakAuth(config, allowLogger)
+        if(keycloakAuth) return
+
+        keycloakAuth = new KeycloakAuth(config, allowLogger)
         keycloakAuth.init()
         keycloakAuth.login()
             .then(isAuthenticated => {

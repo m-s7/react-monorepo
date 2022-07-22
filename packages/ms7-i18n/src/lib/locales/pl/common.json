@@ -1,7 +1,9 @@
 {
   "common": {
     "error": "Błąd",
-    "close": "Zamknij"
+    "close": "Zamknij",
+    "profile": "Profil",
+    "sign-out": "Wyloguj"
   },
 
   "error": {
