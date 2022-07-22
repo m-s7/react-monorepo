@@ -1,13 +1,19 @@
 import React from 'react'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import useBreadcrumbs from '@/hooks/use-breadcrumbs'
+import { Link } from '@ms7/ui'
 
 const BreadcrumbItem = (index: number, path: string, name: string, isActive: boolean) => (
     <Breadcrumb.Item
-        href={isActive ? '#' : path}
+        as="div"
         key={`breadcrumb-${index}`}
         active={isActive}>
-        {name}
+        <Link
+            className={isActive ? 'breadcrumb-item active' : ''}
+            to={isActive ? '#' : path}
+            disabled={isActive}>
+            {name}
+        </Link>
     </Breadcrumb.Item>
 )
 
@@ -16,7 +22,7 @@ const Breadcrumbs = () => {
 
     return (
         <div>
-            <Breadcrumb className="text-success">
+            <Breadcrumb>
                 {breadcrumbs?.map(({ breadcrumb, match }, index) => (
                     BreadcrumbItem(index, (match.pathname || ''), (typeof breadcrumb === 'string' ? breadcrumb : match.pathname), ((index + 1) >= breadcrumbs.length))
                 ))}

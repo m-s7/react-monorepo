@@ -10,6 +10,7 @@
   "router": {
     "home": "Panel",
     "admin": "Admin",
+    "login": "Zaloguj",
     "logout": "Wyloguj"
   },
 
