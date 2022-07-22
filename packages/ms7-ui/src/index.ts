@@ -15,7 +15,3 @@ export { NotFound404 } from './lib/pages/404-not-found'
 export { Forbidden403 } from './lib/pages/403-forbidden'
 export { FullPageError } from './lib/pages/full-page-error'
 export { FullPageSpinner } from './lib/pages/full-page-spinner'
-export { FullPageFatalError } from './lib/pages/full-page-fatal-error'
-
-// types
-export type { FullPageFatalErrorProps } from './lib/pages/full-page-fatal-error'

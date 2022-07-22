@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo } from 'react'
 import Button from 'react-bootstrap/Button'
 import { Card } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'

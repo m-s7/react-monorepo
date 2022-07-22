@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthProviderContext } from '@ms7/auth-providers'
-import { FullPageSpinner, FullPageFatalError } from '@ms7/ui'
+import { FullPageSpinner, FullPageError } from '@ms7/ui'
 import { env } from '@ms7/common'
 
 const Logout = () => {
@@ -17,7 +17,11 @@ const Logout = () => {
     }, [])
 
     if(error)
-        return (<FullPageFatalError error={error} />)
+        return (
+            <FullPageError
+                error={error}
+                useDefaults />
+        )
     
     return (
         <FullPageSpinner header={env.REACT_APP_NAME} />
