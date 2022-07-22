@@ -6,6 +6,7 @@ import { env } from '@ms7/common'
 import { AuthProviderContext } from '@ms7/auth-providers'
 import { useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock } from '@fortawesome/free-solid-svg-icons/faLock'
 import Form from 'react-bootstrap/Form'
 
 const Login = () => {
@@ -45,7 +46,7 @@ const Login = () => {
                 <Card>
                     <div className="d-flex flex-column align-items-center p-4">
                         <FontAwesomeIcon
-                            icon="lock"
+                            icon={faLock}
                             size="4x"
                             className="mb-4" />
                         <h1 className="h3 mb-4 fw-normal">{t('page.login.label.please-sign-in')}</h1>
@@ -63,7 +64,7 @@ const Login = () => {
                             </Form.Group>
                             <Form.Group
                                 className="mb-3 border-success"
-                                controlId="formEmail">
+                                controlId="formPassword">
                                 <Form.Label>{t('page.login.form.password')}</Form.Label>
                                 <Form.Control
                                     className="border-success"

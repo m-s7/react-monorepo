@@ -23,7 +23,7 @@
         "please-sign-in": "Zaloguj się",
         "info": "Token nie jest przechowywany w aplikacji,<br />logowanie będzie wymagane po każdym odświeżeniu strony."
       },
-      "form:": {
+      "form": {
         "password": "Hasło",
         "email-address": "Adres email"
       },

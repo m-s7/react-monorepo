@@ -3,7 +3,8 @@
     "error": "Error",
     "close": "Close",
     "profile": "Profile",
-    "sign-out": "Sign out"
+    "sign-out": "Sign out",
+    "please-wait": "Please wait"
   },
 
   "error": {

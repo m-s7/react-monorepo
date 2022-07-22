@@ -14,19 +14,15 @@ const AppRouter = () => {
     return (
         <Routes>
             {RouterGenerator(routes, (<Forbidden403 useDefaults />), Layout)}
-            {entrypoints.map(({ baseUrl, component }, index) => {
-                const Component = component
-
-                return (
-                    <Route
-                        key={`app-entrypoint-${index}`}
-                        path={baseUrl}
-                        element={
-                            <Component
-                                parentLayout={Layout} />
-                        } />
-                )
-            })}
+            {entrypoints.map(({ baseUrl, component: Component }, index) => (
+                <Route
+                    key={`app-entrypoint-${index}`}
+                    path={baseUrl}
+                    element={
+                        <Component
+                            parentLayout={Layout} />
+                    } />
+            ))}
             <Route
                 path="*"
                 element={<NotFound404 useDefaults />} />

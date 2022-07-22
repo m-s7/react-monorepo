@@ -25,7 +25,7 @@ interface Forbidden403DefaultProps {
 
 export const Forbidden403 = (props: Forbidden403Props | Forbidden403DefaultProps) => {
     const { t } = useTranslation()
-    const { useDefaults = true } = props
+    const { useDefaults } = props
 
     const to = (useDefaults ? '/' : (props.to || '/'))
     const title = (useDefaults ? t('error.forbidden') : props.title)

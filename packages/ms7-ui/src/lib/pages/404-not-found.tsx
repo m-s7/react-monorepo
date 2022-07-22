@@ -25,7 +25,7 @@ interface NotFound404DefaultProps {
 
 export const NotFound404 = (props: NotFound404Props | NotFound404DefaultProps) => {
     const { t } = useTranslation()
-    const { useDefaults = true } = props
+    const { useDefaults } = props
 
     const to = (useDefaults ? '/' : (props.to || '/'))
     const title = (useDefaults ? t('error.not-found') : props.title)

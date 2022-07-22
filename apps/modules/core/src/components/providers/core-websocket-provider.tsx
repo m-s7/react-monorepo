@@ -33,12 +33,7 @@ const CoreWebsocketProvider = (props: WebsocketProviderComponentProps) => {
     }, [])
 
     if(showLoader || !isConnected)
-        return (
-            <FullPageLoader
-                header={env.REACT_APP_NAME}
-                navigateName={env.REACT_APP_HOMEPAGE_NAME}
-                navigatePath="/" />
-        )
+        return (<FullPageLoader useDefaults />)
 
     return (<>{children}</>)
 }
