@@ -57,7 +57,7 @@ const Sidebar = () => {
                 <pre className="d-flex">
                     <Link
                         to="#"
-                        onClick={() => { setTheme('aaa') }}>
+                        onClick={() => { setTheme('') }}>
                         <ThemeDefault className="me-1" />
                     </Link>
                     <Link

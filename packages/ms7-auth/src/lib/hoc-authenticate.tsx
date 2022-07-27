@@ -13,19 +13,8 @@ export const withAuth = <T extends Props = Props>(WrappedComponent: React.Compon
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
-            authenticate().then()
+            if(authContext) authContext.validate()
         }, [])
-
-        const authenticate = async () => {
-            if(authContext) {
-                await authContext.validate()
-
-                // TODO: probably not needed???
-
-                // if(!authContext.isAuthenticated())
-                //     authContext.logout().then()
-            }
-        }
 
         return (<WrappedComponent {...(props as T)} />)
     }

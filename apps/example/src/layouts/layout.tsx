@@ -15,7 +15,7 @@ const Layout = (props: React.PropsWithChildren<void>) => {
                 <Navbar />
                 <Header />
                 <div className="p-1 h-100">
-                    {children && children}
+                    {children}
                 </div>
             </div>
         </div>

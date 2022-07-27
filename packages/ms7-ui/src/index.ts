@@ -3,6 +3,7 @@ export { Card } from './lib/components/card'
 export { Link } from './lib/components/link'
 export { Spinner } from './lib/components/spinner'
 export { CardCentered } from './lib/components/card-centered'
+export { ModalOverlaySpinner } from './lib/components/modal-overlay-spinner'
 
 // layouts
 export { EmptyLayout } from './lib/layouts/empty-layout'

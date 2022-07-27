@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '@/assets/logo.svg'
 import { Card } from '@ms7/ui'
 import styled from 'styled-components'
@@ -21,6 +21,7 @@ const Logo = styled.img`
 
 const Index = () => {
     const { t } = useTranslation()
+    const [show, setShow] = useState(false)
 
     return (
         <div className="d-flex justify-content-center">
