@@ -1,6 +1,5 @@
 // noinspection TypeScriptValidateJSTypes
 
-// import { env } from '@ms7/common'
 // import { User } from 'Core/business/types/user'
 // import { createApi } from '@reduxjs/toolkit/dist/query/react'
 // import { baseQueryWithAuth, providesList } from '@ms7/restful-rtk'

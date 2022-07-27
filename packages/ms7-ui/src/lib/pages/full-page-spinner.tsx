@@ -1,29 +1,31 @@
 import React from 'react'
 import { Spinner } from '../components/spinner'
-import { LayoutEmpty } from '../layouts/layout-empty'
 import { CardCentered } from '../components/card-centered'
 import { useTranslation } from 'react-i18next'
 import { env } from '@ms7/common'
 import { PageLink, PageLinkProps } from './common/page-link'
+import { CenteredEmptyLayout } from '../layouts/centered-empty-layout'
 
 interface FullPageLoaderProps extends PageLinkProps {
     header?: string,
+    layout?: React.ElementType,
     useDefaults?: never,
 }
 
 interface FullPageLoaderDefaultProps extends PageLinkProps {
     header?: never,
-    useDefaults?: boolean,
+    layout?: React.ElementType,
+    useDefaults?: true,
 }
 
 export const FullPageSpinner = (props: React.PropsWithChildren<FullPageLoaderProps | FullPageLoaderDefaultProps>) => {
     const { t } = useTranslation()
-    const { to, linkText, useDefaults, children = t('common.please-wait') } = props
+    const { to, linkText, useDefaults, layout: Layout = CenteredEmptyLayout, children = t('common.please-wait') } = props
 
     const header = (useDefaults ? env.REACT_APP_NAME : props.header)
 
     return (
-        <LayoutEmpty>
+        <Layout>
             <CardCentered header={header}>
                 <Spinner
                     size={150}
@@ -33,6 +35,6 @@ export const FullPageSpinner = (props: React.PropsWithChildren<FullPageLoaderPro
                     to={to}
                     linkText={linkText} />
             </CardCentered>
-        </LayoutEmpty>
+        </Layout>
     )
 }

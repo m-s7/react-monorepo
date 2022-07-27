@@ -14,7 +14,7 @@ const Navbar = () => {
     const isApiLoading = useApiIsLoading()
 
     return (
-        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-md navbar-dark background-darkest">
             <div className="container-fluid">
                 <img
                     src={logo}

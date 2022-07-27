@@ -8,7 +8,8 @@ export { Spinner } from './lib/components/spinner'
 export { CardCentered } from './lib/components/card-centered'
 
 // layouts
-export { LayoutEmpty } from './lib/layouts/layout-empty'
+export { EmptyLayout } from './lib/layouts/empty-layout'
+export { CenteredEmptyLayout } from './lib/layouts/centered-empty-layout'
 
 // pages
 export { NotFound404 } from './lib/pages/404-not-found'

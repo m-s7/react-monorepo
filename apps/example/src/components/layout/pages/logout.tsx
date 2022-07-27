@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthProviderContext } from '@ms7/auth'
 import { FullPageSpinner, FullPageError } from '@ms7/ui'
-import { env } from '@ms7/common'
 
 const Logout = () => {
     const authContext = useContext(AuthProviderContext)
@@ -23,9 +22,7 @@ const Logout = () => {
                 useDefaults />
         )
     
-    return (
-        <FullPageSpinner header={env.REACT_APP_NAME} />
-    )
+    return (<FullPageSpinner useDefaults />)
 }
 
 export default Logout
