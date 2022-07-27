@@ -1,6 +1,3 @@
-import './lib/css/common.css'
-import './lib/css/style-default.css'
-
 // components
 export { Card } from './lib/components/card'
 export { Link } from './lib/components/link'

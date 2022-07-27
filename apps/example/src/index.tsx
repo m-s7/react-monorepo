@@ -19,12 +19,14 @@ const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
     <React.StrictMode>
-        <I18nextProvider i18n={i18n}>
-            <Suspense fallback={<FullPageSpinner useDefaults />}>
-                <HistoryRouter history={history}>
-                    <App />
-                </HistoryRouter>
-            </Suspense>
-        </I18nextProvider>
+        <div className={`${localStorage.getItem('theme') === 'colorful' ? 'colorful-theme' : ''} h-100`}>
+            <I18nextProvider i18n={i18n}>
+                <Suspense fallback={<FullPageSpinner useDefaults />}>
+                    <HistoryRouter history={history}>
+                        <App />
+                    </HistoryRouter>
+                </Suspense>
+            </I18nextProvider>
+        </div>
     </React.StrictMode>,
 )

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link as RouterLink, LinkProps } from 'react-router-dom'
 import styled from 'styled-components'
-import '../css/common.css'
 
 export interface RouterLinkProps extends React.AnchorHTMLAttributes<LinkProps & HTMLAnchorElement> {
     to: string,

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card as BootstrapCard } from 'react-bootstrap'
-import '../css/common.css'
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement>, React.AriaAttributes {
     header?: React.ReactNode | React.ReactNode[],

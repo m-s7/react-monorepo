@@ -36,7 +36,7 @@ const NavbarUserMenu = () => {
                 <strong>{authContext?.getUserInfo().username || undefined}</strong>
             </a>
             <ul
-                className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start dropdown-menu-dark text-small shadow"
+                className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start background-darker text-small shadow"
                 aria-labelledby="dropdownUser">
                 <NavbarDropdownItem
                     to="/profile">

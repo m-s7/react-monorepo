@@ -6,6 +6,27 @@ import { getMenu } from '@/utils/menu-utils'
 import { env, MenuConfig } from '@ms7/common'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDashboard } from '@fortawesome/free-solid-svg-icons/faDashboard'
+import styled from 'styled-components'
+
+const ThemeDefault = styled.div`
+    width: 21px;
+    height: 21px;
+    background-color: #454d55;
+    border: 1px solid #aaaaaa;
+`
+
+const ThemeColorful = styled.div`
+    width: 21px;
+    height: 21px;
+    background: rgb(109,58,180);
+    background: linear-gradient(90deg, rgba(109,58,180,1) 0%, rgba(253,29,252,1) 50%, rgba(252,69,106,1) 100%);
+    border: 1px solid #aaaaaa;
+`
+
+const setTheme = (theme: string) => {
+    localStorage.setItem('theme', theme)
+    window.location.reload()
+}
 
 const Sidebar = () => {
     const location = useLocation()
@@ -31,7 +52,21 @@ const Sidebar = () => {
             <ul className="nav nav-pills flex-column mb-auto">
                 {menu && AppMenuGenerator(menu, location)}
             </ul>
-            <pre>v0.0.1</pre>
+            <div className="d-flex sidebar-footer">
+                <pre>v0.0.1</pre>
+                <pre className="d-flex">
+                    <Link
+                        to="#"
+                        onClick={() => { setTheme('aaa') }}>
+                        <ThemeDefault className="me-1" />
+                    </Link>
+                    <Link
+                        to="#"
+                        onClick={() => { setTheme('colorful') }}>
+                        <ThemeColorful />
+                    </Link>
+                </pre>
+            </div>
         </div>
     )
 }

@@ -14,17 +14,17 @@ const Navbar = () => {
     const isApiLoading = useApiIsLoading()
 
     return (
-        <nav className="navbar navbar-expand-md navbar-dark background-darkest">
+        <nav className="navbar navbar-expand-md background-darkest">
             <div className="container-fluid">
                 <img
                     src={logo}
                     alt="logo"
                     height={25} />
-                <a
-                    className="navbar-brand"
-                    href="#">
+                <Link
+                    to="#"
+                    className="navbar-brand">
                     [BRAND]
-                </a>
+                </Link>
                 <div className="navbar-collapse">
                     <Link
                         to="#"

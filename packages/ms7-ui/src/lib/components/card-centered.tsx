@@ -7,8 +7,7 @@ interface CardCenteredProps extends React.HTMLAttributes<HTMLDivElement>, React.
 }
 
 const StyledCardCentered = styled(BootstrapCard)`
-    color: #ffffff;
-    background-color: #343a40 !important;
+    background-color: var(--darker) !important;
     border: 0 !important;
     margin: auto;
     height: 450px;
