@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import Button from 'react-bootstrap/Button'
 import { Card } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'
-import CallbackList from 'Core/components/pages/index/callback/callback-list'
+import CallbackList from 'Core/features/callback/components/callback-list'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container'
 
 type Theme = 'table-success' | 'table-danger'
 
-const Callback = () => {
+export const Callback = () => {
     const { t } = useTranslation()
     const [number, setNumber] = useState(0)
     const [theme, setTheme] = useState<Theme>('table-success')
@@ -55,5 +55,3 @@ const Callback = () => {
         </div>
     )
 }
-
-export default Callback

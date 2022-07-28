@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 import { User } from 'Core/business/types/user'
-import CenteredLoader from 'Core/components/centered-loader'
+import CenteredSpinner from 'Core/components/centered-spinner'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
-import { getUsers } from 'Core/api/rq-user-api'
+import { getUsers } from 'Core/features/rest/api/rq-user-api'
 import Table from 'react-bootstrap/Table'
 
 const UserViewer = () => {
@@ -48,7 +48,7 @@ const UserViewer = () => {
         )
     }
     
-    return (<CenteredLoader text={t('user-viewer.loading')} />)
+    return (<CenteredSpinner text={t('user-viewer.loading')} />)
 }
 
 export default UserViewer

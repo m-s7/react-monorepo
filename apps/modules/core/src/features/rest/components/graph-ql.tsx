@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
-import { useFetchCarsQuery } from 'Core/api/graphql/generated'
+import { useFetchCarsQuery } from 'Core/generated/graphql/cars'
 import { useQueryClient } from 'react-query'
 import { Card, Spinner, ErrorFallback } from '@ms7/ui'
 import Table from 'react-bootstrap/Table'
 
 // this component simulates slow network, it should not be used in production
-const GraphQL = () => {
+export const GraphQL = () => {
     const endpoint = 'http://localhost:4000'
     const queryClient = useQueryClient()
     const [isEnabled, setIsEnabled] = useState(false)
@@ -74,5 +74,3 @@ const GraphQL = () => {
         </ErrorFallback>
     )
 }
-
-export default GraphQL

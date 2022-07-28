@@ -12,7 +12,7 @@ interface ModalProps extends React.PropsWithChildren {
     onHidden?: () => void,
 }
 
-const SimpleModal = (props: ModalProps) => {
+export const SimpleModal = (props: ModalProps) => {
     const ref = useRef<HTMLDivElement>(null)
     const { t } = useTranslation()
     const { title = '', show = false, backdrop = true, keyboard = true, focus = true, onHidden, children } = props
@@ -90,5 +90,3 @@ const SimpleModal = (props: ModalProps) => {
         </div>
     )
 }
-
-export default SimpleModal

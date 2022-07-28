@@ -1,7 +1,7 @@
 import React from 'react'
 import { Spinner } from '@ms7/ui'
 
-const CenteredLoader = ({ text }: { text?: string }) => (
+const CenteredSpinner = ({ text }: { text?: string }) => (
     <div className="d-flex flex-column align-items-center m-3">
         <Spinner
             size={150}
@@ -10,4 +10,4 @@ const CenteredLoader = ({ text }: { text?: string }) => (
     </div>
 )
 
-export default CenteredLoader
+export default CenteredSpinner

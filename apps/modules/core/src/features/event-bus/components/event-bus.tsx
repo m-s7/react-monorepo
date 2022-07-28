@@ -5,9 +5,9 @@ import { uniqueId } from 'lodash'
 import { Card } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'
 
-const EventBus = () => {
+export const EventBus = () => {
     const { t } = useTranslation()
-    
+
     return (
         <div className="d-flex justify-content-center">
             <Card className="w-50">
@@ -67,5 +67,3 @@ const EventBus = () => {
         </div>
     )
 }
-
-export default EventBus

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
-import SimpleModal from 'Core/components/modals/simple-modal'
-import { useTranslation } from 'react-i18next'
 import { Card } from '@ms7/ui'
-import SimpleModalRB from 'Core/components/modals/simple-modal-rb'
+import { useTranslation } from 'react-i18next'
+import { SimpleModal } from 'Core/components/modals'
+import { SimpleModalRB } from 'Core/components/modals'
 
-const Modal = () => {
+export const Modal = () => {
     const { t } = useTranslation()
     const [show, setShow] = useState(false)
     const [showRB, setShowRB] = useState(false)
@@ -43,5 +43,3 @@ const Modal = () => {
         </div>
     )
 }
-
-export default Modal

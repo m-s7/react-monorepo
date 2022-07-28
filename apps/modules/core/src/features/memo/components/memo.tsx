@@ -20,7 +20,7 @@ const slowMultiply = (number: number) => {
     return number * 2
 }
 
-const Memo = () => {
+export const Memo = () => {
     const { t } = useTranslation()
     const [number, setNumber] = useState(0)
     const [theme, setTheme] = useState<Theme>('success')
@@ -54,9 +54,9 @@ const Memo = () => {
                         <Col className="col-md-auto">
                             <Table variant={theme}>
                                 <tbody>
-                                    <tr>
-                                        <td>{`${t('memo.label.multiplied-number')}: ${multipliedNumber}`}</td>
-                                    </tr>
+                                <tr>
+                                    <td>{`${t('memo.label.multiplied-number')}: ${multipliedNumber}`}</td>
+                                </tr>
                                 </tbody>
                             </Table>
                         </Col>
@@ -66,5 +66,3 @@ const Memo = () => {
         </div>
     )
 }
-
-export default Memo

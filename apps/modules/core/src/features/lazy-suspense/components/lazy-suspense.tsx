@@ -1,28 +1,27 @@
 import React, { Suspense } from 'react'
-import CenteredLoader from 'Core/components/centered-loader'
 import { Card } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'
+import CenteredSpinner from 'Core/components/centered-spinner'
 
 const UserViewer = React.lazy(async () => {
     await new Promise(resolve => setTimeout(resolve, 1500))
 
-    return import('Core/components/pages/index/lazy-suspense/user-viewer')
+    return import('Core/features/lazy-suspense/components/user-viewer')
 })
 
 const LazyLoading = () => {
     const { t } = useTranslation()
-    
+
     return (
         <div className="d-flex justify-content-center">
             <Card className="w-50">
-                <CenteredLoader
-                    text={t('lazy-suspense.loading')} />
+                <CenteredSpinner text={t('lazy-suspense.loading')} />
             </Card>
         </div>
     )
 }
 
-const LazySuspense = () => (
+export const LazySuspense = () => (
     <Suspense fallback={<LazyLoading />}>
         <div className="d-flex justify-content-center">
             <Card className="w-50">
@@ -31,5 +30,3 @@ const LazySuspense = () => (
         </div>
     </Suspense>
 )
-
-export default LazySuspense

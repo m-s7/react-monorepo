@@ -1,6 +1,6 @@
 import React from 'react'
-import IndexComponent from 'Core/components/pages'
+import { Outlet } from 'react-router-dom'
 
-const Index = () => (<IndexComponent />)
+const Index = () => (<Outlet />)
 
 export default Index

@@ -12,7 +12,7 @@ interface Message {
     },
 }
 
-const RxJsSubject = () => {
+export const RxJsSubject = () => {
     const { t } = useTranslation()
     const [subject, setSubject] = useState<Subject<Message> | undefined>()
     const [subscription, setSubscription] = useState<Subscription | undefined>()
@@ -92,5 +92,3 @@ const RxJsSubject = () => {
         </div>
     )
 }
-
-export default RxJsSubject

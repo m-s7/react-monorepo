@@ -102,7 +102,7 @@ module.exports = {
 }
 ```
 
-#####index.tsx
+#####index.ts
 
 ```tsx
 import React from 'react'

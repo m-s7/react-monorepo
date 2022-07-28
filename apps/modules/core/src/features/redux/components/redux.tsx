@@ -7,7 +7,7 @@ import { Card } from '@ms7/ui'
 import { decrement, increment, incrementAsync, incrementByAmount, incrementIfOdd } from 'Core/store/reducers/counter-reducer'
 import { useTranslation } from 'react-i18next'
 
-const Redux = () => {
+export const Redux = () => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
@@ -114,5 +114,3 @@ const Redux = () => {
         </div>
     )
 }
-
-export default Redux

@@ -1,15 +1,13 @@
 import { RouterConfig } from '@ms7/router'
 import Index from 'Core/pages'
-import Rest from 'Core/components/pages/index/rest'
-import GraphQL from 'Core/components/pages/index/rest/graph-ql'
-import RestRQ from 'Core/components/pages/index/rest/rest-rq'
-import Memo from 'Core/components/pages/index/memo'
-import Modal from 'Core/components/pages/index/modal'
-import Redux from 'Core/components/pages/index/redux'
-import Callback from 'Core/components/pages/index/callback'
-import EventBus from 'Core/components/pages/index/event-bus'
-import RxjsSubject from 'Core/components/pages/index/rxjs-subject'
-import LazySuspense from 'Core/components/pages/index/lazy-suspense'
+import { Rest, RestRQ, GraphQL } from 'Core/features/rest'
+import { Memo } from 'Core/features/memo'
+import { Modal } from 'Core/features/modal'
+import { Redux } from 'Core/features/redux'
+import { Callback } from 'Core/features/callback'
+import { EventBus } from 'Core/features/event-bus'
+import { RxJsSubject } from 'Core/features/rxjs-subject'
+import { LazySuspense } from 'Core/features/lazy-suspense'
 import i18n from 'Core/i18n'
 import { Role } from '@ms7/auth'
 
@@ -28,7 +26,7 @@ const config: RouterConfig = {
                 { path: 'redux', component: Redux, title: i18n.t('router.redux'), breadcrumb: i18n.t('router.redux'), roles: [Role.USER] },
                 { path: 'callback', component: Callback, title: i18n.t('router.callback'), breadcrumb: i18n.t('router.callback'), roles: [Role.USER] },
                 { path: 'event-bus', component: EventBus, title: i18n.t('router.event-bus'), breadcrumb: i18n.t('router.event-bus'), roles: [Role.USER] },
-                { path: 'rxjs-subject', component: RxjsSubject, title: i18n.t('router.rxjs-subject'), breadcrumb: i18n.t('router.rxjs-subject'), roles: [Role.USER] },
+                { path: 'rxjs-subject', component: RxJsSubject, title: i18n.t('router.rxjs-subject'), breadcrumb: i18n.t('router.rxjs-subject'), roles: [Role.USER] },
                 { path: 'lazy-suspense', component: LazySuspense, title: i18n.t('router.lazy-suspense'), breadcrumb: i18n.t('router.lazy-suspense'), roles: [Role.USER] },
             ],
         },
