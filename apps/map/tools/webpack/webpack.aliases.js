@@ -1,4 +1,4 @@
-const { createWebpackAliases } = require('../../../../../packages/static/webpack/apps/webpack-apps.helpers')
+const { createWebpackAliases } = require('../../../../packages/static/webpack/apps/webpack-apps.helpers')
 
 /**
  * Export Webpack Aliases

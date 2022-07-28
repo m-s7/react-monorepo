@@ -1,4 +1,4 @@
-const webpackProdConfig = require('../../../../../packages/static/webpack/apps/webpack-apps.prod.js')
+const webpackProdConfig = require('../../../../packages/static/webpack/apps/webpack-apps.prod.js')
 
 webpackProdConfig.resolve.alias = { ...require('./webpack.aliases') }
 
