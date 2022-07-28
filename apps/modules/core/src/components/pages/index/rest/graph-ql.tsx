@@ -19,7 +19,7 @@ const GraphQL = () => {
                 'Content-Type': 'application/json',
             },
         },
-    }, {}, { enabled: isEnabled, retry: 0 })
+    }, {}, { enabled: isEnabled, retry: 0, refetchOnMount: false, refetchOnWindowFocus: false })
 
     useEffect(() => {
         setTimeout(() => {

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import App from '@/app'
 import { createRoot } from 'react-dom/client'
 import { logging, assignLevelToLoggers, getLogLevelForEnv } from '@ms7/logger'
@@ -11,13 +11,8 @@ import '@fortawesome/fontawesome-svg-core'
 import i18n from '@/i18n'
 import { I18nextProvider } from 'react-i18next'
 import '@/assets/styles/index.css'
-import {
-    AuthProvider,
-    FirebaseAuthProvider,
-    FirebaseAuthProviderProps,
-    KeycloakAuthProvider,
-    KeycloakAuthProviderProps,
-} from '@ms7/auth'
+import { AuthProvider, FirebaseAuthProvider, FirebaseAuthProviderProps, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth'
+import Theme from '@/components/theme'
 
 logging.configure({ minLevels: assignLevelToLoggers(['', 'example'], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
 
@@ -26,7 +21,7 @@ const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
     <React.StrictMode>
-        <div className={`${localStorage.getItem('theme') === 'colorful' ? 'colorful-theme' : ''} h-100`}>
+        <Theme>
             <I18nextProvider i18n={i18n}>
                 <Suspense fallback={<FullPageSpinner useDefaults />}>
                     <HistoryRouter history={history}>
@@ -47,7 +42,7 @@ root.render(
                     </HistoryRouter>
                 </Suspense>
             </I18nextProvider>
-        </div>
+        </Theme>
     </React.StrictMode>,
 )
 
@@ -61,3 +56,4 @@ root.render(
 //             header={env.REACT_APP_NAME} />),
 //         suspenseComponent: () => (<FullPageSpinner header={env.REACT_APP_NAME} />),
 // }}>
+

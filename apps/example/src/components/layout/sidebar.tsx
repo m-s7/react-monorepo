@@ -1,4 +1,4 @@
-import React, {useContext, useLayoutEffect, useState} from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import { Link } from '@ms7/ui'
 import { useLocation } from 'react-router-dom'
 import AppMenuGenerator from '@/components/generators/app-menu-generator'
@@ -7,7 +7,7 @@ import { env, MenuConfig } from '@ms7/common'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDashboard } from '@fortawesome/free-solid-svg-icons/faDashboard'
 import styled from 'styled-components'
-import {AuthProviderContext} from "@ms7/auth";
+import { AuthProviderContext } from '@ms7/auth'
 
 const ThemeDefault = styled.div`
     width: 21px;
@@ -26,12 +26,12 @@ const ThemeColorful = styled.div`
 
 const setTheme = (theme: string) => {
     localStorage.setItem('theme', theme)
-    window.location.reload()
+    window.dispatchEvent(new Event('storage'))
 }
 
 const Sidebar = () => {
     const location = useLocation()
-    const context = useContext(AuthProviderContext)
+    const authContext = useContext(AuthProviderContext)
     const [menu, setMenu] = useState<MenuConfig[]>()
 
     useLayoutEffect(() => {
@@ -52,7 +52,7 @@ const Sidebar = () => {
             </div>
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
-                {menu && AppMenuGenerator(menu, location, context)}
+                {menu && AppMenuGenerator(menu, location, authContext)}
             </ul>
             <div className="d-flex sidebar-footer">
                 <pre>v0.0.1</pre>
