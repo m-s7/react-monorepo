@@ -9,8 +9,8 @@ const { createWebpackAliases } = require('../../../../packages/static/webpack/ap
 module.exports = createWebpackAliases({
     '@': 'src/',
     '@/*': 'src/*',
-    'Core': '../modules/core/src',
-    'Core/*': '../modules/core/src/*',
-    'Map': '../modules/map/src',
-    'Map/*': '../modules/map/src/*',
+    'Core': '../core/src',
+    'Core/*': '../core/src/*',
+    'Map': '../map/src',
+    'Map/*': '../map/src/*',
 })
