@@ -1,6 +1,6 @@
 # Example
 
-MS7 Example App.
+MS7 Dashboard App.
 
 ## Installation
 

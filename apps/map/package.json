@@ -2,7 +2,7 @@
   "private": true,
   "name": "map",
   "version": "0.0.1",
-  "description": "MS7 Map Module",
+  "description": "MS7 Map App",
   "scripts": {
     "build": "NODE_ENV=production webpack --config tools/webpack/webpack.config.prod.js",
     "dev": "NODE_ENV=development webpack --config tools/webpack/webpack.config.dev.js",

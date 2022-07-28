@@ -1,6 +1,6 @@
 # Core
 
-MS7 Map Module.
+MS7 Map App.
 
 ## Installation
 

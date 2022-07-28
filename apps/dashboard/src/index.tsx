@@ -14,7 +14,7 @@ import '@/assets/styles/index.css'
 import { AuthProvider, FirebaseAuthProvider, FirebaseAuthProviderProps, KeycloakAuthProvider, KeycloakAuthProviderProps } from '@ms7/auth'
 import Theme from '@/components/theme'
 
-logging.configure({ minLevels: assignLevelToLoggers(['', 'example'], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
+logging.configure({ minLevels: assignLevelToLoggers(['', 'dashboard'], getLogLevelForEnv(isDev())) }).registerConsoleLogger()
 
 const container = document.getElementById('root')
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

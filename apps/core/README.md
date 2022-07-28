@@ -1,6 +1,6 @@
 # Core
 
-MS7 module with examples of core features.
+MS7 app showing example of core features.
 
 ## Installation
 

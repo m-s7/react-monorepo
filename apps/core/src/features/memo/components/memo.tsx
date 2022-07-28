@@ -33,7 +33,7 @@ export const Memo = () => {
                     <Row className="align-items-center justify-content-md-center mb-2">
                         <Col className="col-lg-6">
                             <div className="mb-3">
-                                <Form.Label>{t('memo.form.multiply-by')}</Form.Label>
+                                <Form.Label className="text-color-default">{t('memo.form.multiply-by')}</Form.Label>
                                 <Form.Control
                                     type="number"
                                     value={number}

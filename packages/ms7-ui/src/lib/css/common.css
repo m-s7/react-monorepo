@@ -38,29 +38,29 @@
 
 
 .text-color-default {
-    color: var(--text-default);
+    color: var(--text-default) !important;
 }
 
 .text-color-primary {
-    color: var(--text-primary);
+    color: var(--text-primary) !important;
 }
 
 .text-color-secondary {
-    color: var(--text-secondary);
+    color: var(--text-secondary)!important;
 }
 
 .text-color-link {
-    color: var(--text-link);
+    color: var(--text-link) !important;
 }
 
 .background-dark {
-    background-color: var(--dark);
+    background-color: var(--dark) !important;
 }
 
 .background-darker {
-    background-color: var(--darker);
+    background-color: var(--darker) !important;
 }
 
 .background-darkest {
-    background-color: var(--darkest);
+    background-color: var(--darkest) !important;
 }

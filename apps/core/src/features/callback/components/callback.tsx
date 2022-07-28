@@ -26,7 +26,7 @@ export const Callback = () => {
                     <Row className="align-items-center justify-content-md-center mb-2">
                         <Col className="col-lg-6">
                             <div className="mb-3">
-                                <Form.Label>{t('callback.form.increment-by')}</Form.Label>
+                                <Form.Label className="text-color-default">{t('callback.form.increment-by')}</Form.Label>
                                 <Form.Control
                                     type="number"
                                     value={number}
