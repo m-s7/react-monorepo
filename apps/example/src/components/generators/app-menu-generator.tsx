@@ -4,8 +4,14 @@ import MenuItem from '@/components/layout/sidebar/menu-item'
 import MenuDropdownItem from '@/components/layout/sidebar/menu-dropdown-item'
 import { uniqueId } from 'lodash'
 import { Location } from 'react-router-dom'
+import { AuthModel } from '@ms7/auth'
 
-const AppMenuGenerator = (menu: MenuConfig[], location: Location) => menu.map(({ path, name, icon, roles, children }, index) => {
+const AppMenuGenerator = (menu: MenuConfig[], location: Location, auth?: AuthModel) => menu.map(({ path, name, icon, roles, children }, index) => {
+    if(auth && roles)
+        for(const role of roles)
+            if(!auth.hasRole(role.toString())) return null
+
+
     if(children)
         return (
             <MenuDropdownItem
@@ -16,7 +22,7 @@ const AppMenuGenerator = (menu: MenuConfig[], location: Location) => menu.map(({
                 roles={roles}
                 menuChildren={children}
                 firstLevel={(path === '#')}>
-                {AppMenuGenerator(children, location)}
+                {AppMenuGenerator(children, location, auth)}
             </MenuDropdownItem>
         )
 

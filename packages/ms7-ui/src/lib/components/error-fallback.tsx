@@ -1,15 +1,17 @@
 import React, { PropsWithChildren } from 'react'
-import Button from 'react-bootstrap/Button'
-import { CardCentered } from '@ms7/ui'
+import { Button } from 'react-bootstrap'
+import { CardCentered } from './card-centered'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBomb } from '@fortawesome/free-solid-svg-icons/faBomb'
+import { useTranslation } from 'react-i18next'
 
 interface ErrorFallbackProps extends React.HTMLAttributes<HTMLDivElement> {
     error: Error | null | undefined,
     onRetry?: () => void,
 }
 
-const ErrorFallback = (props: PropsWithChildren<ErrorFallbackProps>) => {
+export const ErrorFallback = (props: PropsWithChildren<ErrorFallbackProps>) => {
+    const { t } = useTranslation()
     const { error, onRetry, children, className = '' } = props
 
     if(error)
@@ -20,7 +22,7 @@ const ErrorFallback = (props: PropsWithChildren<ErrorFallbackProps>) => {
                         icon={faBomb}
                         size="7x"
                         className="mb-5" />
-                    <pre>Something went wrong</pre>
+                    <pre>{t('error.something-went-wrong')}</pre>
                     <pre
                         className="alert alert-danger"
                         role="alert">
@@ -32,7 +34,7 @@ const ErrorFallback = (props: PropsWithChildren<ErrorFallbackProps>) => {
                         onClick={() => {
                             onRetry()
                         }}>
-                        Try again
+                        {t('common.try-again')}
                     </Button>
                     }
                 </CardCentered>
@@ -41,5 +43,3 @@ const ErrorFallback = (props: PropsWithChildren<ErrorFallbackProps>) => {
 
     return (<>{children}</>)
 }
-
-export default ErrorFallback

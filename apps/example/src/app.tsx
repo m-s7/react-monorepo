@@ -20,16 +20,6 @@ const App = () => {
     }, [])
 
     return (
-        // <AuthProvider<KeycloakAuthProviderProps>
-        //     provider={KeycloakAuthProvider}
-        //     providerProps={{
-        //         config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
-        //         errorComponent: (props: { error: Error }) => (
-        //             <FullPageError
-        //                 error={props.error}
-        //                 header={env.REACT_APP_NAME} />),
-        //         suspenseComponent: () => (<FullPageSpinner header={env.REACT_APP_NAME} />),
-        //     }}>
         // <AuthProvider<FirebaseAuthProviderProps>
         //     provider={FirebaseAuthProvider}
         //     providerProps={{
@@ -41,6 +31,16 @@ const App = () => {
         //             messagingSenderId: env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
         //             appId: env.REACT_APP_FIREBASE_APP_ID,
         //         },
+        //     }}>
+        // <AuthProvider<KeycloakAuthProviderProps>
+        //     provider={KeycloakAuthProvider}
+        //     providerProps={{
+        //         config: { url: env.REACT_APP_KEYCLOAK_URL, realm: env.REACT_APP_KEYCLOAK_REALM, clientId: env.REACT_APP_KEYCLOAK_CLIENTID },
+        //         errorComponent: (props: { error: Error }) => (
+        //             <FullPageError
+        //                 error={props.error}
+        //                 header={env.REACT_APP_NAME} />),
+        //         suspenseComponent: () => (<FullPageSpinner header={env.REACT_APP_NAME} />),
         //     }}>
         <>
             {showLoader ? <FullPageSpinner header={env.REACT_APP_NAME} /> : <AppRouter />}

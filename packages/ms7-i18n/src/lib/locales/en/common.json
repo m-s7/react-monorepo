@@ -5,6 +5,7 @@
     "profile": "Profile",
     "sign-in": "Sign in",
     "sign-out": "Sign out",
+    "try-again": "Try again",
     "please-wait": "Please wait"
   },
 
@@ -12,6 +13,7 @@
     "not-found": "404 - Not Found",
     "forbidden": "403 - Forbidden",
     "user-not-found": "User Not Found",
-    "network-request-failed": "Network error"
+    "network-request-failed": "Network error",
+    "something-went-wrong": "Something went wrong"
   }
 }
