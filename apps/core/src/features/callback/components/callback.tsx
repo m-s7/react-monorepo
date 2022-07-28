@@ -16,7 +16,7 @@ export const Callback = () => {
     const [theme, setTheme] = useState<Theme>('table-success')
 
     // important: referential equality () !== ()
-    // use useCallback() only when passing function down the tree node or creating function is slow (very unlikely)
+    // use useCallback() only when passing function down the tree node or creating a function is slow (very unlikely)
     const getItems = useCallback((incrementBy: number) => [number + incrementBy, number + incrementBy + 1, number + incrementBy + 2], [number])
 
     return (
