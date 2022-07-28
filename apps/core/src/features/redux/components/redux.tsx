@@ -33,7 +33,7 @@ export const Redux = () => {
                         <li>{`${t('redux.label.type')}: ${type}`}</li>
                         <li>{`${t('redux.label.desc')}: ${description}`}</li>
                     </ul>
-                    <div className="d-flex flex-column w-50">
+                    <div className="d-flex flex-column">
                         <Button
                             className="m-1 w-100"
                             onClick={() => dispatch(setId(Math.floor(Math.random() * (100 - 1 + 1)) + 1))}>
