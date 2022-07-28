@@ -18,11 +18,10 @@ const App = () => {
         if(!authContext || authContext.isAuthenticated())
             setShowLoader(false)
         else
-            authContext?.onAuthStateChanged((isAuthenticated => {
+            authContext.onAuthStateChanged((isAuthenticated => {
                 setShowLoader(false)
                 setIsAuthenticated(isAuthenticated)
             }))
-
 
         return () => {
             i18n.off('languageChanged')

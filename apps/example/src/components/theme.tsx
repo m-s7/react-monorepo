@@ -10,9 +10,7 @@ const Theme = (props: React.PropsWithChildren) => {
     useEffect(() => {
         window.addEventListener('storage', onStorageChanged)
         
-        return () => {
-            window.removeEventListener('storage', onStorageChanged)
-        }
+        return () => { window.removeEventListener('storage', onStorageChanged) }
     }, [])
     
     return (
