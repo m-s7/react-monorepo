@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'
-import NavbarDropdownItem from '@/components/layout/navbar/navbar-dropdown-item'
+import NavbarDropdownItem from '@/layouts/components/navbar/navbar-dropdown-item'
 import { AuthProviderContext } from '@ms7/auth'
 import { useNavigate } from 'react-router-dom'
 

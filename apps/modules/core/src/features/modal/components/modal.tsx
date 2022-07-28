@@ -11,7 +11,7 @@ export const Modal = () => {
     const [showRB, setShowRB] = useState(false)
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-100">
             <Card className="w-50 align-items-center">
                 <div className="mb-1">
                     <Button

@@ -27,7 +27,7 @@ export const Memo = () => {
     const multipliedNumber = useMemo(() => slowMultiply(number), [number])
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-100">
             <Card className="w-50">
                 <Container>
                     <Row className="align-items-center justify-content-md-center mb-2">
@@ -54,9 +54,9 @@ export const Memo = () => {
                         <Col className="col-md-auto">
                             <Table variant={theme}>
                                 <tbody>
-                                <tr>
-                                    <td>{`${t('memo.label.multiplied-number')}: ${multipliedNumber}`}</td>
-                                </tr>
+                                    <tr>
+                                        <td>{`${t('memo.label.multiplied-number')}: ${multipliedNumber}`}</td>
+                                    </tr>
                                 </tbody>
                             </Table>
                         </Col>

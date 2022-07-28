@@ -4,7 +4,7 @@ import { useApiIsLoading } from '@ms7/rest-builder'
 import i18n from '@/i18n'
 import logo from '@/assets/logo.svg'
 import { Link } from '@ms7/ui'
-import NavbarUserMenu from '@/components/layout/navbar/navbar-user-menu'
+import NavbarUserMenu from '@/layouts/components/navbar/navbar-user-menu'
 
 const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng).then()

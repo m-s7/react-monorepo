@@ -98,7 +98,7 @@ export const RestRQ = () => {
                 className="d-flex justify-content-center"
                 error={error}
                 onRetry={() => refetch() }>
-                <div className="d-flex flex-row">
+                <div className="d-flex w-100">
                     <Card className="w-25 me-1">
                         <div className="d-flex flex-column align-items-center">
                             <p>{t('rest-rq.label.actions')}</p>

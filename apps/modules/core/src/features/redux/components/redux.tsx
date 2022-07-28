@@ -22,7 +22,7 @@ export const Redux = () => {
     const incrementValue = incrementAmount
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-100">
             <Card className="w-25 me-1">
                 <div className="d-flex flex-column align-items-center">
                     <p>{t('redux.label.person-state')}</p>

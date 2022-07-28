@@ -14,7 +14,7 @@ const StyledForm = styled(Form)`
     max-width: 250px;
 `
 
-const Login = () => {
+export const Login = () => {
     const { t } = useTranslation()
     const navigate = useNavigate()
     const location = useLocation()
@@ -121,5 +121,3 @@ const Login = () => {
         </>
     )
 }
-
-export default Login

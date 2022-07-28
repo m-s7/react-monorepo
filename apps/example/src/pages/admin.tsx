@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminComponent from '@/components/pages/admin'
+import { Admin as AdminComponent } from '@/features/admin'
 
 const Admin = () => (<AdminComponent />)
 

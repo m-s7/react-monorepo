@@ -18,7 +18,7 @@ export const RxJsSubject = () => {
     const [subscription, setSubscription] = useState<Subscription | undefined>()
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-100">
             <Card className="w-50">
                 <div className="d-flex flex-column align-items-center">
                     <div

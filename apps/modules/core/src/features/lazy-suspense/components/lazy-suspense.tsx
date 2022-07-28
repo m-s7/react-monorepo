@@ -13,7 +13,7 @@ const LazyLoading = () => {
     const { t } = useTranslation()
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-100">
             <Card className="w-50">
                 <CenteredSpinner text={t('lazy-suspense.loading')} />
             </Card>
@@ -23,7 +23,7 @@ const LazyLoading = () => {
 
 export const LazySuspense = () => (
     <Suspense fallback={<LazyLoading />}>
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-100">
             <Card className="w-50">
                 <UserViewer />
             </Card>

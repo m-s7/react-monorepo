@@ -9,7 +9,7 @@ export const EventBus = () => {
     const { t } = useTranslation()
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-100">
             <Card className="w-50">
                 <div className="d-flex flex-column align-items-center mt-3">
                     <span>{t('event-bus.label.register')}</span>

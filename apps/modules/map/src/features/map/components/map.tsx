@@ -66,7 +66,7 @@ export const Map = () => {
     }
     
     return (
-        <div className="d-flex h-100">
+        <div className="d-flex h-100 w-100">
             <Card className="d-flex flex-grow-1 me-1">
                 <div
                     id="map"

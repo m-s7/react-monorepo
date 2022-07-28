@@ -1,5 +1,5 @@
 import React from 'react'
-import IndexComponent from '@/components/pages'
+import { Index as IndexComponent } from '@/features/index'
 
 const Index = () => (<IndexComponent />)
 

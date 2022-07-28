@@ -4,7 +4,7 @@ import { RouterGenerator } from '@ms7/router'
 import { Forbidden403, NotFound404 } from '@ms7/ui'
 import { getRoutes } from '@ms7/router'
 import { getAppsEntrypointsConfigs } from '@/utils/apps-utils'
-import Layout from '@/layouts/layout'
+import { MainLayout, MiniLayout } from '@/layouts'
 import { getConfigRouter } from '@/configs/app'
 
 const AppRouter = () => {
@@ -13,15 +13,12 @@ const AppRouter = () => {
 
     return (
         <Routes>
-            {RouterGenerator(routes, (<Forbidden403 useDefaults />), Layout)}
+            {RouterGenerator(routes, (<Forbidden403 useDefaults />), MainLayout)}
             {entrypoints.map(({ baseUrl, component: Component }, index) => (
                 <Route
                     key={`app-entrypoint-${index}`}
                     path={baseUrl}
-                    element={
-                        <Component
-                            parentLayout={Layout} />
-                    } />
+                    element={<Component parentLayout={MiniLayout} />} />
             ))}
             <Route
                 path="*"

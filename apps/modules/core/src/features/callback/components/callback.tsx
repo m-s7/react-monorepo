@@ -20,7 +20,7 @@ export const Callback = () => {
     const getItems = useCallback((incrementBy: number) => [number + incrementBy, number + incrementBy + 1, number + incrementBy + 2], [number])
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-100">
             <Card className="w-50">
                 <Container>
                     <Row className="align-items-center justify-content-md-center mb-2">

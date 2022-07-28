@@ -66,7 +66,7 @@ export const GraphQL = () => {
                     refetch().then()
                 }, 1500)
             }}>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center w-100">
                 <Card className="w-50 align-items-center">
                     {(isFetching || isLoadingMock) ? <Spinner size={125} /> : <Content />}
                 </Card>
