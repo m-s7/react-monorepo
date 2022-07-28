@@ -10,20 +10,20 @@ export const AuthProviderContext = createContext<AuthModel | undefined>(undefine
 
 export const AuthProvider = <T, >(props: React.PropsWithChildren<AuthProviderProps<T>>) => {
     const [providerAuthInstance, setProviderAuthInstance] = useState<AuthModel>()
+    const { provider: Provider, providerProps, children } = props
 
     const onLoad = (authInstance: AuthModel) => {
         if(!providerAuthInstance)
             setProviderAuthInstance(authInstance)
     }
 
-    const Provider = props.provider
     return (
         <Provider
-            providerProps={props.providerProps}
+            providerProps={providerProps}
             onLoad={authInstance => onLoad(authInstance)}>
             {providerAuthInstance &&
                 <AuthProviderContext.Provider value={providerAuthInstance}>
-                    {props.children}
+                    {children}
                 </AuthProviderContext.Provider>
             }
         </Provider>

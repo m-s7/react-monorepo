@@ -19,6 +19,7 @@ export interface AuthModel {
     hasRole(role: string): boolean,
     isAuthenticated(): boolean,
     getUserInfo(): UserInfo,
+    onAuthStateChanged(callback: AuthStateChangesCallback): void,
 }
 
 export interface UserInfo {
@@ -26,3 +27,5 @@ export interface UserInfo {
     name?: string,
     email?: string,
 }
+
+export type AuthStateChangesCallback = (isAuthenticated: boolean) => void

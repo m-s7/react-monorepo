@@ -1,7 +1,7 @@
 import Keycloak from 'keycloak-js'
 import { isEmpty } from 'lodash'
 import { logging } from '@ms7/logger'
-import { AuthModel, UserInfo } from '../types'
+import { AuthModel, AuthStateChangesCallback, UserInfo } from '../types'
 
 export interface KeycloakConfig {
     url: string,
@@ -16,9 +16,14 @@ class KeycloakAuth implements AuthModel {
     private keycloak: Keycloak.KeycloakInstance | undefined = undefined
     private tokenRefreshRunner: number | undefined
     private _isAuthenticated = false
+    private onAuthStateChangedCallback: AuthStateChangesCallback | undefined
 
     constructor(config: KeycloakConfig) {
         this.config = config
+    }
+
+    public onAuthStateChanged(callback: AuthStateChangesCallback) {
+        this.onAuthStateChangedCallback = callback
     }
 
     public init(): void {
@@ -41,6 +46,9 @@ class KeycloakAuth implements AuthModel {
                 if(isAuthenticated)
                     this.startTokenRefreshRunner()
 
+                if(this.onAuthStateChangedCallback)
+                    this.onAuthStateChangedCallback(this._isAuthenticated)
+
                 return true
             })
             .catch(error => {
@@ -54,7 +62,13 @@ class KeycloakAuth implements AuthModel {
         if(this.tokenRefreshRunner)
             window.clearInterval(this.tokenRefreshRunner)
 
-        window.location.replace(this.getLogoutUrl())
+        return new Promise(resolve => {
+            setTimeout(() => {
+                window.location.href = this.getLogoutUrl()
+            }, 1)
+
+            resolve()
+        })
     }
 
     public async validate(): Promise<void> {
@@ -146,13 +160,13 @@ class KeycloakAuth implements AuthModel {
         }
     }
 
-    private getLogoutUrl(): URL {
+    private getLogoutUrl(): string {
         const baseUrl = window.location.origin
         const keycloakBaseUrl = this.getKeycloakBaseUrl()
 
         if(!baseUrl || !keycloakBaseUrl) throw new Error(`Cannot construct keycloak logout url, baseUrl: ${baseUrl}, keycloakBaseUrl: ${keycloakBaseUrl}`)
 
-        return new URL(this.keycloak?.createLogoutUrl() || `${keycloakBaseUrl}/logout?redirect_uri=${baseUrl}`)
+        return (this.keycloak?.createLogoutUrl({ redirectUri: baseUrl }) || `${keycloakBaseUrl}/logout?redirect_uri=${baseUrl}`)
     }
 
     private getKeycloakBaseUrl(): string | undefined {

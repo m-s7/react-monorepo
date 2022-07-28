@@ -7,9 +7,12 @@ const Logout = () => {
     const [error, setError] = useState<Error>()
 
     useEffect(() => {
-        if(authContext)
+        console.log(authContext?.isAuthenticated())
+        if(authContext?.isAuthenticated())
             authContext.logout()
-                .then(() => { window.location.replace('/') })
+                .then(() => {
+                    window.location.replace('/')
+                })
                 .catch(error => { setError(error)} )
         else
             window.location.replace('/')

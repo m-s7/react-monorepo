@@ -1,24 +1,33 @@
-import { AuthModel, LoginCredentials, UserInfo } from '../types'
-import { FirebaseApp, FirebaseOptions, initializeApp } from 'firebase/app'
-import { getAuth, signInWithEmailAndPassword, UserCredential, AuthError, signOut, setPersistence, browserLocalPersistence } from 'firebase/auth'
-import { logging } from '@ms7/logger'
 import firebase from 'firebase/compat'
+import { AuthModel, LoginCredentials, UserInfo, AuthStateChangesCallback } from '../types'
+import { FirebaseApp, FirebaseOptions, initializeApp } from 'firebase/app'
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, User, UserCredential, AuthError, signOut, setPersistence, browserLocalPersistence } from 'firebase/auth'
+import { logging } from '@ms7/logger'
 
 class FirebaseAuth implements AuthModel {
     private readonly logger = logging.getLogger('firebase')
     private readonly options: FirebaseOptions
 
     private firebase: FirebaseApp | undefined = undefined
+    private _user: User | undefined
     private _token: string | undefined
     private _isAuthenticated = false
-    private _userCredential: UserCredential | undefined
+    private onAuthStateChangedCallback: AuthStateChangesCallback | undefined
 
     constructor(options: FirebaseOptions) {
         this.options = options
     }
 
+    public onAuthStateChanged(callback: AuthStateChangesCallback) {
+        this.onAuthStateChangedCallback = callback
+    }
+
     public init(): void {
         this.firebase = initializeApp(this.options)
+
+        onAuthStateChanged(getAuth(this.firebase), user => {
+            (user ? this.setUserAuth(user) : this.removeUserAuth())
+        })
 
         this.logger.debug('Service started', this.options)
     }
@@ -30,9 +39,7 @@ class FirebaseAuth implements AuthModel {
 
         return await signInWithEmailAndPassword(getAuth(this.firebase), email, password)
             .then((userCredential: UserCredential) => {
-                this._token = userCredential.user.refreshToken
-                this._isAuthenticated = true
-                this._userCredential = userCredential
+                this.setUserAuth(userCredential.user)
 
                 return true
             })
@@ -54,9 +61,7 @@ class FirebaseAuth implements AuthModel {
     public logout(): Promise<void> {
         return signOut(getAuth(this.firebase))
             .then(() => {
-                this._token = undefined
-                this._isAuthenticated = false
-                this._userCredential = undefined
+                this.removeUserAuth()
             })
             .catch(error => {
                 this.logger.error('Logout error', error)
@@ -66,14 +71,14 @@ class FirebaseAuth implements AuthModel {
     }
 
     public getToken(): string | undefined {
-        return this._userCredential?.user.refreshToken
+        return this._user?.refreshToken
     }
 
     public getUserInfo(): UserInfo {
         return {
-            name: this._userCredential?.user.displayName || this._userCredential?.user.email || '',
-            email: this._userCredential?.user.email || '',
-            username: this._userCredential?.user.displayName || this._userCredential?.user.email || '',
+            name: this._user?.displayName || this._user?.email || '',
+            email: this._user?.email || '',
+            username: this._user?.displayName || this._user?.email || '',
         }
     }
 
@@ -88,6 +93,26 @@ class FirebaseAuth implements AuthModel {
 
     public validate(): void {
         // ignored
+    }
+
+    private setUserAuth(user: User | null): void {
+        if(!user) return
+
+        this._user = user
+        this._token = user.refreshToken
+        this._isAuthenticated = true
+
+        if(this.onAuthStateChangedCallback)
+            this.onAuthStateChangedCallback(this._isAuthenticated)
+    }
+
+    private removeUserAuth(): void {
+        this._user = undefined
+        this._token = undefined
+        this._isAuthenticated = false
+
+        if(this.onAuthStateChangedCallback)
+            this.onAuthStateChangedCallback(this._isAuthenticated)
     }
 }
 
