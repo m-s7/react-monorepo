@@ -21,12 +21,15 @@
   "page": {
     "login": {
       "label": {
-        "please-sign-in": "Zaloguj się",
-        "info": "Token nie jest przechowywany w aplikacji,<br />logowanie będzie wymagane po każdym odświeżeniu strony."
+        "please-sign-in": "Zaloguj się"
       },
       "form": {
         "password": "Hasło",
-        "email-address": "Adres email"
+        "email-address": "Adres email",
+        "placeholder": {
+          "password": "Wprowadź hasło",
+          "email-address": "Wprowadź adres email"
+        }
       },
       "button": {
         "sign-in": "Zaloguj"

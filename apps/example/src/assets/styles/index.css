@@ -10,6 +10,10 @@
     --text-link: #b7b7a4;
 }
 
+label {
+    color: var(--text-secondary);
+}
+
 .breadcrumb {
     margin-bottom: 0 !important;
 }

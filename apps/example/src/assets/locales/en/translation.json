@@ -21,12 +21,15 @@
   "page": {
     "login": {
       "label": {
-        "please-sign-in": "Please sign in",
-        "info": "User token is not stored in app,<br />login will be required on every reload."
+        "please-sign-in": "Please sign in"
       },
       "form": {
         "password": "Password",
-        "email-address": "Email address"
+        "email-address": "Email address",
+        "placeholder": {
+          "password": "Enter password",
+          "email-address": "Enter email"
+        }
       },
       "button": {
         "sign-in": "Sign in"
