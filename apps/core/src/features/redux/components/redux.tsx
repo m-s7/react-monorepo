@@ -70,7 +70,7 @@ export const Redux = () => {
                         <li>{`${t('redux.label.status')}: ${status}`}</li>
                     </ul>
                     <div className="w-40">
-                        <label className="d-block">{t('redux.label.increment')}</label>
+                        <label className="d-block text-color-default">{t('redux.label.increment')}</label>
                         <div>
                             <input
                                 className="text-black w-100"

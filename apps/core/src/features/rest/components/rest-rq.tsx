@@ -129,7 +129,7 @@ export const RestRQ = () => {
                                 onClick={() => remove.mutate(selectedMutationId)}
                                 label={t('rest-rq.button.delete')} />
                             <hr className="m-1 w-75" />
-                            <Form.Label>{t('rest-rq.label.user-id')}</Form.Label>
+                            <Form.Label className="text-color-default">{t('rest-rq.label.user-id')}</Form.Label>
                             <Form.Control
                                 className="m-1 w-75"
                                 type="number"

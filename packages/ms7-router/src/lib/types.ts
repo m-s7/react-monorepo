@@ -14,7 +14,7 @@ export interface RouteParentConfig {
     children: Array<Route>,
     path?: never,
     title?: never,
-    roles?: never,
+    roles?: Role[],
     layout?: never,
     breadcrumb?: never,
 }

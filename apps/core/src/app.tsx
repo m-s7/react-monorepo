@@ -4,8 +4,6 @@ import { env } from '@ms7/common'
 import { useAppDispatch } from 'Core/hooks/use-app-dispatch'
 import { reset as resetPersonReducer } from 'Core/store/reducers/person-reducer'
 import { reset as resetCounterReducer } from 'Core/store/reducers/counter-reducer'
-import CoreWebsocketProvider from 'Core/providers/core-websocket-provider'
-import { WebsocketProvider } from '@ms7/websocket'
 import { AuthProviderContext, setToken } from '@ms7/auth'
 import { EntrypointComponentProps } from '@ms7/router'
 
@@ -25,11 +23,7 @@ const App = (props: EntrypointComponentProps) => {
         dispatch(resetCounterReducer())
     }, [])
 
-    return (
-        <WebsocketProvider provider={CoreWebsocketProvider}>
-            <AppRouter parentLayout={props.parentLayout} />
-        </WebsocketProvider>
-    )
+    return (<AppRouter parentLayout={props.parentLayout} />)
 }
 
 export default App

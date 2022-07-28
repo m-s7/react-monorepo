@@ -9,9 +9,10 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons/faBookOpen'
 import { faNetworkWired } from '@fortawesome/free-solid-svg-icons/faNetworkWired'
 import { faTowerBroadcast } from '@fortawesome/free-solid-svg-icons/faTowerBroadcast'
 import { faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons/faArrowRotateLeft'
+import { Role } from '@ms7/auth'
 
 const config: MenuConfig[] = [
-    { path: '#', name: i18n.t('menu.core'), icon: faBookOpen,
+    { path: '#', name: i18n.t('menu.core'), icon: faBookOpen, roles: [Role.USER],
         children: [
             { path: '#', name: i18n.t('menu.rest'), icon: faNetworkWired,
                 children: [

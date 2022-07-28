@@ -5,7 +5,7 @@ import { Role } from '@ms7/auth'
 
 const config: RouterConfig = {
     routes: [
-        { path: '/', component: Index, title: i18n.t('router.map'), breadcrumb: i18n.t('router.map'), roles: [Role.USER] },
+        { path: '/', component: Index, title: i18n.t('router.map'), breadcrumb: i18n.t('router.map') },
     ],
 }
 

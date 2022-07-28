@@ -4,50 +4,42 @@ import ProtectedRoute from './protected-route'
 import { Route } from './types'
 import { Role } from '@ms7/auth'
 
-export const RouterGenerator = (routes: Route[], forbidden: JSX.Element, parentLayout?: React.ElementType): JSX.Element[] => routes.map(({ path, roles, component, layout, children }, idx) => {
+interface ProtectedProps {
+    layout: React.ElementType,
+}
+
+export const RouterGenerator = (routes: Route[], forbidden: JSX.Element, parentLayout?: React.ElementType): JSX.Element[] => routes.map(({ path, roles, component: Component, layout, children }, idx) => {
     const Layout = layout || parentLayout || React.Fragment
-    const Component = component
-    const Unprotected = (
+
+    const Unprotected = () => (
         <Layout>
             <Component />
         </Layout>
     )
-    const Protected = (
+
+    const Protected = (props: ProtectedProps) => (
         <ProtectedRoute
             roles={roles}
-            forbidden={forbidden}>
-            {Unprotected}
+            forbidden={forbidden}
+            layout={props.layout}>
+            <Component />
         </ProtectedRoute>
     )
 
-    if(children) {
+    if(children)
         return (
             <RouterRoute
                 key={`idx-${path}-${idx}`}
                 path={path}
-                element={
-                    <Layout>
-                        <Component />
-                    </Layout>
-                }>
-                {RouterGenerator(children, forbidden)}
+                element={(roles?.find(role => role !== Role.GUEST) ? <Protected layout={React.Fragment} /> : <Component />)} >
+                {RouterGenerator(children, forbidden, parentLayout)}
             </RouterRoute>
         )
-    }
-    else {
-        // if(index)
-        //     return (
-        //         <Route
-        //             key={`idx-${path}-${idx}`}
-        //             index
-        //             element={Protected} />
-        //     )
-        // else
-        return (
-            <RouterRoute
-                key={`idx-${path}-${idx}`}
-                path={path}
-                element={(roles?.find(role => role !== Role.GUEST) ? Protected : Unprotected)} />
-        )
-    }
+
+    return (
+        <RouterRoute
+            key={`idx-${path}-${idx}`}
+            path={path}
+            element={(roles?.find(role => role !== Role.GUEST) ? <Protected layout={Layout} /> : <Unprotected />)} />
+    )
 })

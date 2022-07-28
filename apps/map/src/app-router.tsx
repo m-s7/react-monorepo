@@ -12,7 +12,7 @@ const AppRouter = (props: EntrypointComponentProps) => {
             {RouterGenerator(routes, (<Forbidden403 useDefaults />), props.parentLayout)}
             <Route
                 path="*"
-                element={<NotFound404 useDefaults /> } />
+                element={<NotFound404 useDefaults />} />
         </Routes>
     )
 }
