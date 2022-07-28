@@ -25,7 +25,7 @@ const ModeButton = (props: ButtonProps & { mode: MapMode, currentMode: MapMode, 
     )
 }
 
-const Index = () => {
+export const Map = () => {
     const { t } = useTranslation()
     const [mode, setMode] = useState<MapMode>('single')
     const stateRef = useRef<string>()
@@ -99,5 +99,3 @@ const Index = () => {
         </div>
     )
 }
-
-export default Index

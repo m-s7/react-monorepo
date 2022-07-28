@@ -1,6 +1,6 @@
 import React from 'react'
-import IndexComponent from 'Map/components/pages'
+import { Map } from 'Map/features/map'
 
-const Index = () => (<IndexComponent />)
+const Index = () => (<Map />)
 
 export default Index

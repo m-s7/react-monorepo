@@ -48,7 +48,7 @@ const Login = () => {
 
         if(isValid) {
             setIsAuthenticating(true)
-            authContext?.login({ email, password })
+            authContext.login({ email, password })
                 .then(() => {
                     navigate((location.state as { referrer: string } | null)?.referrer || '/')
                 })
