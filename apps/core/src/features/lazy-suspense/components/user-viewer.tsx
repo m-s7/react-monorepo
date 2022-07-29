@@ -3,7 +3,7 @@ import { useErrorHandler } from 'react-error-boundary'
 import { User } from 'Core/business/types/user'
 import CenteredSpinner from 'Core/components/centered-spinner'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getUsers } from 'Core/features/rest/api/rq-user-api'
 import Table from 'react-bootstrap/Table'
 

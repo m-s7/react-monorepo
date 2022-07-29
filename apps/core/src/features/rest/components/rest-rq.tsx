@@ -3,10 +3,10 @@ import Button from 'react-bootstrap/Button'
 import { User } from 'Core/business/types/user'
 import { Card, Spinner, ErrorFallback } from '@ms7/ui'
 import { useTranslation } from 'react-i18next'
-import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { getUser, getUsers, createUser, updateUser, patchUser, deleteUser } from 'Core/features/rest'
 import { Optional } from '@ms7/common'
-import { ReactQueryDevtools } from 'react-query/devtools'
+// import { ReactQueryDevtools } from 'react-query/devtools'
 import Form from 'react-bootstrap/Form'
 
 interface MutationButtonProps {
@@ -158,7 +158,7 @@ export const RestRQ = () => {
                     </Card>
                 </div>
             </ErrorFallback>
-            <ReactQueryDevtools initialIsOpen={false} />
+            {/*<ReactQueryDevtools initialIsOpen={false} />*/}
         </>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import { useFetchCarsQuery } from 'Core/generated/graphql/cars'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import { Card, Spinner, ErrorFallback } from '@ms7/ui'
 import Table from 'react-bootstrap/Table'
 

@@ -9,7 +9,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { EntrypointComponentProps } from '@ms7/router'
 import i18n from 'Core/i18n'
 import { I18nextProvider } from 'react-i18next'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import 'Core/assets/styles/index.css'
 
 logging.addConfigurationOption({ minLevels: { 'websocket': getLogLevelForEnv(isDev()) }})
