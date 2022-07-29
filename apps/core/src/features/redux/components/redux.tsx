@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useAppSelector } from 'Core/hooks/use-app-selector'
 import { useAppDispatch } from 'Core/hooks/use-app-dispatch'
@@ -72,10 +73,10 @@ export const Redux = () => {
                     <div className="w-40">
                         <label className="d-block text-color-default">{t('redux.label.increment')}</label>
                         <div>
-                            <input
-                                className="text-black w-100"
+                            <Form.Control
+                                className="w-100"
+                                type="number"
                                 value={incrementValue}
-                                type='number'
                                 onChange={e => setIncrementAmount(Number(e.target.value))} />
                         </div>
                         <div className="mt-3">
