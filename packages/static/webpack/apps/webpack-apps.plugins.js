@@ -1,21 +1,8 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { DefinePlugin, ProvidePlugin } = require('webpack')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 require('dotenv').config()
-
-const isDevelopment = process.env.NODE_ENV !== 'production'
-
-const getReactEnvs = () => {
-    const envs = {}
-    
-    Object.keys(process.env).forEach(env => {
-        if(env.startsWith('REACT_APP_')) envs[env] = process.env[env]
-    })
-
-    return envs
-}
 
 // TODO: load HMR conditionally
 // const getHmrPlugin = () => {
@@ -34,12 +21,6 @@ module.exports = [
     new MiniCssExtractPlugin({
         filename: '[name].[chunkhash].css',
         chunkFilename: '[name].[chunkhash].chunk.css',
-    }),
-    new ProvidePlugin({
-        process: 'process/browser',
-    }),
-    new DefinePlugin({
-        'process.env': JSON.stringify({ ...getReactEnvs() }),
     }),
     new ReactRefreshPlugin(),
 ]

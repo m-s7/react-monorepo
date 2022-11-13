@@ -1,8 +1,7 @@
 import React from 'react'
 import Entrypoint from 'Core/entrypoint'
 import { createRoot } from 'react-dom/client'
-import { history } from '@ms7/router'
-import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { isDev } from '@ms7/common'
 import { Card, Link } from '@ms7/ui'
@@ -15,7 +14,7 @@ const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
     <React.StrictMode>
-        <HistoryRouter history={history}>
+        <BrowserRouter>
             <div className="p-1">
                 <Card className="d-flex flex-column mb-1 align-items-center">
                     <ul className="list-group list-group-horizontal">
@@ -32,6 +31,6 @@ root.render(
                 </Card>
                 <Entrypoint />
             </div>
-        </HistoryRouter>
+        </BrowserRouter>
     </React.StrictMode>,
 )

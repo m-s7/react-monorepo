@@ -2,8 +2,7 @@ import React from 'react'
 import Entrypoint from 'Map/entrypoint'
 import { createRoot } from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.css'
-import { history } from '@ms7/router'
-import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import 'Map/assets/styles/standalone.css'
 
 const container = document.getElementById('root')
@@ -11,10 +10,10 @@ const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
     <React.StrictMode>
-        <HistoryRouter history={history}>
+        <BrowserRouter>
             <div className="p-1">
                 <Entrypoint />
             </div>
-        </HistoryRouter>
+        </BrowserRouter>
     </React.StrictMode>,
 )

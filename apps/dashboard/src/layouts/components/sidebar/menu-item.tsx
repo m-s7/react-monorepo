@@ -20,13 +20,15 @@ const MenuItem = (props: MenuItemProps) => {
                 to={path}
                 disabled={active}
                 className={`nav-link ${active ? 'active' : 'text-white'}`}>
-                {icon &&
+                <>
+                    {icon &&
                     <FontAwesomeIcon
                         icon={icon}
                         size="sm"
                         className="me-2" />
-                }
-                {children}
+                    }
+                    {children}
+                </>
             </Link>
         </li>
     )

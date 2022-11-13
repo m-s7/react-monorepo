@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { matchPath, Params, PathPattern, RouteObject, useLocation } from 'react-router'
+import { matchPath, Params, PathPattern, useLocation } from 'react-router'
 
 type Location = ReturnType<typeof useLocation>
 
@@ -32,9 +32,11 @@ export interface PageTitleData<K extends string = string> {
     title: React.ReactNode | string,
 }
 
-export interface PageTitleRoute<K extends string = string> extends RouteObject {
+export interface PageTitleRoute<K extends string = string> {
     title?: PageTitleComponentType<K> | string,
     props?: { [x: string]: unknown },
+    caseSensitive? : boolean,
+    path?: string,
 }
 
 export type PageTitleComponentType<K extends string = string> = React.FunctionComponent<PageTitleComponentProps<K>>

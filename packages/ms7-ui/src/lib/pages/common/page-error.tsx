@@ -30,7 +30,7 @@ export const PageError = (props: PageErrorProps | PageErrorDefaultProps) => {
 
     const to = (useDefaults ? '/' : (props.to || '/'))
     const header = (useDefaults ? env.REACT_APP_NAME : props.header)
-    const linkText = (useDefaults ? capitalize(t(env.REACT_APP_HOMEPAGE_NAME)) : props.linkText)
+    const linkText = (useDefaults ? capitalize(t(env.REACT_APP_HOMEPAGE_NAME) || '') : props.linkText)
 
     return (
         <Layout>

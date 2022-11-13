@@ -5,8 +5,7 @@ import { logging, assignLevelToLoggers, getLogLevelForEnv } from '@ms7/logger'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { env, isDev } from '@ms7/common'
 import { FullPageSpinner, FullPageError } from '@ms7/ui'
-import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
-import { history } from '@ms7/router'
+import { BrowserRouter } from 'react-router-dom'
 import '@fortawesome/fontawesome-svg-core'
 import i18n from '@/i18n'
 import { I18nextProvider } from 'react-i18next'
@@ -24,7 +23,7 @@ root.render(
         <Theme>
             <I18nextProvider i18n={i18n}>
                 <Suspense fallback={<FullPageSpinner useDefaults />}>
-                    <HistoryRouter history={history}>
+                    <BrowserRouter>
                         <AuthProvider<FirebaseAuthProviderProps>
                             provider={FirebaseAuthProvider}
                             providerProps={{
@@ -39,7 +38,7 @@ root.render(
                             }}>
                             <App />
                         </AuthProvider>
-                    </HistoryRouter>
+                    </BrowserRouter>
                 </Suspense>
             </I18nextProvider>
         </Theme>
