@@ -68,8 +68,6 @@ yarn release
 
 #### Heroku
 
-TODO: add heroku configuration!!!
-
 Login to heroku:
 ```bash
 heorku login
