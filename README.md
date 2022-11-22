@@ -2,6 +2,12 @@
 
 Main codebase of MS7 project.
 
+This project is a set of libraries aimed at familiarizing novice programmers with setting up React in a monorepo environment.
+
+This codebase requires multiple services (keycloak, firebase, websocket server, gql and rest backend) to work properly (not included).
+
+This is not production code.
+
 ## Installation
 
 Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) to install codebase.
