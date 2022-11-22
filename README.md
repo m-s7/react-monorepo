@@ -1,4 +1,4 @@
-# MS7 Codebase
+# MS7 React-Monorepo
 
 Main codebase of MS7 project.
 
