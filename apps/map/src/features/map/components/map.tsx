@@ -19,7 +19,7 @@ const ModeButton = (props: ButtonProps & { mode: MapMode, currentMode: MapMode, 
             variant={(currentMode === mode ? 'primary' : 'secondary')}
             className="m-1"
             onClick={() => clickHandler(mode)}>
-            {<>props.children</>}
+            {<>{props.children}</>}
         </Button>
 
     )

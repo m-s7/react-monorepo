@@ -18,6 +18,8 @@ const baseQuery = createBaseQuery({
         return apiHeaders
     },
     errorHandler: status => {
+        // throw new Error('DUAP EXCEPTION')
+        //
         // if(status === 401) history.push('/logout')
     },
     logger: logging.getLogger('rest'),

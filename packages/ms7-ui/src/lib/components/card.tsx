@@ -14,7 +14,7 @@ export const Card = (props: CardProps) => {
             {...rest}>
             {header && <BootstrapCard.Header>{header}</BootstrapCard.Header>}
             <BootstrapCard.Body>
-                {<>children</>}
+                {<>{children}</>}
             </BootstrapCard.Body>
         </BootstrapCard>
     )
