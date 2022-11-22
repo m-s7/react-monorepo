@@ -4,7 +4,7 @@ import { RestLoggerConfig } from './types'
 import { Logger } from '@ms7/logger'
 import { log } from './logger'
 
-export const errorLogger = (logger: Logger, config?: RestLoggerConfig) => (error: AxiosError): AxiosError => {
+export const errorLogger = (error: AxiosError, logger: Logger, config?: RestLoggerConfig): AxiosError => {
     if(!error.config) return error
 
     const { config: { method, baseURL, url, params }, response } = error

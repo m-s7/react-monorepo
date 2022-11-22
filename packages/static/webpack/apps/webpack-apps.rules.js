@@ -17,7 +17,7 @@ module.exports = [
         },
     },
     {
-        // CSS Loader
+        // CSS Spinner
         test: /\.css$/,
         use: [
             { loader: isDev() ? 'style-loader' : MiniCssExtractPlugin.loader },
@@ -34,7 +34,7 @@ module.exports = [
         ],
     },
     {
-        // Images Loader
+        // Images Spinner
         test: /\.(gif|jpe?g|tiff|png|webp|bmp|svg)$/,
         use: [
             {

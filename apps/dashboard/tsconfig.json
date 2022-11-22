@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "react core",
+  "extends": "ts-config/tsconfig.json",
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
+    "jsx": "react",
+    "paths": {
+      "@": ["src/"],
+      "@/*": ["src/*"],
+      "Core": ["../core/src/"],
+      "Core/*": ["../core/src/*"],
+      "Map": ["../map/src/"],
+      "Map/*": ["../map/src/*"]
+    },
+    "types": [
+      "node",
+      "webpack-env",
+      "@types/jest"
+    ]
+  },
+  "include": ["src"]
+}

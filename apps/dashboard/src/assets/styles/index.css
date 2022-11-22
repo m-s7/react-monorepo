@@ -1,0 +1,37 @@
+@import "~@ms7/ui/dist/style-default.css";
+
+.colorful-theme {
+    --dark: #f72585;
+    --darker: #b5179e;
+    --darkest: #7209b7;
+    --text-default: #ffffff;
+    --text-primary: #8e9aaf;
+    --text-secondary: #3a0ca3;
+    --text-link: #b7b7a4;
+}
+
+label {
+    color: var(--text-secondary);
+}
+
+.breadcrumb {
+    margin-bottom: 0 !important;
+}
+
+.container-sidebar {
+    width: 250px;
+    min-width: 250px;
+}
+
+.transition-none {
+    transition: none;
+}
+
+.sidebar-footer pre:last-child {
+    margin-left: auto;
+}
+
+.h-50 {
+    min-height: 25vw;
+}
+

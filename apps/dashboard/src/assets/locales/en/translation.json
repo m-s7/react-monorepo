@@ -1,0 +1,39 @@
+{
+  "dashboard": "Dashboard",
+
+  "menu": {
+    "home": "Dashboard",
+    "void": "Void (404)",
+    "admin-secured": "Admin (Secured)"
+  },
+
+  "router": {
+    "home": "Dashboard",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout"
+  },
+
+  "index": {
+    "label": "Welcome"
+  },
+
+  "page": {
+    "login": {
+      "label": {
+        "please-sign-in": "Please sign in"
+      },
+      "form": {
+        "password": "Password",
+        "email-address": "Email address",
+        "placeholder": {
+          "password": "Enter password",
+          "email-address": "Enter email"
+        }
+      },
+      "button": {
+        "sign-in": "Sign in"
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { EntrypointConfig, Route, RouteConfig, RouteParentConfig, RouterConfig } from './types'
-import { AuthModel, Role } from '@ms7/auth-providers'
+import { AuthModel, Role } from '@ms7/auth'
 
 export type RouterEntrypoint = {
     router: RouterConfig,
@@ -121,3 +121,4 @@ const normalizeUrl = (url: string): string => {
 
     return url
 }
+

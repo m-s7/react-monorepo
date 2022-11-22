@@ -1,0 +1,39 @@
+{
+  "dashboard": "Panel",
+
+  "menu": {
+    "home": "Panel",
+    "void": "Próżnia (404)",
+    "admin-secured": "Admin (Role)"
+  },
+
+  "router": {
+    "home": "Panel",
+    "admin": "Admin",
+    "login": "Zaloguj",
+    "logout": "Wyloguj"
+  },
+
+  "index": {
+    "label": "Witaj"
+  },
+
+  "page": {
+    "login": {
+      "label": {
+        "please-sign-in": "Zaloguj się"
+      },
+      "form": {
+        "password": "Hasło",
+        "email-address": "Adres email",
+        "placeholder": {
+          "password": "Wprowadź hasło",
+          "email-address": "Wprowadź adres email"
+        }
+      },
+      "button": {
+        "sign-in": "Zaloguj"
+      }
+    }
+  }
+}

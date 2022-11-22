@@ -1,0 +1,159 @@
+{
+  "core": "Baza",
+  "dashboard": "Pulpit",
+
+  "menu": {
+    "core": "Przykłady",
+    "rest": "Rest",
+    "rest-rq": "Rest (React Query)",
+    "memo": "Zapamiętanie stanu",
+    "modal": "Okno Modalne",
+    "redux": "Redux",
+    "callback": "Callback",
+    "graph-ql": "GraphQL",
+    "event-bus": "EventBus",
+    "rxjs-subject": "RxJsSubject",
+    "lazy-suspense": "LazySuspense"
+  },
+
+  "router": {
+    "rest-rq": "Przykłady Rest (React Query)",
+    "memo": "Przykłady useMemo",
+    "modal": "Przykłady Okno Modalne",
+    "redux": "Przykłady Redux",
+    "callback": "Przykłady Callback",
+    "graph-ql": "Przykłady GraphQL",
+    "event-bus": "Przykłady EventBus",
+    "rxjs-subject": "Przykłady RxJsSubject",
+    "lazy-suspense": "Przykłady LazySuspense"
+  },
+
+  "error": {
+    "not-found": "404 - Nie odnaleziono"
+  },
+
+  "memo": {
+    "button": {
+      "change-theme": "Zmień Tło"
+    },
+    "form": {
+      "multiply-by": "Pomnóż przez"
+    },
+    "label": {
+      "multiplied-number": "Pomnożony Numer"
+    }
+  },
+
+  "callback": {
+    "button": {
+      "change-theme": "Zmień Tło"
+    },
+    "form": {
+      "increment-by": "Pomnóż przez"
+    }
+  },
+
+  "modal": {
+    "button": {
+      "show-modal": "Wyświetl Modal Bootstrap",
+      "show-modal-rb": "Wyświetl Modal React Bootstrap"
+    }
+  },
+
+  "rest-rq": {
+    "label": {
+      "actions": "Akcje",
+      "results": "Wynik",
+      "results-mutation": "Wynik Mutacji",
+      "results-lazy": "Wynik Leniwego Ładowania",
+      "user-id": "[get/update/patch/delete] id",
+      "error": "Błąd"
+    },
+    "button": {
+      "get": "pobierz użytkownika",
+      "create": "stwórz użytkownika",
+      "update": "zaktualizuj użytkownika",
+      "patch": "zmień wiek użytkownika",
+      "delete": "usuń użytkownika"
+    }
+  },
+
+  "redux": {
+    "label": {
+      "person-state": "Osoba",
+      "age": "wiek",
+      "name": "imię",
+      "type": "typ",
+      "desc": "opis",
+      "counter-state": "Licznik",
+      "counter": "licznik",
+      "status": "stan",
+      "increment": "zwiększana ilość"
+    },
+    "button": {
+      "change-id": "zmień id",
+      "increment-age": "postarz",
+      "switch-name": "zmień imię",
+      "switch-type": "zmień typ",
+      "change-desc": "zmień opis",
+      "add": "dodaj",
+      "add-async": "dodaj asynchronicznie",
+      "add-if-odd": "dodaj jeśli nieparzyste"
+    }
+  },
+
+  "event-bus": {
+    "warning1": "EventBus to 'anty-wzorzec' i powinno się go unikać.",
+    "warning2": "W aplikacjach bazujących na eventach powinno się uzywać bibliotek bazujących na 'observables' (np. rxjs).",
+    "label": {
+      "register": "Zarejestruj Kanał",
+      "subscribe": "Zasubskrybuj Kanał",
+      "dispatch": "Wyślij wiadomość (wiadomość logowana w konsoli)",
+      "unsubscribe": "Odsubskrybuj Kanał",
+      "unregister": "Wyrejestruj Kanał"
+    },
+    "button": {
+      "register": "zarejestruj",
+      "subscribe": "zasubskrybuj",
+      "dispatch": "wyślij",
+      "unsubscribe": "odsubskrybuj",
+      "unregister": "wyrejestruj"
+    }
+  },
+
+  "rxjs-subject": {
+    "subject": "Temat",
+    "subscription": "Subskrypcja",
+    "label": {
+      "create": "Stwórz Temat",
+      "subscribe": "Zasubskrybuj Temat",
+      "dispatch": "Wyślij Wiadomość (wiadomość logowana w konsoli)",
+      "unsubscribe": "Odsubskrybuj Temat",
+      "remove": "Usuń Temat"
+    },
+    "button": {
+      "create": "stwórz",
+      "subscribe": "zasubskrybuj",
+      "dispatch": "wyślij",
+      "unsubscribe": "odsubskrybuj",
+      "remove": "usuń"
+    }
+  },
+
+  "lazy-suspense": {
+    "loading": "Leniwe ładowanie..."
+  },
+
+  "user-viewer": {
+    "label": "Użytkownicy"
+  },
+
+  "user-viewer": {
+    "loading": "Ładuję użytkowników...",
+    "label": {
+      "users": "Użykownicy",
+      "name": "Imię",
+      "age": "Wiek"
+    }
+  }
+}

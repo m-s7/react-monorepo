@@ -1,2 +1,19 @@
 {
+  "common": {
+    "error": "Błąd",
+    "close": "Zamknij",
+    "profile": "Profil",
+    "sign-in": "Zaloguj",
+    "sign-out": "Wyloguj",
+    "try-again": "Spróbuj ponowanie",
+    "please-wait": "Proszę czekać"
+  },
+
+  "error": {
+    "not-found": "404 - Nie odnaleziono",
+    "forbidden": "403 - Brak dostępu",
+    "user-not-found": "Nie odnaleziono użytkownika",
+    "network-request-failed": "Błąd sieci",
+    "something-went-wrong": "Coś poszło nie tak"
+  }
 }

@@ -1,6 +1,6 @@
 import { BaseQueryFn, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/index.js'
 import { apiSubject } from './api-subject'
-import { AuthState } from '@ms7/auth-providers'
+import { AuthState } from '@ms7/auth'
 
 const isAuthState = (object: object): object is AuthState => ('token' in object && 'username' in object && 'logoutUrl' in object)
 const getAuthState = (store: object): AuthState | undefined => {

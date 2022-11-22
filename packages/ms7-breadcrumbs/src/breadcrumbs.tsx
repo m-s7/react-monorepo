@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { matchPath, Params, PathPattern, RouteObject, useLocation } from 'react-router'
+import { matchPath, Params, PathPattern, useLocation } from 'react-router'
 
 type Location = ReturnType<typeof useLocation>
 
@@ -29,12 +29,14 @@ export interface BreadcrumbData<K extends string = string> {
     breadcrumb: React.ReactNode | string,
 }
 
-export interface BreadcrumbRoute<K extends string = string> extends RouteObject {
+export interface BreadcrumbRoute<K extends string = string> {
     breadcrumb?: BreadcrumbComponentType<K> | string,
     props?: { [x: string]: unknown },
+    caseSensitive? : boolean,
+    path?: string,
 }
 
-export type BreadcrumbComponentType<K extends string = string> = React.FunctionComponent<BreadcrumbComponentProps<K>>
+export type BreadcrumbComponentType<K extends string = string> = React.ComponentType<BreadcrumbComponentProps<K>>
 
 const NO_BREADCRUMB = Symbol('NO_BREADCRUMB')
 

@@ -78,7 +78,6 @@ export abstract class WebsocketClient implements Websocket {
 
     reconnect(): void {
         const timeout = 5000
-        this.callback(false)
 
         this.onReconnect(timeout)
         this.reconnectTimeoutId = window.setTimeout(() => this.connect(), timeout)

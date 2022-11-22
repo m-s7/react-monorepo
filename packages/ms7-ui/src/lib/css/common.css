@@ -1,0 +1,66 @@
+:root {
+    --dark: #454d55;
+    --darker: #343a40;
+    --darkest: #212529;
+    --text-default: #d1d1d1;
+    --text-primary: #61dafb;
+    --text-secondary: #666666;
+    --text-link: #1098ad;
+}
+
+.font-size-smallest {
+    font-size: 10px;
+}
+
+.font-size-smaller {
+    font-size: 12px;
+}
+
+.font-size-small {
+    font-size: 14px;
+}
+
+.font-size-normal {
+    font-size: 16px;
+}
+
+.font-size-large {
+    font-size: 18px;
+}
+
+.font-size-larger {
+    font-size: 20px;
+}
+
+.font-size-largest {
+    font-size: 22px;
+}
+
+
+.text-color-default {
+    color: var(--text-default) !important;
+}
+
+.text-color-primary {
+    color: var(--text-primary) !important;
+}
+
+.text-color-secondary {
+    color: var(--text-secondary)!important;
+}
+
+.text-color-link {
+    color: var(--text-link) !important;
+}
+
+.background-dark {
+    background-color: var(--dark) !important;
+}
+
+.background-darker {
+    background-color: var(--darker) !important;
+}
+
+.background-darkest {
+    background-color: var(--darkest) !important;
+}

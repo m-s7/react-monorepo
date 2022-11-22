@@ -1,0 +1,155 @@
+{
+  "core": "Core",
+  "dashboard": "Dashboard",
+
+  "menu": {
+    "core": "Core",
+    "rest": "Rest",
+    "rest-rq": "Rest (React Query)",
+    "memo": "Memo",
+    "modal": "Modal",
+    "redux": "Redux",
+    "callback": "Callback",
+    "graph-ql": "GraphQL",
+    "event-bus": "EventBus",
+    "rxjs-subject": "RxJsSubject",
+    "lazy-suspense": "LazySuspense"
+  },
+
+  "router": {
+    "rest-rq": "Core Rest (React Query)",
+    "memo": "Core Memo",
+    "modal": "Core Modal",
+    "redux": "Core Redux",
+    "callback": "Core Callback",
+    "graph-ql": "Core GraphQL",
+    "event-bus": "Core EventBus",
+    "rxjs-subject": "Core RxJsSubject",
+    "lazy-suspense": "Core LazySuspense"
+  },
+
+  "error": {
+    "not-found": "404 - Not Found"
+  },
+
+  "rest-rq": {
+    "label": {
+      "actions": "Actions",
+      "results": "Results",
+      "results-mutation": "Results Mutation",
+      "results-lazy": "Results lazy",
+      "user-id": "[update/patch/delete] id",
+      "error": "Error"
+    },
+    "button": {
+      "get": "get user",
+      "create": "create user",
+      "update": "update user",
+      "patch": "patch user",
+      "delete": "delete user"
+    }
+  },
+
+  "memo": {
+    "button": {
+      "change-theme": "Change Theme"
+    },
+    "form": {
+      "multiply-by": "Multiply By"
+    },
+    "label": {
+      "multiplied-number": "Multiplied Number"
+    }
+  },
+
+  "callback": {
+    "button": {
+      "change-theme": "Change Theme"
+    },
+    "form": {
+      "increment-by": "Increment By"
+    }
+  },
+
+  "modal": {
+    "button": {
+      "show-modal": "Show Modal Bootstrap",
+      "show-modal-rb": "Show Modal React Bootstrap"
+    }
+  },
+
+  "redux": {
+    "label": {
+      "person-state": "Person State",
+      "age": "age",
+      "name": "name",
+      "type": "type",
+      "desc": "desc",
+      "counter-state": "Counter State",
+      "counter": "counter",
+      "status": "status",
+      "increment": "increment amount"
+    },
+    "button": {
+      "change-id": "change id",
+      "increment-age": "increment age",
+      "switch-name": "switch name",
+      "switch-type": "switch type",
+      "change-desc": "change description",
+      "add": "add",
+      "add-async": "add async",
+      "add-if-odd": "add if odd"
+    }
+  },
+
+  "event-bus": {
+    "warning1": "EventBus is an anti-pattern and should be avoided.",
+    "warning2": "For event-based apps you should use observables based libraries (ex. rxjs).",
+    "label": {
+      "register": "Register channel",
+      "subscribe": "Subscribe channel",
+      "dispatch": "Dispatch message (output logged in console)",
+      "unsubscribe": "Unsubscribe channel",
+      "unregister": "Unregister channel"
+    },
+    "button": {
+      "register": "register",
+      "subscribe": "subscribe",
+      "dispatch": "dispatch",
+      "unsubscribe": "unsubscribe",
+      "unregister": "unregister"
+    }
+  },
+
+  "rxjs-subject": {
+    "subject": "Subject",
+    "subscription": "Subscription",
+    "label": {
+      "create": "Create Subject",
+      "subscribe": "Subscribe Subject",
+      "dispatch": "Dispatch Subject (output logged in console)",
+      "unsubscribe": "Unsubscribe Subject",
+      "remove": "Remove Subject"
+    },
+    "button": {
+      "create": "create",
+      "subscribe": "subscribe",
+      "dispatch": "dispatch",
+      "unsubscribe": "unsubscribe",
+      "remove": "remove"
+    }
+  },
+
+  "lazy-suspense": {
+    "loading": "Loading lazily..."
+  },
+
+  "user-viewer": {
+    "loading": "Loading users...",
+    "label": {
+      "users": "Users",
+      "name": "Name",
+      "age": "Age"
+    }
+  }
+}

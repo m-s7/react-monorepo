@@ -4,7 +4,7 @@ import { RestLoggerConfig } from './types'
 import { Logger } from '@ms7/logger'
 import { log } from './logger'
 
-export const requestLogger = (logger: Logger, config?: RestLoggerConfig) => (request: AxiosRequestConfig): AxiosRequestConfig => {
+export const requestLogger = (request: AxiosRequestConfig, logger: Logger, config?: RestLoggerConfig): AxiosRequestConfig => {
     const { method, baseURL, url, data, params } = request
 
     const logBuilder = new LogBuilder(config)

@@ -28,7 +28,7 @@ export const createBaseQuery = ({ baseUrl, prepareHeaders, errorHandler, axiosIn
         config => {
             apiSubject.next({ isLoading: true })
 
-            if(logger) requestLogger(logger, loggerConfig)
+            if(logger) requestLogger(config, logger, loggerConfig)
 
             combineHeaders(config?.headers, (prepareHeaders ? prepareHeaders(new Headers()) : undefined))
 
@@ -37,7 +37,7 @@ export const createBaseQuery = ({ baseUrl, prepareHeaders, errorHandler, axiosIn
         error => {
             apiSubject.next({ isLoading: false })
 
-            if(logger) errorLogger(logger, loggerConfig)
+            if(logger) errorLogger(error, logger, loggerConfig)
 
             return Promise.reject(error)
         })
@@ -46,14 +46,14 @@ export const createBaseQuery = ({ baseUrl, prepareHeaders, errorHandler, axiosIn
         config => {
             apiSubject.next({ isLoading: false })
 
-            if(logger) responseLogger(logger, loggerConfig)
+            if(logger) responseLogger(config, logger, loggerConfig)
 
             return config
         },
         error => {
             apiSubject.next({ isLoading: false })
 
-            if(logger) errorLogger(logger, loggerConfig)
+            if(logger) errorLogger(error, logger, loggerConfig)
             if(errorHandler) errorHandler(error.status)
 
             return Promise.reject(error)

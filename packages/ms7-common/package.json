@@ -18,13 +18,13 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "tsup": "^6.0.1",
-    "eslint": "^8.16.0",
-    "typescript": "^4.6.3",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@ms7/auth-providers": "*",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@ms7/auth": "*",
     "@ms7/logger": "*",
-    "@ms7/router": "*"
+    "@ms7/router": "*",
+    "eslint": "^8.20.0",
+    "tsup": "^6.2.0",
+    "typescript": "^4.7.4"
   },
   "devDependencies": {
     "ts-config-lib": "*"

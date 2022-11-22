@@ -11,22 +11,22 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts --external react",
+    "build": "node_modules/.bin/tsup src/index.ts --format esm,cjs --dts",
     "dev": "node_modules/.bin/tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "TIMING=1 eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "tsup": "^6.0.1",
-    "eslint": "^8.16.0",
-    "react": "^18.0.0",
-    "@types/react": "^18.0.7",
-    "@types/react-dom": "^18.0.0",
-    "typescript": "^4.6.3",
-    "react-router-dom": "^6.3.0",
-    "@ms7/auth-providers": "*",
+    "@ms7/auth": "*",
+    "@ms7/breadcrumbs": "*",
     "@ms7/page-title": "*",
-    "@ms7/breadcrumbs": "*"
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "eslint": "^8.20.0",
+    "react": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "tsup": "^6.2.0",
+    "typescript": "^4.7.4"
   },
   "devDependencies": {
     "ts-config-lib": "*"

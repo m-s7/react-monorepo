@@ -1,0 +1,32 @@
+@import "./common.css";
+
+h1, h2, h3, h4, h5, pre, span, div, hr {
+    color: var(--text-default);
+}
+
+input, input:focus, label {
+    color: var(--text-secondary) !important;
+}
+
+html {
+    display: flex;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+ol > li > a, a:hover {
+    color: var(--text-link);
+}
+
+#root {
+    height: 100%;
+}

@@ -4,10 +4,10 @@
   "version": "0.0.1",
   "main": "index.js",
   "devDependencies": {
-    "eslint-plugin-react": "^7.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.26.0",
-    "@typescript-eslint/parser": "^5.27.0",
-    "@typescript-eslint/eslint-plugin": "^5.27.0"
+    "eslint-plugin-react": "^7.30.1"
   }
 }
