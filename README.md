@@ -6,7 +6,7 @@ This project is a set of libraries aimed at familiarizing novice programmers wit
 
 This codebase requires multiple services (keycloak, firebase, websocket server, gql and rest backend) to work properly (not included).
 
-This is not production code.
+This is not a production code.
 
 ## Installation
 
